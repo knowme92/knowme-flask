@@ -57,6 +57,20 @@
     name="twitter:image"
     content="{{ url_for('static', filename='images/knowme-preview.png', _external=True) }}"
 >
+    <meta
+    name="description"
+    content="Modern, fast and secure websites for businesses and professionals."
+>
+
+<meta
+    name="robots"
+    content="index, follow"
+>
+
+<link
+    rel="canonical"
+    href="{{ 'https://knowme-studio.onrender.com' ~ request.path }}"
+>
 </head>
 
 <body>

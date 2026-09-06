@@ -13,7 +13,8 @@ from flask import (
     url_for,
     flash,
     session,
-abort
+abort,
+Response
 )
 
 from flask_wtf.csrf import CSRFProtect
@@ -139,6 +140,55 @@ def admin_required(view_function):
 # =========================================================
 # HOME
 # =========================================================
+SITE_URL = "https://knowme-studio.onrender.com"
+
+
+@app.route("/robots.txt")
+def robots_txt():
+
+    robots = f"""User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/login
+Sitemap: {SITE_URL}/sitemap.xml
+"""
+
+    return Response(
+        robots,
+        mimetype="text/plain"
+    )
+
+
+@app.route("/sitemap.xml")
+def sitemap():
+
+    pages = [
+        "/",
+        "/prices",
+        "/projects",
+        "/contact",
+    ]
+
+    urls = ""
+
+    for page in pages:
+
+        urls += f"""
+        <url>
+            <loc>{SITE_URL}{page}</loc>
+        </url>
+        """
+
+    xml = f"""<?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+        {urls}
+    </urlset>
+    """
+
+    return Response(
+        xml,
+        mimetype="application/xml"
+    )
 
 @app.route("/")
 def home():
