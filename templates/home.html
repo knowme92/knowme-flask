@@ -1,0 +1,657 @@
+{% extends "base.html" %}
+
+{% block title %}
+KNOWME Studio | Home
+{% endblock %}
+
+
+{% block content %}
+
+
+<!-- ==================================================
+     HOME HERO
+=================================================== -->
+
+<section class="hero" id="home">
+
+    <video
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+    >
+        <source
+            src="{{ url_for('static', filename='videos/hero-bg.mp4') }}"
+            type="video/mp4"
+        >
+    </video>
+
+
+    <div class="hero-overlay"></div>
+
+
+    <div class="hero-content">
+
+        <span class="hero-label">
+            KNOWME STUDIO
+        </span>
+
+
+        <h1 data-i18n="home.title">
+            Modern Websites. Powerful Solutions.
+        </h1>
+
+
+        <p data-i18n="home.description">
+            Fast, secure and modern websites built
+            for businesses and professionals.
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a
+                href="{{ url_for('projects') }}"
+                class="hero-btn primary-btn"
+                data-i18n="home.projects"
+            >
+                View Projects
+            </a>
+
+
+            <a
+                href="{{ url_for('contact') }}"
+                class="hero-btn secondary-btn"
+                data-i18n="home.contact"
+            >
+                Contact Me
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <a
+        href="#process"
+        class="hero-scroll-cue"
+    >
+        <span>
+            SCROLL TO DISCOVER
+        </span>
+
+        <span class="hero-scroll-line"></span>
+    </a>
+
+</section>
+
+
+
+<!-- ==================================================
+     HOW I BUILD SECTION
+     prices-bg.mp4 = only background video
+=================================================== -->
+
+<section
+    class="home-info-section home-process-section"
+    id="process"
+>
+
+    <video
+        class="home-info-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+    >
+        <source
+            src="{{ url_for('static', filename='videos/prices-bg.mp4') }}"
+            type="video/mp4"
+        >
+    </video>
+
+
+    <div
+        class="home-info-overlay home-process-overlay"
+    ></div>
+
+    <div class="home-info-grid"></div>
+
+
+    <div class="home-info-content">
+
+
+        <!-- LEFT TEXT -->
+
+        <div class="home-info-copy">
+
+            <span
+                class="home-info-kicker"
+                data-i18n="homeProcess.badge"
+            >
+                HOW I BUILD
+            </span>
+
+
+            <h2 data-i18n="homeProcess.title">
+                From an idea to a real working product.
+            </h2>
+
+
+            <p data-i18n="homeProcess.description">
+                A strong website is not only a beautiful screen.
+                It is planning, clean interface design,
+                reliable code, careful testing and a launch
+                that is ready for real users.
+            </p>
+
+
+            <div class="home-mini-points">
+
+                <span data-i18n="homeProcess.strategy">
+                    Strategy
+                </span>
+
+                <span data-i18n="homeProcess.design">
+                    UI / UX
+                </span>
+
+                <span data-i18n="homeProcess.development">
+                    Development
+                </span>
+
+                <span data-i18n="homeProcess.testing">
+                    Testing
+                </span>
+
+            </div>
+
+
+            <a
+                href="{{ url_for('prices') }}"
+                class="home-info-btn"
+                data-i18n="homeProcess.button"
+            >
+                Explore Service Options
+            </a>
+
+        </div>
+
+
+
+        <!-- RIGHT CARDS -->
+
+        <div class="home-process-grid">
+
+
+            <!-- STEP 01 -->
+
+            <article class="home-process-card">
+
+                <span class="home-card-number">
+                    01
+                </span>
+
+                <h3 data-i18n="homeProcess.step1Title">
+                    Understand the Goal
+                </h3>
+
+                <p data-i18n="homeProcess.step1Text">
+                    I start with the business goal,
+                    audience and functionality the website
+                    actually needs.
+                </p>
+
+            </article>
+
+
+
+            <!-- STEP 02 -->
+
+            <article class="home-process-card">
+
+                <span class="home-card-number">
+                    02
+                </span>
+
+                <h3 data-i18n="homeProcess.step2Title">
+                    Design the Experience
+                </h3>
+
+                <p data-i18n="homeProcess.step2Text">
+                    The structure is built around clear
+                    navigation, responsive layouts and
+                    strong visual hierarchy.
+                </p>
+
+            </article>
+
+
+
+            <!-- STEP 03 -->
+
+            <article class="home-process-card">
+
+                <span class="home-card-number">
+                    03
+                </span>
+
+                <h3 data-i18n="homeProcess.step3Title">
+                    Build the System
+                </h3>
+
+                <p data-i18n="homeProcess.step3Text">
+                    Frontend and backend code are connected
+                    into one maintainable application
+                    instead of isolated pieces.
+                </p>
+
+            </article>
+
+
+
+            <!-- STEP 04 -->
+
+            <article class="home-process-card">
+
+                <span class="home-card-number">
+                    04
+                </span>
+
+                <h3 data-i18n="homeProcess.step4Title">
+                    Test & Launch
+                </h3>
+
+                <p data-i18n="homeProcess.step4Text">
+                    Mobile behavior, forms, routes and
+                    security basics are checked before
+                    the project goes live.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     PROGRAMMING / TECHNOLOGY SECTION
+     projects-bg.mp4 = only background video
+=================================================== -->
+
+<section
+    class="home-info-section home-tech-section"
+    id="technology"
+>
+
+    <video
+        class="home-info-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+    >
+        <source
+            src="{{ url_for('static', filename='videos/projects-bg.mp4') }}"
+            type="video/mp4"
+        >
+    </video>
+
+
+    <div
+        class="home-info-overlay home-tech-overlay"
+    ></div>
+
+    <div
+        class="home-info-grid home-tech-grid"
+    ></div>
+
+
+    <div class="home-tech-content">
+
+
+        <!-- HEADING -->
+
+        <div class="home-tech-heading">
+
+            <span
+                class="home-info-kicker"
+                data-i18n="homeTech.badge"
+            >
+                MODERN WEB DEVELOPMENT
+            </span>
+
+
+            <h2 data-i18n="homeTech.title">
+                Frontend, backend and security
+                working together.
+            </h2>
+
+
+            <p data-i18n="homeTech.description">
+                A professional web project is a system.
+                The interface, server logic, data and
+                security should support each other
+                from the beginning.
+            </p>
+
+        </div>
+
+
+
+        <div class="home-tech-layout">
+
+
+            <!-- TECHNOLOGY CARDS -->
+
+            <div class="home-tech-cards">
+
+
+                <!-- FRONTEND -->
+
+                <article class="home-tech-card">
+
+                    <span class="home-tech-tag">
+                        FRONTEND
+                    </span>
+
+                    <h3 data-i18n="homeTech.frontendTitle">
+                        Fast & Responsive UI
+                    </h3>
+
+                    <p data-i18n="homeTech.frontendText">
+                        HTML, CSS and JavaScript create
+                        interfaces that adapt cleanly to
+                        desktop, tablet and mobile.
+                    </p>
+
+                    <div class="home-tech-pills">
+
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- BACKEND -->
+
+                <article class="home-tech-card">
+
+                    <span class="home-tech-tag">
+                        BACKEND
+                    </span>
+
+                    <h3 data-i18n="homeTech.backendTitle">
+                        Real Server Logic
+                    </h3>
+
+                    <p data-i18n="homeTech.backendText">
+                        Flask and Python can power forms,
+                        authentication, APIs, business logic
+                        and dynamic pages.
+                    </p>
+
+                    <div class="home-tech-pills">
+
+                        <span>Python</span>
+                        <span>Flask</span>
+                        <span>API</span>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- DATABASE -->
+
+                <article class="home-tech-card">
+
+                    <span class="home-tech-tag">
+                        DATA
+                    </span>
+
+                    <h3 data-i18n="homeTech.databaseTitle">
+                        Structured Data
+                    </h3>
+
+                    <p data-i18n="homeTech.databaseText">
+                        Databases keep application data
+                        organized, searchable and ready
+                        for future growth.
+                    </p>
+
+                    <div class="home-tech-pills">
+
+                        <span>SQL</span>
+                        <span>Database</span>
+                        <span>ORM</span>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- SECURITY -->
+
+                <article class="home-tech-card">
+
+                    <span class="home-tech-tag">
+                        SECURITY
+                    </span>
+
+                    <h3 data-i18n="homeTech.securityTitle">
+                        Security by Design
+                    </h3>
+
+                    <p data-i18n="homeTech.securityText">
+                        Validation, authentication patterns,
+                        security headers and access control
+                        are considered as part of the
+                        application architecture.
+                    </p>
+
+                    <div class="home-tech-pills">
+
+                        <span>Validation</span>
+                        <span>Auth</span>
+                        <span>Headers</span>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 FLASK CODE PANEL
+            =================================================== -->
+
+            <aside class="home-code-panel">
+
+
+                <div class="home-code-topbar">
+
+                    <div class="home-code-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <span>
+                        app.py
+                    </span>
+
+                </div>
+
+
+
+                <pre><code><span class="code-keyword">from</span> flask <span class="code-keyword">import</span> Flask, render_template
+
+app = Flask(__name__)
+
+<span class="code-decorator">@app.route</span>(<span class="code-string">"/"</span>)
+<span class="code-keyword">def</span> <span class="code-function">home</span>():
+    <span class="code-keyword">return</span> render_template(
+        <span class="code-string">"home.html"</span>
+    )</code></pre>
+
+
+
+                <div class="home-code-status">
+
+                    <span data-i18n="homeTech.appStatus">
+                        ● Flask application
+                    </span>
+
+                    <strong>
+                        READY
+                    </strong>
+
+                </div>
+
+
+
+                <div class="home-code-features">
+
+                    <div>
+
+                        <span>
+                            01
+                        </span>
+
+                        <p data-i18n="homeTech.codeFeature1">
+                            Clean routes
+                        </p>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            02
+                        </span>
+
+                        <p data-i18n="homeTech.codeFeature2">
+                            Reusable templates
+                        </p>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            03
+                        </span>
+
+                        <p data-i18n="homeTech.codeFeature3">
+                            Secure backend
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <a
+                    href="{{ url_for('projects') }}"
+                    class="home-code-link"
+                    data-i18n="homeTech.projectsButton"
+                >
+                    See My Projects →
+                </a>
+
+            </aside>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     FINAL CTA
+=================================================== -->
+
+<section class="home-final-cta">
+
+
+    <div
+        class="home-final-glow home-final-glow-red"
+    ></div>
+
+    <div
+        class="home-final-glow home-final-glow-blue"
+    ></div>
+
+
+    <div class="home-final-content">
+
+        <span
+            class="home-info-kicker"
+            data-i18n="homeFinal.badge"
+        >
+            HAVE AN IDEA?
+        </span>
+
+
+        <h2 data-i18n="homeFinal.title">
+            Let's build something that works
+            as good as it looks.
+        </h2>
+
+
+        <p data-i18n="homeFinal.description">
+            Tell me what you need and we can choose
+            the right structure, functionality and
+            development approach.
+        </p>
+
+
+        <div class="home-final-actions">
+
+            <a
+                href="{{ url_for('prices') }}"
+                class="home-final-btn home-final-btn-secondary"
+                data-i18n="homeFinal.prices"
+            >
+                View Prices
+            </a>
+
+
+            <a
+                href="{{ url_for('contact') }}"
+                class="home-final-btn home-final-btn-primary"
+                data-i18n="homeFinal.contact"
+            >
+                Start a Project
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+{% endblock %}

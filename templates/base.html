@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {% block title %}
+            KNOWME Studio
+        {% endblock %}
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+    <link
+    rel="icon"
+    type="image/png"
+    href="{{ url_for('static', filename='images/favicon.png') }}"
+>
+
+<meta property="og:type" content="website">
+
+<meta property="og:title" content="KNOWME Studio">
+
+<meta
+    property="og:description"
+    content="Modern, fast and secure websites for businesses and professionals."
+>
+
+<meta
+    property="og:image"
+    content="{{ url_for('static', filename='images/knowme-preview.png', _external=True) }}"
+>
+
+<meta
+    property="og:url"
+    content="{{ request.url }}"
+>
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="twitter:title" content="KNOWME Studio">
+
+<meta
+    name="twitter:description"
+    content="Modern, fast and secure websites for businesses and professionals."
+>
+
+<meta
+    name="twitter:image"
+    content="{{ url_for('static', filename='images/knowme-preview.png', _external=True) }}"
+>
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <!-- LOGO -->
+    <a href="{{ url_for('home') }}" class="logo">
+    <span class="logo-k">K</span>NOWME Studio
+</a>
+
+
+    <!-- ROUTES -->
+    <nav class="main-nav">
+
+        <a
+            href="{{ url_for('home') }}"
+            class="nav-btn"
+            data-i18n="nav.home"
+        >
+            Home
+        </a>
+
+        <a
+            href="{{ url_for('prices') }}"
+            class="nav-btn"
+            data-i18n="nav.prices"
+        >
+            Prices
+        </a>
+
+        <a
+            href="{{ url_for('projects') }}"
+            class="nav-btn"
+            data-i18n="nav.projects"
+        >
+            Projects
+        </a>
+
+        <a
+            href="{{ url_for('contact') }}"
+            class="nav-btn"
+            data-i18n="nav.contact"
+        >
+            Contact
+        </a>
+
+    </nav>
+
+
+    <!-- LANGUAGES -->
+    <div class="language-switcher">
+
+        <button
+            type="button"
+            class="lang-btn"
+            data-lang="en"
+        >
+            EN
+        </button>
+
+        <button
+            type="button"
+            class="lang-btn"
+            data-lang="ru"
+        >
+            RU
+        </button>
+
+        <button
+            type="button"
+            class="lang-btn"
+            data-lang="hy"
+        >
+            HY
+        </button>
+
+    </div>
+
+</header>
+
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+
+<script
+    src="{{ url_for('static', filename='script.js') }}"
+></script>
+
+</body>
+</html>

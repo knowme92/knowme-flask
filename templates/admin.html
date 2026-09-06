@@ -1,0 +1,272 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+KNOWME Studio | Admin
+{% endblock %}
+
+
+{% block content %}
+
+<section class="admin-page">
+
+
+    <div class="admin-container">
+
+
+        <!-- HEADER -->
+
+        <div class="admin-header">
+
+
+            <div>
+
+                <span class="admin-label">
+                    KNOWME STUDIO
+                </span>
+
+
+                <h1>
+                    Admin Dashboard
+                </h1>
+
+
+                <p>
+                    Contact messages received from the website.
+                </p>
+
+            </div>
+
+
+
+            <form
+                method="POST"
+                action="{{ url_for('admin_logout') }}"
+            >
+
+                <input
+                    type="hidden"
+                    name="csrf_token"
+                    value="{{ csrf_token() }}"
+                >
+
+
+                <button
+                    type="submit"
+                    class="admin-logout-btn"
+                >
+                    Logout
+                </button>
+
+            </form>
+
+        </div>
+        {% with flash_messages = get_flashed_messages(with_categories=true) %}
+
+    {% if flash_messages %}
+
+        <div class="contact-flash-container">
+
+            {% for category, flash_message in flash_messages %}
+
+                <div class="contact-flash {{ category }}">
+                    {{ flash_message }}
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% endif %}
+
+{% endwith %}
+
+
+
+        <!-- MESSAGE COUNT -->
+
+        <div class="admin-stat">
+
+            <span>
+                TOTAL MESSAGES
+            </span>
+
+            <strong>
+                {{ messages|length }}
+            </strong>
+
+        </div>
+
+
+
+        <!-- MESSAGES -->
+
+        <div class="admin-messages">
+
+
+            {% if messages %}
+
+
+               {% for message in messages %}
+
+    <article
+        class="
+            admin-message-card
+            {% if not message.is_read %}
+                admin-message-unread
+            {% endif %}
+        "
+    >
+
+        <div class="admin-message-top">
+
+            <div>
+
+                <div class="admin-message-meta">
+
+                    <span class="admin-message-id">
+                        #{{ message.id }}
+                    </span>
+
+                    {% if message.is_read %}
+
+                        <span class="admin-status admin-status-read">
+                            READ
+                        </span>
+
+                    {% else %}
+
+                        <span class="admin-status admin-status-unread">
+                            UNREAD
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+                <h2>
+                    {{ message.name }}
+                </h2>
+
+            </div>
+
+            <time>
+                {{ message.created_at }}
+            </time>
+
+        </div>
+
+
+        <a
+            href="mailto:{{ message.email }}"
+            class="admin-email"
+        >
+            {{ message.email }}
+        </a>
+
+
+        <p class="admin-message-text">
+            {{ message.message }}
+        </p>
+
+
+        <div class="admin-message-actions">
+
+            <!-- READ / UNREAD -->
+
+            <form
+                method="POST"
+                action="{{
+                    url_for(
+                        'toggle_message_read',
+                        message_id=message.id
+                    )
+                }}"
+            >
+
+                <input
+                    type="hidden"
+                    name="csrf_token"
+                    value="{{ csrf_token() }}"
+                >
+
+                <button
+                    type="submit"
+                    class="admin-action-btn admin-read-btn"
+                >
+
+                    {% if message.is_read %}
+                        Mark as Unread
+                    {% else %}
+                        Mark as Read
+                    {% endif %}
+
+                </button>
+
+            </form>
+
+
+            <!-- DELETE -->
+
+            <form
+                method="POST"
+                action="{{
+                    url_for(
+                        'delete_message',
+                        message_id=message.id
+                    )
+                }}"
+                onsubmit="
+                    return confirm(
+                        'Delete this message permanently?'
+                    );
+                "
+            >
+
+                <input
+                    type="hidden"
+                    name="csrf_token"
+                    value="{{ csrf_token() }}"
+                >
+
+                <button
+                    type="submit"
+                    class="admin-action-btn admin-delete-btn"
+                >
+                    Delete
+                </button>
+
+            </form>
+
+        </div>
+
+    </article>
+
+{% endfor %}
+
+
+            {% else %}
+
+
+                <div class="admin-empty">
+
+                    <h2>
+                        No messages yet
+                    </h2>
+
+                    <p>
+                        New contact requests will appear here.
+                    </p>
+
+                </div>
+
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

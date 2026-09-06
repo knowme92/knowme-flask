@@ -1,0 +1,1059 @@
+const translations = {
+
+    /* =====================================================
+       ENGLISH
+    ===================================================== */
+
+    en: {
+
+        nav: {
+            home: "Home",
+            prices: "Prices",
+            projects: "Projects",
+            contact: "Contact"
+        },
+
+
+        /* =================================================
+           HOME
+        ================================================= */
+
+        home: {
+
+            title:
+                "Modern Websites. Powerful Solutions.",
+
+            description:
+                "Fast, secure and modern websites built for businesses and professionals.",
+
+            projects:
+                "View Projects",
+
+            contact:
+                "Contact Me"
+        },
+
+
+
+        /* =================================================
+           HOME PROCESS
+        ================================================= */
+
+        homeProcess: {
+            badge: "HOW I BUILD",
+            title: "From an idea to a real working product.",
+            description: "A strong website is not only a beautiful screen. It is planning, clean interface design, reliable code, careful testing and a launch that is ready for real users.",
+            strategy: "Strategy",
+            design: "UI / UX",
+            development: "Development",
+            testing: "Testing",
+            button: "Explore Service Options",
+            step1Title: "Understand the Goal",
+            step1Text: "I start with the business goal, audience and functionality the website actually needs.",
+            step2Title: "Design the Experience",
+            step2Text: "The structure is built around clear navigation, responsive layouts and a strong visual hierarchy.",
+            step3Title: "Build the System",
+            step3Text: "Frontend and backend code are connected into one maintainable application instead of isolated pieces.",
+            step4Title: "Test & Launch",
+            step4Text: "Mobile behavior, forms, routes and security basics are checked before the project goes live."
+        },
+
+        /* =================================================
+           HOME TECHNOLOGY
+        ================================================= */
+
+        homeTech: {
+            badge: "MODERN WEB DEVELOPMENT",
+            title: "Frontend, backend and security working together.",
+            description: "A professional web project is a system. The interface, server logic, data and security should support each other from the beginning.",
+            frontendTitle: "Fast & Responsive UI",
+            frontendText: "HTML, CSS and JavaScript create interfaces that adapt cleanly to desktop, tablet and mobile.",
+            backendTitle: "Real Server Logic",
+            backendText: "Flask and Python can power forms, authentication, APIs, business logic and dynamic pages.",
+            databaseTitle: "Structured Data",
+            databaseText: "Databases keep application data organized, searchable and ready for future growth.",
+            securityTitle: "Security by Design",
+            securityText: "Validation, authentication patterns, security headers and access control are considered as part of the application architecture.",
+            appStatus: "● Flask application",
+            codeFeature1: "Clean routes",
+            codeFeature2: "Reusable templates",
+            codeFeature3: "Secure backend",
+            projectsButton: "See My Projects →"
+        },
+
+        /* =================================================
+           HOME FINAL CTA
+        ================================================= */
+
+        homeFinal: {
+            badge: "HAVE AN IDEA?",
+            title: "Let's build something that works as good as it looks.",
+            description: "Tell me what you need and we can choose the right structure, functionality and development approach.",
+            prices: "View Prices",
+            contact: "Start a Project"
+        },
+
+        /* =================================================
+           PRICES
+        ================================================= */
+
+        prices: {
+
+            title:
+                "Website Prices",
+
+            description:
+                "Choose the package that fits your project. Every website is responsive, modern and built with attention to security.",
+
+
+            /* STARTER */
+
+            starterType:
+                "STARTER",
+
+            starterTitle:
+                "Landing Page",
+
+            starterInfo:
+                "Perfect for a personal brand, service or small business.",
+
+            starterFeature1:
+                "✓ 1-page website",
+
+            starterFeature2:
+                "✓ Modern responsive design",
+
+            starterFeature3:
+                "✓ Mobile-friendly layout",
+
+            starterFeature4:
+                "✓ Contact section",
+
+            starterFeature5:
+                "✓ Telegram / WhatsApp links",
+
+            starterFeature6:
+                "✓ Basic SEO setup",
+
+            starterFeature7:
+                "✓ Basic security setup",
+
+            starterTime:
+                "Development: 3–5 days",
+
+
+            /* BUSINESS */
+
+            recommended:
+                "RECOMMENDED",
+
+            businessType:
+                "BUSINESS",
+
+            businessTitle:
+                "Business Website",
+
+            businessInfo:
+                "A complete website for businesses that need a professional online presence.",
+
+            businessFeature1:
+                "✓ Multiple pages",
+
+            businessFeature2:
+                "✓ Premium responsive design",
+
+            businessFeature3:
+                "✓ Mobile optimization",
+
+            businessFeature4:
+                "✓ Contact form",
+
+            businessFeature5:
+                "✓ SEO optimization",
+
+            businessFeature6:
+                "✓ Security configuration",
+
+            businessFeature7:
+                "✓ Social media integration",
+
+            businessFeature8:
+                "✓ Basic animations",
+
+            businessTime:
+                "Development: 7–14 days",
+
+
+            /* CUSTOM */
+
+            customType:
+                "CUSTOM",
+
+            customTitle:
+                "Custom Web Project",
+
+            customPrice:
+                "Contract price",
+
+            customInfo:
+                "For projects that require backend, database or custom functionality.",
+
+            customFeature1:
+                "✓ Custom frontend",
+
+            customFeature2:
+                "✓ Flask backend",
+
+            customFeature3:
+                "✓ Database integration",
+
+            customFeature4:
+                "✓ Authentication",
+
+            customFeature5:
+                "✓ Admin panel",
+
+            customFeature6:
+                "✓ Custom API functionality",
+
+            customFeature7:
+                "✓ Advanced security",
+
+            customFeature8:
+                "✓ Deployment setup",
+
+            customTime:
+                "Development time depends on the project",
+
+
+            /* BUTTONS */
+
+            order:
+                "Order Website",
+
+            discuss:
+                "Discuss Project",
+
+
+            /* BOTTOM */
+
+            noteTitle:
+                "Need something different?",
+
+            noteText:
+                "Every project is different. Contact me and I will prepare a solution based on your requirements and budget.",
+
+            noteButton:
+                "Contact KNOWME Studio"
+        },
+
+
+        /* =================================================
+           PROJECTS
+        ================================================= */
+
+        projects: {
+
+            title:
+                "My Projects",
+
+            description:
+                "Explore my web development projects, technologies and digital solutions.",
+
+            live:
+                "LIVE",
+
+            development:
+                "IN DEVELOPMENT",
+
+            coming:
+                "COMING SOON",
+
+
+            project1Text:
+                "Modern multilingual commercial website with responsive design, animations, SEO and security configuration.",
+
+
+            project2Title:
+                "KNOWME Flask",
+
+            project2Text:
+                "Full-stack version of KNOWME Studio with Flask backend, database, admin panel and custom functionality.",
+
+
+            project3Title:
+                "Future Commercial Project",
+
+            project3Text:
+                "New commercial websites and web applications will appear here.",
+
+
+            publishedAt:
+                "Published website",
+
+            view:
+                "View Live Website",
+
+
+            ctaTitle:
+                "Have a project in mind?",
+
+            ctaText:
+                "Let's turn your idea into a modern, fast and professional website.",
+
+            ctaButton:
+                "Start a Project"
+        }
+
+    },
+
+
+    /* =====================================================
+       RUSSIAN
+    ===================================================== */
+
+    ru: {
+
+        nav: {
+            home: "Главная",
+            prices: "Цены",
+            projects: "Проекты",
+            contact: "Контакты"
+        },
+
+
+        /* =================================================
+           HOME
+        ================================================= */
+
+        home: {
+
+            title:
+                "Современные сайты. Мощные решения.",
+
+            description:
+                "Быстрые, безопасные и современные сайты для бизнеса и профессионалов.",
+
+            projects:
+                "Смотреть проекты",
+
+            contact:
+                "Связаться"
+        },
+
+
+
+        /* =================================================
+           HOME PROCESS
+        ================================================= */
+
+        homeProcess: {
+            badge: "КАК Я СОЗДАЮ САЙТЫ",
+            title: "От идеи до реально работающего продукта.",
+            description: "Сильный сайт — это не только красивый экран. Это планирование, понятный интерфейс, надёжный код, тщательное тестирование и запуск, готовый для реальных пользователей.",
+            strategy: "Стратегия",
+            design: "UI / UX",
+            development: "Разработка",
+            testing: "Тестирование",
+            button: "Посмотреть варианты услуг",
+            step1Title: "Понять цель",
+            step1Text: "Сначала я определяю цель бизнеса, аудиторию и функциональность, которая действительно нужна сайту.",
+            step2Title: "Спроектировать интерфейс",
+            step2Text: "Структура строится вокруг понятной навигации, адаптивного дизайна и сильной визуальной иерархии.",
+            step3Title: "Создать систему",
+            step3Text: "Frontend и backend объединяются в единое поддерживаемое приложение, а не в набор отдельных частей.",
+            step4Title: "Протестировать и запустить",
+            step4Text: "Перед публикацией проверяются мобильная версия, формы, маршруты и базовые настройки безопасности."
+        },
+
+        /* =================================================
+           HOME TECHNOLOGY
+        ================================================= */
+
+        homeTech: {
+            badge: "СОВРЕМЕННАЯ ВЕБ-РАЗРАБОТКА",
+            title: "Frontend, backend и безопасность работают вместе.",
+            description: "Профессиональный веб-проект — это система. Интерфейс, серверная логика, данные и безопасность должны поддерживать друг друга с самого начала.",
+            frontendTitle: "Быстрый и адаптивный интерфейс",
+            frontendText: "HTML, CSS и JavaScript создают интерфейсы, которые корректно работают на компьютерах, планшетах и телефонах.",
+            backendTitle: "Настоящая серверная логика",
+            backendText: "Flask и Python могут обрабатывать формы, аутентификацию, API, бизнес-логику и динамические страницы.",
+            databaseTitle: "Структурированные данные",
+            databaseText: "Базы данных помогают хранить информацию организованно, выполнять поиск и масштабировать проект в будущем.",
+            securityTitle: "Безопасность в архитектуре",
+            securityText: "Валидация, безопасная аутентификация, security headers и контроль доступа учитываются при построении приложения.",
+            appStatus: "● Flask-приложение",
+            codeFeature1: "Чистые маршруты",
+            codeFeature2: "Повторно используемые шаблоны",
+            codeFeature3: "Безопасный backend",
+            projectsButton: "Посмотреть мои проекты →"
+        },
+
+        /* =================================================
+           HOME FINAL CTA
+        ================================================= */
+
+        homeFinal: {
+            badge: "ЕСТЬ ИДЕЯ?",
+            title: "Давайте создадим проект, который не только хорошо выглядит, но и отлично работает.",
+            description: "Расскажите, что вам нужно, и мы выберем подходящую структуру, функциональность и способ разработки.",
+            prices: "Посмотреть цены",
+            contact: "Начать проект"
+        },
+
+        /* =================================================
+           PRICES
+        ================================================= */
+
+        prices: {
+
+            title:
+                "Цены на сайты",
+
+            description:
+                "Выберите пакет, который подходит вашему проекту. Каждый сайт создаётся современным, адаптивным и с учётом безопасности.",
+
+
+            /* STARTER */
+
+            starterType:
+                "СТАРТ",
+
+            starterTitle:
+                "Лендинг",
+
+            starterInfo:
+                "Подходит для личного бренда, услуг или небольшого бизнеса.",
+
+            starterFeature1:
+                "✓ Одностраничный сайт",
+
+            starterFeature2:
+                "✓ Современный адаптивный дизайн",
+
+            starterFeature3:
+                "✓ Оптимизация для мобильных устройств",
+
+            starterFeature4:
+                "✓ Раздел контактов",
+
+            starterFeature5:
+                "✓ Ссылки Telegram / WhatsApp",
+
+            starterFeature6:
+                "✓ Базовая SEO-настройка",
+
+            starterFeature7:
+                "✓ Базовая настройка безопасности",
+
+            starterTime:
+                "Разработка: 3–5 дней",
+
+
+            /* BUSINESS */
+
+            recommended:
+                "РЕКОМЕНДУЕМ",
+
+            businessType:
+                "БИЗНЕС",
+
+            businessTitle:
+                "Бизнес-сайт",
+
+            businessInfo:
+                "Полноценный сайт для бизнеса, которому необходимо профессиональное присутствие в интернете.",
+
+            businessFeature1:
+                "✓ Несколько страниц",
+
+            businessFeature2:
+                "✓ Премиальный адаптивный дизайн",
+
+            businessFeature3:
+                "✓ Оптимизация для мобильных устройств",
+
+            businessFeature4:
+                "✓ Контактная форма",
+
+            businessFeature5:
+                "✓ SEO-оптимизация",
+
+            businessFeature6:
+                "✓ Настройка безопасности",
+
+            businessFeature7:
+                "✓ Интеграция социальных сетей",
+
+            businessFeature8:
+                "✓ Базовые анимации",
+
+            businessTime:
+                "Разработка: 7–14 дней",
+
+
+            /* CUSTOM */
+
+            customType:
+                "ИНДИВИДУАЛЬНЫЙ",
+
+            customTitle:
+                "Индивидуальный веб-проект",
+
+            customPrice:
+                "Договорная",
+
+            customInfo:
+                "Для проектов, которым необходим backend, база данных или специальный функционал.",
+
+            customFeature1:
+                "✓ Индивидуальный frontend",
+
+            customFeature2:
+                "✓ Flask backend",
+
+            customFeature3:
+                "✓ Интеграция базы данных",
+
+            customFeature4:
+                "✓ Аутентификация",
+
+            customFeature5:
+                "✓ Панель администратора",
+
+            customFeature6:
+                "✓ Индивидуальный API-функционал",
+
+            customFeature7:
+                "✓ Расширенная безопасность",
+
+            customFeature8:
+                "✓ Настройка публикации сайта",
+
+            customTime:
+                "Срок разработки зависит от проекта",
+
+
+            order:
+                "Заказать сайт",
+
+            discuss:
+                "Обсудить проект",
+
+
+            noteTitle:
+                "Нужно другое решение?",
+
+            noteText:
+                "Каждый проект индивидуален. Свяжитесь со мной, и я предложу решение с учётом ваших требований и бюджета.",
+
+            noteButton:
+                "Связаться с KNOWME Studio"
+        },
+
+
+        /* =================================================
+           PROJECTS
+        ================================================= */
+
+        projects: {
+
+            title:
+                "Мои проекты",
+
+            description:
+                "Посмотрите мои проекты в области веб-разработки, используемые технологии и цифровые решения.",
+
+            live:
+                "ОПУБЛИКОВАН",
+
+            development:
+                "В РАЗРАБОТКЕ",
+
+            coming:
+                "СКОРО",
+
+
+            project1Text:
+                "Современный многоязычный коммерческий сайт с адаптивным дизайном, анимациями, SEO и настройками безопасности.",
+
+
+            project2Title:
+                "KNOWME Flask",
+
+            project2Text:
+                "Full-stack версия KNOWME Studio с Flask backend, базой данных, панелью администратора и индивидуальным функционалом.",
+
+
+            project3Title:
+                "Будущий коммерческий проект",
+
+            project3Text:
+                "Здесь будут появляться новые коммерческие сайты и веб-приложения.",
+
+
+            publishedAt:
+                "Опубликованный сайт",
+
+            view:
+                "Открыть сайт",
+
+
+            ctaTitle:
+                "Есть идея для проекта?",
+
+            ctaText:
+                "Давайте превратим вашу идею в современный, быстрый и профессиональный сайт.",
+
+            ctaButton:
+                "Начать проект"
+        }
+
+    },
+
+
+    /* =====================================================
+       ARMENIAN
+    ===================================================== */
+
+    hy: {
+
+        nav: {
+            home: "Գլխավոր",
+            prices: "Գներ",
+            projects: "Նախագծեր",
+            contact: "Կապ"
+        },
+
+
+        /* =================================================
+           HOME
+        ================================================= */
+
+        home: {
+
+            title:
+                "Ժամանակակից կայքեր։ Հզոր լուծումներ։",
+
+            description:
+                "Արագ, անվտանգ և ժամանակակից կայքեր բիզնեսների և մասնագետների համար։",
+
+            projects:
+                "Տեսնել նախագծերը",
+
+            contact:
+                "Կապվել ինձ հետ"
+        },
+
+
+
+        /* =================================================
+           HOME PROCESS
+        ================================================= */
+
+        homeProcess: {
+            badge: "ԻՆՉՊԵՍ ԵՄ ՍՏԵՂԾՈՒՄ",
+            title: "Գաղափարից մինչև իրական աշխատող արդյունք։",
+            description: "Ուժեղ կայքը միայն գեղեցիկ էկրան չէ։ Այն ներառում է պլանավորում, հստակ ինտերֆեյս, վստահելի կոդ, մանրակրկիտ թեստավորում և իրական օգտատերերի համար պատրաստ հրապարակում։",
+            strategy: "Ռազմավարություն",
+            design: "UI / UX",
+            development: "Մշակում",
+            testing: "Թեստավորում",
+            button: "Դիտել ծառայությունների տարբերակները",
+            step1Title: "Հասկանալ նպատակը",
+            step1Text: "Սկզբում հասկանում եմ բիզնեսի նպատակը, լսարանը և այն ֆունկցիոնալությունը, որն իրականում անհրաժեշտ է կայքին։",
+            step2Title: "Նախագծել փորձառությունը",
+            step2Text: "Կառուցվածքը ձևավորվում է հստակ նավիգացիայի, responsive դիզայնի և ճիշտ տեսողական հիերարխիայի շուրջ։",
+            step3Title: "Կառուցել համակարգը",
+            step3Text: "Frontend-ը և backend-ը միացվում են մեկ ամբողջական ու պահպանելի հավելվածի մեջ՝ առանձին կտորների փոխարեն։",
+            step4Title: "Թեստավորել և հրապարակել",
+            step4Text: "Հրապարակումից առաջ ստուգվում են mobile տարբերակը, form-երը, route-երը և անվտանգության հիմնական կարգավորումները։"
+        },
+
+        /* =================================================
+           HOME TECHNOLOGY
+        ================================================= */
+
+        homeTech: {
+            badge: "ԺԱՄԱՆԱԿԱԿԻՑ ՎԵԲ ՄՇԱԿՈՒՄ",
+            title: "Frontend-ը, backend-ը և անվտանգությունը աշխատում են միասին։",
+            description: "Պրոֆեսիոնալ վեբ նախագիծը համակարգ է։ Ինտերֆեյսը, server logic-ը, տվյալները և անվտանգությունը պետք է սկզբից աշխատեն որպես մեկ ամբողջություն։",
+            frontendTitle: "Արագ և responsive ինտերֆեյս",
+            frontendText: "HTML-ը, CSS-ը և JavaScript-ը ստեղծում են ինտերֆեյսներ, որոնք ճիշտ հարմարվում են համակարգչին, պլանշետին և հեռախոսին։",
+            backendTitle: "Իրական server logic",
+            backendText: "Flask-ը և Python-ը կարող են կառավարել form-երը, authentication-ը, API-ները, business logic-ը և dynamic էջերը։",
+            databaseTitle: "Կառուցվածքային տվյալներ",
+            databaseText: "Տվյալների բազաները պահում են ինֆորմացիան կազմակերպված, որոնելի և պատրաստ հետագա ընդլայնման համար։",
+            securityTitle: "Անվտանգություն հենց նախագծում",
+            securityText: "Validation-ը, անվտանգ authentication-ը, security headers-ը և access control-ը հաշվի են առնվում հավելվածի կառուցվածքը նախագծելիս։",
+            appStatus: "● Flask հավելված",
+            codeFeature1: "Մաքուր route-եր",
+            codeFeature2: "Վերօգտագործվող template-ներ",
+            codeFeature3: "Անվտանգ backend",
+            projectsButton: "Դիտել իմ նախագծերը →"
+        },
+
+        /* =================================================
+           HOME FINAL CTA
+        ================================================= */
+
+        homeFinal: {
+            badge: "ԳԱՂԱՓԱՐ ՈՒՆԵ՞Ք",
+            title: "Եկեք ստեղծենք մի բան, որը նույնքան լավ կաշխատի, որքան գեղեցիկ կերևա։",
+            description: "Ասեք՝ ինչ է ձեզ անհրաժեշտ, և միասին կընտրենք ճիշտ կառուցվածքը, ֆունկցիոնալությունը և մշակման մոտեցումը։",
+            prices: "Դիտել գները",
+            contact: "Սկսել նախագիծ"
+        },
+
+        /* =================================================
+           PRICES
+        ================================================= */
+
+        prices: {
+
+            title:
+                "Կայքերի գներ",
+
+            description:
+                "Ընտրեք ձեր նախագծին համապատասխան փաթեթը։ Յուրաքանչյուր կայք ստեղծվում է ժամանակակից, հարմարեցվող և անվտանգության նկատմամբ ուշադրությամբ։",
+
+
+            /* STARTER */
+
+            starterType:
+                "ՍԿՍՆԱԿ",
+
+            starterTitle:
+                "Landing Page",
+
+            starterInfo:
+                "Հարմար է անձնական բրենդի, ծառայության կամ փոքր բիզնեսի համար։",
+
+            starterFeature1:
+                "✓ Մեկ էջանոց կայք",
+
+            starterFeature2:
+                "✓ Ժամանակակից responsive դիզայն",
+
+            starterFeature3:
+                "✓ Հարմարեցում հեռախոսների համար",
+
+            starterFeature4:
+                "✓ Կապի բաժին",
+
+            starterFeature5:
+                "✓ Telegram / WhatsApp հղումներ",
+
+            starterFeature6:
+                "✓ Հիմնական SEO կարգավորում",
+
+            starterFeature7:
+                "✓ Հիմնական անվտանգության կարգավորում",
+
+            starterTime:
+                "Պատրաստման ժամկետ՝ 3–5 օր",
+
+
+            /* BUSINESS */
+
+            recommended:
+                "ԱՌԱՋԱՐԿՎՈՒՄ Է",
+
+            businessType:
+                "ԲԻԶՆԵՍ",
+
+            businessTitle:
+                "Բիզնես կայք",
+
+            businessInfo:
+                "Լիարժեք կայք բիզնեսի համար՝ պրոֆեսիոնալ առցանց ներկայությամբ։",
+
+            businessFeature1:
+                "✓ Մի քանի էջ",
+
+            businessFeature2:
+                "✓ Premium responsive դիզայն",
+
+            businessFeature3:
+                "✓ Հարմարեցում հեռախոսների համար",
+
+            businessFeature4:
+                "✓ Կապի ձև",
+
+            businessFeature5:
+                "✓ SEO օպտիմալացում",
+
+            businessFeature6:
+                "✓ Անվտանգության կարգավորում",
+
+            businessFeature7:
+                "✓ Սոցիալական ցանցերի ինտեգրում",
+
+            businessFeature8:
+                "✓ Հիմնական անիմացիաներ",
+
+            businessTime:
+                "Պատրաստման ժամկետ՝ 7–14 օր",
+
+
+            /* CUSTOM */
+
+            customType:
+                "ԱՆՀԱՏԱԿԱՆ",
+
+            customTitle:
+                "Անհատական վեբ նախագիծ",
+
+            customPrice:
+                "Պայմանագրային",
+
+            customInfo:
+                "Նախագծերի համար, որոնց անհրաժեշտ է backend, տվյալների բազա կամ հատուկ ֆունկցիոնալություն։",
+
+            customFeature1:
+                "✓ Անհատական frontend",
+
+            customFeature2:
+                "✓ Flask backend",
+
+            customFeature3:
+                "✓ Տվյալների բազայի ինտեգրում",
+
+            customFeature4:
+                "✓ Authentication համակարգ",
+
+            customFeature5:
+                "✓ Admin panel",
+
+            customFeature6:
+                "✓ Անհատական API ֆունկցիոնալություն",
+
+            customFeature7:
+                "✓ Ընդլայնված անվտանգություն",
+
+            customFeature8:
+                "✓ Կայքի հրապարակման կարգավորում",
+
+            customTime:
+                "Պատրաստման ժամկետը կախված է նախագծից",
+
+
+            order:
+                "Պատվիրել կայք",
+
+            discuss:
+                "Քննարկել նախագիծը",
+
+
+            noteTitle:
+                "Այլ լուծո՞ւմ է անհրաժեշտ",
+
+            noteText:
+                "Յուրաքանչյուր նախագիծ տարբեր է։ Կապվեք ինձ հետ, և ես կառաջարկեմ ձեր պահանջներին և բյուջեին համապատասխան լուծում։",
+
+            noteButton:
+                "Կապվել KNOWME Studio-ի հետ"
+        },
+
+
+        /* =================================================
+           PROJECTS
+        ================================================= */
+
+        projects: {
+
+            title:
+                "Իմ նախագծերը",
+
+            description:
+                "Դիտեք իմ վեբ նախագծերը, օգտագործված տեխնոլոգիաները և թվային լուծումները։",
+
+            live:
+                "ՀՐԱՊԱՐԱԿՎԱԾ",
+
+            development:
+                "ՄՇԱԿՄԱՆ ՓՈՒԼՈՒՄ",
+
+            coming:
+                "ՇՈՒՏՈՎ",
+
+
+            project1Text:
+                "Ժամանակակից բազմալեզու կոմերցիոն կայք՝ responsive դիզայնով, անիմացիաներով, SEO-ով և անվտանգության կարգավորումներով։",
+
+
+            project2Title:
+                "KNOWME Flask",
+
+            project2Text:
+                "KNOWME Studio-ի full-stack տարբերակը՝ Flask backend-ով, տվյալների բազայով, admin panel-ով և անհատական ֆունկցիոնալությամբ։",
+
+
+            project3Title:
+                "Ապագա կոմերցիոն նախագիծ",
+
+            project3Text:
+                "Այստեղ կհայտնվեն նոր կոմերցիոն կայքեր և վեբ հավելվածներ։",
+
+
+            publishedAt:
+                "Հրապարակված կայք",
+
+            view:
+                "Դիտել կայքը",
+
+
+            ctaTitle:
+                "Ունե՞ք նախագծի գաղափար",
+
+            ctaText:
+                "Եկեք ձեր գաղափարը վերածենք ժամանակակից, արագ և պրոֆեսիոնալ կայքի։",
+
+            ctaButton:
+                "Սկսել նախագիծ"
+        }
+
+    }
+
+};
+
+
+/* =========================================================
+   GET TRANSLATION
+========================================================= */
+
+function getTranslation(language, key) {
+
+    const parts =
+        key.split(".");
+
+    let value =
+        translations[language];
+
+
+    for (const part of parts) {
+
+        if (!value) {
+            return null;
+        }
+
+        value =
+            value[part];
+    }
+
+
+    return value;
+}
+
+
+/* =========================================================
+   CHANGE LANGUAGE
+========================================================= */
+
+function changeLanguage(language) {
+
+    if (!translations[language]) {
+        language = "en";
+    }
+
+
+    document
+        .querySelectorAll("[data-i18n]")
+        .forEach(element => {
+
+            const key =
+                element.dataset.i18n;
+
+
+            const translation =
+                getTranslation(
+                    language,
+                    key
+                );
+
+
+            if (translation !== null) {
+
+                element.textContent =
+                    translation;
+            }
+
+        });
+
+
+    /* HTML LANGUAGE */
+
+    document.documentElement.lang =
+        language;
+
+
+    /* ACTIVE LANGUAGE BUTTON */
+
+    document
+        .querySelectorAll(".lang-btn")
+        .forEach(button => {
+
+            button.classList.toggle(
+                "active",
+                button.dataset.lang === language
+            );
+
+        });
+
+
+    /* SAVE LANGUAGE */
+
+    localStorage.setItem(
+        "knowme-language",
+        language
+    );
+}
+
+
+/* =========================================================
+   LANGUAGE BUTTON EVENTS
+========================================================= */
+
+document
+    .querySelectorAll(".lang-btn")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                changeLanguage(
+                    button.dataset.lang
+                );
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   LOAD SAVED LANGUAGE
+========================================================= */
+
+const savedLanguage =
+    localStorage.getItem("knowme-language")
+    || "en";
+
+
+changeLanguage(savedLanguage);
+document.querySelectorAll(".admin-delete-form").forEach((form) => {
+
+    form.addEventListener("submit", (event) => {
+
+        const confirmed = confirm(
+            "Delete this message permanently?"
+        );
+
+        if (!confirmed) {
+            event.preventDefault();
+        }
+
+    });
+
+});

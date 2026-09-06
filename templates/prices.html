@@ -1,0 +1,402 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    KNOWME Studio | Prices
+{% endblock %}
+
+
+{% block content %}
+
+<section class="prices-page">
+
+
+    <!-- ==================================================
+         BACKGROUND VIDEO
+    =================================================== -->
+
+    <video
+        class="prices-video"
+        autoplay
+        muted
+        loop
+        playsinline
+    >
+
+        <source
+            src="{{ url_for('static', filename='videos/prices-bg.mp4') }}"
+            type="video/mp4"
+        >
+
+    </video>
+
+
+    <!-- VIDEO DARK OVERLAY -->
+
+    <div class="prices-video-overlay"></div>
+
+
+    <!-- CYBER GRID -->
+
+    <div class="prices-overlay"></div>
+
+
+
+    <!-- ==================================================
+         PRICES CONTENT
+    =================================================== -->
+
+    <div class="prices-content">
+
+
+        <span class="page-label">
+            KNOWME STUDIO
+        </span>
+
+
+        <h1 data-i18n="prices.title">
+            Website Prices
+        </h1>
+
+
+        <p
+            class="prices-description"
+            data-i18n="prices.description"
+        >
+            Choose the package that fits your project.
+            Every website is responsive, modern and built
+            with attention to security.
+        </p>
+
+
+
+        <!-- ==================================================
+             PRICE CARDS
+        =================================================== -->
+
+        <div class="price-grid">
+
+
+
+            <!-- ==================================================
+                 STARTER
+            =================================================== -->
+
+            <article class="price-card">
+
+
+                <span
+                    class="price-type"
+                    data-i18n="prices.starterType"
+                >
+                    STARTER
+                </span>
+
+
+                <h2 data-i18n="prices.starterTitle">
+                    Landing Page
+                </h2>
+
+
+                <div class="price">
+                    80 000֏
+                </div>
+
+
+                <p
+                    class="price-info"
+                    data-i18n="prices.starterInfo"
+                >
+                    Perfect for a personal brand,
+                    service or small business.
+                </p>
+
+
+                <ul>
+
+                    <li data-i18n="prices.starterFeature1">
+                        ✓ 1-page website
+                    </li>
+
+                    <li data-i18n="prices.starterFeature2">
+                        ✓ Modern responsive design
+                    </li>
+
+                    <li data-i18n="prices.starterFeature3">
+                        ✓ Mobile-friendly layout
+                    </li>
+
+                    <li data-i18n="prices.starterFeature4">
+                        ✓ Contact section
+                    </li>
+
+                    <li data-i18n="prices.starterFeature5">
+                        ✓ Telegram / WhatsApp links
+                    </li>
+
+                    <li data-i18n="prices.starterFeature6">
+                        ✓ Basic SEO setup
+                    </li>
+
+                    <li data-i18n="prices.starterFeature7">
+                        ✓ Basic security setup
+                    </li>
+
+                </ul>
+
+
+                <p
+                    class="delivery-time"
+                    data-i18n="prices.starterTime"
+                >
+                    Development: 3–5 days
+                </p>
+
+
+                <a
+                    href="{{ url_for('contact') }}"
+                    class="price-btn"
+                    data-i18n="prices.order"
+                >
+                    Order Website
+                </a>
+
+
+            </article>
+
+
+
+            <!-- ==================================================
+                 BUSINESS
+            =================================================== -->
+
+            <article class="price-card featured-price">
+
+
+                <span
+                    class="recommended-badge"
+                    data-i18n="prices.recommended"
+                >
+                    RECOMMENDED
+                </span>
+
+
+                <span
+                    class="price-type"
+                    data-i18n="prices.businessType"
+                >
+                    BUSINESS
+                </span>
+
+
+                <h2 data-i18n="prices.businessTitle">
+                    Business Website
+                </h2>
+
+
+                <div class="price">
+                    150 000֏
+                </div>
+
+
+                <p
+                    class="price-info"
+                    data-i18n="prices.businessInfo"
+                >
+                    A complete website for businesses
+                    that need a professional online presence.
+                </p>
+
+
+                <ul>
+
+                    <li data-i18n="prices.businessFeature1">
+                        ✓ Multiple pages
+                    </li>
+
+                    <li data-i18n="prices.businessFeature2">
+                        ✓ Premium responsive design
+                    </li>
+
+                    <li data-i18n="prices.businessFeature3">
+                        ✓ Mobile optimization
+                    </li>
+
+                    <li data-i18n="prices.businessFeature4">
+                        ✓ Contact form
+                    </li>
+
+                    <li data-i18n="prices.businessFeature5">
+                        ✓ SEO optimization
+                    </li>
+
+                    <li data-i18n="prices.businessFeature6">
+                        ✓ Security configuration
+                    </li>
+
+                    <li data-i18n="prices.businessFeature7">
+                        ✓ Social media integration
+                    </li>
+
+                    <li data-i18n="prices.businessFeature8">
+                        ✓ Basic animations
+                    </li>
+
+                </ul>
+
+
+                <p
+                    class="delivery-time"
+                    data-i18n="prices.businessTime"
+                >
+                    Development: 7–14 days
+                </p>
+
+
+                <a
+                    href="{{ url_for('contact') }}"
+                    class="price-btn"
+                    data-i18n="prices.order"
+                >
+                    Order Website
+                </a>
+
+
+            </article>
+
+
+
+            <!-- ==================================================
+                 CUSTOM
+            =================================================== -->
+
+            <article class="price-card">
+
+
+                <span
+                    class="price-type"
+                    data-i18n="prices.customType"
+                >
+                    CUSTOM
+                </span>
+
+
+                <h2 data-i18n="prices.customTitle">
+                    Custom Web Project
+                </h2>
+
+
+                <div
+                    class="price"
+                    data-i18n="prices.customPrice"
+                >
+                    From 250 000֏
+                </div>
+
+
+                <p
+                    class="price-info"
+                    data-i18n="prices.customInfo"
+                >
+                    For projects that require backend,
+                    database or custom functionality.
+                </p>
+
+
+                <ul>
+
+                    <li data-i18n="prices.customFeature1">
+                        ✓ Custom frontend
+                    </li>
+
+                    <li data-i18n="prices.customFeature2">
+                        ✓ Flask backend
+                    </li>
+
+                    <li data-i18n="prices.customFeature3">
+                        ✓ Database integration
+                    </li>
+
+                    <li data-i18n="prices.customFeature4">
+                        ✓ Authentication
+                    </li>
+
+                    <li data-i18n="prices.customFeature5">
+                        ✓ Admin panel
+                    </li>
+
+                    <li data-i18n="prices.customFeature6">
+                        ✓ Custom API functionality
+                    </li>
+
+                    <li data-i18n="prices.customFeature7">
+                        ✓ Advanced security
+                    </li>
+
+                    <li data-i18n="prices.customFeature8">
+                        ✓ Deployment setup
+                    </li>
+
+                </ul>
+
+
+                <p
+                    class="delivery-time"
+                    data-i18n="prices.customTime"
+                >
+                    Development time depends on the project
+                </p>
+
+
+                <a
+                    href="{{ url_for('contact') }}"
+                    class="price-btn"
+                    data-i18n="prices.discuss"
+                >
+                    Discuss Project
+                </a>
+
+
+            </article>
+
+
+        </div>
+
+
+
+        <!-- ==================================================
+             CUSTOM OFFER
+        =================================================== -->
+
+        <div class="prices-note">
+
+
+            <h3 data-i18n="prices.noteTitle">
+                Need something different?
+            </h3>
+
+
+            <p data-i18n="prices.noteText">
+                Every project is different.
+                Contact me and I will prepare a solution
+                based on your requirements and budget.
+            </p>
+
+
+            <a
+                href="{{ url_for('contact') }}"
+                class="price-btn prices-contact-btn"
+                data-i18n="prices.noteButton"
+            >
+                Contact KNOWME Studio
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+{% endblock %}
