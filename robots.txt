@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin
+Disallow: /admin/login
+
+Sitemap: https://knowme-studio.onrender.com/sitemap.xml
