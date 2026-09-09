@@ -1,0 +1,537 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Why KNOWME? — KNOWME Studio
+{% endblock %}
+
+{% block content %}
+
+<div class="why-page">
+
+    <!-- =====================================================
+         CINEMATIC INTRO / PERSISTENT VIDEO BACKGROUND
+    ====================================================== -->
+
+    <section
+        class="why-intro"
+        id="whyIntro"
+        aria-label="KNOWME cinematic introduction"
+    >
+
+        <video
+            id="whyIntroVideo"
+            class="why-intro-video"
+            autoplay
+            muted
+            playsinline
+            preload="auto"
+            poster="{{ url_for(
+                'static',
+                filename='images/why-knowme-bg.png'
+            ) }}"
+            aria-hidden="true"
+        >
+            <source
+                src="{{ url_for(
+                    'static',
+                    filename='videos/why-knowme.mp4'
+                ) }}"
+                type="video/mp4"
+            >
+        </video>
+
+
+        <div
+            class="why-intro-overlay"
+            aria-hidden="true"
+        ></div>
+
+
+        <!-- =================================================
+             BRAND ANIMATION
+        ================================================== -->
+
+        <div
+            class="why-intro-text"
+            id="whyIntroText"
+        >
+
+            <h1
+                class="why-intro-brand"
+                aria-label="KNOWME Studio"
+            >
+
+                <span class="why-brand-letter">
+                    K
+                </span>
+
+                <span class="why-brand-letter">
+                    N
+                </span>
+
+                <span class="why-brand-letter">
+                    O
+                </span>
+
+                <span class="why-brand-letter">
+                    W
+                </span>
+
+                <span class="why-brand-letter">
+                    M
+                </span>
+
+                <span class="why-brand-letter">
+                    E
+                </span>
+
+                <span class="why-brand-studio">
+                    Studio
+                </span>
+
+            </h1>
+
+
+            <!-- =================================================
+                 TAGLINE
+            ================================================== -->
+
+            <p
+                class="why-intro-tagline"
+                aria-label="NOT JUST A WEBSITE."
+            >
+
+                <span class="why-tagline-word">
+                    NOT
+                </span>
+
+                <span class="why-tagline-word">
+                    JUST
+                </span>
+
+                <span class="why-tagline-word">
+                    A
+                </span>
+
+                <span class="why-tagline-word">
+                    WEBSITE.
+                </span>
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SCROLL INDICATOR
+    ====================================================== -->
+
+    <div
+        class="why-scroll-cue"
+        aria-hidden="true"
+    >
+        <span></span>
+        <small>SCROLL TO EXPLORE</small>
+    </div>
+
+
+    <!-- =====================================================
+         MAIN WHY KNOWME CONTENT
+    ====================================================== -->
+
+    <main
+        class="why-content"
+        id="whyContent"
+    >
+
+        <!-- =================================================
+             INTRODUCTION
+        ================================================== -->
+
+        <section
+            class="why-section why-introduction"
+        >
+
+            <div class="why-container">
+
+                <span
+                    class="why-eyebrow"
+                    data-i18n="whyKnowme.label"
+                >
+                    WHY KNOWME?
+                </span>
+
+
+                <h2
+                    data-i18n="whyKnowme.title"
+                >
+                    More than a website.
+                    A complete digital system.
+                </h2>
+
+
+                <p
+                    class="why-description"
+                    data-i18n="whyKnowme.description"
+                >
+                    I build websites as complete digital products:
+                    from interface and backend logic to data,
+                    security and deployment.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             CAPABILITIES
+        ================================================== -->
+
+        <section
+            class="why-section why-capabilities"
+        >
+
+            <div class="why-container">
+
+                <div class="why-section-heading">
+
+                    <span
+                        class="why-eyebrow"
+                        data-i18n="whyKnowme.capabilitiesLabel"
+                    >
+                        CAPABILITIES
+                    </span>
+
+
+                    <h2
+                        data-i18n="whyKnowme.capabilitiesTitle"
+                    >
+                        What can KNOWME build?
+                    </h2>
+
+                </div>
+
+
+                <div class="why-capabilities-grid">
+
+                    <!-- CARD 01 -->
+
+                    <article class="why-capability-card">
+
+                        <span class="why-card-number">
+                            01
+                        </span>
+
+                        <h3
+                            data-i18n="whyKnowme.card1Title"
+                        >
+                            Custom Websites
+                        </h3>
+
+                        <p
+                            data-i18n="whyKnowme.card1Text"
+                        >
+                            Modern responsive websites designed
+                            around the actual business.
+                        </p>
+
+                    </article>
+
+
+                    <!-- CARD 02 -->
+
+                    <article class="why-capability-card">
+
+                        <span class="why-card-number">
+                            02
+                        </span>
+
+                        <h3
+                            data-i18n="whyKnowme.card2Title"
+                        >
+                            Web Applications
+                        </h3>
+
+                        <p
+                            data-i18n="whyKnowme.card2Text"
+                        >
+                            Dynamic systems with routes,
+                            forms, authentication and business logic.
+                        </p>
+
+                    </article>
+
+
+                    <!-- CARD 03 -->
+
+                    <article class="why-capability-card">
+
+                        <span class="why-card-number">
+                            03
+                        </span>
+
+                        <h3
+                            data-i18n="whyKnowme.card3Title"
+                        >
+                            Backend Systems
+                        </h3>
+
+                        <p
+                            data-i18n="whyKnowme.card3Text"
+                        >
+                            Python and Flask applications connected
+                            to real databases and APIs.
+                        </p>
+
+                    </article>
+
+
+                    <!-- CARD 04 -->
+
+                    <article class="why-capability-card">
+
+                        <span class="why-card-number">
+                            04
+                        </span>
+
+                        <h3
+                            data-i18n="whyKnowme.card4Title"
+                        >
+                            Secure Architecture
+                        </h3>
+
+                        <p
+                            data-i18n="whyKnowme.card4Text"
+                        >
+                            Authentication, access control,
+                            validation and security configuration.
+                        </p>
+
+                    </article>
+
+
+                    <!-- CARD 05 -->
+
+                    <article class="why-capability-card">
+
+                        <span class="why-card-number">
+                            05
+                        </span>
+
+                        <h3
+                            data-i18n="whyKnowme.card5Title"
+                        >
+                            Database Solutions
+                        </h3>
+
+                        <p
+                            data-i18n="whyKnowme.card5Text"
+                        >
+                            Structured data with PostgreSQL
+                            and application-level integration.
+                        </p>
+
+                    </article>
+
+
+                    <!-- CARD 06 -->
+
+                    <article class="why-capability-card">
+
+                        <span class="why-card-number">
+                            06
+                        </span>
+
+                        <h3
+                            data-i18n="whyKnowme.card6Title"
+                        >
+                            Production Deployment
+                        </h3>
+
+                        <p
+                            data-i18n="whyKnowme.card6Text"
+                        >
+                            Real deployment workflows prepared
+                            for production environments.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             DEVELOPER MINDSET
+        ================================================== -->
+
+        <section
+            class="why-section why-mindset"
+        >
+
+            <div
+                class="why-container why-mindset-container"
+            >
+
+                <div class="why-mindset-heading">
+
+                    <span
+                        class="why-eyebrow"
+                        data-i18n="whyKnowme.mindsetLabel"
+                    >
+                        THE MINDSET
+                    </span>
+
+
+                    <h2
+                        data-i18n="whyKnowme.mindsetTitle"
+                    >
+                        Think.
+                        Design.
+                        Engineer.
+                        Secure.
+                        Launch.
+                    </h2>
+
+                </div>
+
+
+                <div class="why-mindset-list">
+
+                    <div class="why-mindset-item">
+
+                        <span>
+                            01
+                        </span>
+
+                        <strong
+                            data-i18n="whyKnowme.mind1"
+                        >
+                            THINK
+                        </strong>
+
+                    </div>
+
+
+                    <div class="why-mindset-item">
+
+                        <span>
+                            02
+                        </span>
+
+                        <strong
+                            data-i18n="whyKnowme.mind2"
+                        >
+                            DESIGN
+                        </strong>
+
+                    </div>
+
+
+                    <div class="why-mindset-item">
+
+                        <span>
+                            03
+                        </span>
+
+                        <strong
+                            data-i18n="whyKnowme.mind3"
+                        >
+                            ENGINEER
+                        </strong>
+
+                    </div>
+
+
+                    <div class="why-mindset-item">
+
+                        <span>
+                            04
+                        </span>
+
+                        <strong
+                            data-i18n="whyKnowme.mind4"
+                        >
+                            SECURE
+                        </strong>
+
+                    </div>
+
+
+                    <div class="why-mindset-item">
+
+                        <span>
+                            05
+                        </span>
+
+                        <strong
+                            data-i18n="whyKnowme.mind5"
+                        >
+                            LAUNCH
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             FINAL CTA
+        ================================================== -->
+
+        <section
+            class="why-section why-final"
+        >
+
+            <div class="why-final-content">
+
+                <span
+                    class="why-eyebrow"
+                    data-i18n="whyKnowme.finalLabel"
+                >
+                    READY TO BUILD?
+                </span>
+
+
+                <h2
+                    data-i18n="whyKnowme.finalTitle"
+                >
+                    Your idea can become a real product.
+                </h2>
+
+
+                <p
+                    data-i18n="whyKnowme.finalText"
+                >
+                    Let's build something unique,
+                    useful and ready for real users.
+                </p>
+
+
+                <a
+                    href="{{ url_for('home') }}"
+                    class="why-final-button"
+                    data-i18n="whyKnowme.finalButton"
+                >
+                    Explore KNOWME
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+{% endblock %}

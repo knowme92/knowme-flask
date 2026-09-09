@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -15,78 +16,157 @@
         {% endblock %}
     </title>
 
+
+    <!-- =====================================================
+         MAIN CSS
+    ====================================================== -->
+
     <link
         rel="stylesheet"
         href="{{ url_for('static', filename='style.css') }}"
     >
+
+
+    <!-- =====================================================
+         FAVICON
+    ====================================================== -->
+
     <link
-    rel="icon"
-    type="image/png"
-    href="{{ url_for('static', filename='images/favicon.png') }}"
->
+        rel="icon"
+        type="image/png"
+        href="{{ url_for(
+            'static',
+            filename='images/favicon.png'
+        ) }}"
+    >
 
-<meta property="og:type" content="website">
 
-<meta property="og:title" content="KNOWME Studio">
+    <!-- =====================================================
+         OPEN GRAPH
+    ====================================================== -->
 
-<meta
-    property="og:description"
-    content="Modern, fast and secure websites for businesses and professionals."
->
-
-<meta
-    property="og:image"
-    content="{{ url_for('static', filename='images/knowme-preview.png', _external=True) }}"
->
-
-<meta
-    property="og:url"
-    content="{{ request.url }}"
->
-
-<meta name="twitter:card" content="summary_large_image">
-
-<meta name="twitter:title" content="KNOWME Studio">
-
-<meta
-    name="twitter:description"
-    content="Modern, fast and secure websites for businesses and professionals."
->
-
-<meta
-    name="twitter:image"
-    content="{{ url_for('static', filename='images/knowme-preview.png', _external=True) }}"
->
     <meta
-    name="description"
-    content="Modern, fast and secure websites for businesses and professionals."
->
+        property="og:type"
+        content="website"
+    >
 
-<meta
-    name="robots"
-    content="index, follow"
->
+    <meta
+        property="og:title"
+        content="KNOWME Studio"
+    >
 
-<link
-    rel="canonical"
-    href="{{ 'https://knowme-studio.onrender.com' ~ request.path }}"
->
-    <meta name="google-site-verification" content="Voyjjo8DSZPgJapl1liKaANEWE0qVwuQCyweJdMqpX8" />
+    <meta
+        property="og:description"
+        content="Modern, fast and secure websites for businesses and professionals."
+    >
+
+    <meta
+        property="og:image"
+        content="{{ url_for(
+            'static',
+            filename='images/knowme-preview.png',
+            _external=True
+        ) }}"
+    >
+
+    <meta
+        property="og:url"
+        content="{{ request.url }}"
+    >
+
+
+    <!-- =====================================================
+         TWITTER
+    ====================================================== -->
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
+
+    <meta
+        name="twitter:title"
+        content="KNOWME Studio"
+    >
+
+    <meta
+        name="twitter:description"
+        content="Modern, fast and secure websites for businesses and professionals."
+    >
+
+    <meta
+        name="twitter:image"
+        content="{{ url_for(
+            'static',
+            filename='images/knowme-preview.png',
+            _external=True
+        ) }}"
+    >
+
+
+    <!-- =====================================================
+         SEO
+    ====================================================== -->
+
+    <meta
+        name="description"
+        content="Modern, fast and secure websites for businesses and professionals."
+    >
+
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <link
+        rel="canonical"
+        href="{{ 'https://knowme-studio.onrender.com' ~ request.path }}"
+    >
+
+
+    <!-- =====================================================
+         GOOGLE SEARCH CONSOLE
+    ====================================================== -->
+
+    <meta
+        name="google-site-verification"
+        content="Voyjjo8DSZPgJapl1liKaANEWE0qVwuQCyweJdMqpX8"
+    >
 
 </head>
+
 
 <body>
 
 <header class="topbar">
 
-    <!-- LOGO -->
-    <a href="{{ url_for('home') }}" class="logo">
-    <span class="logo-k">K</span>NOWME Studio
-</a>
+
+    <!-- =====================================================
+         LOGO
+    ====================================================== -->
+
+    <a
+        href="{{ url_for('home') }}"
+        class="logo"
+    >
+        <span class="logo-k">K</span>NOWME Studio
+    </a>
 
 
-    <!-- ROUTES -->
+    <!-- =====================================================
+         MAIN NAVIGATION
+    ====================================================== -->
+
     <nav class="main-nav">
+
+        <a
+            href="{{ url_for('why_knowme') }}"
+            class="nav-btn"
+            data-i18n="nav.why"
+        >
+            Why KNOWME?
+        </a>
+
 
         <a
             href="{{ url_for('home') }}"
@@ -96,6 +176,7 @@
             Home
         </a>
 
+
         <a
             href="{{ url_for('prices') }}"
             class="nav-btn"
@@ -104,6 +185,7 @@
             Prices
         </a>
 
+
         <a
             href="{{ url_for('projects') }}"
             class="nav-btn"
@@ -111,6 +193,7 @@
         >
             Projects
         </a>
+
 
         <a
             href="{{ url_for('contact') }}"
@@ -123,7 +206,10 @@
     </nav>
 
 
-    <!-- LANGUAGES -->
+    <!-- =====================================================
+         LANGUAGES
+    ====================================================== -->
+
     <div class="language-switcher">
 
         <button
@@ -134,6 +220,7 @@
             EN
         </button>
 
+
         <button
             type="button"
             class="lang-btn"
@@ -141,6 +228,7 @@
         >
             RU
         </button>
+
 
         <button
             type="button"
@@ -155,15 +243,29 @@
 </header>
 
 
+<!-- =========================================================
+     MAIN CONTENT
+========================================================= -->
+
 <main>
+
     {% block content %}
     {% endblock %}
+
 </main>
 
 
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
 <script
-    src="{{ url_for('static', filename='script.js') }}"
+    src="{{ url_for(
+        'static',
+        filename='script.js'
+    ) }}"
 ></script>
 
 </body>
+
 </html>

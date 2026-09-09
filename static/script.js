@@ -7,12 +7,48 @@ const translations = {
     en: {
 
         nav: {
+            why: "Why KNOWME?",
             home: "Home",
             prices: "Prices",
             projects: "Projects",
             contact: "Contact"
         },
 
+
+
+        whyKnowme: {
+
+            brand: "KNOWME",
+            tagline: "NOT JUST A WEBSITE.",
+            label: "WHY KNOWME?",
+            title: "More than a website. A complete digital system.",
+            description: "I build websites as complete digital products: from interface and backend logic to data, security and deployment.",
+            capabilitiesLabel: "CAPABILITIES",
+            capabilitiesTitle: "What can KNOWME build?",
+            card1Title: "Custom Websites",
+            card1Text: "Modern responsive websites designed around the actual business.",
+            card2Title: "Web Applications",
+            card2Text: "Dynamic systems with routes, forms, authentication and business logic.",
+            card3Title: "Backend Systems",
+            card3Text: "Python and Flask applications connected to real databases and APIs.",
+            card4Title: "Secure Architecture",
+            card4Text: "Authentication, access control, validation and security configuration.",
+            card5Title: "Database Solutions",
+            card5Text: "Structured data with PostgreSQL and application-level integration.",
+            card6Title: "Production Deployment",
+            card6Text: "Real deployment workflows prepared for production environments.",
+            mindsetLabel: "THE MINDSET",
+            mindsetTitle: "Think. Design. Engineer. Secure. Launch.",
+            mind1: "THINK",
+            mind2: "DESIGN",
+            mind3: "ENGINEER",
+            mind4: "SECURE",
+            mind5: "LAUNCH",
+            finalLabel: "READY TO BUILD?",
+            finalTitle: "Your idea can become a real product.",
+            finalText: "Let's build something unique, useful and ready for real users.",
+            finalButton: "Explore KNOWME"
+        },
 
         /* =================================================
            HOME
@@ -315,12 +351,48 @@ const translations = {
     ru: {
 
         nav: {
+            why: "Почему KNOWME?",
             home: "Главная",
             prices: "Цены",
             projects: "Проекты",
             contact: "Контакты"
         },
 
+
+
+        whyKnowme: {
+
+            brand: "KNOWME",
+            tagline: "НЕ ПРОСТО САЙТ.",
+            label: "ПОЧЕМУ KNOWME?",
+            title: "Больше, чем сайт. Полноценная цифровая система.",
+            description: "Я создаю сайты как полноценные цифровые продукты: от интерфейса и backend-логики до данных, безопасности и публикации.",
+            capabilitiesLabel: "ВОЗМОЖНОСТИ",
+            capabilitiesTitle: "Что может создать KNOWME?",
+            card1Title: "Индивидуальные сайты",
+            card1Text: "Современные адаптивные сайты, созданные вокруг реальных задач бизнеса.",
+            card2Title: "Веб-приложения",
+            card2Text: "Динамические системы с маршрутами, формами, аутентификацией и бизнес-логикой.",
+            card3Title: "Backend-системы",
+            card3Text: "Приложения на Python и Flask, подключённые к базам данных и API.",
+            card4Title: "Безопасная архитектура",
+            card4Text: "Аутентификация, контроль доступа, валидация и настройки безопасности.",
+            card5Title: "Работа с базами данных",
+            card5Text: "Структурированные данные с PostgreSQL и интеграцией на уровне приложения.",
+            card6Title: "Production deployment",
+            card6Text: "Рабочие процессы развёртывания, подготовленные для реальной среды.",
+            mindsetLabel: "ПОДХОД",
+            mindsetTitle: "Думать. Проектировать. Разрабатывать. Защищать. Запускать.",
+            mind1: "ДУМАТЬ",
+            mind2: "ПРОЕКТИРОВАТЬ",
+            mind3: "РАЗРАБАТЫВАТЬ",
+            mind4: "ЗАЩИЩАТЬ",
+            mind5: "ЗАПУСКАТЬ",
+            finalLabel: "ГОТОВЫ СОЗДАТЬ?",
+            finalTitle: "Ваша идея может стать реальным продуктом.",
+            finalText: "Давайте создадим что-то уникальное, полезное и готовое для реальных пользователей.",
+            finalButton: "Открыть KNOWME"
+        },
 
         /* =================================================
            HOME
@@ -619,12 +691,48 @@ const translations = {
     hy: {
 
         nav: {
+            why: "Ինչու KNOWME?",
             home: "Գլխավոր",
             prices: "Գներ",
             projects: "Նախագծեր",
             contact: "Կապ"
         },
 
+
+
+        whyKnowme: {
+
+            brand: "KNOWME",
+            tagline: "ՍԱ ՊԱՐԶԱՊԵՍ ԿԱՅՔ ՉԷ։",
+            label: "ԻՆՉՈՒ KNOWME?",
+            title: "Ավելին, քան կայք։ Ամբողջական թվային համակարգ։",
+            description: "Ես կայքերը կառուցում եմ որպես ամբողջական թվային պրոդուկտներ՝ ինտերֆեյսից և backend logic-ից մինչև տվյալներ, անվտանգություն և հրապարակում։",
+            capabilitiesLabel: "ՀՆԱՐԱՎՈՐՈՒԹՅՈՒՆՆԵՐ",
+            capabilitiesTitle: "Ի՞նչ կարող է կառուցել KNOWME-ը։",
+            card1Title: "Անհատական կայքեր",
+            card1Text: "Ժամանակակից responsive կայքեր, որոնք կառուցվում են բիզնեսի իրական նպատակների շուրջ։",
+            card2Title: "Web Applications",
+            card2Text: "Դինամիկ համակարգեր՝ route-երով, form-երով, authentication-ով և business logic-ով։",
+            card3Title: "Backend համակարգեր",
+            card3Text: "Python և Flask հավելվածներ՝ միացված իրական տվյալների բազաների և API-ների հետ։",
+            card4Title: "Անվտանգ ճարտարապետություն",
+            card4Text: "Authentication, access control, validation և անվտանգության կարգավորումներ։",
+            card5Title: "Տվյալների բազաներ",
+            card5Text: "Կառուցվածքային տվյալներ PostgreSQL-ով և application-level ինտեգրմամբ։",
+            card6Title: "Production deployment",
+            card6Text: "Իրական deployment գործընթացներ՝ production միջավայրի համար։",
+            mindsetLabel: "ՄՏԱԾԵԼԱԿԵՐՊ",
+            mindsetTitle: "Մտածել։ Նախագծել։ Կառուցել։ Պաշտպանել։ Հրապարակել։",
+            mind1: "ՄՏԱԾԵԼ",
+            mind2: "ՆԱԽԱԳԾԵԼ",
+            mind3: "ԿԱՌՈՒՑԵԼ",
+            mind4: "ՊԱՇՏՊԱՆԵԼ",
+            mind5: "ՀՐԱՊԱՐԱԿԵԼ",
+            finalLabel: "ՊԱՏՐԱ՞ՍՏ ԵՔ ՍԿՍԵԼՈՒ",
+            finalTitle: "Ձեր գաղափարը կարող է դառնալ իրական պրոդուկտ։",
+            finalText: "Եկեք ստեղծենք ինչ-որ յուրահատուկ, օգտակար և իրական օգտատերերի համար պատրաստ բան։",
+            finalButton: "Բացել KNOWME-ը"
+        },
 
         /* =================================================
            HOME
@@ -1057,3 +1165,178 @@ document.querySelectorAll(".admin-delete-form").forEach((form) => {
     });
 
 });
+
+
+/* =========================================================
+   KNOWME STUDIO V2
+   WHY KNOWME — CINEMATIC EXPERIENCE
+   Clean single implementation
+========================================================= */
+
+(function () {
+    "use strict";
+
+    function initWhyKnowmeIntro() {
+        const page = document.querySelector(".why-page");
+        const intro = document.getElementById("whyIntro");
+        const video = document.getElementById("whyIntroVideo");
+        const content = document.getElementById("whyContent");
+
+        if (!page || !intro || !video || !content) {
+            return;
+        }
+
+        const brandLetters = page.querySelectorAll(".why-brand-letter");
+        const brandStudio = page.querySelector(".why-brand-studio");
+        const taglineWords = page.querySelectorAll(".why-tagline-word");
+
+        document.body.classList.add("why-intro-active");
+        page.classList.add("intro-running");
+
+        video.muted = true;
+        video.defaultMuted = true;
+        video.autoplay = true;
+        video.playsInline = true;
+        video.loop = false;
+        video.controls = false;
+
+        let finished = false;
+        let brandShown = false;
+        let taglineShown = false;
+        let finishTimer = null;
+
+        function playVideo() {
+            video.muted = true;
+            const result = video.play();
+
+            if (result && typeof result.catch === "function") {
+                result.catch(() => {
+                    // Muted autoplay can still be blocked by a browser.
+                    // Retry when enough data is available or page becomes visible.
+                });
+            }
+        }
+
+        function revealBrand() {
+            if (brandShown || finished) return;
+            brandShown = true;
+
+            page.classList.add("intro-brand-visible");
+
+            brandLetters.forEach((letter, index) => {
+                window.setTimeout(() => {
+                    letter.classList.add("assembled");
+                }, index * 105);
+            });
+
+            if (brandStudio) {
+                window.setTimeout(() => {
+                    brandStudio.classList.add("assembled");
+                }, brandLetters.length * 105 + 180);
+            }
+        }
+
+        function revealTagline() {
+            if (taglineShown || finished) return;
+            taglineShown = true;
+
+            page.classList.add("intro-tagline-visible");
+
+            taglineWords.forEach((word, index) => {
+                window.setTimeout(() => {
+                    word.classList.add("assembled");
+                }, index * 160);
+            });
+        }
+
+        function finishIntro() {
+            if (finished) return;
+            finished = true;
+
+            window.clearTimeout(finishTimer);
+
+            page.classList.remove("intro-running");
+            page.classList.add("intro-finished");
+
+            document.body.classList.remove("why-intro-active");
+
+            // Never allow the page to remain visually empty.
+            content.style.opacity = "1";
+            content.style.visibility = "visible";
+            content.style.transform = "translateY(0)";
+
+            // Keep the same film gently alive in the background.
+            video.loop = true;
+            playVideo();
+        }
+
+        function getDuration() {
+            return Number.isFinite(video.duration) && video.duration > 0
+                ? video.duration
+                : 30;
+        }
+
+        function setupTimeline() {
+            const duration = getDuration();
+            const ms = duration * 1000;
+
+            // Cinematic timing: video starts immediately, then the red KNOWME letters assemble.
+            // The tagline follows, and only then does the page reveal the full Why KNOWME content.
+            const brandAt = Math.max(2_400, Math.min(ms * 0.18, ms - 8_500));
+            const taglineAt = Math.max(4_600, Math.min(ms * 0.34, ms - 5_500));
+            const finishAt = Math.max(8_500, Math.min(ms * 0.46, ms - 900));
+
+            window.setTimeout(revealBrand, brandAt);
+            window.setTimeout(revealTagline, taglineAt);
+
+            finishTimer = window.setTimeout(finishIntro, finishAt);
+        }
+
+        function progressFallback() {
+            if (finished || !video.duration) return;
+
+            const progress = video.currentTime / video.duration;
+
+            if (progress >= 0.42) revealBrand();
+            if (progress >= 0.63) revealTagline();
+            if (progress >= 0.88) finishIntro();
+        }
+
+        // Start the film immediately on first load.
+        playVideo();
+
+        video.addEventListener("loadeddata", playVideo, { once: true });
+        video.addEventListener("canplay", playVideo);
+        video.addEventListener("timeupdate", progressFallback);
+        video.addEventListener("ended", finishIntro);
+
+        if (video.readyState >= 1) {
+            setupTimeline();
+        } else {
+            video.addEventListener("loadedmetadata", setupTimeline, { once: true });
+        }
+
+        // Hard fallback: even if metadata/timers fail, the page still transitions.
+        window.setTimeout(() => {
+            if (!finished) {
+                revealBrand();
+                window.setTimeout(revealTagline, 700);
+                window.setTimeout(finishIntro, 1_600);
+            }
+        }, 15_000);
+
+        window.addEventListener("pageshow", () => {
+            if (!finished || video.paused) {
+                playVideo();
+            }
+        });
+
+        document.addEventListener("visibilitychange", () => {
+            if (!document.hidden && video.paused) {
+                playVideo();
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", initWhyKnowmeIntro);
+})();

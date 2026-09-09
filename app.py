@@ -191,8 +191,13 @@ def sitemap():
     )
 
 @app.route("/")
-def home():
+def landing():
 
+    return redirect(
+        url_for("why_knowme")
+    )
+@app.route("/home")
+def home():
     return render_template(
         "home.html"
     )
@@ -750,6 +755,16 @@ def add_security_headers(response):
 
 
     return response
+# =========================================================
+# WHY KNOWME
+# =========================================================
+
+@app.route("/why-knowme")
+def why_knowme():
+
+    return render_template(
+        "why-knowme.html"
+    )
 
 # =========================================================
 # RUN
