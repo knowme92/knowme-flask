@@ -661,14 +661,14 @@ def add_security_headers(response):
         "default-src 'self'; "
         "script-src 'self'; "
         "style-src 'self'; "
-        "img-src 'self' data:; "
         "font-src 'self'; "
         "media-src 'self'; "
-        "connect-src 'self'; "
         "object-src 'none'; "
         "base-uri 'self'; "
         "frame-ancestors 'none'; "
         "form-action 'self';"
+        "img-src 'self' data: blob:;"
+        "connect-src 'self' blob:;"
     )
 
 

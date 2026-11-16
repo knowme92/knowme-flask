@@ -32,7 +32,10 @@ KNOWME Studio | Home
     <div class="hero-overlay"></div>
 
 
-    <div class="hero-content">
+    <div class="hero-layout">
+
+        <div class="hero-content">
+
 
         <span class="hero-label">
             KNOWME STUDIO
@@ -71,7 +74,33 @@ KNOWME Studio | Home
 
         </div>
 
+        </div>
+
+    <!-- 3D ROBOTIC EYE -->
+    <div class="robotic-eye-stage" data-model-url="{{ url_for('static', filename='models/robotic_eye.glb') }}">
+        <div class="robotic-eye-glow"></div>
+
+        <canvas
+            id="roboticEyeCanvas"
+            aria-label="Interactive 3D robotic eye model"
+        ></canvas>
+
+        <div class="robotic-eye-label">
+            <span class="eye-status-dot"></span>
+            <span>KNOWME · VISUAL INTELLIGENCE</span>
+        </div>
+        <a
+            class="robotic-eye-credit"
+
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Robotic Eye 3D model by Oleksii Rozumnyi, licensed under Creative Commons Attribution 4.0"
+        >
+
+        </a>
     </div>
+
+</div>
 
 
     <a
@@ -652,6 +681,12 @@ app = Flask(__name__)
     </div>
 
 </section>
+<!-- Three.js import map: required by GLTFLoader and RoomEnvironment modules. -->
 
+
+<script
+    type="module"
+    src="{{ url_for('static', filename='js/robotic_eye.js') }}"
+></script>
 
 {% endblock %}

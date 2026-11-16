@@ -6687,3 +6687,232 @@ body.why-intro-active .topbar {
         animation: none !important;
     }
 }
+
+/* =========================================================
+   KNOWME STUDIO — 3D ROBOTIC EYE HERO
+   Scoped to the home hero; existing page sections are unchanged.
+========================================================= */
+
+.hero-layout {
+    position: relative;
+    z-index: 2;
+    width: min(1440px, 90%);
+    margin: 76px auto 48px;
+    padding-top: 16px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.02fr) minmax(390px, 0.98fr);
+    align-items: center;
+    gap: clamp(18px, 3.2vw, 54px);
+}
+
+.hero-layout .hero-content {
+    width: 100%;
+    max-width: 760px;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+
+.hero-layout .hero-content h1 {
+    max-width: 690px;
+    font-size: clamp(42px, 5.1vw, 78px);
+}
+
+.robotic-eye-stage {
+    position: relative;
+    width: 100%;
+    height: clamp(430px, 67vh, 670px);
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    isolation: isolate;
+}
+
+#roboticEyeCanvas {
+    position: relative;
+    z-index: 2;
+    display: block;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    background: transparent;
+    touch-action: pan-y;
+}
+
+.robotic-eye-glow {
+    position: absolute;
+    z-index: 0;
+    left: 50%;
+    top: 50%;
+    width: 70%;
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(44, 119, 255, 0.24) 0%,
+        rgba(104, 49, 198, 0.15) 38%,
+        rgba(15, 22, 48, 0.02) 72%,
+        transparent 100%
+    );
+    filter: blur(34px);
+    pointer-events: none;
+}
+
+.robotic-eye-stage::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    left: 18%;
+    right: 18%;
+    bottom: 12%;
+    height: 12%;
+    border-radius: 50%;
+    background: radial-gradient(
+        ellipse,
+        rgba(0, 0, 0, 0.62),
+        rgba(0, 0, 0, 0.18) 48%,
+        transparent 76%
+    );
+    filter: blur(17px);
+    pointer-events: none;
+}
+
+.robotic-eye-label {
+    position: absolute;
+    z-index: 3;
+    left: 50%;
+    bottom: 22px;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: rgba(220, 231, 255, 0.68);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    pointer-events: none;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+}
+
+.eye-status-dot {
+    width: 7px;
+    height: 7px;
+    flex: 0 0 7px;
+    border-radius: 50%;
+    background: #75e7ff;
+    box-shadow: 0 0 8px #4de7ff, 0 0 18px rgba(77, 231, 255, 0.58);
+}
+
+.robotic-eye-label.is-error .eye-status-dot {
+    background: #ff5757;
+    box-shadow: 0 0 8px rgba(255, 70, 70, 0.75);
+}
+
+@media (max-width: 1050px) {
+    .hero-layout {
+        width: 94%;
+        grid-template-columns: minmax(0, 1fr) minmax(330px, 0.9fr);
+        gap: 12px;
+    }
+
+    .hero-layout .hero-content h1 {
+        font-size: clamp(40px, 5.2vw, 62px);
+    }
+
+    .robotic-eye-stage {
+        height: clamp(390px, 58vh, 530px);
+    }
+}
+
+@media (max-width: 760px) {
+    .hero {
+        min-height: 100svh;
+        height: auto;
+        align-items: flex-start;
+    }
+
+    .hero-layout {
+        width: min(680px, 92%);
+        margin: 124px auto 88px;
+        padding: 0;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2px;
+    }
+
+    .hero-layout .hero-content {
+        max-width: 100%;
+    }
+
+    .hero-layout .hero-content h1 {
+        max-width: 620px;
+        font-size: clamp(38px, 9vw, 58px);
+    }
+
+    .robotic-eye-stage {
+        width: 100%;
+        height: min(92vw, 430px);
+        min-height: 300px;
+        margin-top: 0;
+    }
+
+    .robotic-eye-label {
+        bottom: 5px;
+        font-size: 8px;
+        letter-spacing: 1.5px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .robotic-eye-stage,
+    .robotic-eye-glow {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+
+.robotic-eye-credit {
+    position: absolute;
+    z-index: 3;
+    left: 50%;
+    bottom: 5px;
+    transform: translateX(-50%);
+    color: rgba(210, 220, 242, 0.42);
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 1.15px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+}
+
+.robotic-eye-credit:hover {
+    color: rgba(235, 240, 255, 0.82);
+}
+
+@media (max-width: 760px) {
+    .robotic-eye-credit {
+        bottom: -11px;
+        font-size: 6.5px;
+    }
+}
+.robotic-eye-stage canvas {
+    cursor: grab;
+    touch-action: none;
+}
+
+.robotic-eye-stage canvas:active {
+    cursor: grabbing;
+}
+#roboticEyeCanvas {
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+}
+
+#roboticEyeCanvas:active {
+    cursor: grabbing;
+}
