@@ -128,6 +128,22 @@ const translations = {
             prices: "View Prices",
             contact: "Start a Project"
         },
+                 chat: {
+            badge: "KNOWME INTELLIGENCE",
+            title: "Meet KNOWME AI.",
+            description: "Ask questions, explore ideas and discover what KNOWME Studio can build for you.",
+            assistant: "AI Assistant",
+            ready: "READY",
+            welcome: "Hello! I am KNOWME AI. How can I help you today?",
+            inputLabel: "Your message",
+            placeholder: "Ask KNOWME AI anything...",
+            send: "Send message",
+            hint: "AI can make mistakes. Avoid sharing passwords or sensitive information.",
+            you: "YOU",
+            thinking: "KNOWME AI is thinking...",
+            error: "I couldn't get a response. Please try again.",
+            securityError: "Secure chat token is missing. Refresh the page and try again."
+        },
 
         /* =================================================
            PRICES
@@ -478,7 +494,22 @@ const translations = {
             prices: "Посмотреть цены",
             contact: "Начать проект"
         },
-
+                 chat: {
+            badge: "ИНТЕЛЛЕКТ KNOWME",
+            title: "Знакомьтесь: KNOWME AI.",
+            description: "Задавайте вопросы, исследуйте идеи и узнайте, что может создать KNOWME Studio.",
+            assistant: "ИИ-помощник",
+            ready: "ГОТОВ",
+            welcome: "Здравствуйте! Я KNOWME AI. Чем могу вам помочь?",
+            inputLabel: "Ваше сообщение",
+            placeholder: "Задайте вопрос KNOWME AI...",
+            send: "Отправить сообщение",
+            hint: "ИИ может ошибаться. Не отправляйте пароли и конфиденциальную информацию.",
+            you: "ВЫ",
+            thinking: "KNOWME AI обрабатывает запрос...",
+            error: "Не удалось получить ответ. Попробуйте ещё раз.",
+            securityError: "Отсутствует защищённый токен чата. Обновите страницу и попробуйте снова."
+        },
         /* =================================================
            PRICES
         ================================================= */
@@ -824,7 +855,22 @@ const translations = {
             prices: "Դիտել գները",
             contact: "Սկսել նախագիծ"
         },
-
+                chat: {
+            badge: "KNOWME ԱՐՀԵՍՏԱԿԱՆ ԲԱՆԱԿԱՆՈՒԹՅՈՒՆ",
+            title: "Ծանոթացեք KNOWME AI-ի հետ։",
+            description: "Հարցեր տվեք, ուսումնասիրեք գաղափարներ և պարզեք, թե ինչ կարող է ստեղծել KNOWME Studio-ն։",
+            assistant: "AI օգնական",
+            ready: "ՊԱՏՐԱՍՏ Է",
+            welcome: "Բարև։ Ես KNOWME AI-ն եմ։ Ինչո՞վ կարող եմ օգնել ձեզ։",
+            inputLabel: "Ձեր հաղորդագրությունը",
+            placeholder: "Հարցրեք KNOWME AI-ին...",
+            send: "Ուղարկել հաղորդագրությունը",
+            hint: "AI-ն կարող է սխալվել։ Մի ուղարկեք գաղտնաբառեր կամ գաղտնի տվյալներ։",
+            you: "ԴՈՒՔ",
+            thinking: "KNOWME AI-ն մշակում է հարցումը...",
+            error: "Չհաջողվեց ստանալ պատասխան։ Փորձեք կրկին։",
+            securityError: "Chat-ի անվտանգության token-ը բացակայում է։ Թարմացրեք էջը և փորձեք կրկին։"
+        },
         /* =================================================
            PRICES
         ================================================= */
@@ -1159,7 +1205,10 @@ async function loadPriceExchangeRates() {
     try {
         const response = await fetch("/api/exchange-rates", {
             method: "GET",
-            headers: { "Accept": "application/json" },
+            headers: { "Accept": "application/json" ,
+            "X-CSRFToken": document.querySelector(
+    'meta[name="csrf-token"]'
+).content},
             cache: "no-store"
         });
 
@@ -1262,6 +1311,31 @@ function changeLanguage(language) {
 
 
     /* HTML LANGUAGE */
+        /* CHAT PLACEHOLDER TRANSLATION */
+
+    document
+        .querySelectorAll("[data-i18n-placeholder]")
+        .forEach(element => {
+
+            const key = element.dataset.i18nPlaceholder;
+
+            const translation = getTranslation(language, key);
+
+            if (typeof translation === "string") {
+                element.setAttribute("placeholder", translation);
+            }
+        });
+
+
+    /* CHAT SEND BUTTON TRANSLATION */
+
+    const chatSendButton = document.getElementById("knowmeChatSend");
+
+    const chatSendLabel = getTranslation(language, "chat.send");
+
+    if (chatSendButton && typeof chatSendLabel === "string") {
+        chatSendButton.setAttribute("aria-label", chatSendLabel);
+    }
 
     document.documentElement.lang =
         language;
@@ -1522,4 +1596,689 @@ document.querySelectorAll(".admin-delete-form").forEach((form) => {
     }
 
     document.addEventListener("DOMContentLoaded", initWhyKnowmeIntro);
+})();
+/* =========================================================
+   KNOWME AI CHAT
+   Homepage only
+========================================================= */
+
+(function initKnowmeChat() {
+
+    "use strict";
+
+    const chatForm = document.getElementById("knowmeChatForm");
+    const messagesContainer = document.getElementById("knowmeChatMessages");
+    const chatInput = document.getElementById("knowmeChatInput");
+    const sendButton = document.getElementById("knowmeChatSend");
+    const chatStatus = document.getElementById("knowmeChatStatus");
+    const chatDock = document.getElementById("knowmeChatDock");
+const chatPanel = document.getElementById("knowmeChatPanel");
+const chatToggle = document.getElementById("knowmeChatToggle");
+const chatClose = document.getElementById("knowmeChatClose");
+    // This script runs only when the homepage chat exists.
+    if (
+    !chatForm ||
+    !messagesContainer ||
+    !chatInput ||
+    !sendButton ||
+    !chatStatus ||
+    !chatDock ||
+    !chatPanel ||
+    !chatToggle ||
+    !chatClose
+) {
+        return;
+    }/* =====================================================
+   CHAT STATE AND SECURITY
+===================================================== */
+
+const csrfToken = document
+    .querySelector('meta[name="csrf-token"]')
+    ?.getAttribute("content") || "";
+
+const conversation = [];
+
+let isSending = false;
+    /* =====================================================
+   FLOATING CHAT OPEN / CLOSE
+===================================================== */
+
+let isPinnedOpen = false;
+let hoverCloseTimer = null;
+
+const supportsHover = window.matchMedia(
+    "(hover: hover) and (pointer: fine)"
+).matches;
+
+
+function setChatPanelOpen(isOpen) {
+
+    chatDock.classList.toggle("is-open", isOpen);
+
+    chatToggle.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+    );
+
+    chatPanel.setAttribute(
+        "aria-hidden",
+        String(!isOpen)
+    );
+
+}
+
+
+function cancelHoverClose() {
+
+    if (hoverCloseTimer !== null) {
+
+        window.clearTimeout(hoverCloseTimer);
+        hoverCloseTimer = null;
+
+    }
+
+}
+
+
+function scheduleHoverClose() {
+
+    if (!supportsHover || isPinnedOpen) {
+        return;
+    }
+
+    cancelHoverClose();
+
+    hoverCloseTimer = window.setTimeout(function () {
+
+        const focusInside =
+            chatDock.contains(document.activeElement);
+
+        const pointerOverButton =
+            chatToggle.matches(":hover");
+
+        const pointerOverPanel =
+            chatPanel.matches(":hover");
+
+        if (
+            !isPinnedOpen &&
+            !focusInside &&
+            !pointerOverButton &&
+            !pointerOverPanel
+        ) {
+            setChatPanelOpen(false);
+        }
+
+    }, 350);
+
+}
+
+
+// Hover on launcher opens the chat.
+if (supportsHover) {
+
+    chatToggle.addEventListener("mouseenter", function () {
+
+        cancelHoverClose();
+        setChatPanelOpen(true);
+
+    });
+
+    chatToggle.addEventListener("mouseleave", scheduleHoverClose);
+
+
+    // Keep it open while moving the mouse into the panel.
+    chatPanel.addEventListener("mouseenter", function () {
+
+        cancelHoverClose();
+        setChatPanelOpen(true);
+
+    });
+
+    chatPanel.addEventListener("mouseleave", scheduleHoverClose);
+
+}
+
+
+// Click pins or unpins the chat.
+chatToggle.addEventListener("click", function () {
+
+    cancelHoverClose();
+
+    if (isPinnedOpen) {
+
+        isPinnedOpen = false;
+        setChatPanelOpen(false);
+
+    } else {
+
+        isPinnedOpen = true;
+        setChatPanelOpen(true);
+
+        chatInput.focus();
+
+    }
+
+});
+
+
+// Close button.
+chatClose.addEventListener("click", function () {
+
+    cancelHoverClose();
+
+    isPinnedOpen = false;
+    setChatPanelOpen(false);
+
+    chatToggle.focus();
+
+});
+
+
+// Escape key.
+document.addEventListener("keydown", function (event) {
+
+    if (
+        event.key === "Escape" &&
+        chatDock.classList.contains("is-open")
+    ) {
+
+        cancelHoverClose();
+
+        isPinnedOpen = false;
+        setChatPanelOpen(false);
+
+        chatToggle.focus();
+
+    }
+
+});
+
+
+// Close when keyboard focus leaves the widget.
+chatDock.addEventListener("focusout", function () {
+
+    window.setTimeout(function () {
+
+        if (
+            !isPinnedOpen &&
+            !chatDock.matches(":hover") &&
+            !chatDock.contains(document.activeElement)
+        ) {
+            setChatPanelOpen(false);
+        }
+
+    }, 0);
+
+});
+
+
+    /* =====================================================
+       TRANSLATIONS
+    ===================================================== */
+
+    function chatText(key) {
+
+        const translation = getTranslation(
+            activeSiteLanguage,
+            key
+        );
+
+        if (typeof translation === "string") {
+            return translation;
+        }
+
+        return getTranslation("en", key) || key;
+    }
+
+
+    /* =====================================================
+       STATUS
+    ===================================================== */
+
+    function setChatStatus(message, type = "") {
+
+        chatStatus.textContent = message;
+
+        chatStatus.classList.remove(
+            "is-error",
+            "is-loading"
+        );
+
+        if (type) {
+            chatStatus.classList.add(`is-${type}`);
+        }
+    }
+
+
+    /* =====================================================
+       SCROLL
+    ===================================================== */
+
+    function scrollChatToBottom() {
+
+        messagesContainer.scrollTop =
+            messagesContainer.scrollHeight;
+    }
+
+
+    /* =====================================================
+       ADD MESSAGE
+    ===================================================== */
+/* =====================================================
+   KNOWME AI — TYPEWRITER RESPONSE ANIMATION
+===================================================== */
+
+async function animateAssistantText(element, text) {
+
+    const characters = Array.from(text);
+
+    const textNode = document.createTextNode("");
+
+    element.textContent = "";
+    element.appendChild(textNode);
+
+    element.classList.add("is-typing");
+
+    // Adapt speed to response length.
+    const speed = characters.length > 500
+        ? 7
+        : characters.length > 220
+            ? 10
+            : 15;
+
+    for (let i = 0; i < characters.length; i++) {
+
+        const character = characters[i];
+
+        textNode.appendData(character);
+
+        // Keep the latest answer visible.
+        if (i % 4 === 0) {
+            scrollChatToBottom();
+        }
+
+        let delay = speed;
+
+        // Natural pauses after punctuation.
+        if (".!?։".includes(character)) {
+            delay += 100;
+        } else if (",;:".includes(character)) {
+            delay += 45;
+        } else if (character === "\n") {
+            delay += 70;
+        }
+
+        await new Promise(resolve => {
+            window.setTimeout(resolve, delay);
+        });
+
+    }
+
+    element.classList.remove("is-typing");
+
+    scrollChatToBottom();
+}
+    function addChatMessage(role, content) {
+
+        const message = document.createElement("div");
+
+        message.className =
+            "knowme-ai-message " +
+            (role === "user"
+                ? "user-message"
+                : "assistant-message");
+
+
+        const avatar = document.createElement("div");
+
+        avatar.className = "knowme-ai-message-avatar";
+
+        avatar.textContent =
+            role === "user" ? "U" : "K";
+
+
+        const messageContent = document.createElement("div");
+
+        messageContent.className =
+            "knowme-ai-message-content";
+
+
+        const label = document.createElement("span");
+
+        label.textContent =
+            role === "user"
+                ? chatText("chat.you")
+                : chatText("chat.assistant");
+
+
+        const paragraph = document.createElement("p");
+
+        // Use textContent, never innerHTML, for user/provider text.
+        // User messages appear immediately.
+// Assistant messages use the typewriter animation.
+if (role === "assistant") {
+
+    animateAssistantText(paragraph, content);
+
+} else {
+
+    paragraph.textContent = content;
+
+}
+
+
+        messageContent.appendChild(label);
+        messageContent.appendChild(paragraph);
+
+        message.appendChild(avatar);
+        message.appendChild(messageContent);
+
+        messagesContainer.appendChild(message);
+
+        scrollChatToBottom();
+
+        return message;
+    }
+
+
+    /* =====================================================
+       TYPING INDICATOR
+    ===================================================== */
+
+    function addTypingIndicator() {
+
+        const message = document.createElement("div");
+
+        message.className =
+            "knowme-ai-message assistant-message";
+
+
+        const avatar = document.createElement("div");
+
+        avatar.className = "knowme-ai-message-avatar";
+        avatar.textContent = "K";
+
+
+        const content = document.createElement("div");
+
+        content.className = "knowme-ai-message-content";
+
+
+        const label = document.createElement("span");
+
+        label.textContent = chatText("chat.assistant");
+
+
+        const typing = document.createElement("div");
+
+        typing.className = "knowme-ai-typing";
+
+        typing.setAttribute("aria-label", chatText("chat.thinking"));
+
+
+        for (let i = 0; i < 3; i++) {
+
+            const dot = document.createElement("span");
+
+            typing.appendChild(dot);
+        }
+
+
+        content.appendChild(label);
+        content.appendChild(typing);
+
+        message.appendChild(avatar);
+        message.appendChild(content);
+
+        messagesContainer.appendChild(message);
+
+        scrollChatToBottom();
+
+        return message;
+    }
+
+
+    /* =====================================================
+       SEND MESSAGE
+    ===================================================== */
+
+    async function sendChatMessage(messageText) {
+
+        if (isSending) {
+            return;
+        }
+
+        const message = messageText.trim();
+
+        if (!message) {
+            return;
+        }
+
+        if (!csrfToken) {
+
+            setChatStatus(
+                chatText("chat.securityError"),
+                "error"
+            );
+
+            return;
+        }
+
+        isSending = true;
+
+        sendButton.disabled = true;
+        chatInput.disabled = true;
+
+        addChatMessage("user", message);
+
+        conversation.push({
+            role: "user",
+            content: message
+        });
+
+        setChatStatus(
+            chatText("chat.thinking"),
+            "loading"
+        );
+
+        const typingIndicator = addTypingIndicator();
+
+
+        try {
+
+            const response = await fetch("/api/chat", {
+
+                method: "POST",
+
+                credentials: "same-origin",
+
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": csrfToken
+                },
+
+                body: JSON.stringify({
+
+                    messages: conversation.slice(-24)
+
+                })
+
+            });
+
+
+            const responseText = await response.text();
+
+let result = null;
+
+try {
+    result = responseText
+        ? JSON.parse(responseText)
+        : null;
+} catch (parseError) {
+
+    console.error(
+        "[KNOWME AI] Non-JSON response:",
+        {
+            status: response.status,
+            contentType: response.headers.get("content-type"),
+            body: responseText.slice(0, 1500)
+        }
+    );
+}
+
+
+            if (!response.ok) {
+
+    console.error(
+        "[KNOWME AI] API HTTP error:",
+        response.status,
+        result
+    );
+
+    throw new Error(
+        result?.error || `HTTP ${response.status}`
+    );
+}
+
+if (
+    !result ||
+    typeof result.reply !== "string" ||
+    !result.reply.trim()
+) {
+    console.error(
+        "[KNOWME AI] Invalid API response:",
+        result
+    );
+
+    throw new Error("Invalid AI response");
+}
+
+
+            const reply = result.reply.trim();
+
+            conversation.push({
+                role: "assistant",
+                content: reply
+            });
+
+
+            // Keep the conversation within the backend message limit.
+            if (conversation.length > 24) {
+
+                conversation.splice(
+                    0,
+                    conversation.length - 24
+                );
+            }
+
+
+            typingIndicator.remove();
+
+            addChatMessage("assistant", reply);
+
+            setChatStatus(
+                chatText("chat.hint")
+            );
+
+
+        } catch (error) {
+
+            typingIndicator.remove();
+
+            // Remove the failed user message from API history.
+            const lastMessage =
+                conversation[conversation.length - 1];
+
+            if (lastMessage && lastMessage.role === "user") {
+                conversation.pop();
+            }
+
+            console.error(
+                "[KNOWME AI] Chat request failed:",
+                error
+            );
+
+            setChatStatus(
+                chatText("chat.error"),
+                "error"
+            );
+
+        } finally {
+
+            isSending = false;
+
+            sendButton.disabled = false;
+            chatInput.disabled = false;
+
+            chatInput.focus();
+
+        }
+    }
+
+
+    /* =====================================================
+       FORM SUBMISSION
+    ===================================================== */
+
+    chatForm.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+        const message = chatInput.value.trim();
+
+        if (!message || isSending) {
+            return;
+        }
+
+        chatInput.value = "";
+        chatInput.style.height = "auto";
+
+        sendChatMessage(message);
+
+    });
+
+
+    /* =====================================================
+       TEXTAREA AUTO RESIZE
+    ===================================================== */
+
+    chatInput.addEventListener("input", function () {
+
+        chatInput.style.height = "auto";
+
+        chatInput.style.height =
+            Math.min(chatInput.scrollHeight, 140) + "px";
+
+    });
+
+
+    /* =====================================================
+       ENTER TO SEND
+       SHIFT + ENTER = NEW LINE
+    ===================================================== */
+
+    chatInput.addEventListener("keydown", function (event) {
+
+        if (
+            event.key === "Enter" &&
+            !event.shiftKey &&
+            !event.isComposing
+        ) {
+
+            event.preventDefault();
+
+            chatForm.requestSubmit();
+        }
+
+    });
+
+
+    /* =====================================================
+       INITIAL STATUS
+    ===================================================== */
+
+    setChatStatus(
+        chatText("chat.hint")
+    );
+
 })();

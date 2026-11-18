@@ -682,7 +682,185 @@ app = Flask(__name__)
 
 </section>
 <!-- Three.js import map: required by GLTFLoader and RoomEnvironment modules. -->
+<!-- ==================================================
+     KNOWME AI FLOATING CHAT
+================================================== -->
 
+<div class="knowme-chat-dock" id="knowmeChatDock">
+
+    <!-- CHAT PANEL -->
+
+    <div
+        class="knowme-chat-panel"
+        id="knowmeChatPanel"
+        aria-hidden="true"
+    >
+
+        <div class="knowme-ai-window">
+
+            <div class="knowme-ai-header">
+
+                <div class="knowme-ai-brand">
+
+                    <div class="knowme-ai-avatar">K</div>
+
+                    <div class="knowme-ai-brand-info">
+                        <strong class="knowme-brand-word">
+    <span class="knowme-brand-k">K</span><span class="knowme-brand-rest">NOWME AI</span>
+</strong>
+                        <span data-i18n="chat.assistant">
+                            AI Assistant
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="knowme-chat-header-actions">
+
+                    <span class="knowme-ai-model">
+                        <span class="knowme-ai-status-dot"></span>
+                        <span data-i18n="chat.ready">READY</span>
+                    </span>
+
+                    <span class="knowme-ai-model-name">
+                        KNOWME AI
+                    </span>
+
+                    <button
+                        type="button"
+                        class="knowme-chat-close"
+                        id="knowmeChatClose"
+                        aria-label="Close chat"
+                    >
+                        &times;
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- MESSAGES -->
+
+            <div
+                class="knowme-ai-messages"
+                id="knowmeChatMessages"
+                role="log"
+                aria-live="polite"
+                aria-relevant="additions"
+            >
+
+                <div class="knowme-ai-message assistant-message">
+
+                    <div class="knowme-ai-message-avatar">K</div>
+
+                    <div class="knowme-ai-message-content">
+
+                        <span data-i18n="chat.assistant">
+                            KNOWME AI
+                        </span>
+
+                        <p data-i18n="chat.welcome">
+                            Hello! I am KNOWME AI.
+                            How can I help you today?
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- INPUT -->
+
+            <form
+                class="knowme-ai-form"
+                id="knowmeChatForm"
+            >
+
+                <label
+                    class="knowme-ai-sr-only"
+                    for="knowmeChatInput"
+                    data-i18n="chat.inputLabel"
+                >
+                    Your message
+                </label>
+
+                <textarea
+                    id="knowmeChatInput"
+                    name="message"
+                    rows="1"
+                    maxlength="4000"
+                    placeholder="Ask KNOWME AI anything..."
+                    data-i18n-placeholder="chat.placeholder"
+                    required
+                ></textarea>
+
+                <button
+                    type="submit"
+                    class="knowme-ai-send"
+                    id="knowmeChatSend"
+                    aria-label="Send message"
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        width="21"
+                        height="21"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <path d="M12 19V5"></path>
+                        <path d="m5 12 7-7 7 7"></path>
+                    </svg>
+                </button>
+
+            </form>
+
+            <p
+                class="knowme-ai-hint"
+                id="knowmeChatStatus"
+                role="status"
+                data-i18n="chat.hint"
+            >
+                KNOWME AI can make mistakes. Check important information.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- FLOATING LAUNCHER -->
+
+    <button
+        type="button"
+        class="knowme-chat-launcher"
+        id="knowmeChatToggle"
+        aria-expanded="false"
+        aria-controls="knowmeChatPanel"
+    >
+
+        <span class="knowme-chat-launcher-icon">K</span>
+
+        <span class="knowme-chat-launcher-label">
+            <strong class="knowme-brand-word">
+    <span class="knowme-brand-k">K</span><span class="knowme-brand-rest">NOWME AI</span>
+</strong>
+            <small>ASK ME ANYTHING</small>
+        </span>
+
+        <span class="knowme-chat-launcher-arrow">
+            ↑
+        </span>
+
+    </button>
+
+</div>
 
 <script
     type="module"
