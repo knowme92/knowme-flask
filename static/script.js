@@ -2795,3 +2795,36 @@ if (
         if (!frameId) frameId = window.requestAnimationFrame(animatePointerLight);
     });
 })();
+
+/* =========================================================
+   START PROJECT — LIVE MOBILE HEADER OFFSET
+   Measures the two-row fixed navigation on phones so the
+   configurator never starts underneath the header.
+========================================================= */
+
+(function syncStartProjectHeaderOffset() {
+    "use strict";
+
+    const page = document.querySelector(".start-project-page");
+    const topbar = document.querySelector(".topbar");
+    if (!page || !topbar) return;
+
+    const updateOffset = () => {
+        const height = Math.ceil(topbar.getBoundingClientRect().height);
+        page.style.setProperty("--sp-topbar-height", `${height}px`);
+    };
+
+    updateOffset();
+
+    if ("ResizeObserver" in window) {
+        const observer = new ResizeObserver(updateOffset);
+        observer.observe(topbar);
+        window.addEventListener("pagehide", () => observer.disconnect(), { once: true });
+    }
+
+    window.addEventListener("resize", updateOffset, { passive: true });
+
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener("resize", updateOffset, { passive: true });
+    }
+})();

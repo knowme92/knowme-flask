@@ -10516,3 +10516,465 @@ body.why-intro-active .topbar {
     }
     .sp-neon-atmosphere::before { opacity: 0 !important; }
 }
+
+/* =========================================================
+   START PROJECT — PHONE RESPONSIVE FINISH
+   Only affects /start-project. Keeps the current KNOWME look,
+   removes duplicate mobile content and keeps motion lightweight.
+========================================================= */
+
+.start-project-page {
+    min-width: 0;
+    overflow-x: clip;
+}
+
+.start-project-page .sp-shell,
+.start-project-page .sp-workspace,
+.start-project-page .sp-form-card,
+.start-project-page #startProjectForm {
+    min-width: 0;
+    width: 100%;
+}
+
+@media (max-width: 760px) {
+    .start-project-page {
+        min-height: 100vh;
+        min-height: 100svh;
+        padding-top: calc(var(--sp-topbar-height, 108px) + 20px);
+        padding-right: max(12px, env(safe-area-inset-right));
+        padding-bottom: max(30px, env(safe-area-inset-bottom));
+        padding-left: max(12px, env(safe-area-inset-left));
+    }
+
+    .start-project-page .sp-neon-atmosphere {
+        top: var(--sp-topbar-height, 108px);
+        opacity: 0.74;
+    }
+
+    /* The four numbered steps already explain the process.
+       Hide the duplicate explainer panel on narrow screens. */
+    .start-project-page .sp-aside {
+        display: none;
+    }
+
+    .start-project-page .sp-workspace {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0;
+    }
+
+    .start-project-page .sp-form-card {
+        max-width: 760px;
+        margin-inline: auto;
+        padding: clamp(17px, 4.5vw, 24px);
+        border-radius: 18px;
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+    }
+
+    .start-project-page .sp-hero {
+        margin-bottom: 23px;
+    }
+
+    .start-project-page .sp-brand-stage {
+        width: 100%;
+        margin-bottom: 12px;
+        padding-right: 4px;
+        padding-left: 4px;
+    }
+
+    .start-project-page .sp-brand-word {
+        max-width: 100%;
+        gap: clamp(0px, 0.35vw, 3px);
+    }
+
+    .start-project-page .sp-brand-letter {
+        font-size: clamp(31px, 8.6vw, 48px);
+    }
+
+    .start-project-page .sp-hero h1 {
+        max-width: 17ch;
+        margin: 16px auto 14px;
+        padding: 0.06em 0 0.12em;
+        font-size: clamp(30px, 8vw, 42px);
+        line-height: 1.08;
+        letter-spacing: -1.25px;
+        overflow-wrap: break-word;
+    }
+
+    .start-project-page .sp-hero p {
+        max-width: 44ch;
+        font-size: 13px;
+        line-height: 1.65;
+    }
+
+    .start-project-page .sp-form-top {
+        align-items: center;
+        gap: 10px;
+    }
+
+    .start-project-page .sp-form-top > div:first-child {
+        min-width: 0;
+    }
+
+    .start-project-page .sp-form-top h2 {
+        font-size: clamp(21px, 5.8vw, 28px);
+        line-height: 1.15;
+        overflow-wrap: break-word;
+    }
+
+    .start-project-page .sp-step-counter {
+        flex: 0 0 auto;
+        padding: 7px 9px;
+    }
+
+    .start-project-page .sp-step-indicators {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 5px;
+        margin-bottom: 21px;
+    }
+
+    .start-project-page .sp-step-indicators > span {
+        min-width: 0;
+        align-items: center;
+        gap: 5px;
+        text-align: center;
+    }
+
+    .start-project-page .sp-step-indicators i {
+        width: 26px;
+        height: 26px;
+        flex-basis: 26px;
+    }
+
+    .start-project-page .sp-step-indicators b {
+        max-width: 100%;
+        font-size: clamp(7px, 1.85vw, 9px);
+        letter-spacing: 0.15px;
+        white-space: nowrap;
+    }
+
+    .start-project-page .sp-step-panel.is-active {
+        animation: spPhoneStepIn 0.34s cubic-bezier(.2, .75, .25, 1) both;
+    }
+
+    @keyframes spPhoneStepIn {
+        from { opacity: 0; transform: translate3d(0, 9px, 0); }
+        to { opacity: 1; transform: translate3d(0, 0, 0); }
+    }
+
+    .start-project-page .sp-choice-grid,
+    .start-project-page .sp-style-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .start-project-page .sp-choice-card,
+    .start-project-page .sp-style-card {
+        min-width: 0;
+        min-height: 116px;
+        padding: 11px 10px;
+        border-radius: 12px;
+    }
+
+    .start-project-page .sp-choice-card strong,
+    .start-project-page .sp-style-card strong {
+        font-size: clamp(11px, 2.8vw, 13px);
+        line-height: 1.35;
+        overflow-wrap: anywhere;
+    }
+
+    .start-project-page .sp-choice-card small,
+    .start-project-page .sp-style-card small {
+        font-size: 10px;
+        line-height: 1.45;
+        overflow-wrap: anywhere;
+    }
+
+    .start-project-page .sp-style-card {
+        min-height: 132px;
+    }
+
+    .start-project-page .sp-style-preview {
+        height: 52px;
+        margin-bottom: 8px;
+    }
+
+    .start-project-page .sp-inline-options {
+        gap: 7px;
+    }
+
+    .start-project-page .sp-pill-option {
+        min-height: 42px;
+        padding: 7px 10px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .start-project-page .sp-pill-option span {
+        font-size: 10px;
+        line-height: 1.35;
+    }
+
+    .start-project-page .sp-two-fields {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0;
+    }
+
+    .start-project-page .sp-field input:not([type="color"]),
+    .start-project-page .sp-field textarea {
+        min-height: 48px;
+        font-size: 16px;
+    }
+
+    .start-project-page .sp-field textarea {
+        min-height: 138px;
+    }
+
+    .start-project-page .sp-form-bottom {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 13px;
+    }
+
+    .start-project-page .sp-wizard-ready .sp-wizard-controls {
+        display: flex;
+        width: 100%;
+        gap: 8px;
+    }
+
+    .start-project-page .sp-button {
+        width: auto;
+        min-width: 0;
+        min-height: 48px;
+        flex: 1 1 0;
+        padding: 0 11px;
+        font-size: 11px;
+    }
+
+    .start-project-page .sp-button-ghost {
+        flex-grow: 0.78;
+    }
+
+    .start-project-page .sp-button-primary {
+        flex-grow: 1;
+    }
+
+    .start-project-page .sp-step-note {
+        order: 2;
+        font-size: 10px;
+    }
+
+    .start-project-page .sp-asset-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .start-project-page .sp-asset-card {
+        grid-template-columns: minmax(76px, 28%) minmax(0, 1fr);
+        gap: 10px;
+    }
+
+    .start-project-page .sp-footer {
+        justify-content: center;
+        text-align: center;
+        flex-wrap: wrap;
+        gap: 8px 14px;
+        line-height: 1.5;
+    }
+
+    /* Keep the animated red/blue identity, but reduce heavy decorative layers. */
+    .start-project-page .sp-glow {
+        width: 250px;
+        height: 250px;
+        filter: blur(66px);
+        opacity: 0.14;
+    }
+
+    .start-project-page .sp-atmo-orb {
+        filter: blur(23px);
+    }
+
+    .start-project-page .sp-atmo-orb-violet,
+    .start-project-page .sp-atmo-beam-two,
+    .start-project-page .sp-atmo-beam-three,
+    .start-project-page .sp-atmo-beam-four,
+    .start-project-page .sp-atmo-beam-five,
+    .start-project-page .sp-atmo-ring-two,
+    .start-project-page .sp-atmo-vertical-trace-two,
+    .start-project-page .sp-atmo-crosshair,
+    .start-project-page .sp-atmo-particles {
+        display: none;
+    }
+
+    .start-project-page .sp-atmo-beam-one {
+        opacity: 0.55;
+    }
+
+    .start-project-page .sp-background-grid {
+        background-size: 38px 38px;
+        opacity: 0.25;
+    }
+
+    .start-project-page .sp-button,
+    .start-project-page .sp-choice-card,
+    .start-project-page .sp-style-card,
+    .start-project-page .sp-pill-option,
+    .start-project-page .sp-asset-card {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    .start-project-page .sp-choice-card:has(input:checked),
+    .start-project-page .sp-style-card:has(input:checked) {
+        animation: spPhoneChoiceSelect 0.42s ease-out;
+    }
+
+    @keyframes spPhoneChoiceSelect {
+        0% { transform: scale(0.985); }
+        65% { box-shadow: 0 0 0 3px rgba(255, 69, 69, 0.10), 0 0 20px rgba(22, 119, 255, 0.10); }
+        100% { transform: scale(1); }
+    }
+}
+
+@media (max-width: 480px) {
+    .start-project-page {
+        padding-top: calc(var(--sp-topbar-height, 98px) + 18px);
+    }
+
+    .start-project-page .sp-hero {
+        margin-bottom: 19px;
+    }
+
+    .start-project-page .sp-hero h1 {
+        font-size: clamp(29px, 8.4vw, 38px);
+        letter-spacing: -1px;
+    }
+
+    .start-project-page .sp-eyebrow {
+        gap: 6px;
+        font-size: 8px;
+        letter-spacing: 1.8px;
+    }
+
+    .start-project-page .sp-eyebrow::before,
+    .start-project-page .sp-eyebrow::after {
+        width: 16px;
+    }
+
+    .start-project-page .sp-form-card {
+        padding: 16px 12px;
+        border-radius: 15px;
+    }
+
+    .start-project-page .sp-form-top {
+        align-items: flex-start;
+    }
+
+    .start-project-page .sp-form-top h2 {
+        font-size: clamp(20px, 5.8vw, 25px);
+    }
+
+    .start-project-page .sp-step-counter strong {
+        font-size: 17px;
+    }
+
+    .start-project-page .sp-step-indicators {
+        gap: 3px;
+    }
+
+    .start-project-page .sp-step-indicators i {
+        width: 24px;
+        height: 24px;
+        flex-basis: 24px;
+    }
+
+    .start-project-page .sp-choice-card {
+        min-height: 112px;
+        padding: 10px 9px;
+    }
+
+    .start-project-page .sp-style-card {
+        min-height: 126px;
+        padding: 9px;
+    }
+
+    .start-project-page .sp-pill-option {
+        flex: 1 1 calc(50% - 7px);
+        min-width: 0;
+    }
+
+    .start-project-page .sp-asset-picker {
+        padding: 13px 10px;
+    }
+
+    .start-project-page .sp-asset-heading {
+        flex-direction: column;
+        gap: 9px;
+    }
+
+    .start-project-page .sp-asset-count {
+        align-self: flex-start;
+    }
+
+    .start-project-page .sp-asset-card {
+        grid-template-columns: 82px minmax(0, 1fr);
+        padding: 8px;
+    }
+
+    .start-project-page .sp-asset-visual,
+    .start-project-page .sp-asset-visual img {
+        min-height: 78px;
+    }
+}
+
+@media (max-width: 360px) {
+    .start-project-page .sp-brand-letter {
+        font-size: clamp(27px, 8vw, 31px);
+    }
+
+    .start-project-page .sp-brand-studio {
+        margin-left: 4px;
+        font-size: 8px;
+        letter-spacing: 1.5px;
+    }
+
+    .start-project-page .sp-form-card {
+        padding: 14px 9px;
+    }
+
+    .start-project-page .sp-step-indicators b {
+        font-size: 7px;
+    }
+
+    .start-project-page .sp-choice-grid,
+    .start-project-page .sp-style-grid {
+        gap: 7px;
+    }
+
+    .start-project-page .sp-choice-card,
+    .start-project-page .sp-style-card {
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+
+    .start-project-page .sp-button {
+        padding-right: 8px;
+        padding-left: 8px;
+        font-size: 10px;
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .start-project-page .sp-choice-card:hover,
+    .start-project-page .sp-style-card:hover,
+    .start-project-page .sp-asset-card:hover,
+    .start-project-page .sp-pill-option:hover {
+        transform: none;
+    }
+
+    .start-project-page .sp-choice-card:active,
+    .start-project-page .sp-style-card:active,
+    .start-project-page .sp-asset-card:active,
+    .start-project-page .sp-button:active {
+        transform: scale(0.985);
+    }
+}
