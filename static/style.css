@@ -13,6 +13,16 @@ html {
     scroll-behavior: smooth;
 }
 
+/* =========================================================
+   KNOWME AI CHAT — MOBILE VIEWPORT DEFAULTS
+   JavaScript updates these values using VisualViewport.
+========================================================= */
+
+:root {
+    --knowme-chat-viewport-height: 100vh;
+    --knowme-chat-keyboard-inset: 0px;
+}
+
 body {
     margin: 0;
     min-height: 100vh;
@@ -8735,4 +8745,265 @@ body.why-intro-active .topbar {
         animation: none !important;
     }
 
+}
+
+
+/* =========================================================
+   KNOWME AI FLOATING CHAT — FINAL MOBILE LAYOUT
+   These rules intentionally come last to override earlier
+   duplicate widget declarations without changing desktop UI.
+========================================================= */
+
+@media (max-width: 600px) {
+    .knowme-chat-dock {
+        position: fixed;
+        right: calc(12px + env(safe-area-inset-right, 0px));
+        bottom: calc(
+            10px + env(safe-area-inset-bottom, 0px) +
+            var(--knowme-chat-keyboard-inset, 0px)
+        );
+        left: auto;
+        width: max-content;
+        max-width: calc(100vw - 24px);
+        z-index: 99999;
+    }
+
+    .knowme-chat-panel {
+        position: fixed;
+        left: calc(10px + env(safe-area-inset-left, 0px));
+        right: calc(10px + env(safe-area-inset-right, 0px));
+        bottom: calc(
+            68px + env(safe-area-inset-bottom, 0px) +
+            var(--knowme-chat-keyboard-inset, 0px)
+        );
+        width: auto;
+        max-width: none;
+        height: max(
+            160px,
+            min(
+                620px,
+                calc(
+                    var(--knowme-chat-viewport-height, 100dvh) -
+                    96px - env(safe-area-inset-bottom, 0px)
+                )
+            )
+        );
+        max-height: max(
+            160px,
+            calc(
+                var(--knowme-chat-viewport-height, 100dvh) -
+                96px - env(safe-area-inset-bottom, 0px)
+            )
+        );
+        transform-origin: bottom center;
+    }
+
+    .knowme-chat-panel .knowme-ai-window {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        max-height: 100%;
+        overflow: hidden;
+        border-radius: 18px;
+    }
+
+    .knowme-chat-panel .knowme-ai-header {
+        flex: 0 0 auto;
+        min-height: 62px;
+        gap: 8px;
+        padding: 9px 11px;
+    }
+
+    .knowme-chat-panel .knowme-ai-brand {
+        gap: 8px;
+        min-width: 0;
+    }
+
+    .knowme-chat-panel .knowme-ai-avatar {
+        width: 34px;
+        height: 34px;
+        flex: 0 0 34px;
+        border-radius: 10px;
+        font-size: 17px;
+    }
+
+    .knowme-chat-panel .knowme-ai-brand-info {
+        min-width: 0;
+        gap: 3px;
+    }
+
+    .knowme-chat-panel .knowme-ai-brand-info strong {
+        font-size: 11px;
+        letter-spacing: 0.9px;
+    }
+
+    .knowme-chat-panel .knowme-ai-brand-info span {
+        font-size: 9px;
+    }
+
+    .knowme-chat-header-actions {
+        flex: 0 0 auto;
+        gap: 6px;
+    }
+
+    .knowme-chat-panel .knowme-ai-model {
+        flex-wrap: nowrap;
+        gap: 4px;
+        font-size: 7px;
+        letter-spacing: 0.6px;
+    }
+
+    .knowme-chat-panel .knowme-ai-model-name {
+        margin: 0;
+        padding: 5px 6px;
+        font-size: 8px;
+    }
+
+    .knowme-chat-close {
+        width: 29px;
+        height: 29px;
+        flex: 0 0 29px;
+        font-size: 21px;
+    }
+
+    .knowme-chat-panel .knowme-ai-messages {
+        flex: 1 1 auto;
+        min-height: 0;
+        max-height: none;
+        height: auto;
+        gap: 12px;
+        padding: 13px 10px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+    }
+
+    .knowme-chat-panel .knowme-ai-message {
+        width: fit-content;
+        max-width: 100%;
+        gap: 7px;
+    }
+
+    .knowme-chat-panel .knowme-ai-message-avatar {
+        width: 25px;
+        height: 25px;
+        flex: 0 0 25px;
+        font-size: 11px;
+    }
+
+    .knowme-chat-panel .knowme-ai-message-content {
+        min-width: 0;
+        max-width: 100%;
+        padding: 9px 10px;
+    }
+
+    .knowme-chat-panel .knowme-ai-message-content p {
+        font-size: 13px;
+        line-height: 1.5;
+        overflow-wrap: anywhere;
+        word-break: normal;
+    }
+
+    .knowme-chat-panel .knowme-ai-form {
+        flex: 0 0 auto;
+        min-width: 0;
+        gap: 7px;
+        margin: 0 9px;
+        padding: 7px;
+        border-radius: 12px;
+    }
+
+    .knowme-chat-panel .knowme-ai-form textarea {
+        min-width: 0;
+        min-height: 40px;
+        max-height: 96px;
+        padding: 9px 7px;
+        font-size: 16px;
+        line-height: 1.4;
+    }
+
+    .knowme-chat-panel .knowme-ai-send {
+        width: 38px;
+        height: 38px;
+        flex: 0 0 38px;
+    }
+
+    .knowme-chat-panel .knowme-ai-hint {
+        flex: 0 0 auto;
+        min-height: 0;
+        padding: 7px 10px 9px;
+        font-size: 9px;
+        line-height: 1.35;
+        text-align: center;
+    }
+
+    .knowme-chat-launcher {
+        min-width: 158px;
+        max-width: calc(100vw - 24px);
+        padding: 7px 10px 7px 7px;
+        gap: 9px;
+        touch-action: manipulation;
+    }
+
+    .knowme-chat-launcher-icon {
+        width: 37px;
+        height: 37px;
+        flex-basis: 37px;
+    }
+}
+
+@media (max-width: 380px) {
+    .knowme-chat-panel .knowme-ai-model-name {
+        display: none;
+    }
+
+    .knowme-chat-panel .knowme-ai-header {
+        gap: 5px;
+        padding-right: 9px;
+        padding-left: 9px;
+    }
+
+    .knowme-chat-header-actions {
+        gap: 5px;
+    }
+
+    .knowme-chat-panel .knowme-ai-model {
+        font-size: 7px;
+        letter-spacing: 0.35px;
+    }
+}
+
+@media (max-height: 560px) and (max-width: 600px) {
+    .knowme-chat-panel {
+        height: max(
+            150px,
+            min(
+                480px,
+                calc(
+                    var(--knowme-chat-viewport-height, 100dvh) -
+                    82px - env(safe-area-inset-bottom, 0px)
+                )
+            )
+        );
+        max-height: max(
+            150px,
+            calc(
+                var(--knowme-chat-viewport-height, 100dvh) -
+                82px - env(safe-area-inset-bottom, 0px)
+            )
+        );
+    }
+
+    .knowme-chat-panel .knowme-ai-header {
+        min-height: 56px;
+        padding-top: 7px;
+        padding-bottom: 7px;
+    }
+
+    .knowme-chat-panel .knowme-ai-hint {
+        display: none;
+    }
 }

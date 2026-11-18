@@ -1651,6 +1651,53 @@ const supportsHover = window.matchMedia(
 ).matches;
 
 
+// Keep the floating chat inside the actually visible mobile viewport.
+// On phones, the virtual keyboard can reduce the Visual Viewport
+// without changing the document's layout viewport.
+function updateKnowmeChatViewport() {
+
+    const visualViewport = window.visualViewport;
+    const viewportHeight = visualViewport
+        ? visualViewport.height
+        : window.innerHeight;
+
+    const visibleBottom = visualViewport
+        ? visualViewport.height + visualViewport.offsetTop
+        : window.innerHeight;
+
+    const keyboardInset = Math.max(
+        0,
+        window.innerHeight - visibleBottom
+    );
+
+    document.documentElement.style.setProperty(
+        "--knowme-chat-viewport-height",
+        `${Math.round(viewportHeight)}px`
+    );
+
+    document.documentElement.style.setProperty(
+        "--knowme-chat-keyboard-inset",
+        `${Math.round(keyboardInset)}px`
+    );
+}
+
+updateKnowmeChatViewport();
+window.addEventListener("resize", updateKnowmeChatViewport, { passive: true });
+
+if (window.visualViewport) {
+    window.visualViewport.addEventListener(
+        "resize",
+        updateKnowmeChatViewport,
+        { passive: true }
+    );
+    window.visualViewport.addEventListener(
+        "scroll",
+        updateKnowmeChatViewport,
+        { passive: true }
+    );
+}
+
+
 function setChatPanelOpen(isOpen) {
 
     chatDock.classList.toggle("is-open", isOpen);
@@ -1754,7 +1801,11 @@ chatToggle.addEventListener("click", function () {
         isPinnedOpen = true;
         setChatPanelOpen(true);
 
-        chatInput.focus();
+        // Do not open the phone keyboard just because the chat panel opened.
+        // On desktop, focus the input for immediate typing as before.
+        if (supportsHover) {
+            chatInput.focus({ preventScroll: true });
+        }
 
     }
 
@@ -2064,6 +2115,9 @@ if (role === "assistant") {
             return;
         }
 
+        const shouldRestoreInputFocus =
+            chatInput === document.activeElement;
+
         isSending = true;
 
         sendButton.disabled = true;
@@ -2210,7 +2264,9 @@ if (
             sendButton.disabled = false;
             chatInput.disabled = false;
 
-            chatInput.focus();
+            if (shouldRestoreInputFocus) {
+                chatInput.focus({ preventScroll: true });
+            }
 
         }
     }
@@ -2282,3 +2338,4 @@ if (
     );
 
 })();
+
