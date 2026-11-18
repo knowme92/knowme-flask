@@ -18,8 +18,24 @@
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
 
     <!-- OPEN GRAPH -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="KNOWME Studio">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KNOWME Studio">
+<meta property="og:title" content="KNOWME Studio">
+<meta property="og:description" content="Modern, fast and secure websites for businesses and professionals.">
+<meta property="og:image" content="{{ url_for('static', filename='images/knowme-preview.png', _external=True) }}">
+<meta property="og:url" content="{{ request.base_url }}">
+    <!-- GOOGLE SITE NAME -->
+{% if request.endpoint == "why_knowme" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "KNOWME Studio",
+  "alternateName": "KNOWME",
+  "url": "https://knowme-studio.onrender.com/"
+}
+</script>
+{% endif %}
     <meta property="og:description" content="Modern, fast and secure websites for businesses and professionals.">
     <meta property="og:image" content="{{ url_for('static', filename='images/knowme-preview.png', _external=True) }}">
     <meta property="og:url" content="{{ request.base_url }}">
