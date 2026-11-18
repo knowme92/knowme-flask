@@ -12,7 +12,7 @@
 
     <title>
         {% block title %}
-            KNOWME Studio
+            KNOWME Studio | Website Design & Development
         {% endblock %}
     </title>
 
@@ -70,9 +70,9 @@
     >
 
     <meta
-        property="og:url"
-        content="{{ request.url }}"
-    >
+    property="og:url"
+    content="{{ request.base_url }}"
+>
 
 
     <!-- =====================================================
@@ -109,9 +109,9 @@
     ====================================================== -->
 
     <meta
-        name="description"
-        content="Modern, fast and secure websites for businesses and professionals."
-    >
+    name="description"
+    content="{% block meta_description %}KNOWME Studio creates modern, responsive websites and web applications, from design and backend development to security and deployment.{% endblock %}"
+>
 
     <meta
         name="robots"
@@ -147,7 +147,7 @@
     ====================================================== -->
 
     <a
-        href="{{ url_for('home') }}"
+        href="{{ url_for('landing') }}"
         class="logo"
     >
         <span class="logo-k">K</span>NOWME Studio
@@ -170,12 +170,12 @@
 
 
         <a
-            href="{{ url_for('home') }}"
-            class="nav-btn"
-            data-i18n="nav.home"
-        >
-            Home
-        </a>
+    href="{{ url_for('home') }}"
+    class="nav-btn"
+    data-i18n="nav.home"
+>
+    Home
+</a>
 
 
         <a

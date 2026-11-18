@@ -181,9 +181,9 @@ Sitemap: {SITE_URL}/sitemap.xml
 
 @app.route("/sitemap.xml")
 def sitemap():
-
     pages = [
-        "/",
+        "/why-knowme",
+        "/home",
         "/prices",
         "/projects",
         "/contact",
@@ -210,17 +210,20 @@ def sitemap():
         mimetype="application/xml"
     )
 
+
+
 @app.route("/")
 def landing():
-
     return redirect(
-        url_for("why_knowme")
+        url_for("why_knowme"),
+        code=301
     )
+
+
 @app.route("/home")
 def home():
-    return render_template(
-        "home.html"
-    )
+    return render_template("home.html")
+
 
 
 # =========================================================
@@ -1046,12 +1049,13 @@ business goal and required functionality, not simply to create
 a decorative page.
 
 
+
 # 3. WEBSITE STRUCTURE AND NAVIGATION
 
 The public website contains the following main pages.
 
 HOME:
-https://knowme-studio.onrender.com/home
+https://knowme-studio.onrender.com/
 
 Purpose:
 Introduces KNOWME Studio, its development approach,
@@ -1069,14 +1073,6 @@ https://knowme-studio.onrender.com/why-knowme
 Purpose:
 Explains the studio's philosophy, capabilities
 and full-system approach to website development.
-
-This page describes:
-- Custom websites.
-- Web applications.
-- Backend systems.
-- Secure architecture.
-- Database solutions.
-- Production deployment.
 
 PRICES:
 https://knowme-studio.onrender.com/prices
@@ -1099,18 +1095,19 @@ Purpose:
 Allows visitors to contact KNOWME Studio
 and describe the website they want to build.
 
-The contact form uses:
-- Name.
-- Email.
-- Message.
+LEGACY HOME URL:
+https://knowme-studio.onrender.com/home
+
+This URL permanently redirects to the root address.
 
 ROOT ADDRESS:
-https://knowme-studio.onrender.com
+https://knowme-studio.onrender.com/
 
-The root address redirects visitors to the Why KNOWME page.
+The root address directly renders the Home page.
 
 When recommending a page, provide the relevant direct URL.
 Do not invent other routes or pages.
+
 
 
 # 4. SERVICES AND DEVELOPMENT CAPABILITIES
