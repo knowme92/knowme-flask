@@ -11,7 +11,8 @@ const translations = {
             home: "Home",
             prices: "Prices",
             projects: "Projects",
-            contact: "Contact"
+            contact: "Contact",
+            startProject: "Start Project"
         },
 
 
@@ -377,7 +378,8 @@ const translations = {
             home: "Главная",
             prices: "Цены",
             projects: "Проекты",
-            contact: "Контакты"
+            contact: "Контакты",
+            startProject: "Начать проект"
         },
 
 
@@ -738,7 +740,8 @@ const translations = {
             home: "Գլխավոր",
             prices: "Գներ",
             projects: "Նախագծեր",
-            contact: "Կապ"
+            contact: "Կապ",
+            startProject: "Սկսել նախագիծը"
         },
 
 
@@ -1088,6 +1091,131 @@ const translations = {
     }
 
 };
+
+
+/* =========================================================
+   START PROJECT — MULTILINGUAL COPY
+========================================================= */
+
+Object.assign(translations.en, {
+    startProject: {
+        eyebrow: "PROJECT CONFIGURATOR",
+        title: "Let's define your next website.",
+        intro: "Choose the direction, visual style and functionality. Your brief will be sent to KNOWME Studio for review and confirmation.",
+        live: "PROJECT BRIEF",
+        asideTitle: "A clear brief creates a stronger result.",
+        asideText: "Tell us what you want to build. We will review the scope, identify the right technical approach and contact you to confirm the next steps.",
+        process1Title: "Your direction", process1Text: "Purpose and website type",
+        process2Title: "Visual language", process2Text: "Style, layout and pages",
+        process3Title: "Functionality", process3Text: "Features and project scope",
+        process4Title: "Confirmation", process4Text: "Contact and project review",
+        asideFoot: "THINK · DESIGN · ENGINEER · LAUNCH", formKicker: "BUILD YOUR BRIEF",
+        step1Title: "What are we building?", step2Title: "How should it look?", step3Title: "What should it do?", step4Title: "Review and contact details",
+        step1: "Type", step2: "Design", step3: "Features", step4: "Contact",
+        typeLabel: "Choose the type of website", typeHint: "Select the option that best describes your idea.",
+        typeBusiness: "Business website", typeBusinessText: "Company, service or organization",
+        typePortfolio: "Portfolio", typePortfolioText: "Personal work and professional profile",
+        typeStore: "Online store", typeStoreText: "Products, cart and online sales",
+        typeLanding: "Landing page", typeLandingText: "One focused page and one main action",
+        typeWebapp: "Web application", typeWebappText: "Custom logic, accounts or dashboards",
+        typeOther: "Not sure yet", typeOtherText: "I want to discuss the idea first",
+        goalLabel: "What is the main goal?", goalLeads: "Get more clients", goalSales: "Sell products", goalBooking: "Accept bookings", goalBrand: "Build a personal brand", goalInfo: "Present information", goalOther: "Other goal",
+        designLabel: "Choose the visual direction", designHint: "This is a starting point. The final design will be refined during project planning.",
+        styleModern: "Modern", styleModernText: "Bold layout and current UI patterns", styleMinimal: "Minimal", styleMinimalText: "Clean, calm and focused", styleCorporate: "Corporate", styleCorporateText: "Structured and professional", styleLuxury: "Luxury", styleLuxuryText: "Elegant details and contrast", styleCreative: "Creative", styleCreativeText: "Expressive and experimental", styleFuture: "Futuristic", styleFutureText: "Technology-led visual language", styleReference: "Based on a reference", styleReferenceText: "I will share an example website",
+        pagesLabel: "How large should the website be?", pagesOne: "1 page", pagesSmall: "3–5 pages", pagesMedium: "6–10 pages", pagesLarge: "10+ pages", pagesUnsure: "Not sure",
+        primaryColor: "Primary color", secondaryColor: "Secondary color", referenceLabel: "Reference website (optional)", referencePlaceholder: "https://example.com", referenceHint: "Share a link only if you have a visual example in mind.",
+        featuresLabel: "Choose pages and functionality", featuresHint: "Select everything you think you may need. We can refine the scope together.", requiredPagesLabel: "Pages or sections", pageHome: "Home", pageAbout: "About", pageServices: "Services", pageProjects: "Projects / Portfolio", pagePricing: "Pricing", pageBlog: "Blog / News", pageContact: "Contact", pageFaq: "FAQ", pageShop: "Shop / Products", pageOther: "Other",
+        functionalityLabel: "Additional functionality", featureContact: "Contact form", featureAccounts: "User accounts / login", featureAdmin: "Admin dashboard", featurePayments: "Online payments", featureBooking: "Booking system", featureMulti: "Multiple languages", featureBlog: "Blog / CMS", featureSearch: "Website search", featureNewsletter: "Newsletter", featureApi: "API integration", featureSeo: "SEO setup", featureAnimations: "Animations / interactions", featureChat: "Live chat / AI assistant",
+        budgetLabel: "Estimated budget", budget1: "Under 100,000 AMD", budget2: "100,000–250,000 AMD", budget3: "250,000–500,000 AMD", budget4: "500,000+ AMD", budgetDiscuss: "Let's discuss",
+        deadlineLabel: "When would you like to launch?", deadlineAsap: "As soon as possible", deadlineTwoWeeks: "Within 2 weeks", deadlineMonth: "Within a month", deadlineFlexible: "Flexible",
+        contactLabel: "A few final details", contactHint: "Tell us how to reach you and add any details that will help us understand the project.", audienceLabel: "Who is the website for? (optional)", audiencePlaceholder: "e.g. local customers, companies, students...", descriptionLabel: "Describe your idea *", descriptionPlaceholder: "Tell us what the website should do, what problem it solves and anything else we should know...", descriptionHint: "20–3,000 characters. Do not include passwords or confidential information.", yourContact: "Your contact details", nameLabel: "Full name *", emailLabel: "Email address *", phoneLabel: "Phone / Telegram (optional)", companyLabel: "Company (optional)",
+        summaryLabel: "YOUR PROJECT SUMMARY", summaryEmpty: "Your selections will appear here as you complete the form.", consent: "I agree that KNOWME Studio may use these details to review my project request and contact me about it.", privateNote: "Your brief is sent securely over HTTPS.", previous: "Back", continue: "Continue", submit: "Send project brief", footer: "A thoughtful process. A secure result.", needHelp: "Need help? Contact us",
+        validationRequired: "Complete the required selections before continuing.", validationPages: "Choose at least one page or section.", validationContact: "Complete your name, email, project description and consent.", validationEmail: "Enter a valid email address.", validationReference: "Use a valid http or https reference link.",
+        modelsKicker: "OPTIONAL · FREE 3D ASSETS",
+        modelsTitle: "Add a 3D element to your website",
+        modelsIntro: "Choose from the free 3D models offered by KNOWME Studio. Your selection will be included in the project brief.",
+        modelsSelected: "selected",
+        modelsFree: "FREE",
+        modelsEmptyTitle: "The free 3D collection is being prepared.",
+        modelsEmptyText: "Free models will appear here as selectable options once the collection is added.",
+        modelsEmptyNote: "You can continue your project request without selecting a 3D model.",
+        modelsLicense: "Each published model will include its license and usage conditions."
+    }
+});
+
+Object.assign(translations.ru, {
+    startProject: {
+        eyebrow: "КОНФИГУРАТОР ПРОЕКТА",
+        title: "Давайте определим ваш будущий сайт.",
+        intro: "Выберите направление, визуальный стиль и функции. Заявка будет отправлена в KNOWME Studio для рассмотрения и подтверждения.",
+        live: "БРИФ ПРОЕКТА", asideTitle: "Чёткое задание — основа сильного результата.",
+        asideText: "Расскажите, что вы хотите создать. Мы оценим объём, подберём технический подход и свяжемся с вами для подтверждения следующих шагов.",
+        process1Title: "Ваше направление", process1Text: "Цель и тип сайта", process2Title: "Визуальный стиль", process2Text: "Стиль, структура и страницы", process3Title: "Функциональность", process3Text: "Возможности и объём проекта", process4Title: "Подтверждение", process4Text: "Контакт и проверка проекта",
+        asideFoot: "ИДЕЯ · ДИЗАЙН · РАЗРАБОТКА · ЗАПУСК", formKicker: "СОЗДАЙТЕ БРИФ",
+        step1Title: "Что мы создаём?", step2Title: "Как это должно выглядеть?", step3Title: "Что сайт должен уметь?", step4Title: "Проверка и контакты",
+        step1: "Тип", step2: "Дизайн", step3: "Функции", step4: "Контакты",
+        typeLabel: "Выберите тип сайта", typeHint: "Выберите вариант, который лучше всего описывает вашу идею.",
+        typeBusiness: "Бизнес-сайт", typeBusinessText: "Компания, услуги или организация", typePortfolio: "Портфолио", typePortfolioText: "Работы и профессиональный профиль", typeStore: "Интернет-магазин", typeStoreText: "Товары, корзина и онлайн-продажи", typeLanding: "Лендинг", typeLandingText: "Одна целевая страница и одно главное действие", typeWebapp: "Веб-приложение", typeWebappText: "Собственная логика, аккаунты или панели управления", typeOther: "Пока не знаю", typeOtherText: "Сначала хочу обсудить идею",
+        goalLabel: "Какова главная цель?", goalLeads: "Привлекать клиентов", goalSales: "Продавать товары", goalBooking: "Принимать бронирования", goalBrand: "Развивать личный бренд", goalInfo: "Представлять информацию", goalOther: "Другая цель",
+        designLabel: "Выберите визуальное направление", designHint: "Это отправная точка. Финальный дизайн уточняется во время планирования проекта.",
+        styleModern: "Современный", styleModernText: "Выразительная структура и актуальный интерфейс", styleMinimal: "Минимализм", styleMinimalText: "Чистый, спокойный и лаконичный стиль", styleCorporate: "Корпоративный", styleCorporateText: "Структурированный и профессиональный", styleLuxury: "Премиальный", styleLuxuryText: "Элегантные детали и контраст", styleCreative: "Креативный", styleCreativeText: "Выразительный и экспериментальный", styleFuture: "Футуристичный", styleFutureText: "Технологичная визуальная подача", styleReference: "По примеру", styleReferenceText: "Я отправлю пример сайта",
+        pagesLabel: "Какого размера должен быть сайт?", pagesOne: "1 страница", pagesSmall: "3–5 страниц", pagesMedium: "6–10 страниц", pagesLarge: "Более 10 страниц", pagesUnsure: "Не уверен",
+        primaryColor: "Основной цвет", secondaryColor: "Дополнительный цвет", referenceLabel: "Пример сайта (необязательно)", referencePlaceholder: "https://example.com", referenceHint: "Добавьте ссылку, если у вас есть визуальный пример.",
+        featuresLabel: "Выберите страницы и функции", featuresHint: "Отметьте всё, что может понадобиться. Объём можно уточнить вместе.", requiredPagesLabel: "Страницы или разделы", pageHome: "Главная", pageAbout: "О нас", pageServices: "Услуги", pageProjects: "Проекты / Портфолио", pagePricing: "Цены", pageBlog: "Блог / Новости", pageContact: "Контакты", pageFaq: "Вопросы и ответы", pageShop: "Магазин / Товары", pageOther: "Другое",
+        functionalityLabel: "Дополнительные функции", featureContact: "Форма обратной связи", featureAccounts: "Аккаунты / вход пользователей", featureAdmin: "Панель администратора", featurePayments: "Онлайн-платежи", featureBooking: "Система бронирования", featureMulti: "Несколько языков", featureBlog: "Блог / CMS", featureSearch: "Поиск по сайту", featureNewsletter: "Рассылка", featureApi: "Интеграция API", featureSeo: "Настройка SEO", featureAnimations: "Анимации / интерактивность", featureChat: "Онлайн-чат / ИИ-помощник",
+        budgetLabel: "Предполагаемый бюджет", budget1: "До 100 000 AMD", budget2: "100 000–250 000 AMD", budget3: "250 000–500 000 AMD", budget4: "От 500 000 AMD", budgetDiscuss: "Обсудим",
+        deadlineLabel: "Когда хотите запустить сайт?", deadlineAsap: "Как можно скорее", deadlineTwoWeeks: "В течение 2 недель", deadlineMonth: "В течение месяца", deadlineFlexible: "Срок гибкий",
+        contactLabel: "Осталось несколько деталей", contactHint: "Укажите, как с вами связаться, и добавьте сведения, которые помогут понять проект.", audienceLabel: "Для кого предназначен сайт? (необязательно)", audiencePlaceholder: "Например: местные клиенты, компании, студенты...", descriptionLabel: "Опишите вашу идею *", descriptionPlaceholder: "Расскажите, что должен делать сайт, какую задачу решать и что ещё важно знать...", descriptionHint: "От 20 до 3 000 символов. Не указывайте пароли и конфиденциальные данные.", yourContact: "Ваши контактные данные", nameLabel: "Имя и фамилия *", emailLabel: "Электронная почта *", phoneLabel: "Телефон / Telegram (необязательно)", companyLabel: "Компания (необязательно)",
+        summaryLabel: "КРАТКО О ПРОЕКТЕ", summaryEmpty: "Ваш выбор появится здесь по мере заполнения формы.", consent: "Я разрешаю KNOWME Studio использовать эти данные для рассмотрения заявки и связи со мной.", privateNote: "Бриф отправляется по защищённому HTTPS-соединению.", previous: "Назад", continue: "Продолжить", submit: "Отправить бриф", footer: "Продуманный процесс. Надёжный результат.", needHelp: "Нужна помощь? Свяжитесь с нами",
+        validationRequired: "Заполните обязательные поля перед продолжением.", validationPages: "Выберите хотя бы одну страницу или раздел.", validationContact: "Укажите имя, электронную почту, описание проекта и согласие.", validationEmail: "Введите корректный адрес электронной почты.", validationReference: "Укажите корректную ссылку с http или https.",
+        modelsKicker: "ДОПОЛНИТЕЛЬНО · БЕСПЛАТНЫЕ 3D-МОДЕЛИ",
+        modelsTitle: "Добавьте 3D-элемент на свой сайт",
+        modelsIntro: "Выберите бесплатные 3D-модели, предлагаемые KNOWME Studio. Ваш выбор будет включён в описание проекта.",
+        modelsSelected: "выбрано",
+        modelsFree: "БЕСПЛАТНО",
+        modelsEmptyTitle: "Коллекция бесплатных 3D-моделей готовится.",
+        modelsEmptyText: "После добавления коллекции бесплатные модели появятся здесь как варианты для выбора.",
+        modelsEmptyNote: "Вы можете отправить заявку, не выбирая 3D-модель.",
+        modelsLicense: "Для каждой опубликованной модели будут указаны лицензия и условия использования."
+    }
+});
+
+Object.assign(translations.hy, {
+    startProject: {
+        eyebrow: "ՆԱԽԱԳԾԻ ԿՈՆՖԻԳՈՒՐԱՏՈՐ",
+        title: "Եկեք որոշենք՝ ինչ կայք եք ցանկանում։",
+        intro: "Ընտրեք կայքի ուղղությունը, արտաքին տեսքը և ֆունկցիոնալությունը։ Հայտը կուղարկվի KNOWME Studio՝ ուսումնասիրության և հաստատման համար։",
+        live: "ՆԱԽԱԳԾԻ ՀԱՅՏ", asideTitle: "Հստակ առաջադրանքը լավ արդյունքի հիմքն է։",
+        asideText: "Ներկայացրեք ձեր գաղափարը։ Մենք կուսումնասիրենք ծավալը, կընտրենք համապատասխան տեխնիկական մոտեցումը և կապ կհաստատենք հաջորդ քայլերը համաձայնեցնելու համար։",
+        process1Title: "Ձեր ուղղությունը", process1Text: "Նպատակն ու կայքի տեսակը", process2Title: "Տեսողական ոճը", process2Text: "Ոճը, կառուցվածքն ու էջերը", process3Title: "Հնարավորությունները", process3Text: "Ֆունկցիաներն ու ծավալը", process4Title: "Հաստատում", process4Text: "Կապ և նախագծի ուսումնասիրություն",
+        asideFoot: "ՄՏԱԾԵԼ · ՆԱԽԱԳԾԵԼ · ԿԱՌՈՒՑԵԼ · ԳՈՐԾԱՐԿԵԼ", formKicker: "ԿԱԶՄԵՔ ՁԵՐ ՀԱՅՏԸ",
+        step1Title: "Ի՞նչ ենք կառուցելու։", step2Title: "Ինչպիսի՞ տեսք պետք է ունենա։", step3Title: "Ի՞նչ պետք է կարողանա անել։", step4Title: "Վերջնական տվյալներ և կապ",
+        step1: "Տեսակ", step2: "Դիզայն", step3: "Ֆունկցիաներ", step4: "Կապ",
+        typeLabel: "Ընտրեք կայքի տեսակը", typeHint: "Ընտրեք ձեր գաղափարը լավագույնս նկարագրող տարբերակը։",
+        typeBusiness: "Բիզնես կայք", typeBusinessText: "Ընկերություն, ծառայություն կամ կազմակերպություն", typePortfolio: "Պորտֆոլիո", typePortfolioText: "Աշխատանքներ և մասնագիտական ներկայացում", typeStore: "Օնլայն խանութ", typeStoreText: "Ապրանքներ, զամբյուղ և առցանց վաճառք", typeLanding: "Landing page", typeLandingText: "Մեկ նպատակային էջ և հիմնական գործողություն", typeWebapp: "Վեբ հավելված", typeWebappText: "Անհատական տրամաբանություն, հաշիվներ կամ վահանակներ", typeOther: "Դեռ հստակ չէ", typeOtherText: "Նախ ցանկանում եմ քննարկել գաղափարը",
+        goalLabel: "Ո՞րն է հիմնական նպատակը։", goalLeads: "Գրավել նոր հաճախորդներ", goalSales: "Վաճառել ապրանքներ", goalBooking: "Ընդունել ամրագրումներ", goalBrand: "Զարգացնել անձնական բրենդը", goalInfo: "Ներկայացնել տեղեկություն", goalOther: "Այլ նպատակ",
+        designLabel: "Ընտրեք արտաքին տեսքի ուղղությունը", designHint: "Սա մեկնարկային ընտրություն է։ Վերջնական դիզայնը կհստակեցնենք նախագծման ընթացքում։",
+        styleModern: "Ժամանակակից", styleModernText: "Արտահայտիչ կառուցվածք և արդի ինտերֆեյս", styleMinimal: "Մինիմալիստական", styleMinimalText: "Մաքուր, հանգիստ և կենտրոնացված", styleCorporate: "Կորպորատիվ", styleCorporateText: "Կազմակերպված և պրոֆեսիոնալ", styleLuxury: "Պրեմիում", styleLuxuryText: "Նրբագեղ դետալներ և հակադրություն", styleCreative: "Ստեղծագործական", styleCreativeText: "Արտահայտիչ և փորձարարական", styleFuture: "Ֆուտուրիստական", styleFutureText: "Տեխնոլոգիական տեսողական լեզու", styleReference: "Օրինակի հիման վրա", styleReferenceText: "Կուղարկեմ օրինակային կայքի հղում",
+        pagesLabel: "Ի՞նչ ծավալի կայք է անհրաժեշտ։", pagesOne: "1 էջ", pagesSmall: "3–5 էջ", pagesMedium: "6–10 էջ", pagesLarge: "10-ից ավելի էջ", pagesUnsure: "Դեռ չգիտեմ",
+        primaryColor: "Հիմնական գույն", secondaryColor: "Լրացուցիչ գույն", referenceLabel: "Օրինակային կայք (ըստ ցանկության)", referencePlaceholder: "https://example.com", referenceHint: "Տեղադրեք հղում, եթե ունեք տեսողական օրինակ։",
+        featuresLabel: "Ընտրեք էջերն ու ֆունկցիաները", featuresHint: "Նշեք ձեզ անհրաժեշտ հնարավորությունները։ Ծավալը կարող ենք միասին հստակեցնել։", requiredPagesLabel: "Էջեր կամ բաժիններ", pageHome: "Գլխավոր", pageAbout: "Մեր մասին", pageServices: "Ծառայություններ", pageProjects: "Նախագծեր / Պորտֆոլիո", pagePricing: "Գներ", pageBlog: "Բլոգ / Նորություններ", pageContact: "Կապ", pageFaq: "Հաճախ տրվող հարցեր", pageShop: "Խանութ / Ապրանքներ", pageOther: "Այլ",
+        functionalityLabel: "Լրացուցիչ հնարավորություններ", featureContact: "Կապի ձև", featureAccounts: "Օգտահաշիվներ / Մուտք", featureAdmin: "Ադմինիստրատորի վահանակ", featurePayments: "Առցանց վճարումներ", featureBooking: "Ամրագրման համակարգ", featureMulti: "Մի քանի լեզու", featureBlog: "Բլոգ / CMS", featureSearch: "Կայքի որոնում", featureNewsletter: "Նամակների բաժանորդագրություն", featureApi: "API ինտեգրում", featureSeo: "SEO կարգավորում", featureAnimations: "Անիմացիաներ / ինտերակտիվություն", featureChat: "Առցանց զրույց / AI օգնական",
+        budgetLabel: "Նախատեսվող բյուջե", budget1: "Մինչև 100,000 AMD", budget2: "100,000–250,000 AMD", budget3: "250,000–500,000 AMD", budget4: "500,000+ AMD", budgetDiscuss: "Քննարկենք",
+        deadlineLabel: "Ե՞րբ կցանկանաք գործարկել կայքը։", deadlineAsap: "Հնարավորինս շուտ", deadlineTwoWeeks: "2 շաբաթվա ընթացքում", deadlineMonth: "Մեկ ամսվա ընթացքում", deadlineFlexible: "Ժամկետը ճկուն է",
+        contactLabel: "Եվս մի քանի մանրուք", contactHint: "Նշեք՝ ինչպես կապ հաստատել ձեզ հետ, և ավելացրեք նախագծին վերաբերող կարևոր տեղեկությունները։", audienceLabel: "Ո՞ւմ համար է նախատեսված կայքը։ (ըստ ցանկության)", audiencePlaceholder: "Օրինակ՝ տեղական հաճախորդներ, ընկերություններ, ուսանողներ...", descriptionLabel: "Նկարագրեք ձեր գաղափարը *", descriptionPlaceholder: "Նշեք՝ ինչ պետք է անի կայքը, ինչ խնդիր լուծի և ինչ այլ բան պետք է իմանանք...", descriptionHint: "20–3,000 նիշ։ Մի նշեք գաղտնաբառեր կամ գաղտնի տվյալներ։", yourContact: "Ձեր կապի տվյալները", nameLabel: "Անուն, ազգանուն *", emailLabel: "Էլեկտրոնային փոստ *", phoneLabel: "Հեռախոս / Telegram (ըստ ցանկության)", companyLabel: "Ընկերություն (ըստ ցանկության)",
+        summaryLabel: "ՆԱԽԱԳԾԻ ԱՄՓՈՓՈՒՄ", summaryEmpty: "Ձեր ընտրությունները կհայտնվեն այստեղ՝ ձևը լրացնելուն զուգահեռ։", consent: "Համաձայն եմ, որ KNOWME Studio-ն օգտագործի այս տվյալները հայտը դիտարկելու և ինձ հետ կապ հաստատելու համար։", privateNote: "Հայտը փոխանցվում է HTTPS պաշտպանված կապով։", previous: "Հետ", continue: "Շարունակել", submit: "Ուղարկել նախագիծը", footer: "Մտածված գործընթաց։ Ապահով արդյունք։", needHelp: "Օգնությո՞ւն է պետք։ Կապ հաստատեք",
+        validationRequired: "Շարունակելուց առաջ լրացրեք պարտադիր ընտրությունները։", validationPages: "Ընտրեք առնվազն մեկ էջ կամ բաժին։", validationContact: "Լրացրեք անունը, էլ. փոստը, նախագծի նկարագրությունը և համաձայնությունը։", validationEmail: "Մուտքագրեք վավեր էլեկտրոնային փոստի հասցե։",
+        modelsKicker: "ԼՐԱՑՈՒՑԻՉ · ԱՆՎՃԱՐ 3D ՄՈԴԵԼՆԵՐ",
+        modelsTitle: "Ավելացրու 3D տարր քո կայքին",
+        modelsIntro: "Ընտրիր KNOWME Studio-ի առաջարկած անվճար 3D մոդելներից։ Ընտրությունդ կներառվի նախագծի հայտում։",
+        modelsSelected: "ընտրված է",
+        modelsFree: "ԱՆՎՃԱՐ",
+        modelsEmptyTitle: "Անվճար 3D մոդելների հավաքածուն պատրաստվում է։",
+        modelsEmptyText: "Հավաքածուն ավելացնելուց հետո անվճար մոդելները կհայտնվեն այստեղ՝ ընտրության համար։",
+        modelsEmptyNote: "Կարող ես շարունակել հայտը՝ առանց 3D մոդել ընտրելու։",
+        modelsLicense: "Յուրաքանչյուր հրապարակված մոդելի համար կնշվեն լիցենզիան և օգտագործման պայմանները։"
+    }
+});
 
 
 /* =========================================================
@@ -2339,3 +2467,331 @@ if (
 
 })();
 
+
+/* =========================================================
+   START PROJECT — MULTI-STEP WIZARD
+========================================================= */
+
+(function initStartProjectWizard() {
+    "use strict";
+
+    const form = document.getElementById("startProjectForm");
+    if (!form) return;
+
+    // Restore previously submitted choices after server-side validation errors.
+    // Keeping Jinja expressions inside quoted data attributes also preserves valid HTML syntax in IDE inspections.
+    form.querySelectorAll("[data-sp-initial-checked]").forEach((input) => {
+        input.checked = input.dataset.spInitialChecked === "true";
+        input.removeAttribute("data-sp-initial-checked");
+    });
+
+    const panels = Array.from(form.querySelectorAll("[data-step-panel]"));
+    const indicators = Array.from(form.querySelectorAll("[data-step-indicator]"));
+    const progressBar = document.getElementById("spProgressBar");
+    const stepNumber = document.getElementById("spStepNumber");
+    const currentTitle = document.getElementById("spCurrentTitle");
+    const previousButton = document.getElementById("spPrevButton");
+    const nextButton = document.getElementById("spNextButton");
+    const submitButton = document.getElementById("spSubmitButton");
+    const validationMessage = document.getElementById("spValidationMessage");
+    const summaryContent = document.getElementById("spSummaryContent");
+    const fallbackSubmit = form.querySelector(".sp-nojs-submit");
+
+    if (!panels.length || !previousButton || !nextButton || !submitButton) return;
+
+    const titleKeys = [
+        "startProject.step1Title",
+        "startProject.step2Title",
+        "startProject.step3Title",
+        "startProject.step4Title"
+    ];
+    const validationKeys = [
+        "startProject.validationRequired",
+        "startProject.validationRequired",
+        "startProject.validationPages",
+        "startProject.validationContact"
+    ];
+
+    let currentStep = 0;
+    form.classList.add("sp-wizard-ready");
+    if (fallbackSubmit) fallbackSubmit.hidden = true;
+
+    function wizardText(key, fallback) {
+        const language = document.documentElement.lang || "en";
+        return getTranslation(language, key)
+            || getTranslation("en", key)
+            || fallback;
+    }
+
+    function setMessage(message) {
+        validationMessage.textContent = message || "";
+        validationMessage.classList.toggle("is-visible", Boolean(message));
+    }
+
+    function selectedValue(name) {
+        const selected = form.querySelector(`input[name="${name}"]:checked`);
+        return selected ? selected.value : "";
+    }
+
+    function validateStep(index) {
+        setMessage("");
+
+        if (index === 0) {
+            if (!selectedValue("website_type") || !selectedValue("website_goal")) {
+                setMessage(wizardText(validationKeys[index], "Complete the required selections."));
+                return false;
+            }
+        }
+
+        if (index === 1) {
+            if (!selectedValue("design_style") || !selectedValue("pages_scope")) {
+                setMessage(wizardText(validationKeys[index], "Complete the required selections."));
+                return false;
+            }
+        }
+
+        if (index === 2) {
+            if (!form.querySelector('input[name="required_pages"]:checked')) {
+                setMessage(wizardText("startProject.validationPages", "Choose at least one page or section."));
+                return false;
+            }
+            if (!selectedValue("budget") || !selectedValue("deadline")) {
+                setMessage(wizardText("startProject.validationRequired", "Complete the required selections."));
+                return false;
+            }
+        }
+
+        if (index === 3) {
+            const name = form.elements.full_name;
+            const email = form.elements.email;
+            const description = form.elements.description;
+            const consent = form.querySelector('input[name="consent"]');
+
+            if (!name.value.trim() || !email.value.trim() || !description.value.trim() || !consent.checked) {
+                setMessage(wizardText("startProject.validationContact", "Complete your contact details and project description."));
+                return false;
+            }
+
+            if (!email.checkValidity()) {
+                setMessage(wizardText("startProject.validationEmail", "Enter a valid email address."));
+                email.focus({ preventScroll: true });
+                return false;
+            }
+
+            const referenceInput = form.elements.reference_url;
+            if (referenceInput && referenceInput.value.trim()) {
+                try {
+                    const reference = new URL(referenceInput.value.trim());
+                    if (!['http:', 'https:'].includes(reference.protocol)) throw new Error('Invalid protocol');
+                } catch (error) {
+                    setMessage(wizardText("startProject.validationReference", "Use a valid http or https reference link."));
+                    referenceInput.focus({ preventScroll: true });
+                    return false;
+                }
+            }
+
+            if (description.value.trim().length < 20 || description.value.length > 3000) {
+                setMessage(wizardText("startProject.descriptionHint", "Description must contain 20 to 3,000 characters."));
+                description.focus({ preventScroll: true });
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    function showStep(index, shouldScroll = true) {
+        currentStep = Math.max(0, Math.min(index, panels.length - 1));
+
+        panels.forEach((panel, panelIndex) => {
+            const active = panelIndex === currentStep;
+            panel.classList.toggle("is-active", active);
+            panel.hidden = !active;
+        });
+
+        indicators.forEach((indicator, indicatorIndex) => {
+            indicator.classList.toggle("is-active", indicatorIndex === currentStep);
+            indicator.classList.toggle("is-complete", indicatorIndex < currentStep);
+            if (indicatorIndex === currentStep) {
+                indicator.setAttribute("aria-current", "step");
+            } else {
+                indicator.removeAttribute("aria-current");
+            }
+        });
+
+        if (stepNumber) stepNumber.textContent = String(currentStep + 1).padStart(2, "0");
+        if (progressBar) progressBar.style.width = `${((currentStep + 1) / panels.length) * 100}%`;
+        if (currentTitle) currentTitle.textContent = wizardText(titleKeys[currentStep], "Project details");
+
+        previousButton.hidden = currentStep === 0;
+        nextButton.hidden = currentStep === panels.length - 1;
+        submitButton.hidden = currentStep !== panels.length - 1;
+        setMessage("");
+        updateSummary();
+
+        const card = form.closest(".sp-form-card");
+        if (shouldScroll && card) {
+            // Keep the wizard below the fixed navigation instead of hiding its heading behind it.
+            const topbar = document.querySelector(".topbar");
+            const topbarHeight = topbar ? topbar.getBoundingClientRect().height : 0;
+            const targetTop = card.getBoundingClientRect().top + window.scrollY - topbarHeight - 22;
+            window.scrollTo({ top: Math.max(0, targetTop), behavior: "smooth" });
+        }
+    }
+
+    function labelsFor(name) {
+        return Array.from(form.querySelectorAll(`input[name="${name}"]:checked`)).map((input) => {
+            if (input.dataset.spModelTitle) return input.dataset.spModelTitle;
+            const label = input.closest("label");
+            if (!label) return input.value;
+            const visibleText = label.querySelector("strong, span[data-i18n]");
+            return (visibleText ? visibleText.textContent : label.innerText).replace(/\s+/g, " ").trim();
+        });
+    }
+
+    function updateSummary() {
+        const selectedModelCount = form.querySelectorAll('input[name="selected_3d_models"]:checked').length;
+        const assetCount = form.querySelector("[data-sp-asset-count]");
+        if (assetCount) {
+            const countLabel = wizardText("startProject.modelsSelected", "selected");
+            assetCount.textContent = `${selectedModelCount} ${countLabel}`;
+        }
+        if (!summaryContent) return;
+        const values = [
+            ...labelsFor("website_type"),
+            ...labelsFor("website_goal"),
+            ...labelsFor("design_style"),
+            ...labelsFor("pages_scope"),
+            ...labelsFor("required_pages"),
+            ...labelsFor("features"),
+            ...labelsFor("selected_3d_models"),
+            ...labelsFor("budget"),
+            ...labelsFor("deadline")
+        ].filter(Boolean);
+
+        const uniqueValues = Array.from(new Set(values));
+        if (!uniqueValues.length) {
+            summaryContent.textContent = wizardText("startProject.summaryEmpty", "Your selections will appear here.");
+            return;
+        }
+
+        summaryContent.replaceChildren();
+        uniqueValues.forEach((value) => {
+            const chip = document.createElement("span");
+            chip.className = "sp-summary-chip";
+            chip.textContent = value;
+            summaryContent.appendChild(chip);
+        });
+    }
+
+    previousButton.addEventListener("click", () => showStep(currentStep - 1));
+
+    nextButton.addEventListener("click", () => {
+        if (validateStep(currentStep)) showStep(currentStep + 1);
+    });
+
+    form.addEventListener("change", updateSummary);
+    form.addEventListener("input", updateSummary);
+    document.addEventListener("knowme:languagechange", () => {
+        if (currentTitle) currentTitle.textContent = wizardText(titleKeys[currentStep], "Project details");
+        updateSummary();
+    });
+
+    form.addEventListener("submit", (event) => {
+        if (currentStep !== panels.length - 1) {
+            event.preventDefault();
+            while (currentStep < panels.length - 1) {
+                if (!validateStep(currentStep)) return;
+                currentStep += 1;
+            }
+            showStep(currentStep);
+            return;
+        }
+
+        if (!validateStep(currentStep)) {
+            event.preventDefault();
+        }
+    });
+
+    // Reveal effects only enhance presentation; the form remains usable if observers are unavailable.
+    const revealItems = document.querySelectorAll(".sp-reveal");
+    if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-revealed");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08 });
+        revealItems.forEach((item) => observer.observe(item));
+    } else {
+        revealItems.forEach((item) => item.classList.add("is-revealed"));
+    }
+
+    // Do not auto-scroll to the form on page load; let the complete hero heading remain visible.
+    showStep(0, false);
+    updateSummary();
+})();
+
+
+/* =========================================================
+   START PROJECT — INTERACTIVE NEON POINTER LIGHT
+   Decorative only; uses one animation frame at a time.
+========================================================= */
+
+(function initStartProjectPointerLight() {
+    "use strict";
+
+    const page = document.querySelector(".start-project-page");
+    const atmosphere = page?.querySelector(".sp-neon-atmosphere");
+    if (!page || !atmosphere) return;
+
+    const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+    const finePointer = window.matchMedia?.("(hover: hover) and (pointer: fine)").matches ?? false;
+    if (reducedMotion || !finePointer) return;
+
+    let frameId = 0;
+    let currentX = window.innerWidth * 0.5;
+    let currentY = window.innerHeight * 0.42;
+    let targetX = currentX;
+    let targetY = currentY;
+    let currentOpacity = 0;
+    let targetOpacity = 0;
+
+    function animatePointerLight() {
+        frameId = 0;
+        currentX += (targetX - currentX) * 0.14;
+        currentY += (targetY - currentY) * 0.14;
+        currentOpacity += (targetOpacity - currentOpacity) * 0.12;
+
+        const bounds = atmosphere.getBoundingClientRect();
+        atmosphere.style.setProperty("--sp-pointer-x", `${currentX - bounds.left}px`);
+        atmosphere.style.setProperty("--sp-pointer-y", `${currentY - bounds.top}px`);
+        atmosphere.style.setProperty("--sp-pointer-opacity", currentOpacity.toFixed(3));
+
+        const stillMoving = Math.abs(targetX - currentX) > 0.7
+            || Math.abs(targetY - currentY) > 0.7
+            || Math.abs(targetOpacity - currentOpacity) > 0.01;
+
+        if (stillMoving) frameId = window.requestAnimationFrame(animatePointerLight);
+    }
+
+    page.addEventListener("pointermove", (event) => {
+        if (event.pointerType === "touch") return;
+        targetX = event.clientX;
+        targetY = event.clientY;
+        targetOpacity = 1;
+        if (!frameId) frameId = window.requestAnimationFrame(animatePointerLight);
+    }, { passive: true });
+
+    page.addEventListener("pointerleave", () => {
+        targetOpacity = 0;
+        if (!frameId) frameId = window.requestAnimationFrame(animatePointerLight);
+    }, { passive: true });
+
+    window.addEventListener("blur", () => {
+        targetOpacity = 0;
+        if (!frameId) frameId = window.requestAnimationFrame(animatePointerLight);
+    });
+})();

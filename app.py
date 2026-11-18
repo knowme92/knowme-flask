@@ -1,7 +1,9 @@
 import os
+import re
 
 from datetime import timedelta
 from functools import wraps
+from urllib.parse import urlsplit
 
 from dotenv import load_dotenv
 
@@ -25,7 +27,7 @@ from sqlalchemy.exc import SQLAlchemyError
 from werkzeug.security import check_password_hash
 
 from database import SessionLocal
-from models import ContactMessage
+from models import ContactMessage, ProjectRequest
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 import json
@@ -116,7 +118,10 @@ app.config["SESSION_COOKIE_HTTPONLY"] = True
 app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
 
 # LOCAL DEVELOPMENT
-app.config["SESSION_COOKIE_SECURE"] = False
+app.config["SESSION_COOKIE_SECURE"] = (
+    os.getenv("SESSION_COOKIE_SECURE", "false").strip().lower()
+    in {"1", "true", "yes", "on"}
+)
 
 app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(
     minutes=30
@@ -425,6 +430,248 @@ def contact():
     )
 
 
+
+# =========================================================
+# START PROJECT — WEBSITE BRIEF
+# GET renders the wizard; POST validates and stores the request.
+# =========================================================
+
+PROJECT_WEBSITE_TYPES = {
+    "business", "portfolio", "ecommerce", "landing", "webapp", "other"
+}
+PROJECT_GOALS = {
+    "leads", "sales", "booking", "personal-brand", "information", "other"
+}
+PROJECT_STYLES = {
+    "modern", "minimal", "corporate", "luxury", "creative", "futuristic", "reference"
+}
+PROJECT_PAGE_SCOPES = {"one", "3-5", "6-10", "10-plus", "unsure"}
+PROJECT_REQUIRED_PAGES = {
+    "home", "about", "services", "projects", "pricing", "blog", "contact", "faq", "shop", "other"
+}
+PROJECT_FEATURES = {
+    "contact-form", "accounts", "admin-panel", "payments", "booking",
+    "multilingual", "blog", "search", "newsletter", "api", "seo",
+    "animations", "chat"
+}
+PROJECT_BUDGETS = {"under-100k", "100-250k", "250-500k", "500-plus", "discuss"}
+PROJECT_DEADLINES = {"asap", "2-weeks", "1-month", "flexible"}
+
+# Free 3D assets offered INSIDE the Start Project configurator.
+# Add only assets whose redistribution license has been verified.
+# Each item: id, title, description, category, preview_image, file, format, license.
+# The catalog remains empty until the owner supplies the actual model files.
+START_PROJECT_3D_MODELS = []
+
+
+def _project_form_error(message, form_data):
+    flash(message, "error")
+    return render_template(
+        "start-project.html",
+        form_data=form_data,
+        project_3d_models=START_PROJECT_3D_MODELS
+    ), 400
+
+
+@app.route(
+    "/start-project",
+    methods=["GET", "POST"]
+)
+@limiter.limit(
+    "5 per minute; 20 per hour",
+    methods=["POST"]
+)
+def start_project():
+
+    if request.method == "GET":
+        return render_template(
+            "start-project.html",
+            form_data=request.form,
+            project_3d_models=START_PROJECT_3D_MODELS
+        )
+
+    form_data = request.form
+
+    # Quiet honeypot: automated bots often fill every field.
+    # Do not store the submission or disclose the trap.
+    if form_data.get("website_check", "").strip():
+        flash(
+            "Your project request has been received. We will review it and contact you.",
+            "success"
+        )
+        return redirect(url_for("start_project"), code=303)
+
+    full_name = form_data.get("full_name", "").strip()
+    email = form_data.get("email", "").strip()
+    phone = form_data.get("phone", "").strip()
+    company = form_data.get("company", "").strip()
+
+    website_type = form_data.get("website_type", "").strip()
+    website_goal = form_data.get("website_goal", "").strip()
+    design_style = form_data.get("design_style", "").strip()
+    pages_scope = form_data.get("pages_scope", "").strip()
+    budget = form_data.get("budget", "").strip()
+    deadline = form_data.get("deadline", "").strip()
+
+    required_pages = form_data.getlist("required_pages")
+    features = form_data.getlist("features")
+    selected_3d_model_ids = form_data.getlist("selected_3d_models")
+
+    primary_color = form_data.get("primary_color", "#ef4444").strip().lower()
+    secondary_color = form_data.get("secondary_color", "#006eff").strip().lower()
+    reference_url = form_data.get("reference_url", "").strip()
+    target_audience = form_data.get("target_audience", "").strip()
+    description = form_data.get("description", "").strip()
+
+    # Validate contact fields.
+    if not full_name or len(full_name) > 80:
+        return _project_form_error("Enter your name (maximum 80 characters).", form_data)
+
+    if (
+        not email
+        or len(email) > 120
+        or not re.fullmatch(r"[^\s@]+@[^\s@]+\.[^\s@]+", email)
+    ):
+        return _project_form_error("Enter a valid email address (maximum 120 characters).", form_data)
+
+    if len(phone) > 40:
+        return _project_form_error("Phone number is too long.", form_data)
+
+    if len(company) > 120:
+        return _project_form_error("Company name is too long.", form_data)
+
+    # Validate all single-choice values against server-side allow-lists.
+    if website_type not in PROJECT_WEBSITE_TYPES:
+        return _project_form_error("Choose a valid website type.", form_data)
+
+    if website_goal not in PROJECT_GOALS:
+        return _project_form_error("Choose the main goal of the website.", form_data)
+
+    if design_style not in PROJECT_STYLES:
+        return _project_form_error("Choose a design style.", form_data)
+
+    if pages_scope not in PROJECT_PAGE_SCOPES:
+        return _project_form_error("Choose the expected website size.", form_data)
+
+    if budget not in PROJECT_BUDGETS:
+        return _project_form_error("Choose a budget range or select that you want to discuss it.", form_data)
+
+    if deadline not in PROJECT_DEADLINES:
+        return _project_form_error("Choose an expected timeline.", form_data)
+
+    # Reject unknown values instead of silently storing unexpected form data.
+    if (
+        not required_pages
+        or len(required_pages) > 10
+        or any(value not in PROJECT_REQUIRED_PAGES for value in required_pages)
+    ):
+        return _project_form_error("Choose at least one required page or section.", form_data)
+
+    if (
+        len(features) > len(PROJECT_FEATURES)
+        or any(value not in PROJECT_FEATURES for value in features)
+    ):
+        return _project_form_error("One or more selected features are invalid.", form_data)
+
+    # A user can submit only IDs that exist in the server-side free model catalogue.
+    available_3d_models = {
+        str(model.get("id")): model
+        for model in START_PROJECT_3D_MODELS
+        if model.get("id") and model.get("title")
+    }
+    if (
+        len(selected_3d_model_ids) > 12
+        or len(selected_3d_model_ids) != len(set(selected_3d_model_ids))
+        or any(model_id not in available_3d_models for model_id in selected_3d_model_ids)
+    ):
+        return _project_form_error("One or more selected 3D models are not available.", form_data)
+
+    selected_3d_models = [
+        {
+            "id": model_id,
+            "title": str(available_3d_models[model_id].get("title", ""))[:120],
+            "category": str(available_3d_models[model_id].get("category", ""))[:60],
+            "license": str(available_3d_models[model_id].get("license", ""))[:180],
+        }
+        for model_id in selected_3d_model_ids
+    ]
+
+    if not re.fullmatch(r"#[0-9a-f]{6}", primary_color):
+        return _project_form_error("Choose a valid primary color.", form_data)
+
+    if not re.fullmatch(r"#[0-9a-f]{6}", secondary_color):
+        return _project_form_error("Choose a valid secondary color.", form_data)
+
+    if len(target_audience) > 500:
+        return _project_form_error("Audience description is too long (maximum 500 characters).", form_data)
+
+    if len(description) < 20 or len(description) > 3000:
+        return _project_form_error("Describe the project in at least 20 and no more than 3,000 characters.", form_data)
+
+    if reference_url:
+        if len(reference_url) > 500:
+            return _project_form_error("Reference link is too long.", form_data)
+        try:
+            parsed_reference = urlsplit(reference_url)
+            valid_reference = (
+                parsed_reference.scheme in {"http", "https"}
+                and bool(parsed_reference.netloc)
+                and not any(char.isspace() for char in reference_url)
+            )
+        except ValueError:
+            valid_reference = False
+
+        if not valid_reference:
+            return _project_form_error("Reference link must be a valid http:// or https:// URL.", form_data)
+
+    if form_data.get("consent") != "yes":
+        return _project_form_error("Please confirm that KNOWME Studio may contact you about this request.", form_data)
+
+    # Store only explicitly accepted values. Jinja auto-escaping protects later admin rendering.
+    new_request = ProjectRequest(
+        full_name=full_name,
+        email=email,
+        phone=phone,
+        company=company,
+        website_type=website_type,
+        website_goal=website_goal,
+        design_style=design_style,
+        pages_scope=pages_scope,
+        required_pages=required_pages,
+        features=features,
+        selected_3d_models=selected_3d_models,
+        primary_color=primary_color,
+        secondary_color=secondary_color,
+        reference_url=reference_url,
+        target_audience=target_audience,
+        budget=budget,
+        deadline=deadline,
+        description=description
+    )
+
+    try:
+        with SessionLocal() as db:
+            db.add(new_request)
+            db.commit()
+
+    except SQLAlchemyError:
+        app.logger.exception("Failed to save project request")
+        return _project_form_error(
+            "We could not save your request right now. Please try again later.",
+            form_data
+        )
+
+    flash(
+        "Your project brief has been sent successfully. KNOWME Studio will review it and contact you.",
+        "success"
+    )
+
+    return redirect(
+        url_for("start_project"),
+        code=303
+    )
+
+
 # =========================================================
 # ADMIN LOGIN
 # =========================================================
@@ -537,9 +784,22 @@ def admin():
             )
 
 
+            project_requests_statement = (
+                select(ProjectRequest)
+                .order_by(ProjectRequest.created_at.desc())
+                .limit(100)
+            )
+
+            project_requests = (
+                db
+                .scalars(project_requests_statement)
+                .all()
+            )
+
             return render_template(
                 "admin.html",
-                messages=messages
+                messages=messages,
+                project_requests=project_requests
             )
 
 
@@ -1802,10 +2062,9 @@ QUESTION:
 "How can I start?"
 
 ANSWER:
-"First, describe the website you need.
-You can then send your project requirements
-through the Contact page:
-https://knowme-studio.onrender.com/contact"
+"Open the Start Project configurator to choose the website type, design direction, pages and functionality:
+https://knowme-studio.onrender.com/start-project
+Your request will be sent to KNOWME Studio for review and confirmation."
 
 
 # FINAL OBJECTIVE

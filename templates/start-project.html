@@ -1,0 +1,337 @@
+{% extends "base.html" %}
+
+{% block title %}KNOWME Studio | Start a Project{% endblock %}
+{% block meta_description %}Configure your website requirements and send a project brief to KNOWME Studio.{% endblock %}
+
+{% block content %}
+<section class="start-project-page">
+    <div class="sp-background-grid" aria-hidden="true"></div>
+    <div class="sp-glow sp-glow-red" aria-hidden="true"></div>
+    <div class="sp-glow sp-glow-blue" aria-hidden="true"></div>
+
+    <!-- Full-route animated atmosphere. Decorative only; never intercepts form input. -->
+    <div class="sp-neon-atmosphere" aria-hidden="true">
+        <span class="sp-atmo-orb sp-atmo-orb-red"></span>
+        <span class="sp-atmo-orb sp-atmo-orb-blue"></span>
+        <span class="sp-atmo-orb sp-atmo-orb-violet"></span>
+        <span class="sp-atmo-ring sp-atmo-ring-one"></span>
+        <span class="sp-atmo-ring sp-atmo-ring-two"></span>
+        <span class="sp-atmo-beam sp-atmo-beam-one"></span>
+        <span class="sp-atmo-beam sp-atmo-beam-two"></span>
+        <span class="sp-atmo-beam sp-atmo-beam-three"></span>
+        <span class="sp-atmo-beam sp-atmo-beam-four"></span>
+        <span class="sp-atmo-beam sp-atmo-beam-five"></span>
+        <span class="sp-atmo-vertical-trace"></span>
+        <span class="sp-atmo-vertical-trace sp-atmo-vertical-trace-two"></span>
+        <span class="sp-atmo-particles"></span>
+        <span class="sp-atmo-crosshair sp-atmo-crosshair-one"></span>
+        <span class="sp-atmo-crosshair sp-atmo-crosshair-two"></span>
+    </div>
+
+    <div class="sp-shell">
+        <header class="sp-hero sp-reveal">
+            <div class="sp-brand-stage" role="img" aria-label="KNOWME Studio">
+                <div class="sp-brand-neon-line sp-brand-neon-line-top"><span></span></div>
+                <div class="sp-brand-word" aria-hidden="true">
+                    <span class="sp-brand-letter">K</span>
+                    <span class="sp-brand-letter">N</span>
+                    <span class="sp-brand-letter">O</span>
+                    <span class="sp-brand-letter">W</span>
+                    <span class="sp-brand-letter">M</span>
+                    <span class="sp-brand-letter">E</span>
+                    <span class="sp-brand-studio">STUDIO</span>
+                </div>
+                <div class="sp-brand-neon-line sp-brand-neon-line-bottom"><span></span></div>
+            </div>
+            <span class="sp-eyebrow" data-i18n="startProject.eyebrow">PROJECT CONFIGURATOR</span>
+            <h1 data-i18n="startProject.title">Let's define your next website.</h1>
+            <p data-i18n="startProject.intro">Choose the direction, visual style and functionality. Your brief will be sent to KNOWME Studio for review and confirmation.</p>
+            <div class="sp-hero-line"><span></span><span></span><span></span></div>
+        </header>
+
+        {% with flash_messages = get_flashed_messages(with_categories=true) %}
+            {% if flash_messages %}
+                <div class="sp-flashes" role="status" aria-live="polite">
+                    {% for category, flash_message in flash_messages %}
+                        <div class="sp-flash {{ category }}">{{ flash_message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <div class="sp-workspace">
+            <aside class="sp-aside sp-reveal">
+                <div class="sp-aside-top">
+                    <span class="sp-aside-index">KNOWME / 01</span>
+                    <span class="sp-live-dot"><i></i> <span data-i18n="startProject.live">PROJECT BRIEF</span></span>
+                </div>
+                <h2 data-i18n="startProject.asideTitle">A clear brief creates a stronger result.</h2>
+                <p data-i18n="startProject.asideText">Tell us what you want to build. We will review the scope, identify the right technical approach and contact you to confirm the next steps.</p>
+
+                <div class="sp-process-list">
+                    <div class="sp-process-item"><span>01</span><div><strong data-i18n="startProject.process1Title">Your direction</strong><small data-i18n="startProject.process1Text">Purpose and website type</small></div></div>
+                    <div class="sp-process-item"><span>02</span><div><strong data-i18n="startProject.process2Title">Visual language</strong><small data-i18n="startProject.process2Text">Style, layout and pages</small></div></div>
+                    <div class="sp-process-item"><span>03</span><div><strong data-i18n="startProject.process3Title">Functionality</strong><small data-i18n="startProject.process3Text">Features and project scope</small></div></div>
+                    <div class="sp-process-item"><span>04</span><div><strong data-i18n="startProject.process4Title">Confirmation</strong><small data-i18n="startProject.process4Text">Contact and project review</small></div></div>
+                </div>
+
+                <div class="sp-aside-foot">
+                    <span class="sp-orbit-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <span data-i18n="startProject.asideFoot">THINK · DESIGN · ENGINEER · LAUNCH</span>
+                </div>
+            </aside>
+
+            <main class="sp-form-card sp-reveal">
+                <form id="startProjectForm" method="POST" action="{{ url_for('start_project') }}" novalidate>
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                    <!-- Honeypot anti-spam field. Real visitors should leave it empty. -->
+                    <div class="sp-honeypot" aria-hidden="true">
+                        <label for="websiteCheck">Leave this field empty</label>
+                        <input id="websiteCheck" type="text" name="website_check" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <div class="sp-form-top">
+                        <div>
+                            <span class="sp-form-kicker" data-i18n="startProject.formKicker">BUILD YOUR BRIEF</span>
+                            <h2 id="spCurrentTitle" data-i18n="startProject.step1Title">What are we building?</h2>
+                        </div>
+                        <div class="sp-step-counter"><strong id="spStepNumber">01</strong><span>/ 04</span></div>
+                    </div>
+
+                    <div class="sp-progress-track" aria-label="Project form progress">
+                        <span id="spProgressBar"></span>
+                    </div>
+
+                    <div class="sp-step-indicators" aria-label="Form steps">
+                        <span class="is-active" data-step-indicator="0"><i>01</i><b data-i18n="startProject.step1">Type</b></span>
+                        <span data-step-indicator="1"><i>02</i><b data-i18n="startProject.step2">Design</b></span>
+                        <span data-step-indicator="2"><i>03</i><b data-i18n="startProject.step3">Features</b></span>
+                        <span data-step-indicator="3"><i>04</i><b data-i18n="startProject.step4">Contact</b></span>
+                    </div>
+
+                    <div class="sp-validation-message" id="spValidationMessage" role="alert" aria-live="polite"></div>
+
+                    <!-- STEP 1 -->
+                    <section class="sp-step-panel is-active" data-step-panel="0" aria-labelledby="spStep1Heading">
+                        <div class="sp-section-heading">
+                            <span class="sp-section-number">01 / 04</span>
+                            <h3 id="spStep1Heading" data-i18n="startProject.typeLabel">Choose the type of website</h3>
+                            <p data-i18n="startProject.typeHint">Select the option that best describes your idea.</p>
+                        </div>
+
+                        <div class="sp-choice-grid sp-type-grid">
+                            <label class="sp-choice-card"><input type="radio" name="website_type" value="business" data-sp-initial-checked="{{ 'true' if form_data.get('website_type') == 'business' else 'false' }}"><span class="sp-choice-icon">▦</span><strong data-i18n="startProject.typeBusiness">Business website</strong><small data-i18n="startProject.typeBusinessText">Company, service or organization</small><i class="sp-choice-check">✓</i></label>
+                            <label class="sp-choice-card"><input type="radio" name="website_type" value="portfolio" data-sp-initial-checked="{{ 'true' if form_data.get('website_type') == 'portfolio' else 'false' }}"><span class="sp-choice-icon">◫</span><strong data-i18n="startProject.typePortfolio">Portfolio</strong><small data-i18n="startProject.typePortfolioText">Personal work and professional profile</small><i class="sp-choice-check">✓</i></label>
+                            <label class="sp-choice-card"><input type="radio" name="website_type" value="ecommerce" data-sp-initial-checked="{{ 'true' if form_data.get('website_type') == 'ecommerce' else 'false' }}"><span class="sp-choice-icon">◇</span><strong data-i18n="startProject.typeStore">Online store</strong><small data-i18n="startProject.typeStoreText">Products, cart and online sales</small><i class="sp-choice-check">✓</i></label>
+                            <label class="sp-choice-card"><input type="radio" name="website_type" value="landing" data-sp-initial-checked="{{ 'true' if form_data.get('website_type') == 'landing' else 'false' }}"><span class="sp-choice-icon">▤</span><strong data-i18n="startProject.typeLanding">Landing page</strong><small data-i18n="startProject.typeLandingText">One focused page and one main action</small><i class="sp-choice-check">✓</i></label>
+                            <label class="sp-choice-card"><input type="radio" name="website_type" value="webapp" data-sp-initial-checked="{{ 'true' if form_data.get('website_type') == 'webapp' else 'false' }}"><span class="sp-choice-icon">⌘</span><strong data-i18n="startProject.typeWebapp">Web application</strong><small data-i18n="startProject.typeWebappText">Custom logic, accounts or dashboards</small><i class="sp-choice-check">✓</i></label>
+                            <label class="sp-choice-card"><input type="radio" name="website_type" value="other" data-sp-initial-checked="{{ 'true' if form_data.get('website_type') == 'other' else 'false' }}"><span class="sp-choice-icon">＋</span><strong data-i18n="startProject.typeOther">Not sure yet</strong><small data-i18n="startProject.typeOtherText">I want to discuss the idea first</small><i class="sp-choice-check">✓</i></label>
+                        </div>
+
+                        <div class="sp-section-heading sp-subheading">
+                            <h3 data-i18n="startProject.goalLabel">What is the main goal?</h3>
+                        </div>
+                        <div class="sp-inline-options">
+                            <label class="sp-pill-option"><input type="radio" name="website_goal" value="leads" data-sp-initial-checked="{{ 'true' if form_data.get('website_goal') == 'leads' else 'false' }}"><span data-i18n="startProject.goalLeads">Get more clients</span></label>
+                            <label class="sp-pill-option"><input type="radio" name="website_goal" value="sales" data-sp-initial-checked="{{ 'true' if form_data.get('website_goal') == 'sales' else 'false' }}"><span data-i18n="startProject.goalSales">Sell products</span></label>
+                            <label class="sp-pill-option"><input type="radio" name="website_goal" value="booking" data-sp-initial-checked="{{ 'true' if form_data.get('website_goal') == 'booking' else 'false' }}"><span data-i18n="startProject.goalBooking">Accept bookings</span></label>
+                            <label class="sp-pill-option"><input type="radio" name="website_goal" value="personal-brand" data-sp-initial-checked="{{ 'true' if form_data.get('website_goal') == 'personal-brand' else 'false' }}"><span data-i18n="startProject.goalBrand">Build a personal brand</span></label>
+                            <label class="sp-pill-option"><input type="radio" name="website_goal" value="information" data-sp-initial-checked="{{ 'true' if form_data.get('website_goal') == 'information' else 'false' }}"><span data-i18n="startProject.goalInfo">Present information</span></label>
+                            <label class="sp-pill-option"><input type="radio" name="website_goal" value="other" data-sp-initial-checked="{{ 'true' if form_data.get('website_goal') == 'other' else 'false' }}"><span data-i18n="startProject.goalOther">Other goal</span></label>
+                        </div>
+                    </section>
+
+                    <!-- STEP 2 -->
+                    <section class="sp-step-panel" data-step-panel="1" aria-labelledby="spStep2Heading">
+                        <div class="sp-section-heading">
+                            <span class="sp-section-number">02 / 04</span>
+                            <h3 id="spStep2Heading" data-i18n="startProject.designLabel">Choose the visual direction</h3>
+                            <p data-i18n="startProject.designHint">This is a starting point. The final design will be refined during project planning.</p>
+                        </div>
+
+                        <div class="sp-choice-grid sp-style-grid">
+                            <label class="sp-style-card sp-style-modern"><input type="radio" name="design_style" value="modern" data-sp-initial-checked="{{ 'true' if form_data.get('design_style') == 'modern' else 'false' }}"><span class="sp-style-preview"><i></i><i></i><i></i></span><strong data-i18n="startProject.styleModern">Modern</strong><small data-i18n="startProject.styleModernText">Bold layout and current UI patterns</small></label>
+                            <label class="sp-style-card sp-style-minimal"><input type="radio" name="design_style" value="minimal" data-sp-initial-checked="{{ 'true' if form_data.get('design_style') == 'minimal' else 'false' }}"><span class="sp-style-preview"><i></i><i></i><i></i></span><strong data-i18n="startProject.styleMinimal">Minimal</strong><small data-i18n="startProject.styleMinimalText">Clean, calm and focused</small></label>
+                            <label class="sp-style-card sp-style-corporate"><input type="radio" name="design_style" value="corporate" data-sp-initial-checked="{{ 'true' if form_data.get('design_style') == 'corporate' else 'false' }}"><span class="sp-style-preview"><i></i><i></i><i></i></span><strong data-i18n="startProject.styleCorporate">Corporate</strong><small data-i18n="startProject.styleCorporateText">Structured and professional</small></label>
+                            <label class="sp-style-card sp-style-luxury"><input type="radio" name="design_style" value="luxury" data-sp-initial-checked="{{ 'true' if form_data.get('design_style') == 'luxury' else 'false' }}"><span class="sp-style-preview"><i></i><i></i><i></i></span><strong data-i18n="startProject.styleLuxury">Luxury</strong><small data-i18n="startProject.styleLuxuryText">Elegant details and contrast</small></label>
+                            <label class="sp-style-card sp-style-creative"><input type="radio" name="design_style" value="creative" data-sp-initial-checked="{{ 'true' if form_data.get('design_style') == 'creative' else 'false' }}"><span class="sp-style-preview"><i></i><i></i><i></i></span><strong data-i18n="startProject.styleCreative">Creative</strong><small data-i18n="startProject.styleCreativeText">Expressive and experimental</small></label>
+                            <label class="sp-style-card sp-style-future"><input type="radio" name="design_style" value="futuristic" data-sp-initial-checked="{{ 'true' if form_data.get('design_style') == 'futuristic' else 'false' }}"><span class="sp-style-preview"><i></i><i></i><i></i></span><strong data-i18n="startProject.styleFuture">Futuristic</strong><small data-i18n="startProject.styleFutureText">Technology-led visual language</small></label>
+                            <label class="sp-style-card sp-style-reference"><input type="radio" name="design_style" value="reference" data-sp-initial-checked="{{ 'true' if form_data.get('design_style') == 'reference' else 'false' }}"><span class="sp-style-preview"><i></i><i></i><i></i></span><strong data-i18n="startProject.styleReference">Based on a reference</strong><small data-i18n="startProject.styleReferenceText">I will share an example website</small></label>
+                        </div>
+
+                        <div class="sp-section-heading sp-subheading">
+                            <h3 data-i18n="startProject.pagesLabel">How large should the website be?</h3>
+                        </div>
+                        <div class="sp-inline-options sp-scope-options">
+                            <label class="sp-pill-option"><input type="radio" name="pages_scope" value="one" data-sp-initial-checked="{{ 'true' if form_data.get('pages_scope') == 'one' else 'false' }}"><span data-i18n="startProject.pagesOne">1 page</span></label>
+                            <label class="sp-pill-option"><input type="radio" name="pages_scope" value="3-5" data-sp-initial-checked="{{ 'true' if form_data.get('pages_scope') == '3-5' else 'false' }}"><span data-i18n="startProject.pagesSmall">3–5 pages</span></label>
+                            <label class="sp-pill-option"><input type="radio" name="pages_scope" value="6-10" data-sp-initial-checked="{{ 'true' if form_data.get('pages_scope') == '6-10' else 'false' }}"><span data-i18n="startProject.pagesMedium">6–10 pages</span></label>
+                            <label class="sp-pill-option"><input type="radio" name="pages_scope" value="10-plus" data-sp-initial-checked="{{ 'true' if form_data.get('pages_scope') == '10-plus' else 'false' }}"><span data-i18n="startProject.pagesLarge">10+ pages</span></label>
+                            <label class="sp-pill-option"><input type="radio" name="pages_scope" value="unsure" data-sp-initial-checked="{{ 'true' if form_data.get('pages_scope') == 'unsure' else 'false' }}"><span data-i18n="startProject.pagesUnsure">Not sure</span></label>
+                        </div>
+
+                        <div class="sp-two-fields">
+                            <label class="sp-field"><span data-i18n="startProject.primaryColor">Primary color</span><input type="color" name="primary_color" value="{{ form_data.get('primary_color', '#ef4444') }}"></label>
+                            <label class="sp-field"><span data-i18n="startProject.secondaryColor">Secondary color</span><input type="color" name="secondary_color" value="{{ form_data.get('secondary_color', '#006eff') }}"></label>
+                        </div>
+                        <label class="sp-field sp-reference-field"><span data-i18n="startProject.referenceLabel">Reference website (optional)</span><input type="url" name="reference_url" maxlength="500" value="{{ form_data.get('reference_url', '') }}" placeholder="https://example.com" data-i18n-placeholder="startProject.referencePlaceholder"><small data-i18n="startProject.referenceHint">Share a link only if you have a visual example in mind.</small></label>
+                    </section>
+
+                    <!-- STEP 3 -->
+                    <section class="sp-step-panel" data-step-panel="2" aria-labelledby="spStep3Heading">
+                        <div class="sp-section-heading">
+                            <span class="sp-section-number">03 / 04</span>
+                            <h3 id="spStep3Heading" data-i18n="startProject.featuresLabel">Choose pages and functionality</h3>
+                            <p data-i18n="startProject.featuresHint">Select everything you think you may need. We can refine the scope together.</p>
+                        </div>
+
+                        <div class="sp-section-heading sp-subheading"><h3 data-i18n="startProject.requiredPagesLabel">Pages or sections</h3></div>
+                        <div class="sp-check-grid">
+                            {% set selected_pages = form_data.getlist('required_pages') %}
+                            <label class="sp-check-card"><input type="checkbox" name="required_pages" value="home" data-sp-initial-checked="{{ 'true' if 'home' in selected_pages else 'false' }}"><span data-i18n="startProject.pageHome">Home</span></label>
+                            <label class="sp-check-card"><input type="checkbox" name="required_pages" value="about" data-sp-initial-checked="{{ 'true' if 'about' in selected_pages else 'false' }}"><span data-i18n="startProject.pageAbout">About</span></label>
+                            <label class="sp-check-card"><input type="checkbox" name="required_pages" value="services" data-sp-initial-checked="{{ 'true' if 'services' in selected_pages else 'false' }}"><span data-i18n="startProject.pageServices">Services</span></label>
+                            <label class="sp-check-card"><input type="checkbox" name="required_pages" value="projects" data-sp-initial-checked="{{ 'true' if 'projects' in selected_pages else 'false' }}"><span data-i18n="startProject.pageProjects">Projects / Portfolio</span></label>
+                            <label class="sp-check-card"><input type="checkbox" name="required_pages" value="pricing" data-sp-initial-checked="{{ 'true' if 'pricing' in selected_pages else 'false' }}"><span data-i18n="startProject.pagePricing">Pricing</span></label>
+                            <label class="sp-check-card"><input type="checkbox" name="required_pages" value="blog" data-sp-initial-checked="{{ 'true' if 'blog' in selected_pages else 'false' }}"><span data-i18n="startProject.pageBlog">Blog / News</span></label>
+                            <label class="sp-check-card"><input type="checkbox" name="required_pages" value="contact" data-sp-initial-checked="{{ 'true' if 'contact' in selected_pages else 'false' }}"><span data-i18n="startProject.pageContact">Contact</span></label>
+                            <label class="sp-check-card"><input type="checkbox" name="required_pages" value="faq" data-sp-initial-checked="{{ 'true' if 'faq' in selected_pages else 'false' }}"><span data-i18n="startProject.pageFaq">FAQ</span></label>
+                            <label class="sp-check-card"><input type="checkbox" name="required_pages" value="shop" data-sp-initial-checked="{{ 'true' if 'shop' in selected_pages else 'false' }}"><span data-i18n="startProject.pageShop">Shop / Products</span></label>
+                            <label class="sp-check-card"><input type="checkbox" name="required_pages" value="other" data-sp-initial-checked="{{ 'true' if 'other' in selected_pages else 'false' }}"><span data-i18n="startProject.pageOther">Other</span></label>
+                        </div>
+
+                        <div class="sp-section-heading sp-subheading"><h3 data-i18n="startProject.functionalityLabel">Additional functionality</h3></div>
+                        <div class="sp-check-grid sp-feature-grid">
+                            {% set selected_features = form_data.getlist('features') %}
+                            <label class="sp-check-card"><input type="checkbox" name="features" value="contact-form" data-sp-initial-checked="{{ 'true' if 'contact-form' in selected_features else 'false' }}"><span data-i18n="startProject.featureContact">Contact form</span></label>
+                            <label class="sp-check-card"><input type="checkbox" name="features" value="accounts" data-sp-initial-checked="{{ 'true' if 'accounts' in selected_features else 'false' }}"><span data-i18n="startProject.featureAccounts">User accounts / login</span></label>
+                            <label class="sp-check-card"><input type="checkbox" name="features" value="admin-panel" data-sp-initial-checked="{{ 'true' if 'admin-panel' in selected_features else 'false' }}"><span data-i18n="startProject.featureAdmin">Admin dashboard</span></label>
+                            <label class="sp-check-card"><input type="checkbox" name="features" value="payments" data-sp-initial-checked="{{ 'true' if 'payments' in selected_features else 'false' }}"><span data-i18n="startProject.featurePayments">Online payments</span></label>
+                            <label class="sp-check-card"><input type="checkbox" name="features" value="booking" data-sp-initial-checked="{{ 'true' if 'booking' in selected_features else 'false' }}"><span data-i18n="startProject.featureBooking">Booking system</span></label>
+                            <label class="sp-check-card"><input type="checkbox" name="features" value="multilingual" data-sp-initial-checked="{{ 'true' if 'multilingual' in selected_features else 'false' }}"><span data-i18n="startProject.featureMulti">Multiple languages</span></label>
+                            <label class="sp-check-card"><input type="checkbox" name="features" value="blog" data-sp-initial-checked="{{ 'true' if 'blog' in selected_features else 'false' }}"><span data-i18n="startProject.featureBlog">Blog / CMS</span></label>
+                            <label class="sp-check-card"><input type="checkbox" name="features" value="search" data-sp-initial-checked="{{ 'true' if 'search' in selected_features else 'false' }}"><span data-i18n="startProject.featureSearch">Website search</span></label>
+                            <label class="sp-check-card"><input type="checkbox" name="features" value="newsletter" data-sp-initial-checked="{{ 'true' if 'newsletter' in selected_features else 'false' }}"><span data-i18n="startProject.featureNewsletter">Newsletter</span></label>
+                            <label class="sp-check-card"><input type="checkbox" name="features" value="api" data-sp-initial-checked="{{ 'true' if 'api' in selected_features else 'false' }}"><span data-i18n="startProject.featureApi">API integration</span></label>
+                            <label class="sp-check-card"><input type="checkbox" name="features" value="seo" data-sp-initial-checked="{{ 'true' if 'seo' in selected_features else 'false' }}"><span data-i18n="startProject.featureSeo">SEO setup</span></label>
+                            <label class="sp-check-card"><input type="checkbox" name="features" value="animations" data-sp-initial-checked="{{ 'true' if 'animations' in selected_features else 'false' }}"><span data-i18n="startProject.featureAnimations">Animations / interactions</span></label>
+                            <label class="sp-check-card"><input type="checkbox" name="features" value="chat" data-sp-initial-checked="{{ 'true' if 'chat' in selected_features else 'false' }}"><span data-i18n="startProject.featureChat">Live chat / AI assistant</span></label>
+                        </div>
+
+                        <!-- OPTIONAL FREE 3D ASSETS — PART OF THIS PROJECT REQUEST -->
+                        <section class="sp-asset-picker" aria-labelledby="spAssetPickerTitle">
+                            <div class="sp-asset-heading">
+                                <div>
+                                    <span class="sp-section-number" data-i18n="startProject.modelsKicker">OPTIONAL · FREE 3D ASSETS</span>
+                                    <h3 id="spAssetPickerTitle" data-i18n="startProject.modelsTitle">Add a 3D element to your website</h3>
+                                    <p data-i18n="startProject.modelsIntro">Choose from the free 3D models offered by KNOWME Studio. Your selection will be included in the project brief.</p>
+                                </div>
+                                <span class="sp-asset-count" data-sp-asset-count>0 <span data-i18n="startProject.modelsSelected">selected</span></span>
+                            </div>
+
+                            {% set selected_3d_ids = form_data.getlist('selected_3d_models') %}
+                            {% if project_3d_models %}
+                                <div class="sp-asset-grid">
+                                    {% for model in project_3d_models %}
+                                        <label class="sp-asset-card">
+                                            <input
+                                                type="checkbox"
+                                                name="selected_3d_models"
+                                                value="{{ model.id }}"
+                                                data-sp-initial-checked="{{ 'true' if model.id in selected_3d_ids else 'false' }}"
+                                                data-sp-model-title="{{ model.title }}"
+                                            >
+                                            <span class="sp-asset-visual">
+                                                {% if model.preview_image %}
+                                                    <img src="{{ url_for('static', filename=model.preview_image) }}" alt="{{ model.title }} preview" loading="lazy">
+                                                {% else %}
+                                                    <span class="sp-asset-wireframe" aria-hidden="true"><i></i><i></i><i></i></span>
+                                                {% endif %}
+                                                <span class="sp-asset-free-badge" data-i18n="startProject.modelsFree">FREE</span>
+                                                <span class="sp-asset-check" aria-hidden="true">✓</span>
+                                            </span>
+                                            <span class="sp-asset-card-copy">
+                                                <strong>{{ model.title }}</strong>
+                                                <small>{{ model.description }}</small>
+                                                <span class="sp-asset-meta">{{ model.category }}{% if model.format %} · {{ model.format }}{% endif %}</span>
+                                            </span>
+                                        </label>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                <div class="sp-asset-empty">
+                                    <div class="sp-asset-empty-mark" aria-hidden="true"><span>3D</span><i></i><b></b></div>
+                                    <div>
+                                        <strong data-i18n="startProject.modelsEmptyTitle">The free 3D collection is being prepared.</strong>
+                                        <p data-i18n="startProject.modelsEmptyText">Free models will appear here as selectable options once the collection is added.</p>
+                                        <small data-i18n="startProject.modelsEmptyNote">You can continue your project request without selecting a 3D model.</small>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            <p class="sp-asset-license-note" data-i18n="startProject.modelsLicense">Each published model will include its license and usage conditions.</p>
+                        </section>
+
+                        <div class="sp-section-heading sp-subheading"><h3 data-i18n="startProject.budgetLabel">Estimated budget</h3></div>
+                        <div class="sp-inline-options">
+                            <label class="sp-pill-option"><input type="radio" name="budget" value="under-100k" data-sp-initial-checked="{{ 'true' if form_data.get('budget') == 'under-100k' else 'false' }}"><span data-i18n="startProject.budget1">Under 100,000 AMD</span></label>
+                            <label class="sp-pill-option"><input type="radio" name="budget" value="100-250k" data-sp-initial-checked="{{ 'true' if form_data.get('budget') == '100-250k' else 'false' }}"><span data-i18n="startProject.budget2">100,000–250,000 AMD</span></label>
+                            <label class="sp-pill-option"><input type="radio" name="budget" value="250-500k" data-sp-initial-checked="{{ 'true' if form_data.get('budget') == '250-500k' else 'false' }}"><span data-i18n="startProject.budget3">250,000–500,000 AMD</span></label>
+                            <label class="sp-pill-option"><input type="radio" name="budget" value="500-plus" data-sp-initial-checked="{{ 'true' if form_data.get('budget') == '500-plus' else 'false' }}"><span data-i18n="startProject.budget4">500,000+ AMD</span></label>
+                            <label class="sp-pill-option"><input type="radio" name="budget" value="discuss" data-sp-initial-checked="{{ 'true' if form_data.get('budget') == 'discuss' else 'false' }}"><span data-i18n="startProject.budgetDiscuss">Let's discuss</span></label>
+                        </div>
+
+                        <div class="sp-section-heading sp-subheading"><h3 data-i18n="startProject.deadlineLabel">When would you like to launch?</h3></div>
+                        <div class="sp-inline-options">
+                            <label class="sp-pill-option"><input type="radio" name="deadline" value="asap" data-sp-initial-checked="{{ 'true' if form_data.get('deadline') == 'asap' else 'false' }}"><span data-i18n="startProject.deadlineAsap">As soon as possible</span></label>
+                            <label class="sp-pill-option"><input type="radio" name="deadline" value="2-weeks" data-sp-initial-checked="{{ 'true' if form_data.get('deadline') == '2-weeks' else 'false' }}"><span data-i18n="startProject.deadlineTwoWeeks">Within 2 weeks</span></label>
+                            <label class="sp-pill-option"><input type="radio" name="deadline" value="1-month" data-sp-initial-checked="{{ 'true' if form_data.get('deadline') == '1-month' else 'false' }}"><span data-i18n="startProject.deadlineMonth">Within a month</span></label>
+                            <label class="sp-pill-option"><input type="radio" name="deadline" value="flexible" data-sp-initial-checked="{{ 'true' if form_data.get('deadline') == 'flexible' else 'false' }}"><span data-i18n="startProject.deadlineFlexible">Flexible</span></label>
+                        </div>
+                    </section>
+
+                    <!-- STEP 4 -->
+                    <section class="sp-step-panel" data-step-panel="3" aria-labelledby="spStep4Heading">
+                        <div class="sp-section-heading">
+                            <span class="sp-section-number">04 / 04</span>
+                            <h3 id="spStep4Heading" data-i18n="startProject.contactLabel">A few final details</h3>
+                            <p data-i18n="startProject.contactHint">Tell us how to reach you and add any details that will help us understand the project.</p>
+                        </div>
+
+                        <label class="sp-field"><span data-i18n="startProject.audienceLabel">Who is the website for? (optional)</span><input type="text" name="target_audience" maxlength="500" value="{{ form_data.get('target_audience', '') }}" placeholder="{{ 'e.g. local customers, companies, students...' }}" data-i18n-placeholder="startProject.audiencePlaceholder"></label>
+                        <label class="sp-field"><span data-i18n="startProject.descriptionLabel">Describe your idea <em>*</em></span><textarea name="description" rows="5" maxlength="3000" placeholder="Tell us what the website should do, what problem it solves and anything else we should know..." data-i18n-placeholder="startProject.descriptionPlaceholder">{{ form_data.get('description', '') }}</textarea><small data-i18n="startProject.descriptionHint">20–3,000 characters. Do not include passwords or confidential information.</small></label>
+
+                        <div class="sp-section-heading sp-subheading"><h3 data-i18n="startProject.yourContact">Your contact details</h3></div>
+                        <div class="sp-two-fields">
+                            <label class="sp-field"><span data-i18n="startProject.nameLabel">Full name <em>*</em></span><input type="text" name="full_name" maxlength="80" autocomplete="name" value="{{ form_data.get('full_name', '') }}" required></label>
+                            <label class="sp-field"><span data-i18n="startProject.emailLabel">Email address <em>*</em></span><input type="email" name="email" maxlength="120" autocomplete="email" value="{{ form_data.get('email', '') }}" required></label>
+                            <label class="sp-field"><span data-i18n="startProject.phoneLabel">Phone / Telegram (optional)</span><input type="text" name="phone" maxlength="40" autocomplete="tel" value="{{ form_data.get('phone', '') }}"></label>
+                            <label class="sp-field"><span data-i18n="startProject.companyLabel">Company (optional)</span><input type="text" name="company" maxlength="120" autocomplete="organization" value="{{ form_data.get('company', '') }}"></label>
+                        </div>
+
+                        <div class="sp-summary-box">
+                            <div class="sp-summary-heading"><span data-i18n="startProject.summaryLabel">YOUR PROJECT SUMMARY</span><span class="sp-summary-light"></span></div>
+                            <div id="spSummaryContent" class="sp-summary-content" data-i18n="startProject.summaryEmpty">Your selections will appear here as you complete the form.</div>
+                        </div>
+
+                        <label class="sp-consent"><input type="checkbox" name="consent" value="yes" data-sp-initial-checked="{{ 'true' if form_data.get('consent') == 'yes' else 'false' }}"><span data-i18n="startProject.consent">I agree that KNOWME Studio may use these details to review my project request and contact me about it.</span></label>
+                    </section>
+
+                    <div class="sp-form-bottom">
+                        <div class="sp-step-note"><span class="sp-note-dot"></span><span data-i18n="startProject.privateNote">Your brief is sent securely over HTTPS.</span></div>
+
+                        <div class="sp-wizard-controls" id="spWizardControls">
+                            <button type="button" class="sp-button sp-button-ghost" id="spPrevButton"><span>←</span><span data-i18n="startProject.previous">Back</span></button>
+                            <button type="button" class="sp-button sp-button-primary" id="spNextButton"><span data-i18n="startProject.continue">Continue</span><span>→</span><i class="sp-button-shine"></i></button>
+                            <button type="submit" class="sp-button sp-button-primary sp-submit-button" id="spSubmitButton"><span data-i18n="startProject.submit">Send project brief</span><span>↗</span><i class="sp-button-shine"></i></button>
+                        </div>
+                        <button type="submit" class="sp-nojs-submit" data-i18n="startProject.submit">Send project brief</button>
+                    </div>
+                </form>
+            </main>
+        </div>
+
+        <footer class="sp-footer sp-reveal"><span>KNOWME STUDIO</span><span data-i18n="startProject.footer">A thoughtful process. A secure result.</span><a href="{{ url_for('contact') }}" data-i18n="startProject.needHelp">Need help? Contact us</a></footer>
+    </div>
+</section>
+{% endblock %}

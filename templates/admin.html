@@ -1,273 +1,155 @@
 {% extends "base.html" %}
 
-
-{% block title %}
-KNOWME Studio | Admin
-{% endblock %}
-
+{% block title %}KNOWME Studio | Admin{% endblock %}
 
 {% block content %}
-
 <section class="admin-page">
-
-
     <div class="admin-container">
-
-
-        <!-- HEADER -->
-
         <div class="admin-header">
-
-
             <div>
-
-                <span class="admin-label">
-                    KNOWME STUDIO
-                </span>
-
-
-                <h1>
-                    Admin Dashboard
-                </h1>
-
-
-                <p>
-                    Contact messages received from the website.
-                </p>
-
+                <span class="admin-label">KNOWME STUDIO</span>
+                <h1>Admin Dashboard</h1>
+                <p>Contact messages and project requests received from the website.</p>
             </div>
-
-
-
-
-            <form
-                method="POST"
-                action="{{ url_for('admin_logout') }}"
-            >
-
-                <input
-                    type="hidden"
-                    name="csrf_token"
-                    value="{{ csrf_token() }}"
-                >
-
-
-                <button
-                    type="submit"
-                    class="admin-logout-btn"
-                >
-                    Logout
-                </button>
-
+            <form method="POST" action="{{ url_for('admin_logout') }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <button type="submit" class="admin-logout-btn">Logout</button>
             </form>
-
         </div>
+
         {% with flash_messages = get_flashed_messages(with_categories=true) %}
-
-    {% if flash_messages %}
-
-        <div class="contact-flash-container">
-
-            {% for category, flash_message in flash_messages %}
-
-                <div class="contact-flash {{ category }}">
-                    {{ flash_message }}
+            {% if flash_messages %}
+                <div class="contact-flash-container">
+                    {% for category, flash_message in flash_messages %}
+                        <div class="contact-flash {{ category }}">{{ flash_message }}</div>
+                    {% endfor %}
                 </div>
-
-            {% endfor %}
-
-        </div>
-
-    {% endif %}
-
-{% endwith %}
-
-
-
-        <!-- MESSAGE COUNT -->
+            {% endif %}
+        {% endwith %}
 
         <div class="admin-stat">
-
-            <span>
-                TOTAL MESSAGES
-            </span>
-
-            <strong>
-                {{ messages|length }}
-            </strong>
-
+            <span>TOTAL PROJECT REQUESTS</span>
+            <strong>{{ project_requests|length }}</strong>
         </div>
 
-
-
-        <!-- MESSAGES -->
-
-        <div class="admin-messages">
-
-
-            {% if messages %}
-
-
-               {% for message in messages %}
-
-    <article
-        class="
-            admin-message-card
-            {% if not message.is_read %}
-                admin-message-unread
-            {% endif %}
-        "
-    >
-
-        <div class="admin-message-top">
-
-            <div>
-
-                <div class="admin-message-meta">
-
-                    <span class="admin-message-id">
-                        #{{ message.id }}
-                    </span>
-
-                    {% if message.is_read %}
-
-                        <span class="admin-status admin-status-read">
-                            READ
-                        </span>
-
-                    {% else %}
-
-                        <span class="admin-status admin-status-unread">
-                            UNREAD
-                        </span>
-
-                    {% endif %}
-
+        <section class="admin-project-section">
+            <div class="admin-project-section-heading">
+                <div>
+                    <span class="admin-label">PROJECT CONFIGURATOR</span>
+                    <h2>Website project requests</h2>
                 </div>
-
-                <h2>
-                    {{ message.name }}
-                </h2>
-
+                <strong class="admin-project-total">{{ project_requests|length }} / 100</strong>
             </div>
 
-            <time>
-                {{ message.created_at }}
-            </time>
+            {% if project_requests %}
+                <div class="admin-project-list">
+                    {% for project in project_requests %}
+                        <article class="admin-message-card admin-project-request-card">
+                            <div class="admin-message-top">
+                                <div>
+                                    <div class="admin-message-meta">
+                                        <span class="admin-message-id">PROJECT #{{ project.id }}</span>
+                                        {% if project.is_read %}
+                                            <span class="admin-status admin-status-read">REVIEWED</span>
+                                        {% else %}
+                                            <span class="admin-status admin-status-unread">NEW REQUEST</span>
+                                        {% endif %}
+                                    </div>
+                                    <h2>{{ project.full_name }}</h2>
+                                </div>
+                                <time>{{ project.created_at }}</time>
+                            </div>
 
-        </div>
+                            <a class="admin-email" href="mailto:{{ project.email }}">{{ project.email }}</a>
+                            {% if project.phone %}<p class="admin-project-detail">Phone / Telegram: {{ project.phone }}</p>{% endif %}
+                            {% if project.company %}<p class="admin-project-detail">Company: {{ project.company }}</p>{% endif %}
 
+                            <div class="admin-project-meta">
+                                <span>Type: {{ project.website_type }}</span>
+                                <span>Goal: {{ project.website_goal }}</span>
+                                <span>Style: {{ project.design_style }}</span>
+                                <span>Pages: {{ project.pages_scope }}</span>
+                                <span>Budget: {{ project.budget }}</span>
+                                <span>Deadline: {{ project.deadline }}</span>
+                                <span>Colors: {{ project.primary_color }} / {{ project.secondary_color }}</span>
+                            </div>
 
-        <a
-            href="mailto:{{ message.email }}"
-            class="admin-email"
-        >
-            {{ message.email }}
-        </a>
+                            <p class="admin-project-detail"><strong>Audience:</strong> {{ project.target_audience or 'Not specified' }}</p>
+                            <p class="admin-project-detail"><strong>Description:</strong> {{ project.description }}</p>
+                            {% if project.reference_url %}
+                                <p class="admin-project-detail"><strong>Reference:</strong> <a href="{{ project.reference_url }}" target="_blank" rel="noopener noreferrer">{{ project.reference_url }}</a></p>
+                            {% endif %}
 
+                            <div class="admin-project-tags">
+                                {% for item in project.required_pages or [] %}<span>Page: {{ item }}</span>{% endfor %}
+                                {% for item in project.features or [] %}<span>Feature: {{ item }}</span>{% endfor %}
+                            </div>
 
-        <p class="admin-message-text">
-            {{ message.message }}
-        </p>
-
-
-        <div class="admin-message-actions">
-
-            <!-- READ / UNREAD -->
-
-            <form
-                method="POST"
-                action="{{
-                    url_for(
-                        'toggle_message_read',
-                        message_id=message.id
-                    )
-                }}"
-            >
-
-                <input
-                    type="hidden"
-                    name="csrf_token"
-                    value="{{ csrf_token() }}"
-                >
-
-                <button
-                    type="submit"
-                    class="admin-action-btn admin-read-btn"
-                >
-
-                    {% if message.is_read %}
-                        Mark as Unread
-                    {% else %}
-                        Mark as Read
-                    {% endif %}
-
-                </button>
-
-            </form>
-
-
-            <!-- DELETE -->
-
-            <form
-                method="POST"
-                action="{{
-                    url_for(
-                        'delete_message',
-                        message_id=message.id
-                    )
-                }}"
-                onsubmit="
-                    return confirm(
-                        'Delete this message permanently?'
-                    );
-                "
-            >
-
-                <input
-                    type="hidden"
-                    name="csrf_token"
-                    value="{{ csrf_token() }}"
-                >
-
-                <button
-                    type="submit"
-                    class="admin-action-btn admin-delete-btn"
-                >
-                    Delete
-                </button>
-
-            </form>
-
-        </div>
-
-    </article>
-
-{% endfor %}
-
-
-            {% else %}
-
-
-                <div class="admin-empty">
-
-                    <h2>
-                        No messages yet
-                    </h2>
-
-                    <p>
-                        New contact requests will appear here.
-                    </p>
-
+                            {% if project.selected_3d_models %}
+                                <div class="admin-project-3d-selection">
+                                    <h3>Selected free 3D models</h3>
+                                    <div class="admin-project-tags">
+                                        {% for model in project.selected_3d_models %}
+                                            <span>{{ model.title }}{% if model.category %} · {{ model.category }}{% endif %}</span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </article>
+                    {% endfor %}
                 </div>
-
-
+            {% else %}
+                <div class="admin-empty">
+                    <h2>No project requests yet</h2>
+                    <p>New website briefs submitted through Start Project will appear here.</p>
+                </div>
             {% endif %}
+        </section>
 
+        <div class="admin-stat">
+            <span>TOTAL CONTACT MESSAGES</span>
+            <strong>{{ messages|length }}</strong>
         </div>
 
+        <div class="admin-messages">
+            {% if messages %}
+                {% for message in messages %}
+                    <article class="admin-message-card {% if not message.is_read %}admin-message-unread{% endif %}">
+                        <div class="admin-message-top">
+                            <div>
+                                <div class="admin-message-meta">
+                                    <span class="admin-message-id">#{{ message.id }}</span>
+                                    {% if message.is_read %}
+                                        <span class="admin-status admin-status-read">READ</span>
+                                    {% else %}
+                                        <span class="admin-status admin-status-unread">UNREAD</span>
+                                    {% endif %}
+                                </div>
+                                <h2>{{ message.name }}</h2>
+                            </div>
+                            <time>{{ message.created_at }}</time>
+                        </div>
+                        <a href="mailto:{{ message.email }}" class="admin-email">{{ message.email }}</a>
+                        <p class="admin-message-text">{{ message.message }}</p>
+                        <div class="admin-message-actions">
+                            <form method="POST" action="{{ url_for('toggle_message_read', message_id=message.id) }}">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <button type="submit" class="admin-action-btn admin-read-btn">{% if message.is_read %}Mark as Unread{% else %}Mark as Read{% endif %}</button>
+                            </form>
+                            <form method="POST" action="{{ url_for('delete_message', message_id=message.id) }}" onsubmit="return confirm('Delete this message permanently?');">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <button type="submit" class="admin-action-btn admin-delete-btn">Delete</button>
+                            </form>
+                        </div>
+                    </article>
+                {% endfor %}
+            {% else %}
+                <div class="admin-empty">
+                    <h2>No messages yet</h2>
+                    <p>New contact requests will appear here.</p>
+                </div>
+            {% endif %}
+        </div>
     </div>
-
 </section>
-
 {% endblock %}
