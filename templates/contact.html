@@ -11,323 +11,104 @@ KNOWME Studio | Contact
 <section class="contact-page">
 
     <!-- BACKGROUND EFFECTS -->
-
     <div class="contact-grid-bg"></div>
-
     <div class="contact-glow contact-glow-red"></div>
     <div class="contact-glow contact-glow-blue"></div>
 
-
     <div class="contact-container">
 
-
-        <!-- ==================================================
-             LEFT SIDE
-        =================================================== -->
-
+        <!-- LEFT SIDE -->
         <div class="contact-info">
-
-            <span
-                class="contact-label"
-                data-i18n="contact.badge"
-            >
-                CONTACT KNOWME
-            </span>
-
-
-            <h1 data-i18n="contact.title">
-                Let's Build Something Great.
-            </h1>
-
-
-            <p
-                class="contact-description"
-                data-i18n="contact.description"
-            >
+            <span class="contact-label" data-i18n="contact.badge">CONTACT KNOWME</span>
+            <h1 data-i18n="contact.title">Let's Build Something Great.</h1>
+            <p class="contact-description" data-i18n="contact.description">
                 Have an idea, business or project?
                 Tell me what you need and let's turn it
                 into a modern web solution.
             </p>
 
-
             <!-- CONTACT METHODS -->
-
             <div class="contact-methods">
-
-
                 <!-- TELEGRAM -->
-
-                <a
-                    href="https://t.me/Prosto_unique"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="contact-method"
-                >
-
-                    <div class="contact-method-icon">
-                        TG
-                    </div>
-
-
+                <a href="https://t.me/Prosto_unique" target="_blank" rel="noopener noreferrer" class="contact-method">
+                    <div class="contact-method-icon">TG</div>
                     <div class="contact-method-text">
-
-                        <span>
-                            TELEGRAM
-                        </span>
-
-                        <strong>
-                            @Prosto_unique
-                        </strong>
-
+                        <span>TELEGRAM</span>
+                        <strong>@Prosto_unique</strong>
                     </div>
-
-
-                    <span class="contact-arrow">
-                        →
-                    </span>
-
+                    <span class="contact-arrow">→</span>
                 </a>
-
-
 
                 <!-- WHATSAPP -->
-
-                <a
-                    href="https://wa.me/37498400729"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="contact-method"
-                >
-
-                    <div class="contact-method-icon">
-                        WA
-                    </div>
-
-
+                <a href="https://wa.me/37498400729" target="_blank" rel="noopener noreferrer" class="contact-method">
+                    <div class="contact-method-icon">WA</div>
                     <div class="contact-method-text">
-
-                        <span>
-                            WHATSAPP
-                        </span>
-
-                        <strong>
-                            +374 98 400 729
-                        </strong>
-
+                        <span>WHATSAPP</span>
+                        <strong>+374 98 400 729</strong>
                     </div>
-
-
-                    <span class="contact-arrow">
-                        →
-                    </span>
-
+                    <span class="contact-arrow">→</span>
                 </a>
-
             </div>
-
-
 
             <!-- SMALL INFO -->
-
             <div class="contact-small-info">
-
-                <div>
-                    <span>01</span>
-
-                    <p data-i18n="contact.info1">
-                        Tell me about your project
-                    </p>
-                </div>
-
-
-                <div>
-                    <span>02</span>
-
-                    <p data-i18n="contact.info2">
-                        We discuss the requirements
-                    </p>
-                </div>
-
-
-                <div>
-                    <span>03</span>
-
-                    <p data-i18n="contact.info3">
-                        We choose the right solution
-                    </p>
-                </div>
-
+                <div><span>01</span><p data-i18n="contact.info1">Tell me about your project</p></div>
+                <div><span>02</span><p data-i18n="contact.info2">We discuss the requirements</p></div>
+                <div><span>03</span><p data-i18n="contact.info3">We choose the right solution</p></div>
             </div>
-
         </div>
 
-
-
-        <!-- ==================================================
-             RIGHT SIDE - FORM
-        =================================================== -->
-
+        <!-- RIGHT SIDE - FORM -->
         <div class="contact-form-panel">
-
-
-            <!-- FORM TOP -->
-
             <div class="contact-form-top">
-
-                <div class="contact-window-dots">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-
-
-                <span data-i18n="contact.formTitle">
-                    PROJECT REQUEST
-                </span>
-
+                <div class="contact-window-dots"><span></span><span></span><span></span></div>
+                <span data-i18n="contact.formTitle">PROJECT REQUEST</span>
             </div>
-
-
 
             <!-- FLASH MESSAGES -->
-
             {% with messages = get_flashed_messages(with_categories=true) %}
-
                 {% if messages %}
-
                     <div class="contact-flash-container">
-
                         {% for category, message in messages %}
-
-                            <div class="contact-flash {{ category }}">
-                                {{ message }}
-                            </div>
-
+                            <div class="contact-flash {{ category }}">{{ message }}</div>
                         {% endfor %}
-
                     </div>
-
                 {% endif %}
-
             {% endwith %}
 
-
-
             <!-- FORM -->
+            <form method="POST" action="{{ url_for('contact') }}" class="contact-form">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
-           <!-- FORM -->
+                <div class="contact-field">
+                    <label for="name" data-i18n="contact.name">Your Name</label>
+                    <input type="text" id="name" name="name" maxlength="80" autocomplete="name" required placeholder="John Smith">
+                </div>
 
-<form
-    method="POST"
-    action="{{ url_for('contact') }}"
-    class="contact-form"
->
+                <div class="contact-field">
+                    <label for="email" data-i18n="contact.email">Email Address</label>
+                    <input type="email" id="email" name="email" maxlength="120" autocomplete="email" required placeholder="you@example.com">
+                </div>
 
-    <!-- CSRF TOKEN -->
+                <div class="contact-field">
+                    <label for="message" data-i18n="contact.message">Tell Me About Your Project</label>
+                    <textarea id="message" name="message" rows="7" maxlength="3000" required placeholder="I need a modern website for my business..."></textarea>
+                </div>
 
-    <input
-        type="hidden"
-        name="csrf_token"
-        value="{{ csrf_token() }}"
-    >
+                {% if turnstile_site_key %}
+                <div class="contact-turnstile">
+                    <div id="contactTurnstile" data-turnstile-container data-turnstile-sitekey="{{ turnstile_site_key }}" data-turnstile-action="contact" data-turnstile-theme="dark" data-turnstile-size="normal" aria-label="Security verification"></div>
+                </div>
+                {% endif %}
 
-
-    <!-- NAME -->
-
-    <div class="contact-field">
-
-        <label
-            for="name"
-            data-i18n="contact.name"
-        >
-            Your Name
-        </label>
-
-        <input
-            type="text"
-            id="name"
-            name="name"
-            maxlength="80"
-            autocomplete="name"
-            required
-            placeholder="John Smith"
-        >
-
-    </div>
-
-
-    <!-- EMAIL -->
-
-    <div class="contact-field">
-
-        <label
-            for="email"
-            data-i18n="contact.email"
-        >
-            Email Address
-        </label>
-
-        <input
-            type="email"
-            id="email"
-            name="email"
-            maxlength="120"
-            autocomplete="email"
-            required
-            placeholder="you@example.com"
-        >
-
-    </div>
-
-
-    <!-- MESSAGE -->
-
-    <div class="contact-field">
-
-        <label
-            for="message"
-            data-i18n="contact.message"
-        >
-            Tell Me About Your Project
-        </label>
-
-        <textarea
-            id="message"
-            name="message"
-            rows="7"
-            maxlength="3000"
-            required
-            placeholder="I need a modern website for my business..."
-        ></textarea>
-
-    </div>
-
-
-    <!-- SUBMIT -->
-
-    <button
-        type="submit"
-        class="contact-submit-btn"
-        data-i18n="contact.send"
-    >
-        Send Project Request
-    </button>
-
-
-    <p
-        class="contact-form-note"
-        data-i18n="contact.note"
-    >
-        Your information will only be used
-        to respond to your request.
-    </p>
-
-</form>
-
+                <button type="submit" class="contact-submit-btn" data-i18n="contact.send">Send Project Request</button>
+                <p class="contact-form-note" data-i18n="contact.note">
+                    Your information will only be used
+                    to respond to your request.
+                </p>
+            </form>
         </div>
-
     </div>
-
 </section>
 
 {% endblock %}

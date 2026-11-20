@@ -314,6 +314,12 @@
                             <div id="spSummaryContent" class="sp-summary-content" data-i18n="startProject.summaryEmpty">Your selections will appear here as you complete the form.</div>
                         </div>
 
+                        {% if turnstile_site_key %}
+                        <div class="sp-turnstile">
+                            <div id="startProjectTurnstile" data-turnstile-container data-turnstile-lazy="true" data-turnstile-sitekey="{{ turnstile_site_key }}" data-turnstile-action="start_project" data-turnstile-theme="dark" data-turnstile-size="normal" aria-label="Security verification"></div>
+                        </div>
+                        {% endif %}
+
                         <label class="sp-consent"><input type="checkbox" name="consent" value="yes" data-sp-initial-checked="{{ 'true' if form_data.get('consent') == 'yes' else 'false' }}"><span data-i18n="startProject.consent">I agree that KNOWME Studio may use these details to review my project request and contact me about it.</span></label>
                     </section>
 
@@ -335,3 +341,4 @@
     </div>
 </section>
 {% endblock %}
+

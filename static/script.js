@@ -1,3 +1,65 @@
+/* =========================================================
+   CLOUDFLARE TURNSTILE — EXPLICIT WIDGET LIFECYCLE
+   The API script calls knowmeTurnstileOnload after it loads.
+   Start Project is rendered lazily when its final step is visible.
+========================================================= */
+(function initKnowmeTurnstileBridge() {
+    "use strict";
+
+    window.renderKnowmeTurnstile = function (container) {
+        if (!container || container.dataset.turnstileWidgetId) return;
+
+        if (!window.turnstile || typeof window.turnstile.render !== "function") {
+            container.dataset.turnstilePending = "true";
+            return;
+        }
+
+        const sitekey = container.dataset.turnstileSitekey;
+        const action = container.dataset.turnstileAction;
+        if (!sitekey || !action || !container.id) return;
+
+        try {
+            const widgetId = window.turnstile.render(`#${container.id}`, {
+                sitekey,
+                action,
+                theme: container.dataset.turnstileTheme || "auto",
+                size: container.dataset.turnstileSize || "normal",
+                "refresh-expired": "auto"
+            });
+
+            container.dataset.turnstileWidgetId = widgetId;
+            delete container.dataset.turnstilePending;
+        } catch (error) {
+            console.error("[KNOWME] Turnstile widget could not be rendered.", error);
+        }
+    };
+
+    window.getKnowmeTurnstileToken = function (container) {
+        if (!container) return "";
+        const widgetId = container.dataset.turnstileWidgetId;
+        if (widgetId && window.turnstile && typeof window.turnstile.getResponse === "function") {
+            return window.turnstile.getResponse(widgetId) || "";
+        }
+        return container.querySelector('input[name="cf-turnstile-response"]')?.value || "";
+    };
+
+    window.resetKnowmeTurnstile = function (container) {
+        if (!container) return;
+        const widgetId = container.dataset.turnstileWidgetId;
+        if (widgetId && window.turnstile && typeof window.turnstile.reset === "function") {
+            window.turnstile.reset(widgetId);
+        }
+    };
+
+    window.knowmeTurnstileOnload = function () {
+        document.querySelectorAll("[data-turnstile-container]").forEach((container) => {
+            const isLazy = container.dataset.turnstileLazy === "true";
+            const shouldRenderNow = !isLazy || container.dataset.turnstilePending === "true";
+            if (shouldRenderNow) window.renderKnowmeTurnstile(container);
+        });
+    };
+})();
+
 const translations = {
 
     /* =====================================================
@@ -143,7 +205,8 @@ const translations = {
             you: "YOU",
             thinking: "KNOWME AI is thinking...",
             error: "I couldn't get a response. Please try again.",
-            securityError: "Secure chat token is missing. Refresh the page and try again."
+            securityError: "Secure chat token is missing. Refresh the page and try again.",
+            turnstileRequired: "Complete the security verification before sending your message."
         },
 
         /* =================================================
@@ -510,7 +573,8 @@ const translations = {
             you: "ВЫ",
             thinking: "KNOWME AI обрабатывает запрос...",
             error: "Не удалось получить ответ. Попробуйте ещё раз.",
-            securityError: "Отсутствует защищённый токен чата. Обновите страницу и попробуйте снова."
+            securityError: "Отсутствует защищённый токен чата. Обновите страницу и попробуйте снова.",
+            turnstileRequired: "Пройдите проверку безопасности перед отправкой сообщения."
         },
         /* =================================================
            PRICES
@@ -872,7 +936,8 @@ const translations = {
             you: "ԴՈՒՔ",
             thinking: "KNOWME AI-ն մշակում է հարցումը...",
             error: "Չհաջողվեց ստանալ պատասխան։ Փորձեք կրկին։",
-            securityError: "Chat-ի անվտանգության token-ը բացակայում է։ Թարմացրեք էջը և փորձեք կրկին։"
+            securityError: "Chat-ի անվտանգության token-ը բացակայում է։ Թարմացրեք էջը և փորձեք կրկին։",
+            turnstileRequired: "Ուղարկելուց առաջ անցեք անվտանգության ստուգումը։"
         },
         /* =================================================
            PRICES
@@ -1743,6 +1808,7 @@ document.querySelectorAll(".admin-delete-form").forEach((form) => {
 const chatPanel = document.getElementById("knowmeChatPanel");
 const chatToggle = document.getElementById("knowmeChatToggle");
 const chatClose = document.getElementById("knowmeChatClose");
+const chatTurnstile = document.getElementById("knowmeChatTurnstile");
     // This script runs only when the homepage chat exists.
     if (
     !chatForm ||
@@ -2243,6 +2309,18 @@ if (role === "assistant") {
             return;
         }
 
+        const turnstileToken = chatTurnstile
+            ? (window.getKnowmeTurnstileToken?.(chatTurnstile) || "")
+            : "";
+
+        if (chatTurnstile && !turnstileToken) {
+            setChatStatus(
+                chatText("chat.turnstileRequired"),
+                "error"
+            );
+            return;
+        }
+
         const shouldRestoreInputFocus =
             chatInput === document.activeElement;
 
@@ -2280,9 +2358,8 @@ if (role === "assistant") {
                 },
 
                 body: JSON.stringify({
-
-                    messages: conversation.slice(-24)
-
+                    messages: conversation.slice(-24),
+                    turnstile_token: turnstileToken
                 })
 
             });
@@ -2386,6 +2463,10 @@ if (
             );
 
         } finally {
+
+            if (chatTurnstile) {
+                window.resetKnowmeTurnstile?.(chatTurnstile);
+            }
 
             isSending = false;
 
@@ -2623,6 +2704,11 @@ if (
         if (progressBar) progressBar.style.width = `${((currentStep + 1) / panels.length) * 100}%`;
         if (currentTitle) currentTitle.textContent = wizardText(titleKeys[currentStep], "Project details");
 
+        if (currentStep === 3) {
+            const turnstileContainer = form.querySelector("[data-turnstile-container]");
+            if (turnstileContainer) window.renderKnowmeTurnstile?.(turnstileContainer);
+        }
+
         previousButton.hidden = currentStep === 0;
         nextButton.hidden = currentStep === panels.length - 1;
         submitButton.hidden = currentStep !== panels.length - 1;
@@ -2828,3 +2914,4 @@ if (
         window.visualViewport.addEventListener("resize", updateOffset, { passive: true });
     }
 })();
+

@@ -3,7 +3,7 @@ import re
 
 from datetime import timedelta
 from functools import wraps
-from urllib.parse import urlsplit
+from urllib.parse import urlsplit, urlencode
 
 from dotenv import load_dotenv
 
@@ -107,6 +107,118 @@ if not ADMIN_PASSWORD_HASH:
     raise RuntimeError(
         "ADMIN_PASSWORD_HASH is not configured"
     )
+
+
+# =========================================================
+# CLOUDFLARE TURNSTILE
+# =========================================================
+
+TURNSTILE_SITE_KEY = os.getenv("TURNSTILE_SITE_KEY", "").strip()
+TURNSTILE_SECRET_KEY = os.getenv("TURNSTILE_SECRET_KEY", "").strip()
+TURNSTILE_VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify"
+
+IS_PRODUCTION = (
+    os.getenv("RENDER", "").strip().lower() == "true"
+    or os.getenv("APP_ENV", "").strip().lower() == "production"
+)
+
+if bool(TURNSTILE_SITE_KEY) != bool(TURNSTILE_SECRET_KEY):
+    raise RuntimeError(
+        "TURNSTILE_SITE_KEY and TURNSTILE_SECRET_KEY must both be configured"
+    )
+
+TURNSTILE_ENABLED = bool(TURNSTILE_SITE_KEY and TURNSTILE_SECRET_KEY)
+
+if IS_PRODUCTION and not TURNSTILE_ENABLED:
+    raise RuntimeError(
+        "Cloudflare Turnstile keys are required in production"
+    )
+
+TURNSTILE_ALLOWED_HOSTNAMES = {
+    hostname.strip().lower()
+    for hostname in os.getenv(
+        "TURNSTILE_ALLOWED_HOSTNAMES",
+        "knowme-studio.onrender.com"
+    ).split(",")
+    if hostname.strip()
+}
+
+if not IS_PRODUCTION:
+    TURNSTILE_ALLOWED_HOSTNAMES.update({"localhost", "127.0.0.1", "::1"})
+
+
+def verify_turnstile(token, expected_action):
+    """Validate a single-use Turnstile token with Cloudflare Siteverify."""
+
+    # Local development can run without production credentials. Render is
+    # fail-closed because startup rejects a missing key pair above.
+    if not TURNSTILE_ENABLED:
+        return True
+
+    if not isinstance(token, str):
+        return False
+
+    token = token.strip()
+    if not token or len(token) > 2048:
+        return False
+
+    payload = urlencode({
+        "secret": TURNSTILE_SECRET_KEY,
+        "response": token,
+    }).encode("utf-8")
+
+    siteverify_request = Request(
+        TURNSTILE_VERIFY_URL,
+        data=payload,
+        headers={
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Accept": "application/json",
+        },
+        method="POST",
+    )
+
+    try:
+        with urlopen(siteverify_request, timeout=8) as response:
+            result = json.loads(response.read(16384).decode("utf-8"))
+    except (HTTPError, URLError, TimeoutError, ValueError) as error:
+        app.logger.warning(
+            "Cloudflare Turnstile Siteverify request failed: %s",
+            type(error).__name__,
+        )
+        return False
+
+    if not isinstance(result, dict) or result.get("success") is not True:
+        error_codes = result.get("error-codes", []) if isinstance(result, dict) else []
+        app.logger.info(
+            "Cloudflare Turnstile rejected action %s: %s",
+            expected_action,
+            error_codes,
+        )
+        return False
+
+    hostname = str(result.get("hostname", "")).strip().lower()
+    if hostname not in TURNSTILE_ALLOWED_HOSTNAMES:
+        app.logger.warning(
+            "Cloudflare Turnstile hostname mismatch for action %s",
+            expected_action,
+        )
+        return False
+
+    if result.get("action") != expected_action:
+        app.logger.warning(
+            "Cloudflare Turnstile action mismatch; expected %s",
+            expected_action,
+        )
+        return False
+
+    return True
+
+
+@app.context_processor
+def inject_turnstile_context():
+    return {
+        "turnstile_site_key": TURNSTILE_SITE_KEY if TURNSTILE_ENABLED else None
+    }
 
 
 # =========================================================
@@ -270,6 +382,16 @@ def projects():
 def contact():
 
     if request.method == "POST":
+
+        if not verify_turnstile(
+            request.form.get("cf-turnstile-response"),
+            "contact",
+        ):
+            flash(
+                "Verification failed or expired. Please complete the security check and try again.",
+                "error",
+            )
+            return redirect(url_for("contact"))
 
         name = request.form.get(
             "name",
@@ -500,6 +622,15 @@ def start_project():
             "success"
         )
         return redirect(url_for("start_project"), code=303)
+
+    if not verify_turnstile(
+        form_data.get("cf-turnstile-response"),
+        "start_project",
+    ):
+        return _project_form_error(
+            "Verification failed or expired. Please complete the security check and submit again.",
+            form_data,
+        )
 
     full_name = form_data.get("full_name", "").strip()
     email = form_data.get("email", "").strip()
@@ -946,7 +1077,8 @@ def add_security_headers(response):
         "Content-Security-Policy"
     ] = (
         "default-src 'self'; "
-        "script-src 'self'; "
+        "script-src 'self' https://challenges.cloudflare.com; "
+        "frame-src 'self' https://challenges.cloudflare.com; "
         "style-src 'self'; "
         "font-src 'self'; "
         "media-src 'self'; "
@@ -955,7 +1087,7 @@ def add_security_headers(response):
         "frame-ancestors 'none'; "
         "form-action 'self';"
         "img-src 'self' data: blob:;"
-        "connect-src 'self' blob:;"
+        "connect-src 'self' blob: https://challenges.cloudflare.com;"
     )
 
 
@@ -1119,6 +1251,11 @@ def openrouter_chat():
             "role": role,
             "content": content
         })
+
+    if not verify_turnstile(data.get("turnstile_token"), "chat"):
+        return jsonify({
+            "error": "Security verification failed or expired. Complete the Turnstile check and try again."
+        }), 403
 
     payload = {
         "model": OPENROUTER_MODEL,
@@ -2097,3 +2234,4 @@ if __name__ == "__main__":
     app.run(
         debug=True
     )
+
