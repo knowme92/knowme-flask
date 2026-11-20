@@ -70,43 +70,6 @@
 
 
         <!-- ==================================================
-             DISPLAY CURRENCY
-        =================================================== -->
-
-        <div class="currency-control" aria-label="Price display currency">
-            <span class="currency-control-label" data-i18n="prices.currencyLabel">
-                DISPLAY CURRENCY
-            </span>
-
-            <div class="currency-options" role="group" aria-label="Currency">
-                <button type="button" class="currency-option" data-currency="AMD" aria-pressed="true">
-                    <span class="currency-symbol">֏</span>
-                    <span>AMD</span>
-                </button>
-
-                <button type="button" class="currency-option" data-currency="USD" aria-pressed="false">
-                    <span class="currency-symbol">$</span>
-                    <span>USD</span>
-                </button>
-
-                <button type="button" class="currency-option" data-currency="RUB" aria-pressed="false">
-                    <span class="currency-symbol">₽</span>
-                    <span>RUB</span>
-                </button>
-            </div>
-
-            <p class="currency-note" data-i18n="prices.currencyNote">
-                Converted from AMD using the latest available Central Bank of Armenia reference rates. Final quote is confirmed separately.
-            </p>
-
-            <p class="currency-rate-status" id="currencyRateStatus" aria-live="polite" role="status">
-                Loading exchange rates…
-            </p>
-        </div>
-
-
-
-        <!-- ==================================================
              PRICE CARDS
         =================================================== -->
 
@@ -134,7 +97,7 @@
                 </h2>
 
 
-                <div class="price" data-price-amd="80000">80 000 ֏</div>
+                <div class="price" data-i18n="prices.starterPrice">$50 USD</div>
 
 
                 <p
@@ -228,7 +191,7 @@
                 </h2>
 
 
-                <div class="price" data-price-amd="150000">150 000 ֏</div>
+                <div class="price" data-i18n="prices.businessPrice">$100 USD</div>
 
 
                 <p
@@ -322,7 +285,7 @@
                     class="price"
                     data-i18n="prices.customPrice"
                 >
-                    From 250 000֏
+                    Negotiable
                 </div>
 
 
@@ -393,6 +356,11 @@
 
 
         </div>
+
+
+        <p class="prices-disclaimer" data-i18n="prices.disclaimer">
+            Prices may vary depending on project requirements, agreed terms, and applicable discounts.
+        </p>
 
 
 

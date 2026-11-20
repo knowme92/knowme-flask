@@ -206,7 +206,13 @@ const translations = {
             thinking: "KNOWME AI is thinking...",
             error: "I couldn't get a response. Please try again.",
             securityError: "Secure chat token is missing. Refresh the page and try again.",
-            turnstileRequired: "Complete the security verification before sending your message."
+            turnstileRequired: "Complete the security verification before sending your message.",
+            contextTooLarge: "This request is too large for the available AI context. Shorten the latest message and try again.",
+            requestTooLarge: "This chat request is too large. Shorten the message or conversation and try again.",
+            temporarilyBusy: "KNOWME AI is temporarily unavailable. Please try again shortly.",
+            dailyLimit: "KNOWME AI's daily usage limit has been reached.",
+            retryAfter: " Please try again in about {minutes} minutes.",
+            rateLimited: "Too many chat requests. Please try again shortly."
         },
 
         /* =================================================
@@ -221,11 +227,7 @@ const translations = {
             description:
                 "Choose the package that fits your project. Every website is responsive, modern and built with attention to security.",
 
-            currencyLabel: "DISPLAY CURRENCY",
-            currencyNote: "Prices are indicative conversions from AMD using the latest available Central Bank of Armenia reference rates. The final invoice amount is confirmed in your offer.",
-            ratesLoading: "Loading exchange rates…",
-            ratesUpdated: "Rates checked: {date} · CBA reference rates",
-            ratesUnavailable: "Exchange-rate service unavailable. Showing reference rates dated {date}.",
+            disclaimer: "Prices may vary depending on project requirements, agreed terms, and applicable discounts.",
 
 
             /* STARTER */
@@ -235,6 +237,9 @@ const translations = {
 
             starterTitle:
                 "Landing Page",
+
+            starterPrice:
+                "$50 USD",
 
             starterInfo:
                 "Perfect for a personal brand, service or small business.",
@@ -274,6 +279,9 @@ const translations = {
 
             businessTitle:
                 "Business Website",
+
+            businessPrice:
+                "$100 USD",
 
             businessInfo:
                 "A complete website for businesses that need a professional online presence.",
@@ -315,7 +323,7 @@ const translations = {
                 "Custom Web Project",
 
             customPrice:
-                "Contract price",
+                "Negotiable",
 
             customInfo:
                 "For projects that require backend, database or custom functionality.",
@@ -574,7 +582,13 @@ const translations = {
             thinking: "KNOWME AI обрабатывает запрос...",
             error: "Не удалось получить ответ. Попробуйте ещё раз.",
             securityError: "Отсутствует защищённый токен чата. Обновите страницу и попробуйте снова.",
-            turnstileRequired: "Пройдите проверку безопасности перед отправкой сообщения."
+            turnstileRequired: "Пройдите проверку безопасности перед отправкой сообщения.",
+            contextTooLarge: "Этот запрос слишком велик для доступного контекста ИИ. Сократите последнее сообщение и попробуйте снова.",
+            requestTooLarge: "Запрос чата слишком велик. Сократите сообщение или историю и попробуйте снова.",
+            temporarilyBusy: "KNOWME AI временно недоступен. Попробуйте ещё раз позже.",
+            dailyLimit: "Достигнут дневной лимит использования KNOWME AI.",
+            retryAfter: " Попробуйте снова примерно через {minutes} мин.",
+            rateLimited: "Слишком много запросов к чату. Попробуйте ещё раз позже."
         },
         /* =================================================
            PRICES
@@ -588,11 +602,7 @@ const translations = {
             description:
                 "Выберите пакет, который подходит вашему проекту. Каждый сайт создаётся современным, адаптивным и с учётом безопасности.",
 
-            currencyLabel: "ВАЛЮТА ОТОБРАЖЕНИЯ",
-            currencyNote: "Цены показаны как ориентировочный пересчёт из AMD по последним доступным справочным курсам Центрального банка Армении. Итоговая сумма подтверждается в предложении.",
-            ratesLoading: "Загрузка курсов валют…",
-            ratesUpdated: "Курсы проверены: {date} · справочные курсы ЦБА",
-            ratesUnavailable: "Сервис курсов недоступен. Показаны справочные курсы на {date}.",
+            disclaimer: "Цены могут изменяться в зависимости от требований проекта, согласованных условий и предоставляемых скидок.",
 
 
             /* STARTER */
@@ -602,6 +612,9 @@ const translations = {
 
             starterTitle:
                 "Лендинг",
+
+            starterPrice:
+                "18,310 RUB",
 
             starterInfo:
                 "Подходит для личного бренда, услуг или небольшого бизнеса.",
@@ -641,6 +654,9 @@ const translations = {
 
             businessTitle:
                 "Бизнес-сайт",
+
+            businessPrice:
+                "34,330 RUB",
 
             businessInfo:
                 "Полноценный сайт для бизнеса, которому необходимо профессиональное присутствие в интернете.",
@@ -937,7 +953,13 @@ const translations = {
             thinking: "KNOWME AI-ն մշակում է հարցումը...",
             error: "Չհաջողվեց ստանալ պատասխան։ Փորձեք կրկին։",
             securityError: "Chat-ի անվտանգության token-ը բացակայում է։ Թարմացրեք էջը և փորձեք կրկին։",
-            turnstileRequired: "Ուղարկելուց առաջ անցեք անվտանգության ստուգումը։"
+            turnstileRequired: "Ուղարկելուց առաջ անցեք անվտանգության ստուգումը։",
+            contextTooLarge: "Այս հարցումը չափազանց մեծ է հասանելի AI համատեքստի համար։ Կրճատեք վերջին հաղորդագրությունը և փորձեք կրկին։",
+            requestTooLarge: "Chat-ի հարցումը չափազանց մեծ է։ Կրճատեք հաղորդագրությունը կամ պատմությունը և փորձեք կրկին։",
+            temporarilyBusy: "KNOWME AI-ն ժամանակավորապես անհասանելի է։ Խնդրում ենք փորձել ավելի ուշ։",
+            dailyLimit: "KNOWME AI-ի օրական օգտագործման սահմանաչափը սպառվել է։",
+            retryAfter: " Փորձեք կրկին մոտ {minutes} րոպեից։",
+            rateLimited: "Chat-ին չափազանց շատ հարցումներ են ուղարկվել։ Փորձեք կրկին ավելի ուշ։"
         },
         /* =================================================
            PRICES
@@ -951,11 +973,7 @@ const translations = {
             description:
                 "Ընտրեք ձեր նախագծին համապատասխան փաթեթը։ Յուրաքանչյուր կայք ստեղծվում է ժամանակակից, հարմարեցվող և անվտանգության նկատմամբ ուշադրությամբ։",
 
-            currencyLabel: "ԱՐԺՈՒՅԹԻ ՑՈՒՑԱԴՐՈՒՄ",
-            currencyNote: "Գները AMD-ից մոտավոր փոխարկումներ են՝ ՀՀ Կենտրոնական բանկի վերջին հասանելի տեղեկատու փոխարժեքներով։ Վերջնական գումարը կհաստատվի անհատական առաջարկում։",
-            ratesLoading: "Փոխարժեքները բեռնվում են…",
-            ratesUpdated: "Փոխարժեքները ստուգվել են՝ {date} · ՀՀ ԿԲ տեղեկատու փոխարժեքներ",
-            ratesUnavailable: "Փոխարժեքների ծառայությունն անհասանելի է։ Ցուցադրվում են {date}-ի տեղեկատու փոխարժեքները.",
+            disclaimer: "Գները կարող են փոփոխվել՝ կախված նախագծի պահանջներից, համաձայնեցված պայմաններից և կիրառվող զեղչերից։",
 
 
             /* STARTER */
@@ -965,6 +983,9 @@ const translations = {
 
             starterTitle:
                 "Landing Page",
+
+            starterPrice:
+                "80,000 AMD",
 
             starterInfo:
                 "Հարմար է անձնական բրենդի, ծառայության կամ փոքր բիզնեսի համար։",
@@ -1004,6 +1025,9 @@ const translations = {
 
             businessTitle:
                 "Բիզնես կայք",
+
+            businessPrice:
+                "150,000 AMD",
 
             businessInfo:
                 "Լիարժեք կայք բիզնեսի համար՝ պրոֆեսիոնալ առցանց ներկայությամբ։",
@@ -1284,161 +1308,10 @@ Object.assign(translations.hy, {
 
 
 /* =========================================================
-   PRICING CURRENCY DISPLAY
-   AMD remains the source price; USD/RUB are display conversions.
+   ACTIVE SITE LANGUAGE
 ========================================================= */
 
-const PRICE_CURRENCY_CONFIG = {
-    AMD: { locale: "hy-AM", code: "AMD" },
-    USD: { locale: "en-US", code: "USD" },
-    RUB: { locale: "ru-RU", code: "RUB" }
-};
-
-const storedPriceCurrency = localStorage.getItem("knowme-price-currency");
-let priceCurrencyWasManuallySelected =
-    localStorage.getItem("knowme-price-currency-manual") === "1";
-let activePriceCurrency =
-    priceCurrencyWasManuallySelected && PRICE_CURRENCY_CONFIG[storedPriceCurrency]
-        ? storedPriceCurrency
-        : "AMD";
 let activeSiteLanguage = "en";
-
-// Reference fallback is dated. The Flask endpoint replaces it with live CBA rates.
-let priceExchangeRates = { USD: 360.44, RUB: 4.3693 };
-let priceRatesState = "loading";
-let priceRatesDate = "2026-11-16";
-
-function defaultPriceCurrency(language) {
-    if (language === "ru") return "RUB";
-    if (language === "en") return "USD";
-    return "AMD";
-}
-
-function formatPriceAmount(amountAMD, currency) {
-    const config = PRICE_CURRENCY_CONFIG[currency];
-    if (!config || !Number.isFinite(amountAMD)) return "";
-
-    const amount = currency === "AMD"
-        ? amountAMD
-        : amountAMD / priceExchangeRates[currency];
-
-    return new Intl.NumberFormat(config.locale, {
-        style: "currency",
-        currency: config.code,
-        maximumFractionDigits: 0,
-        minimumFractionDigits: 0
-    }).format(amount);
-}
-
-function updatePriceDisplays() {
-    document.querySelectorAll("[data-price-amd]").forEach((element) => {
-        const amountAMD = Number(element.dataset.priceAmd);
-        if (!Number.isFinite(amountAMD)) return;
-        element.textContent = formatPriceAmount(amountAMD, activePriceCurrency);
-    });
-}
-
-function formatRateDate(value) {
-    if (!value) return "";
-    const date = new Date(`${value}T00:00:00`);
-    if (Number.isNaN(date.getTime())) return value;
-    const locale = { en: "en-GB", ru: "ru-RU", hy: "hy-AM" }[activeSiteLanguage] || "en-GB";
-    return new Intl.DateTimeFormat(locale, {
-        day: "2-digit",
-        month: "short",
-        year: "numeric"
-    }).format(date);
-}
-
-function updateCurrencyRateStatus() {
-    const status = document.getElementById("currencyRateStatus");
-    if (!status) return;
-
-    const languagePrices = translations[activeSiteLanguage]?.prices || translations.en.prices;
-
-    if (priceRatesState === "loading") {
-        status.textContent = languagePrices.ratesLoading;
-        return;
-    }
-
-    const dateText = formatRateDate(priceRatesDate);
-    if (priceRatesState === "stale") {
-        status.textContent = languagePrices.ratesUnavailable.replace("{date}", dateText || "16 Nov 2026");
-        status.classList.add("is-stale");
-    } else {
-        status.textContent = languagePrices.ratesUpdated.replace("{date}", dateText || "");
-        status.classList.remove("is-stale");
-    }
-}
-
-function setPriceCurrency(currency, manualSelection = false) {
-    if (!PRICE_CURRENCY_CONFIG[currency]) return;
-
-    activePriceCurrency = currency;
-
-    if (manualSelection) {
-        priceCurrencyWasManuallySelected = true;
-        localStorage.setItem("knowme-price-currency-manual", "1");
-        localStorage.setItem("knowme-price-currency", currency);
-    }
-
-    document.querySelectorAll(".currency-option[data-currency]").forEach((button) => {
-        const isActive = button.dataset.currency === currency;
-        button.classList.toggle("active", isActive);
-        button.setAttribute("aria-pressed", String(isActive));
-    });
-
-    updatePriceDisplays();
-    updateCurrencyRateStatus();
-}
-
-async function loadPriceExchangeRates() {
-    if (!document.querySelector(".currency-control")) return;
-
-    try {
-        const response = await fetch("/api/exchange-rates", {
-            method: "GET",
-            headers: { "Accept": "application/json" ,
-            "X-CSRFToken": document.querySelector(
-    'meta[name="csrf-token"]'
-).content},
-            cache: "no-store"
-        });
-
-        if (!response.ok) {
-            throw new Error(`Exchange-rate endpoint returned HTTP ${response.status}`);
-        }
-
-        const payload = await response.json();
-        const usd = Number(payload?.rates?.USD);
-        const rub = Number(payload?.rates?.RUB);
-
-        if (!Number.isFinite(usd) || usd <= 0 || !Number.isFinite(rub) || rub <= 0) {
-            throw new Error("Exchange-rate response is missing valid USD/RUB values.");
-        }
-
-        priceExchangeRates = { USD: usd, RUB: rub };
-        priceRatesDate = payload.checked_date || payload.retrieved_at?.slice(0, 10) || priceRatesDate;
-        priceRatesState = payload.stale ? "stale" : "live";
-    } catch (error) {
-        // Keep the dated fallback rates visible, but clearly mark them as stale.
-        priceRatesState = "stale";
-        console.warn("[KNOWME Pricing] Could not refresh exchange rates; using dated fallback rates.", error);
-    }
-
-    updatePriceDisplays();
-    updateCurrencyRateStatus();
-}
-
-/* =========================================================
-   CURRENCY BUTTON EVENTS
-========================================================= */
-
-document.querySelectorAll(".currency-option[data-currency]").forEach((button) => {
-    button.addEventListener("click", () => {
-        setPriceCurrency(button.dataset.currency, true);
-    });
-});
 
 /* =========================================================
    GET TRANSLATION
@@ -1556,14 +1429,6 @@ function changeLanguage(language) {
     );
 
     activeSiteLanguage = language;
-
-    // Automatic defaults: HY → AMD, EN → USD, RU → RUB.
-    // A manually selected currency remains unchanged across language switches.
-    if (!priceCurrencyWasManuallySelected) {
-        setPriceCurrency(defaultPriceCurrency(language), false);
-    } else {
-        setPriceCurrency(activePriceCurrency, false);
-    }
 }
 
 
@@ -1599,7 +1464,6 @@ const savedLanguage =
 
 
 changeLanguage(savedLanguage);
-loadPriceExchangeRates();
 document.querySelectorAll(".admin-delete-form").forEach((form) => {
 
     form.addEventListener("submit", (event) => {
@@ -2358,7 +2222,7 @@ if (role === "assistant") {
                 },
 
                 body: JSON.stringify({
-                    messages: conversation.slice(-24),
+                    messages: conversation.slice(-31),
                     turnstile_token: turnstileToken
                 })
 
@@ -2379,8 +2243,7 @@ try {
         "[KNOWME AI] Non-JSON response:",
         {
             status: response.status,
-            contentType: response.headers.get("content-type"),
-            body: responseText.slice(0, 1500)
+            contentType: response.headers.get("content-type")
         }
     );
 }
@@ -2390,13 +2253,17 @@ try {
 
     console.error(
         "[KNOWME AI] API HTTP error:",
-        response.status,
-        result
+        response.status
     );
 
-    throw new Error(
+    const apiError = new Error(
         result?.error || `HTTP ${response.status}`
     );
+    apiError.code = result?.error_code;
+    apiError.retryAfter = Number.isInteger(result?.retry_after)
+        ? result.retry_after
+        : null;
+    throw apiError;
 }
 
 if (
@@ -2405,8 +2272,7 @@ if (
     !result.reply.trim()
 ) {
     console.error(
-        "[KNOWME AI] Invalid API response:",
-        result
+        "[KNOWME AI] Invalid API response"
     );
 
     throw new Error("Invalid AI response");
@@ -2421,12 +2287,12 @@ if (
             });
 
 
-            // Keep the conversation within the backend message limit.
-            if (conversation.length > 24) {
+            // Bound API history while leaving every rendered message in the chat.
+            if (conversation.length > 30) {
 
                 conversation.splice(
                     0,
-                    conversation.length - 24
+                    conversation.length - 30
                 );
             }
 
@@ -2457,8 +2323,34 @@ if (
                 error
             );
 
+            let statusMessage = chatText("chat.error");
+
+            if (error?.code === "AI_CONTEXT_TOO_LARGE") {
+                statusMessage = chatText("chat.contextTooLarge");
+            } else if ([
+                "AI_REQUEST_TOO_LARGE",
+                "AI_MESSAGE_TOO_LARGE",
+                "AI_CONVERSATION_TOO_LARGE",
+                "AI_TOO_MANY_MESSAGES"
+            ].includes(error?.code)) {
+                statusMessage = chatText("chat.requestTooLarge");
+            } else if (
+                error?.code === "AI_QUOTA_TEMPORARY_FAILURE" ||
+                error?.code === "AI_PROVIDER_RATE_LIMITED"
+            ) {
+                statusMessage = chatText("chat.temporarilyBusy");
+            } else if (String(error?.code || "").includes("QUOTA_EXCEEDED")) {
+                statusMessage = chatText("chat.dailyLimit");
+                if (error.retryAfter > 0) {
+                    statusMessage += chatText("chat.retryAfter")
+                        .replace("{minutes}", String(Math.ceil(error.retryAfter / 60)));
+                }
+            } else if (error?.code === "AI_RATE_LIMITED") {
+                statusMessage = chatText("chat.rateLimited");
+            }
+
             setChatStatus(
-                chatText("chat.error"),
+                statusMessage,
                 "error"
             );
 
