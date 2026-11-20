@@ -373,7 +373,7 @@ def sitemap():
         """
 
     xml = f"""<?xml version="1.0" encoding="UTF-8"?>
-    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
         {urls}
     </urlset>
     """
@@ -440,7 +440,7 @@ def contact():
     if request.method == "POST":
 
         if not verify_turnstile(
-            request.form.get("cf-turnstile-response"),
+                request.form.get("cf-turnstile-response") or "",
             "contact",
         ):
             flash(
@@ -1250,6 +1250,9 @@ def add_security_headers(response):
 def _client_ip_for_quota():
     """Use only the socket address after explicitly configured ProxyFix handling."""
     value = request.remote_addr
+
+    if not isinstance(value, str) or not value:
+        return "unknown"
     try:
         return ipaddress.ip_address(value).compressed
     except (TypeError, ValueError):
@@ -1264,8 +1267,29 @@ def _valid_openrouter_usage(result):
     values = [usage.get("prompt_tokens"), usage.get("completion_tokens"), usage.get("total_tokens")]
     if any(isinstance(value, bool) or not isinstance(value, int) or value < 0 for value in values):
         return None
-    prompt_tokens, completion_tokens, total_tokens = values
-    if total_tokens != prompt_tokens + completion_tokens:
+    prompt_tokens = usage.get("prompt_tokens")
+    completion_tokens = usage.get("completion_tokens")
+    total_tokens = usage.get("total_tokens")
+
+    if (
+            isinstance(prompt_tokens, bool)
+            or not isinstance(prompt_tokens, int)
+            or prompt_tokens < 0
+    ):
+        return None
+
+    if (
+            isinstance(completion_tokens, bool)
+            or not isinstance(completion_tokens, int)
+            or completion_tokens < 0
+    ):
+        return None
+
+    if (
+            isinstance(total_tokens, bool)
+            or not isinstance(total_tokens, int)
+            or total_tokens < 0
+    ):
         return None
     return {
         "prompt_tokens": prompt_tokens,

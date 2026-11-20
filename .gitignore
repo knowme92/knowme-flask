@@ -1,5 +1,6 @@
 .env
 .venv/
+.venv315/
 __pycache__/
 *.pyc
 .idea/
