@@ -823,7 +823,7 @@ app = Flask(__name__)
 
             {% if turnstile_site_key %}
             <div class="knowme-chat-turnstile">
-                <div id="knowmeChatTurnstile" data-turnstile-container data-turnstile-sitekey="{{ turnstile_site_key }}" data-turnstile-action="chat" data-turnstile-theme="dark" data-turnstile-size="compact" aria-label="Security verification"></div>
+                <div id="knowmeChatTurnstile" data-turnstile-container data-turnstile-sitekey="{{ turnstile_site_key }}" data-turnstile-action="chat" data-turnstile-theme="dark" data-turnstile-size="normal" aria-label="Security verification"></div>
             </div>
             {% endif %}
 
