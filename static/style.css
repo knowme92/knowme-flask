@@ -5447,14 +5447,7 @@ body.why-intro-active {
     overflow-x: hidden;
     isolation: isolate;
 
-    background:
-        linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0.10),
-            rgba(0, 0, 0, 0.82)
-        ),
-        url("/static/images/why-knowme-bg.png")
-        center / cover fixed no-repeat;
+    background: #020307;
 }
 
 .why-page::before {
@@ -5526,10 +5519,7 @@ body.why-intro-active .topbar {
 
     z-index: 50;
 
-    background:
-        #000
-        url("/static/images/why-knowme-bg.png")
-        center / cover no-repeat;
+    background-color: #000;
 
     opacity: 1;
     visibility: visible;
@@ -5558,10 +5548,7 @@ body.why-intro-active .topbar {
 
     z-index: 0;
 
-    background:
-        #000
-        url("/static/images/why-knowme-bg.png")
-        center / cover no-repeat;
+    background-color: #000;
 
     opacity: 1;
     visibility: visible;
@@ -11409,25 +11396,6 @@ body.why-intro-active .topbar {
 
 .sp3d-scroll-cta button:hover { transform: translateY(4px); border-color: #ff626d; background: rgba(160, 32, 53, 0.3); }
 .sp3d-status { right: clamp(24px, 6.7vw, 112px); bottom: 41px; display: flex; align-items: center; gap: 9px; color: rgba(196, 214, 240, 0.55); font-size: 8px; font-weight: 850; letter-spacing: 0.16em; }
-.sp3d-credits {
-    position: absolute;
-    z-index: 2;
-    right: clamp(24px, 6.7vw, 112px);
-    bottom: 17px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-    gap: 6px;
-    color: rgba(188, 205, 230, 0.34);
-    font-family: "Courier New", monospace;
-    font-size: 7px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-}
-.sp3d-credits a { color: rgba(196, 215, 242, 0.48); text-decoration: none; transition: color 0.2s ease; }
-.sp3d-credits a:hover { color: #f1f6ff; }
-.sp3d-credits i { color: rgba(255, 105, 118, 0.55); font-style: normal; }
 .sp3d-status.is-ready i { background: #56d89e; }
 .sp3d-status.is-error i { background: #ff6971; box-shadow: 0 0 12px rgba(255, 105, 113, 0.7); }
 .sp3d-fallback .sp3d-canvas { opacity: 0; }
@@ -11632,7 +11600,6 @@ body.why-intro-active .topbar {
     .sp3d-scroll-cta button { width: 32px; height: 32px; }
     .sp3d-bottom-left { left: 22px; bottom: 31px; font-size: 7px; }
     .sp3d-status { right: 22px; bottom: 76px; font-size: 7px; }
-    .sp3d-credits { right: 22px; bottom: 8px; left: 22px; justify-content: flex-end; gap: 3px 4px; font-size: 5.5px; line-height: 1.35; }
     .sp-shell { padding-top: 35px; }
     .sp-sticky-summary { top: 82px; align-items: flex-start; flex-direction: column; gap: 10px; padding: 11px 13px 15px; }
     .sp-summary-main strong { font-size: 12px; }
