@@ -623,6 +623,12 @@ PROJECT_GOALS = {
 PROJECT_STYLES = {
     "modern", "minimal", "corporate", "luxury", "creative", "futuristic", "reference"
 }
+PROJECT_LAYOUT_STYLES = {"balanced", "editorial", "grid", "immersive"}
+PROJECT_FONT_STYLES = {"modern", "geometric", "editorial", "technical"}
+PROJECT_ANIMATION_LEVELS = {"subtle", "expressive", "none"}
+PROJECT_SECURITY_REQUIREMENTS = {
+    "mfa", "role-based-access", "audit-logs", "backups", "privacy-controls", "payment-protection"
+}
 PROJECT_PAGE_SCOPES = {"one", "3-5", "6-10", "10-plus", "unsure"}
 PROJECT_REQUIRED_PAGES = {
     "home", "about", "services", "projects", "pricing", "blog", "contact", "faq", "shop", "other"
@@ -680,7 +686,7 @@ def start_project():
         return redirect(url_for("start_project"), code=303)
 
     if not verify_turnstile(
-        form_data.get("cf-turnstile-response"),
+        form_data.get("cf-turnstile-response") or "",
         "start_project",
     ):
         return _project_form_error(
@@ -697,6 +703,11 @@ def start_project():
     website_goal = form_data.get("website_goal", "").strip()
     design_style = form_data.get("design_style", "").strip()
     pages_scope = form_data.get("pages_scope", "").strip()
+    layout_style = form_data.get("layout_style", "balanced").strip()
+    font_style = form_data.get("font_style", "modern").strip()
+    animation_level = form_data.get("animation_level", "subtle").strip()
+    preferred_domain = form_data.get("preferred_domain", "").strip()
+    security_requirements = form_data.getlist("security_requirements")
     budget = form_data.get("budget", "").strip()
     deadline = form_data.get("deadline", "").strip()
 
@@ -739,6 +750,48 @@ def start_project():
 
     if pages_scope not in PROJECT_PAGE_SCOPES:
         return _project_form_error("Choose the expected website size.", form_data)
+
+    if layout_style not in PROJECT_LAYOUT_STYLES:
+        return _project_form_error("Choose a valid page composition.", form_data)
+
+    if font_style not in PROJECT_FONT_STYLES:
+        return _project_form_error("Choose a valid typography direction.", form_data)
+
+    if animation_level not in PROJECT_ANIMATION_LEVELS:
+        return _project_form_error("Choose a valid motion preference.", form_data)
+
+    if (
+        len(security_requirements) > len(PROJECT_SECURITY_REQUIREMENTS)
+        or len(security_requirements) != len(set(security_requirements))
+        or any(value not in PROJECT_SECURITY_REQUIREMENTS for value in security_requirements)
+    ):
+        return _project_form_error("One or more security requirements are invalid.", form_data)
+
+    if preferred_domain:
+        if len(preferred_domain) > 253 or any(char.isspace() for char in preferred_domain) or "://" in preferred_domain or "/" in preferred_domain:
+            return _project_form_error("Enter a domain name only, without a protocol or path.", form_data)
+        try:
+            ascii_domain = preferred_domain.rstrip(".").encode("idna").decode("ascii").lower()
+            labels = ascii_domain.split(".")
+            valid_domain = (
+                len(ascii_domain) <= 253
+                and len(labels) >= 2
+                and all(
+                    1 <= len(label) <= 63
+                    and re.fullmatch(r"[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", label)
+                    for label in labels
+                )
+                and (
+                    re.fullmatch(r"[a-z]{2,63}", labels[-1]) is not None
+                    or (labels[-1].startswith("xn--") and len(labels[-1]) <= 63)
+                )
+            )
+        except UnicodeError:
+            valid_domain = False
+            ascii_domain = ""
+        if not valid_domain:
+            return _project_form_error("Enter a valid domain, for example yourbrand.com.", form_data)
+        preferred_domain = ascii_domain
 
     if budget not in PROJECT_BUDGETS:
         return _project_form_error("Choose a budget range or select that you want to discuss it.", form_data)
@@ -824,6 +877,11 @@ def start_project():
         website_goal=website_goal,
         design_style=design_style,
         pages_scope=pages_scope,
+        layout_style=layout_style,
+        font_style=font_style,
+        animation_level=animation_level,
+        preferred_domain=preferred_domain,
+        security_requirements=security_requirements,
         required_pages=required_pages,
         features=features,
         selected_3d_models=selected_3d_models,
@@ -1607,4 +1665,3 @@ if __name__ == "__main__":
     app.run(
         debug=True
     )
-

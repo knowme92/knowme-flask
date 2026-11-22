@@ -68,12 +68,19 @@
                                 <span>Type: {{ project.website_type }}</span>
                                 <span>Goal: {{ project.website_goal }}</span>
                                 <span>Style: {{ project.design_style }}</span>
+                                <span>Layout: {{ project.layout_style or 'balanced' }}</span>
+                                <span>Typography: {{ project.font_style or 'modern' }}</span>
+                                <span>Motion: {{ project.animation_level or 'subtle' }}</span>
                                 <span>Pages: {{ project.pages_scope }}</span>
                                 <span>Budget: {{ project.budget }}</span>
                                 <span>Deadline: {{ project.deadline }}</span>
                                 <span>Colors: {{ project.primary_color }} / {{ project.secondary_color }}</span>
                             </div>
 
+                            {% if project.preferred_domain %}<p class="admin-project-detail"><strong>Preferred domain:</strong> {{ project.preferred_domain }}</p>{% endif %}
+                            {% if project.security_requirements %}
+                                <p class="admin-project-detail"><strong>Additional security:</strong> {{ project.security_requirements|join(', ') }}</p>
+                            {% endif %}
                             <p class="admin-project-detail"><strong>Audience:</strong> {{ project.target_audience or 'Not specified' }}</p>
                             <p class="admin-project-detail"><strong>Description:</strong> {{ project.description }}</p>
                             {% if project.reference_url %}

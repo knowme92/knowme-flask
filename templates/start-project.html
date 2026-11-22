@@ -28,26 +28,85 @@
         <span class="sp-atmo-crosshair sp-atmo-crosshair-two"></span>
     </div>
 
-    <div class="sp-shell">
-        <header class="sp-hero sp-reveal">
-            <div class="sp-brand-stage" role="img" aria-label="KNOWME Studio">
-                <div class="sp-brand-neon-line sp-brand-neon-line-top"><span></span></div>
-                <div class="sp-brand-word" aria-hidden="true">
-                    <span class="sp-brand-letter">K</span>
-                    <span class="sp-brand-letter">N</span>
-                    <span class="sp-brand-letter">O</span>
-                    <span class="sp-brand-letter">W</span>
-                    <span class="sp-brand-letter">M</span>
-                    <span class="sp-brand-letter">E</span>
-                    <span class="sp-brand-studio">STUDIO</span>
-                </div>
-                <div class="sp-brand-neon-line sp-brand-neon-line-bottom"><span></span></div>
+    <section class="sp-cinematic-hero" id="spCinematicHero" data-sp3d-hero aria-labelledby="sp3dHeroTitle">
+        <canvas class="sp3d-canvas" id="sp3dCanvas" aria-hidden="true"></canvas>
+        <svg class="sp-water-filter-defs" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><defs>
+            <filter id="spWaterRippleFilter" x="-16%" y="-22%" width="132%" height="144%" color-interpolation-filters="sRGB">
+                <feTurbulence type="fractalNoise" baseFrequency="0.008 0.026" numOctaves="2" seed="8" result="waterNoise">
+                    <animate attributeName="baseFrequency" values="0.008 0.026;0.016 0.012;0.006 0.032;0.008 0.026" dur="10.5s" repeatCount="indefinite"/>
+                    <animate attributeName="seed" values="8;13;5;8" dur="17s" repeatCount="indefinite"/>
+                </feTurbulence>
+                <feDisplacementMap in="SourceGraphic" in2="waterNoise" scale="8.5" xChannelSelector="R" yChannelSelector="G" result="rippledText">
+                    <animate attributeName="scale" values="3;10;5;8.5;3" dur="10.5s" repeatCount="indefinite"/>
+                </feDisplacementMap>
+                <feGaussianBlur in="rippledText" stdDeviation="0.16"/>
+            </filter>
+        </defs></svg>
+        <div class="sp3d-grain" aria-hidden="true"></div>
+        <div class="sp3d-vignette" aria-hidden="true"></div>
+        <div class="sp3d-neon-rail sp3d-neon-rail-top" aria-hidden="true"><i></i></div>
+        <div class="sp3d-neon-rail sp3d-neon-rail-bottom" aria-hidden="true"><i></i></div>
+
+        <div class="sp3d-topline">
+            <a class="sp3d-brand" href="{{ url_for('landing') }}" aria-label="KNOWME Studio home"><span class="sp3d-brand-k">K</span>NOW<span class="sp3d-brand-m">M</span>E<span class="sp3d-brand-studio">STUDIO</span></a>
+            <div class="sp3d-top-meta"><span data-i18n="startProject.heroIndex">01 / DIGITAL EXPERIENCE</span><i></i><span data-i18n="startProject.heroKicker">PROJECT BUILDER</span></div>
+        </div>
+
+        <div class="sp3d-manifesto">
+            <span data-i18n="startProject.heroManifestoLabel">/// MANIFESTO</span>
+            <p data-i18n="startProject.heroManifesto">Your idea is the starting point. Shape the experience, define the system, and see your direction take form.</p>
+        </div>
+
+        <div class="sp3d-title-block">
+            <span class="sp3d-eyebrow" data-i18n="startProject.eyebrow">PROJECT CONFIGURATOR</span>
+            <h1 id="sp3dHeroTitle" data-i18n="startProject.heroTitle" data-ripple-text="Enter the universe of your next website.">Enter the universe of your next website.</h1>
+            <p data-i18n="startProject.heroIntro">Choose a direction. Explore the design. Shape the system.</p>
+        </div>
+
+        <div class="sp3d-object-label sp3d-label-one"><span>01</span><b data-i18n="startProject.heroLabelOne">VISUAL SYSTEM</b><i></i></div>
+        <div class="sp3d-object-label sp3d-label-two"><span>02</span><b data-i18n="startProject.heroLabelTwo">INTERACTION</b><i></i></div>
+        <div class="sp3d-object-label sp3d-label-three"><span>03</span><b data-i18n="startProject.heroLabelThree">ENGINEERING</b><i></i></div>
+
+        <div class="sp3d-bottom-left">
+            <span data-i18n="startProject.heroCameraHint">DRAG TO ORBIT · SCROLL UP TO ZOOM IN</span>
+            <small data-i18n="startProject.heroScrollHint">SCROLL DOWN TO ZOOM OUT · SHIFT + WHEEL TO PAGE-SCROLL</small>
+            <small data-i18n="startProject.heroSound">SOUND: OFF</small>
+        </div>
+        <div class="sp3d-scroll-cta">
+            <span data-i18n="startProject.heroScrollText">SCROLL TO BUILD YOUR WEBSITE</span>
+            <button type="button" id="spStartBuilding" aria-label="Start building your website"><span>↓</span></button>
+        </div>
+        <div class="sp3d-status"><i></i><span id="sp3dStatus" data-i18n="startProject.heroLoading">LOADING MILKY WAY + BLACK HOLE MODELS</span></div>
+        <div class="sp3d-camera-tools" aria-label="3D camera controls">
+            <span class="sp3d-camera-help" data-i18n="startProject.heroControlHint">SCROLL TO EXPLORE THE GALAXY</span>
+            <button type="button" id="sp3dZoomOut" class="sp3d-zoom-button" aria-label="Zoom out" title="Zoom out">−</button>
+            <button type="button" id="sp3dZoomIn" class="sp3d-zoom-button" aria-label="Zoom in" title="Zoom in">+</button>
+            <button type="button" id="sp3dDiveIn" class="sp3d-dive-button" data-i18n="startProject.heroDiveButton" aria-label="Explore the black hole up close">EXPLORE CORE ↗</button>
+            <button type="button" id="sp3dResetView" data-i18n="startProject.heroResetView" aria-label="Reset 3D camera" title="Reset camera to the side view">RESET VIEW</button>
+        </div>
+        <div class="sp3d-credits" aria-label="3D asset credits">
+            <span>3D ASSETS</span>
+            <a href="https://sketchfab.com/3d-models/our-milky-way-galaxy-f4d5ff16b66c4ed38bc07402030cbc30" target="_blank" rel="noopener noreferrer">MILKY WAY · ADITYA299792</a>
+            <i>·</i>
+            <a href="https://sketchfab.com/3d-models/theia-prime-f-the-black-hole-ebe9353f4766419e8b52ff0243e749a2" target="_blank" rel="noopener noreferrer">BLACK HOLE · ADITYA 3D</a>
+            <span>ADAPTED FOR THIS SCENE</span>
+            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>
+        </div>
+    </section>
+
+    <div class="sp-shell" id="spConfigurator">
+        <div class="sp-sticky-summary" id="spStickySummary" aria-live="polite">
+            <div class="sp-summary-main">
+                <span class="sp-summary-overline" data-i18n="startProject.topSummary">YOUR PROJECT / LIVE CONFIGURATION</span>
+                <strong id="spTopDomain">your-domain.com</strong>
             </div>
-            <span class="sp-eyebrow" data-i18n="startProject.eyebrow">PROJECT CONFIGURATOR</span>
-            <h1 data-i18n="startProject.title">Let's define your next website.</h1>
-            <p data-i18n="startProject.intro">Choose the direction, visual style and functionality. Your brief will be sent to KNOWME Studio for review and confirmation.</p>
-            <div class="sp-hero-line"><span></span><span></span><span></span></div>
-        </header>
+            <div class="sp-summary-facts">
+                <span><small data-i18n="startProject.summaryType">TYPE</small><b id="spTopType">—</b></span>
+                <span><small data-i18n="startProject.summaryStyle">STYLE</small><b id="spTopStyle">—</b></span>
+                <span><small data-i18n="startProject.summarySecurity">SECURITY</small><b id="spTopSecurity">BASELINE</b></span>
+            </div>
+            <div class="sp-summary-progress"><span id="spTopProgress"></span></div>
+        </div>
 
         {% with flash_messages = get_flashed_messages(with_categories=true) %}
             {% if flash_messages %}
@@ -112,6 +171,8 @@
 
                     <div class="sp-validation-message" id="spValidationMessage" role="alert" aria-live="polite"></div>
 
+                    <div class="sp-config-layout">
+                        <div class="sp-config-fields">
                     <!-- STEP 1 -->
                     <section class="sp-step-panel is-active" data-step-panel="0" aria-labelledby="spStep1Heading">
                         <div class="sp-section-heading">
@@ -120,13 +181,13 @@
                             <p data-i18n="startProject.typeHint">Select the option that best describes your idea.</p>
                         </div>
 
-                        <div class="sp-choice-grid sp-type-grid">
-                            <label class="sp-choice-card"><input type="radio" name="website_type" value="business" data-sp-initial-checked="{{ 'true' if form_data.get('website_type') == 'business' else 'false' }}"><span class="sp-choice-icon">▦</span><strong data-i18n="startProject.typeBusiness">Business website</strong><small data-i18n="startProject.typeBusinessText">Company, service or organization</small><i class="sp-choice-check">✓</i></label>
-                            <label class="sp-choice-card"><input type="radio" name="website_type" value="portfolio" data-sp-initial-checked="{{ 'true' if form_data.get('website_type') == 'portfolio' else 'false' }}"><span class="sp-choice-icon">◫</span><strong data-i18n="startProject.typePortfolio">Portfolio</strong><small data-i18n="startProject.typePortfolioText">Personal work and professional profile</small><i class="sp-choice-check">✓</i></label>
-                            <label class="sp-choice-card"><input type="radio" name="website_type" value="ecommerce" data-sp-initial-checked="{{ 'true' if form_data.get('website_type') == 'ecommerce' else 'false' }}"><span class="sp-choice-icon">◇</span><strong data-i18n="startProject.typeStore">Online store</strong><small data-i18n="startProject.typeStoreText">Products, cart and online sales</small><i class="sp-choice-check">✓</i></label>
-                            <label class="sp-choice-card"><input type="radio" name="website_type" value="landing" data-sp-initial-checked="{{ 'true' if form_data.get('website_type') == 'landing' else 'false' }}"><span class="sp-choice-icon">▤</span><strong data-i18n="startProject.typeLanding">Landing page</strong><small data-i18n="startProject.typeLandingText">One focused page and one main action</small><i class="sp-choice-check">✓</i></label>
-                            <label class="sp-choice-card"><input type="radio" name="website_type" value="webapp" data-sp-initial-checked="{{ 'true' if form_data.get('website_type') == 'webapp' else 'false' }}"><span class="sp-choice-icon">⌘</span><strong data-i18n="startProject.typeWebapp">Web application</strong><small data-i18n="startProject.typeWebappText">Custom logic, accounts or dashboards</small><i class="sp-choice-check">✓</i></label>
-                            <label class="sp-choice-card"><input type="radio" name="website_type" value="other" data-sp-initial-checked="{{ 'true' if form_data.get('website_type') == 'other' else 'false' }}"><span class="sp-choice-icon">＋</span><strong data-i18n="startProject.typeOther">Not sure yet</strong><small data-i18n="startProject.typeOtherText">I want to discuss the idea first</small><i class="sp-choice-check">✓</i></label>
+                        <div class="sp-choice-grid sp-type-grid sp-visual-choice-grid">
+                            <label class="sp-choice-card sp-type-card"><input type="radio" name="website_type" value="business" data-sp-initial-checked="{{ 'true' if form_data.get('website_type') == 'business' else 'false' }}"><img class="sp-type-preview-image" src="{{ url_for('static', filename='images/project-previews/business.png') }}?v=4" alt="" loading="lazy" decoding="async"><strong data-i18n="startProject.typeBusiness">Business website</strong><small data-i18n="startProject.typeBusinessText">Company, service or organization</small><i class="sp-choice-check">✓</i></label>
+                            <label class="sp-choice-card sp-type-card"><input type="radio" name="website_type" value="portfolio" data-sp-initial-checked="{{ 'true' if form_data.get('website_type') == 'portfolio' else 'false' }}"><img class="sp-type-preview-image" src="{{ url_for('static', filename='images/project-previews/portfolio.png') }}?v=4" alt="" loading="lazy" decoding="async"><strong data-i18n="startProject.typePortfolio">Portfolio</strong><small data-i18n="startProject.typePortfolioText">Personal work and professional profile</small><i class="sp-choice-check">✓</i></label>
+                            <label class="sp-choice-card sp-type-card"><input type="radio" name="website_type" value="ecommerce" data-sp-initial-checked="{{ 'true' if form_data.get('website_type') == 'ecommerce' else 'false' }}"><img class="sp-type-preview-image" src="{{ url_for('static', filename='images/project-previews/ecommerce.png') }}?v=4" alt="" loading="lazy" decoding="async"><strong data-i18n="startProject.typeStore">Online store</strong><small data-i18n="startProject.typeStoreText">Products, cart and online sales</small><i class="sp-choice-check">✓</i></label>
+                            <label class="sp-choice-card sp-type-card"><input type="radio" name="website_type" value="landing" data-sp-initial-checked="{{ 'true' if form_data.get('website_type') == 'landing' else 'false' }}"><img class="sp-type-preview-image" src="{{ url_for('static', filename='images/project-previews/landing.png') }}?v=4" alt="" loading="lazy" decoding="async"><strong data-i18n="startProject.typeLanding">Landing page</strong><small data-i18n="startProject.typeLandingText">One focused page and one main action</small><i class="sp-choice-check">✓</i></label>
+                            <label class="sp-choice-card sp-type-card"><input type="radio" name="website_type" value="webapp" data-sp-initial-checked="{{ 'true' if form_data.get('website_type') == 'webapp' else 'false' }}"><img class="sp-type-preview-image" src="{{ url_for('static', filename='images/project-previews/webapp.png') }}?v=4" alt="" loading="lazy" decoding="async"><strong data-i18n="startProject.typeWebapp">Web application</strong><small data-i18n="startProject.typeWebappText">Custom logic, accounts or dashboards</small><i class="sp-choice-check">✓</i></label>
+                            <label class="sp-choice-card sp-type-card"><input type="radio" name="website_type" value="other" data-sp-initial-checked="{{ 'true' if form_data.get('website_type') == 'other' else 'false' }}"><img class="sp-type-preview-image" src="{{ url_for('static', filename='images/project-previews/custom.png') }}?v=4" alt="" loading="lazy" decoding="async"><strong data-i18n="startProject.typeOther">Not sure yet</strong><small data-i18n="startProject.typeOtherText">I want to discuss the idea first</small><i class="sp-choice-check">✓</i></label>
                         </div>
 
                         <div class="sp-section-heading sp-subheading">
@@ -147,17 +208,17 @@
                         <div class="sp-section-heading">
                             <span class="sp-section-number">02 / 04</span>
                             <h3 id="spStep2Heading" data-i18n="startProject.designLabel">Choose the visual direction</h3>
-                            <p data-i18n="startProject.designHint">This is a starting point. The final design will be refined during project planning.</p>
+                            <p data-i18n="startProject.designHint">Choose the visual direction that feels closest to your idea. These images are reference concepts, not fixed templates.</p>
                         </div>
 
                         <div class="sp-choice-grid sp-style-grid">
-                            <label class="sp-style-card sp-style-modern"><input type="radio" name="design_style" value="modern" data-sp-initial-checked="{{ 'true' if form_data.get('design_style') == 'modern' else 'false' }}"><span class="sp-style-preview"><i></i><i></i><i></i></span><strong data-i18n="startProject.styleModern">Modern</strong><small data-i18n="startProject.styleModernText">Bold layout and current UI patterns</small></label>
-                            <label class="sp-style-card sp-style-minimal"><input type="radio" name="design_style" value="minimal" data-sp-initial-checked="{{ 'true' if form_data.get('design_style') == 'minimal' else 'false' }}"><span class="sp-style-preview"><i></i><i></i><i></i></span><strong data-i18n="startProject.styleMinimal">Minimal</strong><small data-i18n="startProject.styleMinimalText">Clean, calm and focused</small></label>
-                            <label class="sp-style-card sp-style-corporate"><input type="radio" name="design_style" value="corporate" data-sp-initial-checked="{{ 'true' if form_data.get('design_style') == 'corporate' else 'false' }}"><span class="sp-style-preview"><i></i><i></i><i></i></span><strong data-i18n="startProject.styleCorporate">Corporate</strong><small data-i18n="startProject.styleCorporateText">Structured and professional</small></label>
-                            <label class="sp-style-card sp-style-luxury"><input type="radio" name="design_style" value="luxury" data-sp-initial-checked="{{ 'true' if form_data.get('design_style') == 'luxury' else 'false' }}"><span class="sp-style-preview"><i></i><i></i><i></i></span><strong data-i18n="startProject.styleLuxury">Luxury</strong><small data-i18n="startProject.styleLuxuryText">Elegant details and contrast</small></label>
-                            <label class="sp-style-card sp-style-creative"><input type="radio" name="design_style" value="creative" data-sp-initial-checked="{{ 'true' if form_data.get('design_style') == 'creative' else 'false' }}"><span class="sp-style-preview"><i></i><i></i><i></i></span><strong data-i18n="startProject.styleCreative">Creative</strong><small data-i18n="startProject.styleCreativeText">Expressive and experimental</small></label>
-                            <label class="sp-style-card sp-style-future"><input type="radio" name="design_style" value="futuristic" data-sp-initial-checked="{{ 'true' if form_data.get('design_style') == 'futuristic' else 'false' }}"><span class="sp-style-preview"><i></i><i></i><i></i></span><strong data-i18n="startProject.styleFuture">Futuristic</strong><small data-i18n="startProject.styleFutureText">Technology-led visual language</small></label>
-                            <label class="sp-style-card sp-style-reference"><input type="radio" name="design_style" value="reference" data-sp-initial-checked="{{ 'true' if form_data.get('design_style') == 'reference' else 'false' }}"><span class="sp-style-preview"><i></i><i></i><i></i></span><strong data-i18n="startProject.styleReference">Based on a reference</strong><small data-i18n="startProject.styleReferenceText">I will share an example website</small></label>
+                            <label class="sp-style-card sp-style-modern"><input type="radio" name="design_style" value="modern" data-sp-initial-checked="{{ 'true' if form_data.get('design_style') == 'modern' else 'false' }}"><span class="sp-style-preview"><img src="{{ url_for('static', filename='images/project-previews/business.png') }}?v=4" alt="" loading="lazy" decoding="async"></span><strong data-i18n="startProject.styleModern">Modern</strong><small data-i18n="startProject.styleModernText">Bold layout and current UI patterns</small></label>
+                            <label class="sp-style-card sp-style-minimal"><input type="radio" name="design_style" value="minimal" data-sp-initial-checked="{{ 'true' if form_data.get('design_style') == 'minimal' else 'false' }}"><span class="sp-style-preview"><img src="{{ url_for('static', filename='images/project-previews/landing.png') }}?v=4" alt="" loading="lazy" decoding="async"></span><strong data-i18n="startProject.styleMinimal">Minimal</strong><small data-i18n="startProject.styleMinimalText">Clean, calm and focused</small></label>
+                            <label class="sp-style-card sp-style-corporate"><input type="radio" name="design_style" value="corporate" data-sp-initial-checked="{{ 'true' if form_data.get('design_style') == 'corporate' else 'false' }}"><span class="sp-style-preview"><img src="{{ url_for('static', filename='images/project-previews/business.png') }}?v=4" alt="" loading="lazy" decoding="async"></span><strong data-i18n="startProject.styleCorporate">Corporate</strong><small data-i18n="startProject.styleCorporateText">Structured and professional</small></label>
+                            <label class="sp-style-card sp-style-luxury"><input type="radio" name="design_style" value="luxury" data-sp-initial-checked="{{ 'true' if form_data.get('design_style') == 'luxury' else 'false' }}"><span class="sp-style-preview"><img src="{{ url_for('static', filename='images/project-previews/ecommerce.png') }}?v=4" alt="" loading="lazy" decoding="async"></span><strong data-i18n="startProject.styleLuxury">Luxury</strong><small data-i18n="startProject.styleLuxuryText">Elegant details and contrast</small></label>
+                            <label class="sp-style-card sp-style-creative"><input type="radio" name="design_style" value="creative" data-sp-initial-checked="{{ 'true' if form_data.get('design_style') == 'creative' else 'false' }}"><span class="sp-style-preview"><img src="{{ url_for('static', filename='images/project-previews/portfolio.png') }}?v=4" alt="" loading="lazy" decoding="async"></span><strong data-i18n="startProject.styleCreative">Creative</strong><small data-i18n="startProject.styleCreativeText">Expressive and experimental</small></label>
+                            <label class="sp-style-card sp-style-future"><input type="radio" name="design_style" value="futuristic" data-sp-initial-checked="{{ 'true' if form_data.get('design_style') == 'futuristic' else 'false' }}"><span class="sp-style-preview"><img src="{{ url_for('static', filename='images/project-previews/webapp.png') }}?v=4" alt="" loading="lazy" decoding="async"></span><strong data-i18n="startProject.styleFuture">Futuristic</strong><small data-i18n="startProject.styleFutureText">Technology-led visual language</small></label>
+                            <label class="sp-style-card sp-style-reference"><input type="radio" name="design_style" value="reference" data-sp-initial-checked="{{ 'true' if form_data.get('design_style') == 'reference' else 'false' }}"><span class="sp-style-preview"><img src="{{ url_for('static', filename='images/project-previews/custom.png') }}?v=4" alt="" loading="lazy" decoding="async"></span><strong data-i18n="startProject.styleReference">Based on a reference</strong><small data-i18n="startProject.styleReferenceText">I will share an example website</small></label>
                         </div>
 
                         <div class="sp-section-heading sp-subheading">
@@ -176,6 +237,35 @@
                             <label class="sp-field"><span data-i18n="startProject.secondaryColor">Secondary color</span><input type="color" name="secondary_color" value="{{ form_data.get('secondary_color', '#006eff') }}"></label>
                         </div>
                         <label class="sp-field sp-reference-field"><span data-i18n="startProject.referenceLabel">Reference website (optional)</span><input type="url" name="reference_url" maxlength="500" value="{{ form_data.get('reference_url', '') }}" placeholder="https://example.com" data-i18n-placeholder="startProject.referencePlaceholder"><small data-i18n="startProject.referenceHint">Share a link only if you have a visual example in mind.</small></label>
+
+                        <label class="sp-field sp-domain-field">
+                            <span data-i18n="startProject.domainLabel">Preferred domain (optional)</span>
+                            <input type="text" name="preferred_domain" maxlength="253" autocomplete="off" value="{{ form_data.get('preferred_domain', '') }}" placeholder="yourbrand.com" data-i18n-placeholder="startProject.domainPlaceholder" spellcheck="false">
+                            <small data-i18n="startProject.domainHint">Enter the domain name only. Leave empty if you need help choosing one.</small>
+                        </label>
+
+                        <div class="sp-section-heading sp-subheading"><h3 data-i18n="startProject.layoutLabel">Page composition</h3><p data-i18n="startProject.layoutHint">Choose the structure that best fits the content.</p></div>
+                        <div class="sp-inline-options sp-builder-options">
+                            <label class="sp-pill-option"><input type="radio" name="layout_style" value="balanced" data-sp-initial-checked="{{ 'true' if form_data.get('layout_style', 'balanced') == 'balanced' else 'false' }}"><span data-i18n="startProject.layoutBalanced">Balanced</span></label>
+                            <label class="sp-pill-option"><input type="radio" name="layout_style" value="editorial" data-sp-initial-checked="{{ 'true' if form_data.get('layout_style') == 'editorial' else 'false' }}"><span data-i18n="startProject.layoutEditorial">Editorial</span></label>
+                            <label class="sp-pill-option"><input type="radio" name="layout_style" value="grid" data-sp-initial-checked="{{ 'true' if form_data.get('layout_style') == 'grid' else 'false' }}"><span data-i18n="startProject.layoutGrid">Grid-based</span></label>
+                            <label class="sp-pill-option"><input type="radio" name="layout_style" value="immersive" data-sp-initial-checked="{{ 'true' if form_data.get('layout_style') == 'immersive' else 'false' }}"><span data-i18n="startProject.layoutImmersive">Immersive</span></label>
+                        </div>
+
+                        <div class="sp-section-heading sp-subheading"><h3 data-i18n="startProject.fontLabel">Typography direction</h3></div>
+                        <div class="sp-inline-options sp-builder-options">
+                            <label class="sp-pill-option"><input type="radio" name="font_style" value="modern" data-sp-initial-checked="{{ 'true' if form_data.get('font_style', 'modern') == 'modern' else 'false' }}"><span data-i18n="startProject.fontModern">Modern sans</span></label>
+                            <label class="sp-pill-option"><input type="radio" name="font_style" value="geometric" data-sp-initial-checked="{{ 'true' if form_data.get('font_style') == 'geometric' else 'false' }}"><span data-i18n="startProject.fontGeometric">Geometric</span></label>
+                            <label class="sp-pill-option"><input type="radio" name="font_style" value="editorial" data-sp-initial-checked="{{ 'true' if form_data.get('font_style') == 'editorial' else 'false' }}"><span data-i18n="startProject.fontEditorial">Editorial</span></label>
+                            <label class="sp-pill-option"><input type="radio" name="font_style" value="technical" data-sp-initial-checked="{{ 'true' if form_data.get('font_style') == 'technical' else 'false' }}"><span data-i18n="startProject.fontTechnical">Technical</span></label>
+                        </div>
+
+                        <div class="sp-section-heading sp-subheading"><h3 data-i18n="startProject.motionLabel">Motion intensity</h3></div>
+                        <div class="sp-inline-options sp-builder-options">
+                            <label class="sp-pill-option"><input type="radio" name="animation_level" value="subtle" data-sp-initial-checked="{{ 'true' if form_data.get('animation_level', 'subtle') == 'subtle' else 'false' }}"><span data-i18n="startProject.motionSubtle">Subtle</span></label>
+                            <label class="sp-pill-option"><input type="radio" name="animation_level" value="expressive" data-sp-initial-checked="{{ 'true' if form_data.get('animation_level') == 'expressive' else 'false' }}"><span data-i18n="startProject.motionExpressive">Expressive</span></label>
+                            <label class="sp-pill-option"><input type="radio" name="animation_level" value="none" data-sp-initial-checked="{{ 'true' if form_data.get('animation_level') == 'none' else 'false' }}"><span data-i18n="startProject.motionNone">No motion</span></label>
+                        </div>
                     </section>
 
                     <!-- STEP 3 -->
@@ -217,6 +307,24 @@
                             <label class="sp-check-card"><input type="checkbox" name="features" value="seo" data-sp-initial-checked="{{ 'true' if 'seo' in selected_features else 'false' }}"><span data-i18n="startProject.featureSeo">SEO setup</span></label>
                             <label class="sp-check-card"><input type="checkbox" name="features" value="animations" data-sp-initial-checked="{{ 'true' if 'animations' in selected_features else 'false' }}"><span data-i18n="startProject.featureAnimations">Animations / interactions</span></label>
                             <label class="sp-check-card"><input type="checkbox" name="features" value="chat" data-sp-initial-checked="{{ 'true' if 'chat' in selected_features else 'false' }}"><span data-i18n="startProject.featureChat">Live chat / AI assistant</span></label>
+                        </div>
+
+                        <div class="sp-security-picker">
+                            <div class="sp-section-heading sp-subheading">
+                                <span class="sp-section-number" data-i18n="startProject.securityKicker">SECURITY REQUIREMENTS</span>
+                                <h3 data-i18n="startProject.securityLabel">Additional protection requirements</h3>
+                                <p data-i18n="startProject.securityHint">Core security practices remain part of every suitable build. Select any extra controls your project may need.</p>
+                            </div>
+                            {% set selected_security = form_data.getlist('security_requirements') %}
+                            <div class="sp-check-grid sp-security-grid">
+                                <label class="sp-check-card"><input type="checkbox" name="security_requirements" value="mfa" data-sp-initial-checked="{{ 'true' if 'mfa' in selected_security else 'false' }}"><span data-i18n="startProject.securityMfa">Multi-factor authentication</span></label>
+                                <label class="sp-check-card"><input type="checkbox" name="security_requirements" value="role-based-access" data-sp-initial-checked="{{ 'true' if 'role-based-access' in selected_security else 'false' }}"><span data-i18n="startProject.securityRoles">Role-based access control</span></label>
+                                <label class="sp-check-card"><input type="checkbox" name="security_requirements" value="audit-logs" data-sp-initial-checked="{{ 'true' if 'audit-logs' in selected_security else 'false' }}"><span data-i18n="startProject.securityAudit">Admin activity logs</span></label>
+                                <label class="sp-check-card"><input type="checkbox" name="security_requirements" value="backups" data-sp-initial-checked="{{ 'true' if 'backups' in selected_security else 'false' }}"><span data-i18n="startProject.securityBackups">Automated backups</span></label>
+                                <label class="sp-check-card"><input type="checkbox" name="security_requirements" value="privacy-controls" data-sp-initial-checked="{{ 'true' if 'privacy-controls' in selected_security else 'false' }}"><span data-i18n="startProject.securityPrivacy">Data privacy controls</span></label>
+                                <label class="sp-check-card"><input type="checkbox" name="security_requirements" value="payment-protection" data-sp-initial-checked="{{ 'true' if 'payment-protection' in selected_security else 'false' }}"><span data-i18n="startProject.securityPayments">Payment-flow protection</span></label>
+                            </div>
+                            <p class="sp-security-baseline"><i></i><span data-i18n="startProject.securityBaseline">Secure configuration, validation and HTTPS are considered as part of the technical scope.</span></p>
                         </div>
 
                         <!-- OPTIONAL FREE 3D ASSETS — PART OF THIS PROJECT REQUEST -->
@@ -333,12 +441,79 @@
                         </div>
                         <button type="submit" class="sp-nojs-submit" data-i18n="startProject.submit">Send project brief</button>
                     </div>
+                        </div><!-- /.sp-config-fields -->
+
+                        <aside class="sp-live-preview" aria-label="Responsive website concept preview">
+                            <div class="sp-preview-heading">
+                                <div><span data-i18n="startProject.previewKicker">LIVE CANVAS</span><h3 data-i18n="startProject.previewTitle">Your website takes shape</h3></div>
+                                <span class="sp-preview-live-dot"><i></i><span data-i18n="startProject.previewLive">LIVE</span></span>
+                            </div>
+                            <div class="sp-preview-device-switch" role="group" aria-label="Preview device">
+                                <button type="button" class="is-active" data-sp-preview-device="desktop" aria-pressed="true" aria-label="Desktop preview"><span>▭</span><small data-i18n="startProject.previewDesktop">DESKTOP</small></button>
+                                <button type="button" data-sp-preview-device="tablet" aria-pressed="false" aria-label="Tablet preview"><span>▣</span><small>TABLET</small></button>
+                                <button type="button" data-sp-preview-device="mobile" aria-pressed="false" aria-label="Mobile preview"><span>▯</span><small data-i18n="startProject.previewMobile">MOBILE</small></button>
+                            </div>
+                            <div class="sp-preview-browser">
+                                <div class="sp-preview-browser-bar"><span></span><span></span><span></span><div id="spPreviewUrl">your-domain.com</div></div>
+                                <div class="sp-preview-screen" id="spPreviewScreen" data-preview-device="desktop" data-style="modern" data-layout="balanced" data-font="modern" data-motion="subtle" data-type="business" aria-live="polite">
+                                    <div class="sp-preview-image-stage" id="spPreviewImageStage">
+                                        <img id="spPreviewReference" src="{{ url_for('static', filename='images/project-previews/business.png') }}?v=5" alt="Business website visual reference preview" loading="eager" decoding="async">
+                                        <div class="sp-preview-image-shade" aria-hidden="true"></div>
+                                        <div class="sp-preview-image-badges"><span id="spPreviewTypeLabel">BUSINESS WEBSITE</span><span id="spPreviewStyleLabel">MODERN</span></div>
+                                        <span class="sp-preview-canvas-stamp">KNOWME / LIVE CONCEPT</span>
+                                    </div>
+                                    <div class="sp-preview-live-copy">
+                                        <div><span class="sp-preview-live-overline" id="spPreviewEyebrow">WEBSITE CONCEPT / 01</span><h2 id="spPreviewHeadingText">Your website, shaped around your idea.</h2><p id="spPreviewDescription">Choose a website type and visual style to see the concept update instantly.</p></div>
+                                        <span class="sp-preview-cta" data-i18n="startProject.previewButton">Discover more ↗</span>
+                                    </div>
+                                    <div class="sp-preview-live-specs"><span id="spPreviewLayoutValue">BALANCED LAYOUT</span><span id="spPreviewFontValue">MODERN TYPE</span><span id="spPreviewMotionValue">SUBTLE MOTION</span></div>
+                                    <div class="sp-preview-responsive-sections" aria-hidden="true">
+                                        <span class="sp-preview-responsive-heading"></span>
+                                        <span></span><span></span><span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sp-preview-meta"><span id="spPreviewStyle">BUSINESS / MODERN / BALANCED</span><span data-i18n="startProject.previewNote">Illustrative preview · final design is refined during planning</span></div>
+                        </aside>
+                    </div><!-- /.sp-config-layout -->
                 </form>
             </main>
         </div>
 
-        <footer class="sp-footer sp-reveal"><span>KNOWME STUDIO</span><span data-i18n="startProject.footer">A thoughtful process. A secure result.</span><a href="{{ url_for('contact') }}" data-i18n="startProject.needHelp">Need help? Contact us</a></footer>
+        <section class="sp-bonus-panel sp-reveal" aria-labelledby="spBonusTitle">
+            <div class="sp-bonus-heading">
+                <span class="sp-bonus-kicker" data-i18n="startProject.bonusKicker">COMPLIMENTARY PROJECT STARTER</span>
+                <h2 id="spBonusTitle" data-i18n="startProject.bonusTitle">A clearer first step, included.</h2>
+                <p data-i18n="startProject.bonusIntro">Every completed brief receives a first-pass project outline after review: a visual direction, key feature map and suggested build path.</p>
+            </div>
+            <div class="sp-bonus-grid">
+                <article class="sp-bonus-item"><span class="sp-bonus-index">01</span><i class="sp-bonus-icon">◈</i><strong data-i18n="startProject.bonusVisual">Visual direction</strong><small data-i18n="startProject.bonusVisualText">A practical starting point based on your chosen references.</small></article>
+                <article class="sp-bonus-item"><span class="sp-bonus-index">02</span><i class="sp-bonus-icon">⌘</i><strong data-i18n="startProject.bonusBlueprint">Feature blueprint</strong><small data-i18n="startProject.bonusBlueprintText">A structured overview of pages, functions and priorities.</small></article>
+                <article class="sp-bonus-item"><span class="sp-bonus-index">03</span><i class="sp-bonus-icon">↗</i><strong data-i18n="startProject.bonusNext">Recommended next steps</strong><small data-i18n="startProject.bonusNextText">A suggested route from idea to a confirmed project scope.</small></article>
+            </div>
+            <div class="sp-bonus-footnote" data-i18n="startProject.bonusFootnote">Included with the project brief review. Final scope, price and delivery schedule are confirmed separately.</div>
+        </section>
+
+        <section class="sp-codex-signoff sp-reveal" aria-label="KNOWME and Codex development attribution">
+            <div class="sp-codex-brand-lockup">
+                <div class="sp-codex-primary-lockup" aria-label="KNOWME times CODEX">
+                    <span class="sp-codex-knowme"><b class="sp-codex-k">K</b>NOW<span class="sp-codex-m">M</span>E</span>
+                    <span class="sp-codex-times">×</span>
+                    <span class="sp-codex-word">CODEX</span>
+                </div>
+                <div class="sp-kc-lockup" aria-label="K times C">
+                    <span class="sp-kc-k">K</span><span class="sp-kc-times">×</span><span class="sp-kc-c">C</span>
+                </div>
+            </div>
+            <div class="sp-codex-copy">
+                <strong data-i18n="startProject.codexTitle">SECURITY-MINDED DEVELOPMENT</strong>
+                <p data-i18n="startProject.codexText">Security controls are implemented and reviewed by KNOWME Studio, with Codex-assisted development.</p>
+            </div>
+            <span class="sp-codex-status"><i></i><span data-i18n="startProject.codexStatus">BUILT WITH CARE · REVIEWED BY KNOWME</span></span>
+        </section>
+
+        <footer class="sp-footer sp-reveal"><span><span class="sp-footer-k">K</span>NOW<span class="sp-footer-m">M</span>E STUDIO</span><span data-i18n="startProject.footer">A thoughtful process. A secure result.</span><a href="{{ url_for('contact') }}" data-i18n="startProject.needHelp">Need help? Contact us</a></footer>
     </div>
 </section>
+<script type="module" src="{{ url_for('static', filename='js/start_project_3d.js') }}?v=7"></script>
 {% endblock %}
-

@@ -399,23 +399,31 @@ const translations = {
             coming:
                 "COMING SOON",
 
+            releases:
+                "RELEASES",
+
+            huggingFaceReleases:
+                "Hugging Face · Releases",
+
+            viewAIReleases:
+                "View KNOWME AI Releases",
 
             project1Text:
                 "Modern multilingual commercial website with responsive design, animations, SEO and security configuration.",
 
 
             project2Title:
-                "KNOWME Flask",
+                "KNOWME Studio — Production",
 
             project2Text:
-                "Full-stack version of KNOWME Studio with Flask backend, database, admin panel and custom functionality.",
+                "Live production website at knowme-studio.onrender.com with Flask backend, PostgreSQL, an admin dashboard and multilingual project workflows.",
 
 
             project3Title:
-                "Future Commercial Project",
+                "KNOWME AI",
 
             project3Text:
-                "New commercial websites and web applications will appear here.",
+                "KNOWME AI desktop release and installer distribution. Explore the current Windows release and download details on Hugging Face.",
 
 
             publishedAt:
@@ -770,23 +778,31 @@ const translations = {
             coming:
                 "СКОРО",
 
+            releases:
+                "РЕЛИЗЫ",
+
+            huggingFaceReleases:
+                "Hugging Face · Релизы",
+
+            viewAIReleases:
+                "Открыть релизы KNOWME AI",
 
             project1Text:
                 "Современный многоязычный коммерческий сайт с адаптивным дизайном, анимациями, SEO и настройками безопасности.",
 
 
             project2Title:
-                "KNOWME Flask",
+                "KNOWME Studio — Production",
 
             project2Text:
-                "Full-stack версия KNOWME Studio с Flask backend, базой данных, панелью администратора и индивидуальным функционалом.",
+                "Рабочий сайт knowme-studio.onrender.com с Flask backend, PostgreSQL, панелью администратора и многоязычными сценариями.",
 
 
             project3Title:
-                "Будущий коммерческий проект",
+                "KNOWME AI",
 
             project3Text:
-                "Здесь будут появляться новые коммерческие сайты и веб-приложения.",
+                "Релиз KNOWME AI для Windows и страница распространения установщика. Актуальные файлы и сведения о выпуске доступны на Hugging Face.",
 
 
             publishedAt:
@@ -1141,23 +1157,31 @@ const translations = {
             coming:
                 "ՇՈՒՏՈՎ",
 
+            releases:
+                "ԹՈՂԱՐԿՈՒՄՆԵՐ",
+
+            huggingFaceReleases:
+                "Hugging Face · Թողարկումներ",
+
+            viewAIReleases:
+                "Դիտել KNOWME AI-ի թողարկումները",
 
             project1Text:
                 "Ժամանակակից բազմալեզու կոմերցիոն կայք՝ responsive դիզայնով, անիմացիաներով, SEO-ով և անվտանգության կարգավորումներով։",
 
 
             project2Title:
-                "KNOWME Flask",
+                "KNOWME Studio — Production",
 
             project2Text:
-                "KNOWME Studio-ի full-stack տարբերակը՝ Flask backend-ով, տվյալների բազայով, admin panel-ով և անհատական ֆունկցիոնալությամբ։",
+                "Գործող knowme-studio.onrender.com կայքը՝ Flask backend-ով, PostgreSQL-ով, ադմինիստրատիվ վահանակով և բազմալեզու հնարավորություններով։",
 
 
             project3Title:
-                "Ապագա կոմերցիոն նախագիծ",
+                "KNOWME AI",
 
             project3Text:
-                "Այստեղ կհայտնվեն նոր կոմերցիոն կայքեր և վեբ հավելվածներ։",
+                "KNOWME AI-ի Windows տարբերակի թողարկումն ու տեղադրիչի բաշխման էջը։ Թարմ ֆայլերն ու թողարկման տվյալները հասանելի են Hugging Face-ում։",
 
 
             publishedAt:
@@ -1228,7 +1252,66 @@ Object.assign(translations.en, {
         modelsEmptyTitle: "The free 3D collection is being prepared.",
         modelsEmptyText: "Free models will appear here as selectable options once the collection is added.",
         modelsEmptyNote: "You can continue your project request without selecting a 3D model.",
-        modelsLicense: "Each published model will include its license and usage conditions."
+        modelsLicense: "Each published model will include its license and usage conditions.",
+        heroIndex: '01 / DIGITAL EXPERIENCE',
+        heroKicker: 'PROJECT BUILDER',
+        heroManifestoLabel: '/// MANIFESTO',
+        heroManifesto: 'Your idea is the starting point. Shape the experience, define the system, and see your direction take form.',
+        heroTitle: 'Enter the universe of your next website.',
+        heroIntro: 'Explore the Milky Way. Place your idea at the center. Build your website.',
+        heroLabelOne: 'MILKY WAY GALAXY',
+        heroLabelTwo: 'BLACK HOLE',
+        heroLabelThree: 'ACCRETION DISK',
+        heroScrollHint: 'SCROLL TO DISCOVER',
+        heroSound: 'SOUND: OFF',
+        heroScrollText: 'SCROLL TO BUILD YOUR WEBSITE',
+        heroLoading: 'LOADING MILKY WAY + BLACK HOLE MODELS',
+        heroReady: 'MILKY WAY + BLACK HOLE · 3D READY',
+        heroPartial: 'PARTIAL 3D MODEL LOAD · CHECK ASSETS',
+        heroFallback: '3D PREVIEW NOT AVAILABLE · STATIC FALLBACK',
+        previewDesktop: 'DESKTOP',
+        previewMobile: 'MOBILE',
+        securityBaselineShort: 'BASELINE',
+        securityExtra: 'EXTRA',
+        topSummary: 'YOUR PROJECT / LIVE CONFIGURATION',
+        summaryType: 'TYPE',
+        summaryStyle: 'STYLE',
+        summarySecurity: 'SECURITY',
+        domainLabel: 'Preferred domain (optional)',
+        domainPlaceholder: 'yourbrand.com',
+        domainHint: 'Enter the domain name only. Leave empty if you need help choosing one.',
+        layoutLabel: 'Page composition',
+        layoutHint: 'Choose the structure that best fits the content.',
+        layoutBalanced: 'Balanced',
+        layoutEditorial: 'Editorial',
+        layoutGrid: 'Grid-based',
+        layoutImmersive: 'Immersive',
+        fontLabel: 'Typography direction',
+        fontModern: 'Modern sans',
+        fontGeometric: 'Geometric',
+        fontEditorial: 'Editorial',
+        fontTechnical: 'Technical',
+        motionLabel: 'Motion intensity',
+        motionSubtle: 'Subtle',
+        motionExpressive: 'Expressive',
+        motionNone: 'No motion',
+        securityKicker: 'SECURITY REQUIREMENTS',
+        securityLabel: 'Additional protection requirements',
+        securityHint: 'Core security practices remain part of every suitable build. Select any extra controls your project may need.',
+        securityMfa: 'Multi-factor authentication',
+        securityRoles: 'Role-based access control',
+        securityAudit: 'Admin activity logs',
+        securityBackups: 'Automated backups',
+        securityPrivacy: 'Data privacy controls',
+        securityPayments: 'Payment-flow protection',
+        securityBaseline: 'Secure configuration, validation and HTTPS are considered as part of the technical scope.',
+        previewKicker: 'LIVE CANVAS',
+        previewTitle: 'Your website takes shape',
+        previewLive: 'LIVE',
+        previewHeadline: 'A clearer way to stand out.',
+        previewDescription: 'A considered digital experience, shaped around your business.',
+        previewButton: 'Discover more ↗',
+        previewNote: 'Illustrative preview · final design is refined during planning'
     }
 });
 
@@ -1265,7 +1348,66 @@ Object.assign(translations.ru, {
         modelsEmptyTitle: "Коллекция бесплатных 3D-моделей готовится.",
         modelsEmptyText: "После добавления коллекции бесплатные модели появятся здесь как варианты для выбора.",
         modelsEmptyNote: "Вы можете отправить заявку, не выбирая 3D-модель.",
-        modelsLicense: "Для каждой опубликованной модели будут указаны лицензия и условия использования."
+        modelsLicense: "Для каждой опубликованной модели будут указаны лицензия и условия использования.",
+        heroIndex: '01 / ЦИФРОВОЙ ОПЫТ',
+        heroKicker: 'КОНСТРУКТОР ПРОЕКТА',
+        heroManifestoLabel: '/// МАНИФЕСТ',
+        heroManifesto: 'Ваша идея — отправная точка. Сформируйте впечатление, определите систему и увидьте, как обретает форму ваш замысел.',
+        heroTitle: 'Откройте вселенную своего будущего сайта.',
+        heroIntro: 'Исследуйте Млечный Путь. Поместите идею в центр. Создайте свой сайт.',
+        heroLabelOne: 'ГАЛАКТИКА МЛЕЧНЫЙ ПУТЬ',
+        heroLabelTwo: 'ЧЁРНАЯ ДЫРА',
+        heroLabelThree: 'АККРЕЦИОННЫЙ ДИСК',
+        heroScrollHint: 'ПРОКРУТИТЕ ВНИЗ',
+        heroSound: 'ЗВУК: ВЫКЛ.',
+        heroScrollText: 'ПРОКРУТИТЕ, ЧТОБЫ СОЗДАТЬ САЙТ',
+        heroLoading: 'ЗАГРУЗКА МОДЕЛЕЙ МЛЕЧНОГО ПУТИ И ЧЁРНОЙ ДЫРЫ',
+        heroReady: 'МЛЕЧНЫЙ ПУТЬ + ЧЁРНАЯ ДЫРА · 3D ГОТОВО',
+        heroPartial: 'ЗАГРУЖЕНА ЧАСТЬ 3D-МОДЕЛЕЙ · ПРОВЕРЬТЕ ФАЙЛЫ',
+        heroFallback: '3D-ПРЕДПРОСМОТР НЕДОСТУПЕН · СТАТИЧЕСКИЙ РЕЖИМ',
+        previewDesktop: 'КОМПЬЮТЕР',
+        previewMobile: 'ТЕЛЕФОН',
+        securityBaselineShort: 'БАЗОВАЯ',
+        securityExtra: 'ДОП.',
+        topSummary: 'ВАШ ПРОЕКТ / ТЕКУЩАЯ КОНФИГУРАЦИЯ',
+        summaryType: 'ТИП',
+        summaryStyle: 'СТИЛЬ',
+        summarySecurity: 'ЗАЩИТА',
+        domainLabel: 'Предпочитаемый домен (необязательно)',
+        domainPlaceholder: 'yourbrand.com',
+        domainHint: 'Укажите только доменное имя. Оставьте поле пустым, если нужна помощь с выбором.',
+        layoutLabel: 'Композиция страницы',
+        layoutHint: 'Выберите структуру, которая лучше подходит содержанию.',
+        layoutBalanced: 'Сбалансированная',
+        layoutEditorial: 'Редакционная',
+        layoutGrid: 'Сетка',
+        layoutImmersive: 'Иммерсивная',
+        fontLabel: 'Типографика',
+        fontModern: 'Современный гротеск',
+        fontGeometric: 'Геометрическая',
+        fontEditorial: 'Редакционная',
+        fontTechnical: 'Техническая',
+        motionLabel: 'Интенсивность анимации',
+        motionSubtle: 'Сдержанная',
+        motionExpressive: 'Выразительная',
+        motionNone: 'Без анимации',
+        securityKicker: 'ТРЕБОВАНИЯ К БЕЗОПАСНОСТИ',
+        securityLabel: 'Дополнительные требования к защите',
+        securityHint: 'Базовые меры безопасности входят в подходящий объём работ. Отметьте дополнительные механизмы, которые могут понадобиться проекту.',
+        securityMfa: 'Многофакторная аутентификация',
+        securityRoles: 'Ролевое управление доступом',
+        securityAudit: 'Журнал действий администратора',
+        securityBackups: 'Автоматические резервные копии',
+        securityPrivacy: 'Контроль конфиденциальности данных',
+        securityPayments: 'Защита платёжных операций',
+        securityBaseline: 'Безопасная конфигурация, проверка данных и HTTPS учитываются в техническом объёме проекта.',
+        previewKicker: 'ЖИВОЙ МАКЕТ',
+        previewTitle: 'Ваш сайт обретает форму',
+        previewLive: 'В РЕАЛЬНОМ ВРЕМЕНИ',
+        previewHeadline: 'Выделитесь с ясной идеей.',
+        previewDescription: 'Продуманный цифровой опыт, созданный вокруг задач вашего бизнеса.',
+        previewButton: 'Подробнее ↗',
+        previewNote: 'Концептуальный макет · финальный дизайн уточняется при планировании'
     }
 });
 
@@ -1302,8 +1444,140 @@ Object.assign(translations.hy, {
         modelsEmptyTitle: "Անվճար 3D մոդելների հավաքածուն պատրաստվում է։",
         modelsEmptyText: "Հավաքածուն ավելացնելուց հետո անվճար մոդելները կհայտնվեն այստեղ՝ ընտրության համար։",
         modelsEmptyNote: "Կարող ես շարունակել հայտը՝ առանց 3D մոդել ընտրելու։",
-        modelsLicense: "Յուրաքանչյուր հրապարակված մոդելի համար կնշվեն լիցենզիան և օգտագործման պայմանները։"
+        modelsLicense: "Յուրաքանչյուր հրապարակված մոդելի համար կնշվեն լիցենզիան և օգտագործման պայմանները։",
+        heroIndex: '01 / ԹՎԱՅԻՆ ՓՈՐՁԱՌՈՒԹՅՈՒՆ',
+        heroKicker: 'ՆԱԽԱԳԾԻ ԿԱՌՈՒՑԻՉ',
+        heroManifestoLabel: '/// ՄԱՆԻՖԵՍՏ',
+        heroManifesto: 'Քո գաղափարը մեկնարկային կետն է։ Ձևավորիր փորձառությունը, որոշիր համակարգը և տես՝ ինչպես է գաղափարդ ստանում տեսք։',
+        heroTitle: 'Մուտք գործիր քո ապագա կայքի տիեզերք։',
+        heroIntro: 'Ուսումնասիրիր Ծիր Կաթինը։ Տեղադրիր գաղափարդ կենտրոնում։ Կառուցիր կայքդ։',
+        heroLabelOne: 'ԾԻՐ ԿԱԹԻՆ ԳԱԼԱԿՏԻԿԱ',
+        heroLabelTwo: 'ՍԵՎ ԽՈՌՈՉ',
+        heroLabelThree: 'ԱԿԿՐԵՑԻՈՆ ՍԿԱՎԱՌԱԿ',
+        heroScrollHint: 'ԻՋԻՐ ՆԵՐՔԵՎ',
+        heroSound: 'ՁԱՅՆ՝ ԱՆՋԱՏՎԱԾ',
+        heroScrollText: 'ԻՋԻՐ՝ ԿԱՅՔԴ ԿԱՌՈՒՑԵԼՈՒ ՀԱՄԱՐ',
+        heroLoading: 'ԾԻՐ ԿԱԹԻՆ ԳԱԼԱԿՏԻԿԱՅԻ ԵՎ ՍԵՎ ԽՈՌՈՉԻ ԲԵՌՆՈՒՄ',
+        heroReady: 'ԾԻՐ ԿԱԹԻՆ + ՍԵՎ ԽՈՌՈՉ · 3D ՊԱՏՐԱՍՏ Է',
+        heroPartial: '3D ՄՈԴԵԼՆԵՐԸ ՄԱՍՆԱԿԻ ԵՆ ԲԵՌՆՎԵԼ · ՍՏՈՒԳԻՐ ՖԱՅԼԵՐԸ',
+        heroFallback: '3D ՆԱԽԱԴԻՏՈՒՄԸ ՀԱՍԱՆԵԼԻ ՉԷ · ՍՏԱՏԻԿ ՏԱՐԲԵՐԱԿ',
+        previewDesktop: 'ՀԱՄԱԿԱՐԳԻՉ',
+        previewMobile: 'ՀԵՌԱԽՈՍ',
+        securityBaselineShort: 'ՀԻՄՆԱԿԱՆ',
+        securityExtra: 'ԼՐԱՑՈՒՑԻՉ',
+        topSummary: 'ՔՈ ՆԱԽԱԳԻԾԸ / ԸՆԹԱՑԻԿ ԿԱՐԳԱՎՈՐՈՒՄՆԵՐ',
+        summaryType: 'ՏԵՍԱԿ',
+        summaryStyle: 'ՈՃ',
+        summarySecurity: 'ՊԱՇՏՊԱՆՈՒԹՅՈՒՆ',
+        domainLabel: 'Նախընտրած դոմեյն (ըստ ցանկության)',
+        domainPlaceholder: 'yourbrand.am',
+        domainHint: 'Մուտքագրիր միայն դոմեյնի անունը։ Եթե ընտրության հարցում օգնություն է պետք, թող դատարկ։',
+        layoutLabel: 'Էջի կառուցվածք',
+        layoutHint: 'Ընտրիր բովանդակությանը համապատասխան կառուցվածքը։',
+        layoutBalanced: 'Հավասարակշռված',
+        layoutEditorial: 'Խմբագրական',
+        layoutGrid: 'Ցանցային',
+        layoutImmersive: 'Ընկղմող',
+        fontLabel: 'Տառատեսակի ուղղություն',
+        fontModern: 'Ժամանակակից sans',
+        fontGeometric: 'Երկրաչափական',
+        fontEditorial: 'Խմբագրական',
+        fontTechnical: 'Տեխնիկական',
+        motionLabel: 'Անիմացիայի ինտենսիվություն',
+        motionSubtle: 'Նուրբ',
+        motionExpressive: 'Արտահայտիչ',
+        motionNone: 'Առանց շարժման',
+        securityKicker: 'ԱՆՎՏԱՆԳՈՒԹՅԱՆ ՊԱՀԱՆՋՆԵՐ',
+        securityLabel: 'Պաշտպանության լրացուցիչ պահանջներ',
+        securityHint: 'Հիմնական անվտանգության միջոցները ներառվում են համապատասխան նախագծերում։ Նշիր լրացուցիչ մեխանիզմները, որոնք կարող են անհրաժեշտ լինել։',
+        securityMfa: 'Բազմագործոն նույնականացում',
+        securityRoles: 'Դերային հասանելիության կառավարում',
+        securityAudit: 'Ադմինի գործողությունների մատյան',
+        securityBackups: 'Ավտոմատ պահուստավորում',
+        securityPrivacy: 'Տվյալների գաղտնիության վերահսկում',
+        securityPayments: 'Վճարումների պաշտպանության մեխանիզմներ',
+        securityBaseline: 'Անվտանգ կարգավորումները, տվյալների ստուգումը և HTTPS-ը հաշվի են առնվում տեխնիկական ծավալը որոշելիս։',
+        previewKicker: 'ԿԵՆԴԱՆԻ ՆԱԽԱԴԻՏՈՒՄ',
+        previewTitle: 'Քո կայքը ստանում է տեսք',
+        previewLive: 'ԿԵՆԴԱՆԻ',
+        previewHeadline: 'Ավելի հստակ ներկայություն։',
+        previewDescription: 'Մտածված թվային փորձառություն՝ ձևավորված քո բիզնեսի նպատակների շուրջ։',
+        previewButton: 'Տեսնել ավելին ↗',
+        previewNote: 'Օրինակային նախադիտում · վերջնական դիզայնը կհստակեցվի պլանավորման ընթացքում'
     }
+});
+
+
+/* =========================================================
+   START PROJECT — LEVEL 3 VISUAL / BRAND COPY
+========================================================= */
+Object.assign(translations.en.startProject, {
+    typeHint: "Choose the website category that looks closest to what you want to create.",
+    designHint: "Choose the visual direction that feels closest to your idea. These images are reference concepts, not fixed templates.",
+    heroCameraHint: "DRAG TO ORBIT · SCROLL UP TO ZOOM IN",
+    heroScrollHint: "SCROLL DOWN TO ZOOM OUT · SHIFT + WHEEL TO PAGE-SCROLL",
+    heroControlHint: "SCROLL TO EXPLORE THE GALAXY · DRAG TO CHANGE ANGLE",
+    heroDiveButton: "EXPLORE THE CORE ↗",
+    heroResetView: "RESET VIEW",
+    bonusKicker: "COMPLIMENTARY PROJECT STARTER",
+    bonusTitle: "A clearer first step, included.",
+    bonusIntro: "Every completed brief receives a first-pass project outline after review: a visual direction, key feature map and suggested build path.",
+    bonusVisual: "Visual direction",
+    bonusVisualText: "A practical starting point based on your chosen references.",
+    bonusBlueprint: "Feature blueprint",
+    bonusBlueprintText: "A structured overview of pages, functions and priorities.",
+    bonusNext: "Recommended next steps",
+    bonusNextText: "A suggested route from idea to a confirmed project scope.",
+    bonusFootnote: "Included with the project brief review. Final scope, price and delivery schedule are confirmed separately.",
+    codexTitle: "SECURITY-MINDED DEVELOPMENT",
+    codexText: "Security controls are implemented and reviewed by KNOWME Studio, with Codex-assisted development.",
+    codexStatus: "DEVELOPED BY KNOWME · REVIEWED BY CODEX"
+});
+
+Object.assign(translations.ru.startProject, {
+    typeHint: "Выберите категорию сайта, которая больше всего похожа на желаемый результат.",
+    designHint: "Выберите визуальное направление, близкое вашей идее. Изображения служат примерами, а не готовыми шаблонами.",
+    heroCameraHint: "ТЯНИТЕ ДЛЯ ОБЗОРА · КОЛЕСО ВВЕРХ — ПРИБЛИЖЕНИЕ",
+    heroScrollHint: "КОЛЕСО ВНИЗ — ОТДАЛЕНИЕ · SHIFT + КОЛЕСО — ПРОКРУТКА СТРАНИЦЫ",
+    heroControlHint: "ИССЛЕДУЙТЕ ГАЛАКТИКУ КОЛЕСОМ · МЕНЯЙТЕ УГОЛ ПЕРЕТАСКИВАНИЕМ",
+    heroDiveButton: "К ЯДРУ ЧЁРНОЙ ДЫРЫ ↗",
+    heroResetView: "СБРОСИТЬ ВИД",
+    bonusKicker: "БОНУС ДЛЯ СТАРТА ПРОЕКТА",
+    bonusTitle: "Более понятный первый шаг — уже включён.",
+    bonusIntro: "После рассмотрения заполненного брифа вы получите предварительный план проекта: визуальное направление, карту функций и рекомендуемый путь разработки.",
+    bonusVisual: "Визуальное направление",
+    bonusVisualText: "Практическая отправная точка на основе выбранных вами примеров.",
+    bonusBlueprint: "Карта функций",
+    bonusBlueprintText: "Структурированный обзор страниц, возможностей и приоритетов.",
+    bonusNext: "Следующие шаги",
+    bonusNextText: "Рекомендуемый путь от идеи до согласованного объёма проекта.",
+    bonusFootnote: "Включено в рассмотрение брифа. Итоговый объём, цена и сроки подтверждаются отдельно.",
+    codexTitle: "РАЗРАБОТКА С УЧЁТОМ БЕЗОПАСНОСТИ",
+    codexText: "Меры безопасности реализует и проверяет KNOWME Studio с поддержкой Codex в процессе разработки.",
+    codexStatus: "РАЗРАБОТАНО KNOWME · ПРОВЕРЕНО CODEX"
+});
+
+Object.assign(translations.hy.startProject, {
+    typeHint: "Ընտրիր կայքի այն տեսակը, որի օրինակն ամենամոտն է քո պատկերացրած արդյունքին։",
+    designHint: "Ընտրիր քո գաղափարին ամենամոտ տեսողական ուղղությունը։ Նկարները օրինակներ են, ոչ թե անփոփոխ պատրաստի ձևանմուշներ։",
+    heroCameraHint: "ՔԱՇԻՐ՝ ՊՏՏԵԼՈՒ ՀԱՄԱՐ · ՎԵՐԵՎ՝ ՄՈՏԵՆԱԼ",
+    heroScrollHint: "ՆԵՐՔԵՎ՝ ՀԵՌԱՆԱԼ · SHIFT + WHEEL՝ ԷՋԸ ՈԼՈՐԵԼՈՒ ՀԱՄԱՐ",
+    heroControlHint: "ԱՆՑԻՐ ԳԱԼԱԿՏԻԿԱՅՈՎ՝ SCROLL-ՈՎ · ՓՈԽԻՐ ԱՆԿՅՈՒՆԸ՝ ՔԱՇԵԼՈՎ",
+    heroDiveButton: "ՄՈՏԵՆԱԼ ՍԵՎ ԽՈՌՈՉԻՆ ↗",
+    heroResetView: "ՎԵՐԱԿԱՆԳՆԵԼ ՏԵՍՔԸ",
+    bonusKicker: "ՆԱԽԱԳԾԻ ՍԿՍՆԱԿԱՆ ԲՈՆՈՒՍ",
+    bonusTitle: "Ավելի հստակ մեկնարկ՝ ներառված։",
+    bonusIntro: "Լրացված հայտի ուսումնասիրությունից հետո կստանաս նախագծի նախնական պլան՝ տեսողական ուղղությամբ, հիմնական ֆունկցիաների քարտեզով և առաջարկվող իրականացման ճանապարհով։",
+    bonusVisual: "Տեսողական ուղղություն",
+    bonusVisualText: "Գործնական մեկնարկ՝ քո ընտրած օրինակների հիման վրա։",
+    bonusBlueprint: "Ֆունկցիաների քարտեզ",
+    bonusBlueprintText: "Էջերի, հնարավորությունների և առաջնահերթությունների կառուցված ամփոփում։",
+    bonusNext: "Հաջորդ քայլերը",
+    bonusNextText: "Գաղափարից մինչև նախագծի համաձայնեցված ծավալ տանող առաջարկվող ուղի։",
+    bonusFootnote: "Ներառված է հայտի նախնական ուսումնասիրության մեջ։ Վերջնական ծավալը, արժեքը և ժամկետները համաձայնեցվում են առանձին։",
+    codexTitle: "ԱՆՎՏԱՆԳՈՒԹՅԱՆԸ ԿԵՆՏՐՈՆԱՑԱԾ ՄՇԱԿՈՒՄ",
+    codexText: "Անվտանգության մեխանիզմները ներդրվում և վերանայվում են KNOWME Studio-ի կողմից՝ Codex-ի աջակցությամբ մշակման ընթացքում։",
+    codexStatus: "ՄՇԱԿՎԱԾ Է KNOWME-Ի ԿՈՂՄԻՑ · ՍՏՈՒԳՎԱԾ Է CODEX-Ի ԿՈՂՄԻՑ"
 });
 
 
@@ -2639,13 +2913,19 @@ if (
             ...labelsFor("website_type"),
             ...labelsFor("website_goal"),
             ...labelsFor("design_style"),
+            ...labelsFor("layout_style"),
+            ...labelsFor("font_style"),
+            ...labelsFor("animation_level"),
             ...labelsFor("pages_scope"),
             ...labelsFor("required_pages"),
             ...labelsFor("features"),
+            ...labelsFor("security_requirements"),
             ...labelsFor("selected_3d_models"),
             ...labelsFor("budget"),
             ...labelsFor("deadline")
         ].filter(Boolean);
+        const preferredDomain = form.elements.preferred_domain?.value.trim();
+        if (preferredDomain) values.push(`Domain: ${preferredDomain}`);
 
         const uniqueValues = Array.from(new Set(values));
         if (!uniqueValues.length) {
@@ -2662,17 +2942,231 @@ if (
         });
     }
 
+    // Live visual canvas: every relevant selection updates the reference image,
+    // visual treatment, URL, copy and device frame immediately.
+    const previewScreen = document.getElementById("spPreviewScreen");
+    const previewImage = document.getElementById("spPreviewReference");
+    const previewUrl = document.getElementById("spPreviewUrl");
+    const previewTypeLabel = document.getElementById("spPreviewTypeLabel");
+    const previewStyleLabel = document.getElementById("spPreviewStyleLabel");
+    const previewHeading = document.getElementById("spPreviewHeadingText");
+    const previewDescription = document.getElementById("spPreviewDescription");
+    const previewEyebrow = document.getElementById("spPreviewEyebrow");
+    const previewMeta = document.getElementById("spPreviewStyle");
+    const previewLayout = document.getElementById("spPreviewLayoutValue");
+    const previewFont = document.getElementById("spPreviewFontValue");
+    const previewMotion = document.getElementById("spPreviewMotionValue");
+    const previewDeviceButtons = Array.from(document.querySelectorAll("[data-sp-preview-device]"));
+
+    const typeImageFiles = {
+        business: "business.png",
+        portfolio: "portfolio.png",
+        ecommerce: "ecommerce.png",
+        landing: "landing.png",
+        webapp: "webapp.png",
+        other: "custom.png"
+    };
+    const previewCopy = {
+        en: {
+            business: ["A clearer way to grow your business.", "A polished company website with clear services, trust signals and contact paths."],
+            portfolio: ["Make your work impossible to miss.", "A focused portfolio that gives your projects, story and skills room to stand out."],
+            ecommerce: ["Turn great products into a better store.", "A product-led storefront with strong visuals, clear categories and a smoother buying path."],
+            landing: ["One page. One clear next step.", "A focused landing page designed to explain your offer and guide visitors to act."],
+            webapp: ["A digital product built around your workflow.", "A functional interface for accounts, dashboards, data and custom application logic."],
+            other: ["Let's shape the right solution together.", "A flexible concept that can be refined around your idea and project goals."]
+        },
+        ru: {
+            business: ["Понятный сайт для роста бизнеса.", "Профессиональный сайт компании с услугами, доверием и удобными контактами."],
+            portfolio: ["Покажите свои работы убедительно.", "Портфолио, в котором проекты, опыт и навыки получают главное место."],
+            ecommerce: ["Превратите товары в удобный магазин.", "Витрина с понятными категориями, выразительными товарами и удобным путём покупки."],
+            landing: ["Одна страница. Одно ясное действие.", "Целевая страница, которая объясняет предложение и направляет посетителя к действию."],
+            webapp: ["Цифровой продукт под ваши процессы.", "Интерфейс для аккаунтов, панелей управления, данных и собственной логики приложения."],
+            other: ["Вместе определим подходящее решение.", "Гибкая концепция, которую можно уточнить под вашу идею и цели проекта."]
+        },
+        hy: {
+            business: ["Հստակ կայք՝ բիզնեսի աճի համար։", "Պրոֆեսիոնալ ընկերության կայք՝ ծառայություններով, վստահության ազդակներով և կապի հարմար ուղիներով։"],
+            portfolio: ["Աշխատանքներդ ներկայացրու ազդեցիկ։", "Պորտֆոլիո, որտեղ նախագծերը, փորձն ու հմտությունները ստանում են գլխավոր տեղը։"],
+            ecommerce: ["Ապրանքները վերածիր հարմար խանութի։", "Ապրանքների ցուցադրություն՝ հստակ բաժիններով և գնման հասկանալի ճանապարհով։"],
+            landing: ["Մեկ էջ։ Մեկ հստակ գործողություն։", "Նպատակային էջ, որը ներկայացնում է առաջարկը և այցելուին տանում հաջորդ քայլին։"],
+            webapp: ["Թվային արտադրանք՝ քո աշխատանքային հոսքի համար։", "Հաշիվների, վահանակների, տվյալների և անհատական տրամաբանության ինտերֆեյս։"],
+            other: ["Միասին կգտնենք ճիշտ լուծումը։", "Ճկուն գաղափարային ուղղություն, որը կհստակեցնենք քո նպատակի և պահանջների շուրջ։"]
+        }
+    };
+    const previewStyleNames = {
+        en: { modern: "MODERN", minimal: "MINIMAL", corporate: "CORPORATE", luxury: "LUXURY", creative: "CREATIVE", futuristic: "FUTURISTIC", reference: "REFERENCE" },
+        ru: { modern: "СОВРЕМЕННЫЙ", minimal: "МИНИМАЛИЗМ", corporate: "КОРПОРАТИВНЫЙ", luxury: "ПРЕМИУМ", creative: "КРЕАТИВНЫЙ", futuristic: "ФУТУРИСТИЧНЫЙ", reference: "РЕФЕРЕНС" },
+        hy: { modern: "ԺԱՄԱՆԱԿԱԿԻՑ", minimal: "ՄԻՆԻՄԱԼ", corporate: "ԿՈՐՊՈՐԱՏԻՎ", luxury: "ՊՐԵՄԻՈՒՄ", creative: "ԿՐԵԱՏԻՎ", futuristic: "ՖՈՒՏՈՒՐԻՍՏԻԿ", reference: "ՕՐԻՆԱԿ" }
+    };
+    const previewLayoutNames = {
+        en: { balanced: "BALANCED LAYOUT", editorial: "EDITORIAL LAYOUT", grid: "GRID LAYOUT", immersive: "IMMERSIVE LAYOUT" },
+        ru: { balanced: "СБАЛАНСИРОВАННЫЙ МАКЕТ", editorial: "РЕДАКЦИОННЫЙ МАКЕТ", grid: "СЕТКА", immersive: "ПОГРУЖАЮЩИЙ МАКЕТ" },
+        hy: { balanced: "ՀԱՎԱՍԱՐԱԿՇՌՎԱԾ ԿԱՌՈՒՑՎԱԾՔ", editorial: "ԽՄԲԱԳՐԱԿԱՆ ԿԱՌՈՒՑՎԱԾՔ", grid: "ՑԱՆՑԱՅԻՆ ԿԱՌՈՒՑՎԱԾՔ", immersive: "ԸՆԿՂՄՈՂ ԿԱՌՈՒՑՎԱԾՔ" }
+    };
+    const previewFontNames = {
+        en: { modern: "MODERN TYPE", geometric: "GEOMETRIC TYPE", editorial: "EDITORIAL TYPE", technical: "TECHNICAL TYPE" },
+        ru: { modern: "СОВРЕМЕННАЯ ТИПОГРАФИКА", geometric: "ГЕОМЕТРИЧЕСКИЙ ШРИФТ", editorial: "РЕДАКЦИОННЫЙ ШРИФТ", technical: "ТЕХНИЧЕСКИЙ ШРИФТ" },
+        hy: { modern: "ԺԱՄԱՆԱԿԱԿԻՑ ՏԱՌԱՏԵՍԱԿ", geometric: "ԵՐԿՐԱՉԱՓԱԿԱՆ ՏԱՌԱՏԵՍԱԿ", editorial: "ԽՄԲԱԳՐԱԿԱՆ ՏԱՌԱՏԵՍԱԿ", technical: "ՏԵԽՆԻԿԱԿԱՆ ՏԱՌԱՏԵՍԱԿ" }
+    };
+    const previewMotionNames = {
+        en: { subtle: "SUBTLE MOTION", expressive: "EXPRESSIVE MOTION", none: "NO MOTION" },
+        ru: { subtle: "ЛЁГКАЯ АНИМАЦИЯ", expressive: "АКТИВНАЯ АНИМАЦИЯ", none: "БЕЗ АНИМАЦИИ" },
+        hy: { subtle: "ՆՈՒՐԲ ԱՆԻՄԱՑԻԱ", expressive: "ԱՐՏԱՀԱՅՏԻՉ ԱՆԻՄԱՑԻԱ", none: "ԱՌԱՆՑ ԱՆԻՄԱՑԻԱՅԻ" }
+    };
+    let previewImageKey = "business.png";
+    let previewImageFallbackUsed = false;
+
+    function activeLanguage() {
+        const candidate = (document.documentElement.lang || "en").slice(0, 2).toLowerCase();
+        return ["en", "ru", "hy"].includes(candidate) ? candidate : "en";
+    }
+
+    function checkedValue(name, fallback) {
+        return form.querySelector(`input[name="${name}"]:checked`)?.value || fallback;
+    }
+
+    function getPreviewImagePath(fileName, alternate = false) {
+        const folder = alternate ? "js/images/project-previews" : "images/project-previews";
+        return `/static/${folder}/${fileName}`;
+    }
+
+    function updatePreviewImage(fileName) {
+        if (!previewImage) return;
+        const desiredPath = getPreviewImagePath(fileName, false);
+        const nextSrc = `${desiredPath}?v=5`;
+        if (previewImage.dataset.previewFile === fileName && previewImage.complete && previewImage.naturalWidth > 0) {
+            previewImage.classList.remove("is-changing");
+            return;
+        }
+        previewImage.dataset.previewFile = fileName;
+        previewImageFallbackUsed = false;
+        previewImage.classList.remove("is-changing");
+        void previewImage.offsetWidth;
+        previewImage.classList.add("is-changing");
+        previewImage.onerror = () => {
+            if (previewImageFallbackUsed) return;
+            previewImageFallbackUsed = true;
+            previewImage.src = `${getPreviewImagePath(fileName, true)}?v=5`;
+        };
+        previewImage.onload = () => previewImage.classList.remove("is-changing");
+        if (previewImage.getAttribute("src") !== nextSrc) {
+            previewImage.src = nextSrc;
+        } else if (previewImage.complete && previewImage.naturalWidth > 0) {
+            previewImage.classList.remove("is-changing");
+        }
+        previewImage.alt = `${previewTypeLabel?.textContent || "Website"} visual website reference`;
+    }
+
+    // Recover the six choice-card images if an older manual extraction placed
+    // them in static/js/images/project-previews instead of the canonical folder.
+    document.querySelectorAll(".sp-type-preview-image, .sp-style-preview img").forEach((image) => {
+        if (image.dataset.spFallbackReady === "true") return;
+        image.dataset.spFallbackReady = "true";
+        image.addEventListener("error", () => {
+            if (image.dataset.spFallbackUsed === "true") return;
+            image.dataset.spFallbackUsed = "true";
+            const fileName = (image.getAttribute("src") || "").split("/").pop().split("?")[0];
+            if (fileName) image.src = `/static/js/images/project-previews/${fileName}?v=5`;
+        }, { once: true });
+    });
+
+    function updateLivePreview(changedControl = null) {
+        if (!previewScreen) return;
+        const type = checkedValue("website_type", "business");
+        const style = checkedValue("design_style", "modern");
+        const layout = checkedValue("layout_style", "balanced");
+        const font = checkedValue("font_style", "modern");
+        const motion = checkedValue("animation_level", "subtle");
+        const lang = activeLanguage();
+        const languageCopy = previewCopy[lang] || previewCopy.en;
+
+        // Keep the selected site category as the content reference. Style changes
+        // are reflected by the live CSS theme, typography and motion attributes,
+        // rather than silently replacing a portfolio with an unrelated template.
+        previewImageKey = typeImageFiles[type] || "custom.png";
+
+        const labels = labelsFor("website_type");
+        const styleLabels = labelsFor("design_style");
+        const typeLabel = labels[0] || wizardText("startProject.typeBusiness", "Business website");
+        const styleLabel = (previewStyleNames[lang] || previewStyleNames.en)[style] || style.toUpperCase();
+        const layoutName = (previewLayoutNames[lang] || previewLayoutNames.en)[layout] || layout.toUpperCase();
+        const fontName = (previewFontNames[lang] || previewFontNames.en)[font] || font.toUpperCase();
+        const motionName = (previewMotionNames[lang] || previewMotionNames.en)[motion] || motion.toUpperCase();
+        const copy = languageCopy[type] || languageCopy.business;
+        const domain = (form.elements.preferred_domain?.value || "").trim();
+        const brand = (form.elements.company?.value || form.elements.company_name?.value || "").trim();
+        const primary = form.elements.primary_color?.value || "#ef4444";
+        const secondary = form.elements.secondary_color?.value || "#1677ff";
+
+        previewScreen.dataset.style = style;
+        previewScreen.dataset.layout = layout;
+        previewScreen.dataset.font = font;
+        previewScreen.dataset.motion = motion;
+        previewScreen.dataset.type = type;
+        previewScreen.style.setProperty("--sp-preview-primary", primary);
+        previewScreen.style.setProperty("--sp-preview-secondary", secondary);
+
+        if (previewTypeLabel) previewTypeLabel.textContent = typeLabel.toUpperCase();
+        if (previewStyleLabel) previewStyleLabel.textContent = styleLabel;
+        if (previewHeading) previewHeading.textContent = copy[0];
+        if (previewDescription) previewDescription.textContent = copy[1];
+        if (previewEyebrow) previewEyebrow.textContent = `${typeLabel.toUpperCase()} / ${styleLabel}`;
+        if (previewUrl) previewUrl.textContent = domain || "your-domain.com";
+        if (previewMeta) previewMeta.textContent = `${typeLabel.toUpperCase()} / ${styleLabel} / ${layoutName}`;
+        if (previewLayout) previewLayout.textContent = layoutName;
+        if (previewFont) previewFont.textContent = fontName;
+        if (previewMotion) previewMotion.textContent = motionName;
+        const brandNode = document.getElementById("spPreviewBrand");
+        if (brandNode) brandNode.textContent = brand ? brand.toUpperCase() : "YOUR BRAND";
+        updatePreviewImage(previewImageKey);
+
+        previewScreen.classList.remove("is-updating");
+        void previewScreen.offsetWidth;
+        previewScreen.classList.add("is-updating");
+    }
+
+    function setPreviewDevice(device) {
+        const preview = document.querySelector(".sp-live-preview");
+        if (!preview) return;
+        const safeDevice = ["desktop", "tablet", "mobile"].includes(device) ? device : "desktop";
+        preview.dataset.previewDevice = safeDevice;
+        preview.classList.toggle("is-mobile", safeDevice === "mobile");
+        preview.classList.toggle("is-tablet", safeDevice === "tablet");
+        preview.classList.toggle("is-desktop", safeDevice === "desktop");
+        previewDeviceButtons.forEach((button) => {
+            const active = button.dataset.spPreviewDevice === safeDevice;
+            button.classList.toggle("is-active", active);
+            button.setAttribute("aria-pressed", String(active));
+        });
+        // Keep the selected device visible and prevent a narrow phone/tablet frame
+        // from overflowing the preview column on touch-sized viewports.
+        preview.style.setProperty("--sp-preview-device", safeDevice);
+    }
+
+    previewDeviceButtons.forEach((button) => {
+        button.addEventListener("click", () => setPreviewDevice(button.dataset.spPreviewDevice || "desktop"));
+    });
+
+    // Let translations update first, then refresh the visual preview.
+    document.addEventListener("knowme:languagechange", () => window.requestAnimationFrame(() => updateLivePreview()));
+
     previousButton.addEventListener("click", () => showStep(currentStep - 1));
 
     nextButton.addEventListener("click", () => {
         if (validateStep(currentStep)) showStep(currentStep + 1);
     });
 
-    form.addEventListener("change", updateSummary);
-    form.addEventListener("input", updateSummary);
+    form.addEventListener("change", (event) => {
+        updateSummary();
+        updateLivePreview(event.target);
+    });
+    form.addEventListener("input", (event) => {
+        updateSummary();
+        updateLivePreview(event.target);
+    });
     document.addEventListener("knowme:languagechange", () => {
         if (currentTitle) currentTitle.textContent = wizardText(titleKeys[currentStep], "Project details");
         updateSummary();
+        window.requestAnimationFrame(() => updateLivePreview());
     });
 
     form.addEventListener("submit", (event) => {
@@ -2710,6 +3204,21 @@ if (
     // Do not auto-scroll to the form on page load; let the complete hero heading remain visible.
     showStep(0, false);
     updateSummary();
+    updateLivePreview();
+    setPreviewDevice("desktop");
+})();
+
+
+/* =========================================================
+   START PROJECT — LOCALIZED WATER-RIPPLE HEADLINE TEXT
+========================================================= */
+(function syncStartProjectRippleText() {
+    "use strict";
+    const title = document.getElementById("sp3dHeroTitle");
+    if (!title) return;
+    const sync = () => title.setAttribute("data-ripple-text", (title.textContent || "").trim());
+    sync();
+    document.addEventListener("knowme:languagechange", () => window.requestAnimationFrame(sync));
 })();
 
 
@@ -2807,3 +3316,55 @@ if (
     }
 })();
 
+
+/* =========================================================
+   KNOWME BRAND — BLUE M ACCENT IN THE GLOBAL NAVIGATION
+   Wraps the existing logo text without replacing other markup.
+========================================================= */
+(function accentKnowmeLogoM() {
+    "use strict";
+    const logo = document.querySelector(".topbar .logo");
+    if (!logo || logo.querySelector(".logo-m-accent")) return;
+
+    // The K is already a separate .logo-k span in base.html, so the text node
+    // contains NOWME rather than KNOWME. Handle both markup variants safely.
+    const hasSeparateK = Boolean(logo.querySelector(".logo-k"));
+    const targetPattern = hasSeparateK ? /NOWME/i : /KNOWME/i;
+    const mOffset = hasSeparateK ? 3 : 4;
+    const walker = document.createTreeWalker(logo, NodeFilter.SHOW_TEXT);
+    const textNodes = [];
+    while (walker.nextNode()) textNodes.push(walker.currentNode);
+
+    for (const node of textNodes) {
+        const value = node.nodeValue || "";
+        const match = targetPattern.exec(value);
+        if (!match) continue;
+
+        const mIndex = match.index + mOffset;
+        const beforeM = value.slice(0, mIndex);
+        const afterM = value.slice(mIndex + 1);
+        const accent = document.createElement("span");
+        accent.className = "logo-m-accent";
+        accent.textContent = value.charAt(mIndex);
+
+        const fragment = document.createDocumentFragment();
+        if (beforeM) fragment.appendChild(document.createTextNode(beforeM));
+        fragment.appendChild(accent);
+        if (afterM) fragment.appendChild(document.createTextNode(afterM));
+        node.replaceWith(fragment);
+        break;
+    }
+})();
+
+
+
+/* Keep the compact K × C collaboration mark beside the language selector. */
+(function mountKnowmeCodexNavMark() {
+    "use strict";
+    const mark = document.querySelector(".start-project-page .sp3d-kc-corner");
+    const languageSwitcher = document.querySelector(".topbar .language-switcher");
+    if (!mark || !languageSwitcher || mark.dataset.navMounted === "true") return;
+    mark.dataset.navMounted = "true";
+    mark.classList.add("sp3d-kc-nav-mark");
+    languageSwitcher.appendChild(mark);
+})();

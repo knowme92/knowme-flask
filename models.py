@@ -78,6 +78,11 @@ class ProjectRequest(Base):
     website_goal: Mapped[str] = mapped_column(String(40), nullable=False)
     design_style: Mapped[str] = mapped_column(String(40), nullable=False)
     pages_scope: Mapped[str] = mapped_column(String(40), nullable=False)
+    layout_style: Mapped[str] = mapped_column(String(40), nullable=False, default="balanced", server_default="balanced")
+    font_style: Mapped[str] = mapped_column(String(40), nullable=False, default="modern", server_default="modern")
+    animation_level: Mapped[str] = mapped_column(String(20), nullable=False, default="subtle", server_default="subtle")
+    preferred_domain: Mapped[str] = mapped_column(String(253), nullable=False, default="", server_default="")
+    security_requirements: Mapped[list] = mapped_column(JSON, nullable=False, default=list, server_default=text("'[]'"))
     required_pages: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
     features: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
     selected_3d_models: Mapped[list] = mapped_column(

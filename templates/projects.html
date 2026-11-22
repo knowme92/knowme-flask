@@ -1,313 +1,79 @@
 {% extends "base.html" %}
 
-
-{% block title %}
-    KNOWME Studio | Projects
-{% endblock %}
-
+{% block title %}KNOWME Studio | Projects{% endblock %}
 
 {% block content %}
-
 <section class="projects-page">
-
-    <!-- ==================================================
-         BACKGROUND VIDEO
-    =================================================== -->
-
-    <video
-        class="projects-video"
-        autoplay
-        muted
-        loop
-        playsinline
-    >
-        <source
-            src="{{ url_for('static', filename='videos/projects-bg.mp4') }}"
-            type="video/mp4"
-        >
+    <video class="projects-video" autoplay muted loop playsinline aria-hidden="true">
+        <source src="{{ url_for('static', filename='videos/projects-bg.mp4') }}" type="video/mp4">
     </video>
-
-
-    <!-- DARK RED / BLUE OVERLAY -->
     <div class="projects-video-overlay"></div>
-
-    <!-- CYBER GRID -->
     <div class="projects-grid-overlay"></div>
 
-
-    <!-- ==================================================
-         CONTENT
-    =================================================== -->
-
     <div class="projects-content">
-
-        <span class="page-label">
-            KNOWME STUDIO
-        </span>
-
-
-        <h1 data-i18n="projects.title">
-            My Projects
-        </h1>
-
-
-        <p
-            class="projects-description"
-            data-i18n="projects.description"
-        >
-            Explore my web development projects,
-            technologies and digital solutions.
-        </p>
-
-
-        <!-- ==================================================
-             PROJECT CARDS
-        =================================================== -->
+        <span class="page-label">KNOWME STUDIO</span>
+        <h1 data-i18n="projects.title">My Projects</h1>
+        <p class="projects-description" data-i18n="projects.description">Explore my web development projects, technologies and digital solutions.</p>
 
         <div class="projects-grid">
-
-
-            <!-- ==================================================
-                 PROJECT 01
-            =================================================== -->
-
-            <!-- ==================================================
-     PROJECT 01 - PUBLISHED
-=================================================== -->
-
-<article class="project-card project-live">
-
-    <div class="project-top">
-
-        <span class="project-number">
-            01
-        </span>
-
-        <span
-            class="project-status live-status"
-            data-i18n="projects.live"
-        >
-            LIVE
-        </span>
-
-    </div>
-
-
-    <h2>
-        KNOWME Studio
-    </h2>
-
-
-    <p data-i18n="projects.project1Text">
-        Modern multilingual commercial website
-        with responsive design, animations,
-        SEO and security configuration.
-    </p>
-
-
-    <div class="project-tech">
-
-        <span>HTML</span>
-        <span>CSS</span>
-        <span>JavaScript</span>
-        <span>Netlify</span>
-
-    </div>
-
-
-    <div class="project-live-url">
-
-        <span data-i18n="projects.publishedAt">
-            Published website
-        </span>
-
-        <strong>
-            knowme-studio.netlify.app
-        </strong>
-
-    </div>
-
-
-    <a
-        href="https://knowme-studio.netlify.app/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="project-btn"
-        data-i18n="projects.view"
-    >
-        View Live Website
-    </a>
-
-</article>
-
-
-
-            <!-- ==================================================
-                 PROJECT 02
-            =================================================== -->
-
-            <article class="project-card project-development">
-
+            <article class="project-card project-live">
                 <div class="project-top">
-
-                    <span class="project-number">
-                        02
-                    </span>
-
-                    <span
-                        class="project-status development-status"
-                        data-i18n="projects.development"
-                    >
-                        IN DEVELOPMENT
-                    </span>
-
+                    <span class="project-number">01</span>
+                    <span class="project-status live-status" data-i18n="projects.live">LIVE</span>
                 </div>
-
-
-                <h2 data-i18n="projects.project2Title">
-                    KNOWME Flask
-                </h2>
-
-
-                <p data-i18n="projects.project2Text">
-                    Full-stack version of KNOWME Studio
-                    with Flask backend, database,
-                    admin panel and custom functionality.
-                </p>
-
-
+                <h2>KNOWME Studio</h2>
+                <p data-i18n="projects.project1Text">Modern multilingual commercial website with responsive design, animations, SEO and security configuration.</p>
                 <div class="project-tech">
-
-                    <span>
-                        Python
-                    </span>
-
-                    <span>
-                        Flask
-                    </span>
-
-                    <span>
-                        SQL
-                    </span>
-
-                    <span>
-                        JavaScript
-                    </span>
-
+                    <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Netlify</span>
                 </div>
-
-
-                <span
-                    class="project-coming"
-                    data-i18n="projects.development"
-                >
-                    IN DEVELOPMENT
-                </span>
-
+                <div class="project-live-url">
+                    <span data-i18n="projects.publishedAt">Published website</span>
+                    <strong>knowme-studio.netlify.app</strong>
+                </div>
+                <a href="https://knowme-studio.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-btn" data-i18n="projects.view">View Live Website</a>
             </article>
 
-
-
-            <!-- ==================================================
-                 PROJECT 03
-            =================================================== -->
-
-            <article class="project-card">
-
+            <article class="project-card project-live project-production">
                 <div class="project-top">
-
-                    <span class="project-number">
-                        03
-                    </span>
-
-                    <span
-                        class="project-status coming-status"
-                        data-i18n="projects.coming"
-                    >
-                        COMING SOON
-                    </span>
-
+                    <span class="project-number">02</span>
+                    <span class="project-status live-status" data-i18n="projects.live">LIVE</span>
                 </div>
-
-
-                <h2 data-i18n="projects.project3Title">
-                    Future Commercial Project
-                </h2>
-
-
-                <p data-i18n="projects.project3Text">
-                    New commercial websites and
-                    web applications will appear here.
-                </p>
-
-
+                <h2 data-i18n="projects.project2Title">KNOWME Studio — Production</h2>
+                <p data-i18n="projects.project2Text">Live production website at knowme-studio.onrender.com with Flask backend, PostgreSQL, an admin dashboard and multilingual project workflows.</p>
                 <div class="project-tech">
-
-                    <span>
-                        Web
-                    </span>
-
-                    <span>
-                        Backend
-                    </span>
-
-                    <span>
-                        API
-                    </span>
-
-                    <span>
-                        Security
-                    </span>
-
+                    <span>Python</span><span>Flask</span><span>PostgreSQL</span><span>Render</span>
                 </div>
-
-
-                <span
-                    class="project-coming"
-                    data-i18n="projects.coming"
-                >
-                    COMING SOON
-                </span>
-
+                <div class="project-live-url">
+                    <span data-i18n="projects.publishedAt">Published website</span>
+                    <strong>knowme-studio.onrender.com</strong>
+                </div>
+                <a href="https://knowme-studio.onrender.com/" target="_blank" rel="noopener noreferrer" class="project-btn" data-i18n="projects.view">View Live Website</a>
             </article>
 
+            <article class="project-card project-ai-release">
+                <div class="project-top">
+                    <span class="project-number">03</span>
+                    <span class="project-status release-status" data-i18n="projects.releases">RELEASES</span>
+                </div>
+                <h2 data-i18n="projects.project3Title">KNOWME AI</h2>
+                <p data-i18n="projects.project3Text">KNOWME AI desktop release and installer distribution. Explore the current Windows release and download details on Hugging Face.</p>
+                <div class="project-tech">
+                    <span>KNOWME AI</span><span>Windows</span><span>Hugging Face</span><span>Release 0.1.1</span>
+                </div>
+                <div class="project-live-url project-ai-url">
+                    <span data-i18n="projects.huggingFaceReleases">Hugging Face · Releases</span>
+                    <strong>huggingface.co/knowmeon/knowme-ai-releases</strong>
+                </div>
+                <a href="https://huggingface.co/knowmeon/knowme-ai-releases/tree/main" target="_blank" rel="noopener noreferrer" class="project-btn" data-i18n="projects.viewAIReleases">View KNOWME AI Releases</a>
+            </article>
         </div>
-
-
-        <!-- ==================================================
-             BOTTOM CTA
-        =================================================== -->
 
         <div class="projects-cta">
-
-            <span class="projects-cta-label">
-                KNOWME STUDIO
-            </span>
-
-
-            <h3 data-i18n="projects.ctaTitle">
-                Have a project in mind?
-            </h3>
-
-
-            <p data-i18n="projects.ctaText">
-                Let's turn your idea into a modern,
-                fast and professional website.
-            </p>
-
-
-            <a
-                href="{{ url_for('contact') }}"
-                class="project-cta-btn"
-                data-i18n="projects.ctaButton"
-            >
-                Start a Project
-            </a>
-
+            <span class="projects-cta-label">KNOWME STUDIO</span>
+            <h3 data-i18n="projects.ctaTitle">Have a project in mind?</h3>
+            <p data-i18n="projects.ctaText">Let's turn your idea into a modern, fast and professional website.</p>
+            <a href="{{ url_for('contact') }}" class="project-cta-btn" data-i18n="projects.ctaButton">Start a Project</a>
         </div>
-
     </div>
-
 </section>
-
 {% endblock %}

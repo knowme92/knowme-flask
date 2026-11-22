@@ -11051,3 +11051,2177 @@ body.why-intro-active .topbar {
         margin-left: 0;
     }
 }
+
+/* =========================================================
+   START PROJECT — CINEMATIC 3D + INTERACTIVE BUILDER
+   All rules are scoped to .start-project-page. Existing site
+   pages and shared navigation styles remain unchanged.
+========================================================= */
+
+.start-project-page {
+    padding: 0 5.5% 76px;
+    overflow: clip;
+}
+
+.sp-cinematic-hero {
+    --sp3d-scroll-progress: 0;
+    position: relative;
+    width: calc(100% + 11vw);
+    min-height: max(680px, 100svh);
+    height: 100svh;
+    max-height: 1100px;
+    margin: 0 -5.5vw;
+    overflow: hidden;
+    isolation: isolate;
+    background:
+        radial-gradient(ellipse at 50% 47%, rgba(24, 75, 128, 0.24), transparent 34%),
+        radial-gradient(ellipse at 16% 72%, rgba(170, 28, 50, 0.16), transparent 32%),
+        linear-gradient(135deg, #080c14 0%, #111b2b 47%, #05080f 100%);
+    border-bottom: 1px solid rgba(142, 177, 224, 0.17);
+}
+
+.sp3d-canvas {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    outline: 0;
+    opacity: 1;
+    transform: scale(1);
+    transform-origin: center 45%;
+}
+
+.sp3d-grain,
+.sp3d-vignette {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.sp3d-grain {
+    opacity: 0.15;
+    background-image: radial-gradient(rgba(220, 232, 248, 0.8) 0.55px, transparent 0.7px);
+    background-size: 5px 5px;
+    mask-image: linear-gradient(110deg, transparent 4%, #000 45%, transparent 96%);
+}
+
+.sp3d-vignette {
+    background:
+        linear-gradient(180deg, rgba(2, 4, 9, 0.42), transparent 23%, transparent 68%, rgba(2, 4, 9, 0.78)),
+        linear-gradient(90deg, rgba(2, 4, 9, 0.34), transparent 38%, transparent 68%, rgba(2, 4, 9, 0.35));
+}
+
+.sp3d-topline,
+.sp3d-manifesto,
+.sp3d-title-block,
+.sp3d-object-label,
+.sp3d-bottom-left,
+.sp3d-scroll-cta,
+.sp3d-status {
+    position: absolute;
+    z-index: 2;
+}
+
+.sp3d-topline {
+    top: 112px;
+    left: clamp(24px, 6.7vw, 112px);
+    right: clamp(24px, 6.7vw, 112px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.sp3d-brand {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 9px;
+    color: #fff;
+    text-decoration: none;
+    font-size: clamp(19px, 2vw, 28px);
+    font-weight: 950;
+    letter-spacing: 0.16em;
+    text-shadow: 0 0 24px rgba(236, 243, 255, 0.2);
+}
+
+.sp3d-brand span {
+    color: #ff646d;
+    font-size: 9px;
+    letter-spacing: 0.28em;
+}
+
+.sp3d-top-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: rgba(216, 227, 243, 0.63);
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: 0.2em;
+}
+
+.sp3d-top-meta i,
+.sp3d-status i,
+.sp-preview-live-dot i {
+    width: 6px;
+    height: 6px;
+    flex: 0 0 6px;
+    border-radius: 50%;
+    background: #54d99b;
+    box-shadow: 0 0 12px rgba(84, 217, 155, 0.8);
+}
+
+.sp3d-manifesto {
+    top: 155px;
+    right: clamp(24px, 6.7vw, 112px);
+    width: min(230px, 20vw);
+    text-align: right;
+}
+
+.sp3d-manifesto > span,
+.sp3d-eyebrow {
+    color: #ff747b;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.23em;
+}
+
+.sp3d-manifesto p {
+    margin: 13px 0 0;
+    color: rgba(231, 239, 250, 0.77);
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.65;
+}
+
+.sp3d-title-block {
+    left: clamp(24px, 6.7vw, 112px);
+    bottom: clamp(108px, 15vh, 175px);
+    width: min(530px, 43vw);
+    pointer-events: none;
+}
+
+.sp3d-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.sp3d-eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 1px;
+    background: #ff5e68;
+    box-shadow: 0 0 10px rgba(255, 80, 96, 0.7);
+}
+
+.sp3d-title-block h1 {
+    margin: 17px 0 13px;
+    color: #f2f6fc;
+    font-size: clamp(37px, 5.2vw, 72px);
+    font-weight: 950;
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+    text-wrap: balance;
+    text-shadow: 0 12px 42px rgba(0, 0, 0, 0.55);
+}
+
+.sp3d-title-block p {
+    max-width: 390px;
+    margin: 0;
+    color: rgba(214, 227, 245, 0.7);
+    font-size: 13px;
+    line-height: 1.7;
+    letter-spacing: 0.025em;
+}
+
+.sp3d-object-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(238, 245, 255, 0.85);
+    font-family: "Courier New", monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
+    pointer-events: none;
+}
+
+.sp3d-object-label span { color: #ff6c75; font-weight: 900; }
+.sp3d-object-label b { font-weight: 800; }
+.sp3d-object-label i { display: block; width: 35px; height: 1px; background: linear-gradient(90deg, rgba(151, 193, 247, 0.8), transparent); }
+.sp3d-label-one { top: 39%; left: 38%; }
+.sp3d-label-two { top: 54%; right: 24%; }
+.sp3d-label-three { top: 67%; left: 57%; }
+
+.sp3d-bottom-left {
+    left: clamp(24px, 6.7vw, 112px);
+    bottom: 34px;
+    display: grid;
+    gap: 9px;
+    color: rgba(221, 232, 248, 0.7);
+    font-family: "Courier New", monospace;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+}
+
+.sp3d-bottom-left small { color: rgba(183, 198, 220, 0.48); font-size: 8px; }
+
+.sp3d-scroll-cta {
+    left: 50%;
+    bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transform: translateX(-50%);
+    color: rgba(232, 240, 252, 0.72);
+    font-family: "Courier New", monospace;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.17em;
+    white-space: nowrap;
+}
+
+.sp3d-scroll-cta button {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(141, 181, 234, 0.5);
+    border-radius: 50%;
+    background: rgba(5, 11, 20, 0.48);
+    color: #fff;
+    font-size: 17px;
+    cursor: pointer;
+    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.sp3d-scroll-cta button:hover { transform: translateY(4px); border-color: #ff626d; background: rgba(160, 32, 53, 0.3); }
+.sp3d-status { right: clamp(24px, 6.7vw, 112px); bottom: 41px; display: flex; align-items: center; gap: 9px; color: rgba(196, 214, 240, 0.55); font-size: 8px; font-weight: 850; letter-spacing: 0.16em; }
+.sp3d-credits {
+    position: absolute;
+    z-index: 2;
+    right: clamp(24px, 6.7vw, 112px);
+    bottom: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 6px;
+    color: rgba(188, 205, 230, 0.34);
+    font-family: "Courier New", monospace;
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+.sp3d-credits a { color: rgba(196, 215, 242, 0.48); text-decoration: none; transition: color 0.2s ease; }
+.sp3d-credits a:hover { color: #f1f6ff; }
+.sp3d-credits i { color: rgba(255, 105, 118, 0.55); font-style: normal; }
+.sp3d-status.is-ready i { background: #56d89e; }
+.sp3d-status.is-error i { background: #ff6971; box-shadow: 0 0 12px rgba(255, 105, 113, 0.7); }
+.sp3d-fallback .sp3d-canvas { opacity: 0; }
+.sp3d-fallback::before { content: ""; position: absolute; z-index: 0; width: 420px; height: 420px; left: 50%; top: 48%; transform: translate(-50%, -50%); border: 1px solid rgba(143, 187, 244, 0.2); border-radius: 50%; box-shadow: 0 0 0 35px rgba(36, 88, 150, 0.04), 0 0 0 85px rgba(202, 47, 74, 0.035), inset 0 0 90px rgba(35, 108, 196, 0.08); }
+
+.sp-shell { padding-top: 58px; }
+
+.sp-sticky-summary {
+    position: sticky;
+    top: 92px;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+    margin: 0 0 24px;
+    padding: 14px 17px 17px;
+    overflow: hidden;
+    border: 1px solid rgba(129, 166, 218, 0.22);
+    border-radius: 14px;
+    background: rgba(5, 9, 16, 0.88);
+    box-shadow: 0 13px 40px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255,255,255,0.045);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.sp-summary-main { display: grid; gap: 5px; min-width: 0; }
+.sp-summary-overline { color: rgba(193, 211, 238, 0.52); font-size: 8px; font-weight: 900; letter-spacing: 0.18em; }
+.sp-summary-main strong { color: #f1f6ff; font-size: 14px; font-weight: 850; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sp-summary-facts { display: flex; align-items: center; gap: clamp(13px, 2.4vw, 36px); }
+.sp-summary-facts span { display: grid; gap: 4px; min-width: 0; }
+.sp-summary-facts small { color: rgba(193, 211, 238, 0.48); font-size: 7px; font-weight: 900; letter-spacing: 0.16em; }
+.sp-summary-facts b { max-width: 150px; overflow: hidden; color: rgba(239, 245, 255, 0.88); font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+.sp-summary-progress { position: absolute; right: 0; bottom: 0; left: 0; height: 2px; background: rgba(255,255,255,0.06); }
+.sp-summary-progress span { display: block; width: 25%; height: 100%; background: linear-gradient(90deg, #ef4444, #467fe5); box-shadow: 0 0 12px rgba(69, 126, 226, 0.6); transition: width 0.3s ease; }
+
+.sp-workspace { grid-template-columns: minmax(230px, 0.63fr) minmax(0, 2fr); }
+.sp-form-card { min-width: 0; }
+.sp-config-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 0.78fr); align-items: start; gap: 24px; }
+.sp-config-fields { min-width: 0; }
+.sp-builder-options { margin-bottom: 7px; }
+.sp-domain-field { margin-top: 17px; }
+.sp-security-picker { margin-top: 28px; padding: 18px 17px 14px; border: 1px solid rgba(88, 151, 226, 0.2); border-radius: 14px; background: linear-gradient(135deg, rgba(23, 65, 112, 0.12), rgba(154, 33, 54, 0.055)); }
+.sp-security-grid { margin-top: 13px; }
+.sp-security-baseline { display: flex; align-items: flex-start; gap: 9px; margin: 13px 0 0; color: rgba(208, 222, 242, 0.58); font-size: 9px; line-height: 1.55; }
+.sp-security-baseline i { width: 6px; height: 6px; flex: 0 0 6px; margin-top: 4px; border-radius: 50%; background: #59d69c; box-shadow: 0 0 9px rgba(89, 214, 156, 0.6); }
+
+.sp-live-preview {
+    position: sticky;
+    top: 112px;
+    align-self: start;
+    min-width: 0;
+    padding: 15px;
+    border: 1px solid rgba(130, 171, 229, 0.22);
+    border-radius: 16px;
+    background: linear-gradient(155deg, rgba(14, 21, 34, 0.97), rgba(5, 8, 14, 0.98));
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255,255,255,0.04);
+}
+
+.sp-preview-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 13px; }
+.sp-preview-heading > div > span { color: #ff6a75; font-size: 8px; font-weight: 900; letter-spacing: 0.2em; }
+.sp-preview-heading h3 { margin: 5px 0 0; color: #f2f6ff; font-size: 14px; font-weight: 850; }
+.sp-preview-live-dot { display: inline-flex; align-items: center; gap: 6px; padding: 6px 8px; border: 1px solid rgba(86, 217, 155, 0.17); border-radius: 30px; color: #8ee4b7; font-size: 7px; font-weight: 900; letter-spacing: 0.14em; white-space: nowrap; }
+.sp-preview-live-dot i { width: 5px; height: 5px; flex-basis: 5px; }
+.sp-preview-device-switch { display: flex; justify-content: flex-end; gap: 5px; margin-bottom: 10px; }
+.sp-preview-device-switch button { display: flex; align-items: center; gap: 6px; min-height: 27px; padding: 4px 8px; border: 1px solid rgba(255,255,255,0.1); border-radius: 7px; background: rgba(255,255,255,0.035); color: rgba(225,235,249,0.5); cursor: pointer; }
+.sp-preview-device-switch button span { font-size: 13px; }
+.sp-preview-device-switch button small { font-size: 7px; font-weight: 850; letter-spacing: 0.1em; }
+.sp-preview-device-switch button.is-active { border-color: rgba(96, 158, 244, 0.55); background: rgba(36, 102, 184, 0.17); color: #e8f2ff; }
+
+.sp-preview-browser { padding: 7px; border: 1px solid rgba(255,255,255,0.1); border-radius: 11px; background: #03060b; }
+.sp-preview-browser-bar { display: flex; align-items: center; gap: 4px; height: 20px; padding: 0 4px 6px; }
+.sp-preview-browser-bar > span { width: 5px; height: 5px; border-radius: 50%; background: #e45f6b; }
+.sp-preview-browser-bar > span:nth-child(2) { background: #d9aa55; }
+.sp-preview-browser-bar > span:nth-child(3) { background: #54c28c; }
+.sp-preview-browser-bar div { flex: 1; min-width: 0; margin-left: 5px; padding: 3px 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); border-radius: 5px; background: rgba(255,255,255,0.045); color: rgba(204,220,241,0.55); font-size: 7px; text-overflow: ellipsis; white-space: nowrap; }
+
+.sp-preview-screen {
+    --sp-preview-primary: #ef4444;
+    --sp-preview-secondary: #1677ff;
+    min-height: 360px;
+    padding: 13px 13px 15px;
+    overflow: hidden;
+    border-radius: 6px;
+    background: #101a2a;
+    color: #f7f9fc;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: background 0.35s ease, color 0.35s ease, border-radius 0.35s ease;
+}
+
+.sp-preview-nav { display: flex; align-items: center; gap: 12px; min-height: 25px; }
+.sp-preview-nav strong { color: currentColor; font-size: 9px; font-weight: 950; letter-spacing: 0.11em; }
+.sp-preview-nav strong span { color: var(--sp-preview-primary); font-size: 6px; vertical-align: top; }
+.sp-preview-nav nav { display: flex; align-items: center; justify-content: flex-end; gap: 7px; flex: 1; }
+.sp-preview-nav nav i { display: block; width: 20px; height: 3px; border-radius: 5px; background: currentColor; opacity: 0.25; }
+.sp-preview-nav > b { display: grid; place-items: center; width: 20px; height: 20px; border-radius: 5px; background: var(--sp-preview-primary); color: #fff; font-size: 10px; }
+.sp-preview-hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.8fr); align-items: center; gap: 8px; min-height: 220px; padding: 26px 1px 22px; }
+.sp-preview-copy { min-width: 0; }
+.sp-preview-eyebrow { display: block; margin-bottom: 9px; color: var(--sp-preview-primary); font-size: 6px; font-weight: 900; letter-spacing: 0.13em; }
+.sp-preview-copy h2 { margin: 0 0 8px; color: currentColor; font-size: clamp(19px, 2vw, 30px); font-weight: 900; line-height: 0.98; letter-spacing: -0.055em; }
+.sp-preview-copy p { max-width: 190px; margin: 0 0 13px; color: currentColor; opacity: 0.64; font-size: 7px; line-height: 1.6; }
+.sp-preview-cta { display: inline-flex; padding: 7px 9px; border-radius: 5px; background: var(--sp-preview-primary); color: #fff; font-size: 7px; font-weight: 850; }
+.sp-preview-art { position: relative; display: grid; place-items: center; min-height: 160px; overflow: hidden; border: 1px solid color-mix(in srgb, var(--sp-preview-secondary) 40%, transparent); border-radius: 10px; background: radial-gradient(circle at 48% 46%, color-mix(in srgb, var(--sp-preview-secondary) 38%, transparent), transparent 58%), linear-gradient(140deg, color-mix(in srgb, var(--sp-preview-primary) 20%, #101a2a), #070d17); }
+.sp-preview-art-orbit { width: 102px; height: 102px; border: 1px solid rgba(229,240,255,0.4); border-radius: 50%; transform: rotateX(64deg) rotateZ(-28deg); box-shadow: 0 0 32px color-mix(in srgb, var(--sp-preview-secondary) 35%, transparent); }
+.sp-preview-art-core { position: absolute; width: 52px; height: 52px; border: 1px solid rgba(255,255,255,0.7); border-radius: 14px; background: linear-gradient(135deg, color-mix(in srgb, var(--sp-preview-primary) 88%, white), color-mix(in srgb, var(--sp-preview-secondary) 70%, #070d17)); box-shadow: 0 0 28px color-mix(in srgb, var(--sp-preview-primary) 45%, transparent); transform: rotate(35deg); }
+.sp-preview-art > i, .sp-preview-art > b { position: absolute; width: 7px; height: 7px; border-radius: 50%; background: #f4f7ff; box-shadow: 0 0 12px #fff; }
+.sp-preview-art > i { top: 23%; right: 24%; }
+.sp-preview-art > b { bottom: 24%; left: 22%; width: 5px; height: 5px; background: var(--sp-preview-primary); }
+.sp-preview-section-label { display: flex; align-items: center; gap: 7px; margin: 0 0 8px; color: currentColor; }
+.sp-preview-section-label span { color: var(--sp-preview-primary); font-size: 6px; font-weight: 900; }
+.sp-preview-section-label b { font-size: 7px; letter-spacing: 0.1em; }
+.sp-preview-section-label i { flex: 1; height: 1px; background: currentColor; opacity: 0.15; }
+.sp-preview-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.sp-preview-cards span { height: 42px; border: 1px solid rgba(255,255,255,0.1); border-radius: 5px; background: linear-gradient(140deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02)); }
+.sp-preview-cards span:nth-child(2) { background: linear-gradient(140deg, color-mix(in srgb, var(--sp-preview-secondary) 22%, transparent), rgba(255,255,255,0.02)); }
+.sp-preview-cards span:nth-child(3) { background: linear-gradient(140deg, color-mix(in srgb, var(--sp-preview-primary) 22%, transparent), rgba(255,255,255,0.02)); }
+
+.sp-preview-screen[data-style="minimal"] { background: #f1f2ef; color: #17202b; }
+.sp-preview-screen[data-style="minimal"] .sp-preview-art { background: linear-gradient(145deg, #e4e8ec, #c5d2da); border-color: rgba(25,48,72,0.16); }
+.sp-preview-screen[data-style="minimal"] .sp-preview-art-core { background: linear-gradient(135deg, #dce6ec, #9db5c5); border-color: rgba(28,49,68,0.22); }
+.sp-preview-screen[data-style="corporate"] { background: #102b49; color: #f6f9ff; }
+.sp-preview-screen[data-style="corporate"] .sp-preview-art { background: linear-gradient(145deg, #173c64, #091a2c); }
+.sp-preview-screen[data-style="luxury"] { background: #171412; color: #f4ead9; }
+.sp-preview-screen[data-style="luxury"] .sp-preview-art { background: radial-gradient(circle, rgba(189,151,86,0.28), transparent 65%), #201a14; border-color: rgba(203,173,120,0.4); }
+.sp-preview-screen[data-style="creative"] { background: #231536; color: #fff2fa; }
+.sp-preview-screen[data-style="creative"] .sp-preview-art { background: radial-gradient(circle at 30% 30%, rgba(242,87,171,0.4), transparent 45%), linear-gradient(145deg, #3c205b, #151026); }
+.sp-preview-screen[data-style="futuristic"] { background: #071b28; color: #e5fbff; }
+.sp-preview-screen[data-style="futuristic"] .sp-preview-art { background: radial-gradient(circle, rgba(44,218,233,0.24), transparent 60%), #071924; border-color: rgba(63,224,236,0.38); }
+.sp-preview-screen[data-style="reference"] { background: #121a27; color: #f4f7fc; }
+
+.sp-preview-screen[data-layout="editorial"] .sp-preview-hero { grid-template-columns: 1fr; gap: 5px; padding-top: 30px; }
+.sp-preview-screen[data-layout="editorial"] .sp-preview-art { min-height: 72px; }
+.sp-preview-screen[data-layout="grid"] .sp-preview-hero { grid-template-columns: 1fr 0.7fr; }
+.sp-preview-screen[data-layout="grid"] .sp-preview-cards { grid-template-columns: repeat(2, 1fr); }
+.sp-preview-screen[data-layout="immersive"] { border-radius: 14px; }
+.sp-preview-screen[data-layout="immersive"] .sp-preview-hero { min-height: 245px; }
+.sp-preview-screen[data-font="geometric"] .sp-preview-copy h2,
+.sp-preview-screen[data-font="geometric"] .sp-preview-nav strong { letter-spacing: -0.075em; font-weight: 950; }
+.sp-preview-screen[data-font="editorial"] { font-family: Georgia, "Times New Roman", serif; }
+.sp-preview-screen[data-font="editorial"] .sp-preview-copy h2 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; letter-spacing: -0.04em; }
+.sp-preview-screen[data-font="technical"] { font-family: "Courier New", monospace; }
+.sp-preview-screen[data-font="technical"] .sp-preview-copy h2 { letter-spacing: -0.07em; }
+.sp-preview-screen[data-motion="none"] *,
+.sp-preview-screen[data-motion="none"] *::before,
+.sp-preview-screen[data-motion="none"] *::after { transition: none !important; animation: none !important; }
+
+.sp-preview-meta { display: grid; gap: 5px; margin-top: 11px; color: rgba(207, 222, 243, 0.54); font-size: 7px; line-height: 1.5; }
+.sp-preview-meta span:first-child { color: #9fc4f5; font-weight: 900; letter-spacing: 0.13em; }
+.sp-live-preview.is-mobile { max-width: 390px; margin-inline: auto; }
+.sp-live-preview.is-mobile .sp-preview-screen { width: 270px; min-height: 500px; margin: 0 auto; padding: 14px 12px; border-radius: 22px; border: 4px solid #283345; }
+.sp-live-preview.is-mobile .sp-preview-nav nav { display: none; }
+.sp-live-preview.is-mobile .sp-preview-hero { grid-template-columns: 1fr; gap: 16px; padding-top: 35px; }
+.sp-live-preview.is-mobile .sp-preview-art { min-height: 125px; }
+.sp-live-preview.is-mobile .sp-preview-copy h2 { font-size: 29px; }
+.sp-live-preview.is-mobile .sp-preview-cards { grid-template-columns: 1fr 1fr; }
+.sp-live-preview.is-mobile .sp-preview-cards span:last-child { display: none; }
+
+@media (max-width: 1180px) {
+    .sp-workspace { grid-template-columns: minmax(0, 1fr); }
+    .sp-aside { position: relative; top: auto; }
+    .sp-process-list { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .sp-process-item { align-items: flex-start; min-height: 0; padding: 12px 8px; border-top: 1px solid rgba(255,255,255,0.08); }
+    .sp-process-item small { display: block; }
+}
+
+@media (max-width: 980px) {
+    .sp-config-layout { grid-template-columns: minmax(0, 1fr); }
+    .sp-live-preview { position: relative; top: auto; order: -1; max-width: 650px; width: 100%; margin: 0 auto 10px; }
+    .sp-preview-screen { min-height: 320px; }
+    .sp-preview-hero { min-height: 195px; }
+    .sp3d-manifesto { width: 190px; }
+    .sp3d-title-block { width: min(430px, 49vw); }
+}
+
+@media (max-width: 700px) {
+    .start-project-page { padding: 0 4.5% 48px; }
+    .sp-cinematic-hero { width: calc(100% + 9vw); min-height: 690px; height: 100svh; max-height: 850px; margin-inline: -4.5vw; }
+    .sp3d-topline { top: 99px; left: 22px; right: 22px; }
+    .sp3d-brand { font-size: 20px; }
+    .sp3d-top-meta { gap: 6px; font-size: 7px; letter-spacing: 0.12em; }
+    .sp3d-top-meta span:first-child { display: none; }
+    .sp3d-manifesto { top: 148px; right: 22px; width: 145px; }
+    .sp3d-manifesto p { font-size: 9px; line-height: 1.5; }
+    .sp3d-title-block { left: 22px; right: 22px; bottom: 118px; width: auto; }
+    .sp3d-title-block h1 { max-width: 520px; font-size: clamp(38px, 10.5vw, 58px); }
+    .sp3d-title-block p { max-width: 270px; font-size: 11px; }
+    .sp3d-object-label { display: none; }
+    .sp3d-scroll-cta { left: auto; right: 20px; bottom: 28px; transform: none; gap: 8px; font-size: 7px; }
+    .sp3d-scroll-cta button { width: 32px; height: 32px; }
+    .sp3d-bottom-left { left: 22px; bottom: 31px; font-size: 7px; }
+    .sp3d-status { right: 22px; bottom: 76px; font-size: 7px; }
+    .sp3d-credits { right: 22px; bottom: 8px; left: 22px; justify-content: flex-end; gap: 3px 4px; font-size: 5.5px; line-height: 1.35; }
+    .sp-shell { padding-top: 35px; }
+    .sp-sticky-summary { top: 82px; align-items: flex-start; flex-direction: column; gap: 10px; padding: 11px 13px 15px; }
+    .sp-summary-main strong { font-size: 12px; }
+    .sp-summary-facts { width: 100%; justify-content: space-between; gap: 8px; }
+    .sp-summary-facts b { max-width: 100px; font-size: 8px; }
+    .sp-aside { padding: 20px 18px; }
+    .sp-process-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .sp-process-item { gap: 8px; padding-inline: 3px; }
+    .sp-form-card { padding: 18px 14px; }
+    .sp-form-top { align-items: flex-start; gap: 10px; }
+    .sp-step-indicators { gap: 5px; }
+    .sp-step-indicators span { gap: 4px; }
+    .sp-step-indicators b { font-size: 8px; }
+    .sp-choice-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .sp-two-fields { grid-template-columns: 1fr; gap: 0; }
+    .sp-security-picker { padding: 14px 11px 12px; }
+    .sp-form-bottom { align-items: stretch; flex-direction: column; }
+    .sp-wizard-controls { justify-content: space-between; }
+    .sp-button { flex: 1; padding-inline: 12px; }
+    .sp-live-preview { padding: 11px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sp3d-canvas { transform: none; }
+    .sp3d-scroll-cta button,
+    .sp-preview-screen,
+    .sp-summary-progress span { transition: none !important; }
+}
+
+
+/* KNOWME Start Project — direct 3D camera interaction */
+.start-project-page .sp-cinematic-hero { cursor: grab; }
+.start-project-page .sp-cinematic-hero.is-orbiting { cursor: grabbing; }
+.start-project-page .sp3d-camera-tools {
+    position: absolute;
+    z-index: 3;
+    right: clamp(24px, 6.7vw, 112px);
+    bottom: 78px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    pointer-events: auto;
+}
+.start-project-page .sp3d-camera-tools button {
+    min-height: 29px;
+    padding: 0 10px;
+    border: 1px solid rgba(139, 178, 231, 0.32);
+    border-radius: 7px;
+    background: rgba(5, 11, 20, 0.62);
+    color: rgba(222, 235, 252, 0.72);
+    font: 800 8px/1 Arial, Helvetica, sans-serif;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+    transition: border-color .2s ease, color .2s ease, background .2s ease;
+}
+.start-project-page .sp3d-camera-tools button:hover {
+    border-color: rgba(255, 100, 112, .78);
+    background: rgba(111, 25, 42, .38);
+    color: #fff;
+}
+@media (max-width: 640px) {
+    .start-project-page .sp3d-camera-tools { right: 20px; bottom: 78px; }
+    .start-project-page .sp3d-camera-tools button { min-height: 27px; font-size: 7px; }
+    .start-project-page .sp3d-bottom-left { max-width: 58%; font-size: 7px; line-height: 1.5; }
+}
+
+
+/* KNOWME Start Project — restrained cinematic movement and camera feedback */
+.start-project-page .sp-cinematic-hero {
+    cursor: grab;
+    touch-action: pan-y;
+}
+.start-project-page .sp-cinematic-hero.is-orbiting { cursor: grabbing; }
+.start-project-page .sp3d-vignette::after {
+    content: "";
+    position: absolute;
+    top: -28%;
+    bottom: -28%;
+    left: -34%;
+    width: 19%;
+    pointer-events: none;
+    transform: skewX(-19deg);
+    background: linear-gradient(90deg, transparent, rgba(111, 169, 255, 0.075), rgba(255, 91, 112, 0.055), transparent);
+    filter: blur(2px);
+    animation: sp3dAtmosphereSweep 13s cubic-bezier(.4,0,.2,1) infinite;
+}
+.start-project-page .sp3d-object-label {
+    animation: sp3dLabelDrift 8s ease-in-out infinite;
+}
+.start-project-page .sp3d-label-two { animation-delay: -2.3s; }
+.start-project-page .sp3d-label-three { animation-delay: -4.7s; }
+.start-project-page .sp3d-object-label i {
+    position: relative;
+    overflow: hidden;
+    opacity: .72;
+}
+.start-project-page .sp3d-object-label i::after {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 -55%;
+    width: 45%;
+    background: linear-gradient(90deg, transparent, rgba(220, 237, 255, .95), transparent);
+    animation: sp3dDataLine 3.6s ease-in-out infinite;
+}
+.start-project-page .sp3d-label-two i::after { animation-delay: -1.1s; }
+.start-project-page .sp3d-label-three i::after { animation-delay: -2.2s; }
+.start-project-page .sp3d-status i { animation: sp3dStatusPulse 2s ease-in-out infinite; }
+.start-project-page .sp3d-camera-tools button {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+.start-project-page .sp3d-scroll-cta button span {
+    display: inline-block;
+    animation: sp3dArrowTravel 1.8s ease-in-out infinite;
+}
+@keyframes sp3dAtmosphereSweep {
+    0%, 14% { left: -34%; opacity: 0; }
+    28% { opacity: 1; }
+    66% { left: 118%; opacity: .65; }
+    78%, 100% { left: 118%; opacity: 0; }
+}
+@keyframes sp3dDataLine {
+    0%, 20% { transform: translateX(0); opacity: 0; }
+    42% { opacity: 1; }
+    78%, 100% { transform: translateX(330%); opacity: 0; }
+}
+@keyframes sp3dLabelDrift {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -4px; }
+}
+@keyframes sp3dStatusPulse {
+    0%, 100% { box-shadow: 0 0 7px rgba(84,217,155,.45); }
+    50% { box-shadow: 0 0 15px rgba(84,217,155,.95); }
+}
+@keyframes sp3dArrowTravel {
+    0%, 100% { transform: translateY(-2px); }
+    50% { transform: translateY(3px); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .start-project-page .sp3d-vignette::after,
+    .start-project-page .sp3d-object-label,
+    .start-project-page .sp3d-object-label i::after,
+    .start-project-page .sp3d-status i,
+    .start-project-page .sp3d-scroll-cta button span {
+        animation: none !important;
+    }
+}
+
+/* =========================================================
+   KNOWME START PROJECT — LEVELLED VISUAL GALLERY + K × C
+   All selectors stay inside .start-project-page.
+========================================================= */
+
+.start-project-page .sp3d-brand {
+    gap: 0;
+    white-space: nowrap;
+}
+.start-project-page .sp3d-brand-m {
+    color: #35a9ff !important;
+    font-size: inherit !important;
+    letter-spacing: inherit !important;
+    text-shadow: 0 0 10px rgba(45, 166, 255, .75), 0 0 24px rgba(45, 166, 255, .48);
+    animation: spBrandMGlow 3.6s ease-in-out infinite;
+}
+.start-project-page .sp3d-brand-studio {
+    margin-left: 9px;
+    color: #ff6a82 !important;
+    font-size: 9px !important;
+    letter-spacing: .28em !important;
+}
+@keyframes spBrandMGlow {
+    0%, 100% { text-shadow: 0 0 8px rgba(45,166,255,.48), 0 0 16px rgba(45,166,255,.22); }
+    50% { text-shadow: 0 0 13px rgba(45,190,255,.95), 0 0 30px rgba(45,166,255,.52); }
+}
+
+.start-project-page .sp3d-neon-rail {
+    position: absolute;
+    z-index: 5;
+    left: clamp(18px, 4.8vw, 82px);
+    right: clamp(18px, 4.8vw, 82px);
+    height: 2px;
+    overflow: hidden;
+    pointer-events: none;
+    border-radius: 99px;
+    background: linear-gradient(90deg, transparent, rgba(47,163,255,.68) 16%, rgba(152,94,255,.78) 50%, rgba(255,76,170,.68) 84%, transparent);
+    box-shadow: 0 0 9px rgba(88,113,255,.42), 0 0 22px rgba(152,72,255,.22);
+}
+.start-project-page .sp3d-neon-rail-top { top: 0; }
+.start-project-page .sp3d-neon-rail-bottom { bottom: 0; }
+.start-project-page .sp3d-neon-rail i {
+    position: absolute;
+    top: -2px;
+    bottom: -2px;
+    left: -24%;
+    width: 24%;
+    background: linear-gradient(90deg, transparent, #fff, #69d8ff, #e59cff, transparent);
+    filter: blur(1px);
+    box-shadow: 0 0 16px #8b86ff, 0 0 26px #2d9dff;
+    animation: spNeonRailTravel 5.6s linear infinite;
+}
+.start-project-page .sp3d-neon-rail-bottom i { animation-delay: -2.8s; }
+@keyframes spNeonRailTravel {
+    from { transform: translateX(0); opacity: 0; }
+    12% { opacity: 1; }
+    82% { opacity: .9; }
+    to { transform: translateX(620%); opacity: 0; }
+}
+
+.start-project-page .sp3d-camera-tools {
+    right: clamp(22px, 6.7vw, 112px);
+    bottom: 84px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    max-width: min(560px, 48vw);
+    padding: 8px;
+    border: 1px solid rgba(97,145,220,.22);
+    border-radius: 12px;
+    background: rgba(5,10,20,.45);
+    box-shadow: 0 12px 34px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.045);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+.start-project-page .sp3d-camera-help {
+    flex: 1 0 100%;
+    margin: 0 4px 2px;
+    color: rgba(196,215,242,.72);
+    font: 800 8px/1.4 Arial, Helvetica, sans-serif;
+    letter-spacing: .15em;
+    text-align: right;
+}
+.start-project-page .sp3d-camera-tools button {
+    min-width: 31px;
+    min-height: 30px;
+    border-color: rgba(77,160,255,.34);
+    background: linear-gradient(120deg, rgba(13,29,55,.88), rgba(37,15,60,.78));
+    color: #e7f4ff;
+}
+.start-project-page .sp3d-camera-tools .sp3d-zoom-button {
+    width: 31px;
+    padding: 0;
+    font-size: 17px;
+    line-height: 1;
+    border-radius: 8px;
+}
+.start-project-page .sp3d-camera-tools .sp3d-dive-button {
+    padding-inline: 12px;
+    border-color: rgba(76,171,255,.55);
+    background: linear-gradient(105deg, rgba(84,45,166,.74), rgba(15,102,184,.72));
+    box-shadow: 0 0 14px rgba(76,140,255,.17), inset 0 0 12px rgba(140,109,255,.12);
+}
+.start-project-page .sp3d-camera-tools .sp3d-dive-button:hover {
+    border-color: rgba(120,211,255,.95);
+    box-shadow: 0 0 18px rgba(75,166,255,.3), 0 0 25px rgba(167,91,255,.2);
+}
+
+/* Website-type cards: real, generated page mockups replace abstract glyphs. */
+.start-project-page .sp-type-grid { align-items: stretch; }
+.start-project-page .sp-type-card {
+    min-height: 0;
+    padding: 10px;
+    gap: 0;
+    border-radius: 15px;
+    background: linear-gradient(145deg, rgba(18,27,43,.92), rgba(7,12,23,.92));
+}
+.start-project-page .sp-type-preview-image {
+    display: block;
+    width: 100%;
+    height: clamp(104px, 10vw, 142px);
+    margin: 0 0 12px;
+    object-fit: cover;
+    object-position: center;
+    border: 1px solid rgba(166,194,231,.18);
+    border-radius: 9px;
+    background: #101827;
+    box-shadow: 0 8px 20px rgba(0,0,0,.24);
+    transition: transform .45s cubic-bezier(.2,.7,.2,1), filter .35s ease;
+}
+.start-project-page .sp-type-card:hover .sp-type-preview-image,
+.start-project-page .sp-type-card:focus-within .sp-type-preview-image {
+    transform: scale(1.025);
+    filter: saturate(1.12) brightness(1.08);
+}
+.start-project-page .sp-type-card strong { margin-top: 1px; font-size: 12px; }
+.start-project-page .sp-type-card small { margin-top: 5px; font-size: 10px; }
+.start-project-page .sp-type-card .sp-choice-check { top: 16px; right: 16px; background: rgba(3,8,18,.82); }
+.start-project-page .sp-type-card:has(input:checked) .sp-type-preview-image {
+    border-color: rgba(89,183,255,.76);
+    box-shadow: 0 0 0 1px rgba(89,183,255,.2), 0 0 18px rgba(69,143,255,.2);
+}
+
+/* Level 2 style cards become visual references with readable thumbnail imagery. */
+.start-project-page .sp-style-grid { align-items: stretch; }
+.start-project-page .sp-style-card {
+    min-height: 0;
+    padding: 10px;
+    border-radius: 15px;
+    background: linear-gradient(145deg, rgba(18,27,43,.92), rgba(7,12,23,.92));
+}
+.start-project-page .sp-style-preview {
+    display: block;
+    height: clamp(112px, 10.7vw, 150px);
+    padding: 0;
+    margin: 0 0 11px;
+    border: 1px solid rgba(166,194,231,.18);
+    background: #101827;
+}
+.start-project-page .sp-style-preview img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: inherit;
+    transition: transform .45s cubic-bezier(.2,.7,.2,1), filter .35s ease;
+}
+.start-project-page .sp-style-card:hover .sp-style-preview img,
+.start-project-page .sp-style-card:focus-within .sp-style-preview img {
+    transform: scale(1.035);
+    filter: saturate(1.14) brightness(1.08);
+}
+.start-project-page .sp-style-card strong { font-size: 12px; }
+.start-project-page .sp-style-card small { min-height: 28px; font-size: 10px; }
+.start-project-page .sp-style-card:has(input:checked) .sp-style-preview {
+    border-color: rgba(84,178,255,.76);
+    box-shadow: 0 0 0 1px rgba(84,178,255,.22), 0 0 20px rgba(85,135,255,.2);
+}
+.start-project-page .sp-style-card:has(input:checked) { border-color: rgba(95,173,255,.8); }
+
+/* Complimentary project starter: actual configurator benefits, not vague promises. */
+.start-project-page .sp-bonus-panel {
+    position: relative;
+    margin: 34px 0 24px;
+    padding: clamp(22px, 3vw, 38px);
+    overflow: hidden;
+    border: 1px solid rgba(135,100,255,.28);
+    border-radius: 22px;
+    background:
+        radial-gradient(ellipse at 8% 0%, rgba(143,73,255,.17), transparent 45%),
+        radial-gradient(ellipse at 100% 100%, rgba(30,147,255,.13), transparent 42%),
+        linear-gradient(135deg, rgba(11,14,29,.97), rgba(5,9,18,.96));
+    box-shadow: 0 22px 65px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.055);
+}
+.start-project-page .sp-bonus-panel::before,
+.start-project-page .sp-bonus-panel::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    height: 1px;
+    left: 8%; right: 8%;
+    background: linear-gradient(90deg, transparent, rgba(183,112,255,.8), rgba(48,174,255,.85), transparent);
+    box-shadow: 0 0 13px rgba(96,128,255,.5);
+}
+.start-project-page .sp-bonus-panel::before { top: 0; }
+.start-project-page .sp-bonus-panel::after { bottom: 0; animation: spBonusLinePulse 4.5s ease-in-out infinite; }
+@keyframes spBonusLinePulse { 0%,100% { opacity:.35; transform:scaleX(.72); } 50% { opacity:1; transform:scaleX(1); } }
+.start-project-page .sp-bonus-heading { position: relative; z-index: 1; max-width: 740px; }
+.start-project-page .sp-bonus-kicker { color: #b58aff; font: 900 9px/1.4 Arial, sans-serif; letter-spacing: .24em; }
+.start-project-page .sp-bonus-heading h2 { margin: 10px 0 9px; color: #f4f7ff; font-size: clamp(23px, 2.8vw, 34px); line-height: 1.15; }
+.start-project-page .sp-bonus-heading p { margin: 0; color: rgba(211,223,243,.72); font-size: 12px; line-height: 1.75; }
+.start-project-page .sp-bonus-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; margin-top: 23px; }
+.start-project-page .sp-bonus-item { position: relative; min-height: 138px; padding: 17px 16px 15px; border: 1px solid rgba(143,166,210,.19); border-radius: 13px; background: linear-gradient(145deg, rgba(25,37,64,.74), rgba(8,14,27,.78)); }
+.start-project-page .sp-bonus-index { position: absolute; top: 12px; right: 14px; color: rgba(160,183,225,.48); font: 900 9px/1 Arial, sans-serif; letter-spacing: .14em; }
+.start-project-page .sp-bonus-icon { display: grid; place-items: center; width: 31px; height: 31px; margin-bottom: 13px; border: 1px solid rgba(151,114,255,.4); border-radius: 9px; background: rgba(120,76,255,.13); color: #a7caff; font-size: 18px; font-style: normal; box-shadow: 0 0 15px rgba(110,100,255,.1); }
+.start-project-page .sp-bonus-item strong { display: block; color: #f3f6ff; font-size: 12px; }
+.start-project-page .sp-bonus-item small { display: block; margin-top: 6px; color: rgba(205,218,240,.62); font-size: 10px; line-height: 1.55; }
+.start-project-page .sp-bonus-footnote { position: relative; z-index: 1; margin-top: 15px; color: rgba(166,187,218,.55); font: 600 9px/1.6 Arial, sans-serif; letter-spacing: .035em; }
+
+/* KNOWME × CODEX signoff: transparent attribution, not a security guarantee. */
+.start-project-page .sp-codex-signoff {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(250px,1fr) auto;
+    align-items: center;
+    gap: clamp(16px, 3vw, 36px);
+    margin: 20px 0 10px;
+    padding: 22px clamp(15px, 2.8vw, 34px);
+    overflow: hidden;
+    border: 1px solid rgba(92,135,215,.23);
+    border-radius: 16px;
+    background: linear-gradient(105deg, rgba(14,19,39,.95), rgba(5,10,20,.96) 52%, rgba(12,18,36,.95));
+}
+.start-project-page .sp-codex-signoff::before {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #b45cff 22%, #238fff 52%, #b45cff 78%, transparent);
+    background-size: 220% 100%;
+    animation: spCodexRail 7s linear infinite;
+}
+@keyframes spCodexRail { from { background-position: 0 0; } to { background-position: 220% 0; } }
+.start-project-page .sp-codex-brand-lockup { position: relative; display: flex; align-items: center; gap: 9px; white-space: nowrap; }
+.start-project-page .sp-codex-knowme { color: #f5f7ff; font: 950 clamp(15px,1.8vw,22px)/1 Arial,sans-serif; letter-spacing: .12em; }
+.start-project-page .sp-codex-knowme span { color: #2f9eff; text-shadow: 0 0 12px rgba(47,158,255,.78); }
+.start-project-page .sp-codex-times { color: rgba(195,211,238,.7); font: 300 22px/1 Arial,sans-serif; }
+.start-project-page .sp-codex-symbol { display: grid; place-items: center; width: 31px; height: 31px; border: 1px solid rgba(107,154,255,.65); border-radius: 50%; color: #9dc8ff; font: 900 19px/1 Arial,sans-serif; box-shadow: inset 0 0 12px rgba(74,145,255,.18), 0 0 14px rgba(74,145,255,.18); }
+.start-project-page .sp-codex-word { color: #dce9ff; font: 900 9px/1 Arial,sans-serif; letter-spacing: .22em; }
+.start-project-page .sp-codex-copy { position: relative; padding-left: 22px; border-left: 1px solid rgba(116,143,195,.25); }
+.start-project-page .sp-codex-copy strong { color: #9cc7ff; font: 900 9px/1.5 Arial,sans-serif; letter-spacing: .19em; }
+.start-project-page .sp-codex-copy p { margin: 5px 0 0; color: rgba(207,220,241,.67); font-size: 10px; line-height: 1.6; }
+.start-project-page .sp-codex-status { display: inline-flex; align-items: center; gap: 8px; color: rgba(178,200,230,.52); font: 800 8px/1.5 Arial,sans-serif; letter-spacing: .1em; text-align: right; }
+.start-project-page .sp-codex-status i { width: 6px; height: 6px; flex: 0 0 6px; border-radius: 50%; background: #52dba7; box-shadow: 0 0 10px rgba(82,219,167,.8); }
+.start-project-page .sp-footer { position: relative; padding-top: 19px; }
+.start-project-page .sp-footer::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(48,151,255,.55), rgba(182,99,255,.72), transparent); }
+.start-project-page .sp-footer-m { color: #319dff; text-shadow: 0 0 9px rgba(49,157,255,.75); }
+
+@media (max-width: 900px) {
+    .start-project-page .sp3d-camera-tools { max-width: 62vw; right: 22px; bottom: 92px; }
+    .start-project-page .sp3d-camera-help { font-size: 7px; }
+    .start-project-page .sp-codex-signoff { grid-template-columns: 1fr auto; }
+    .start-project-page .sp-codex-copy { grid-column: 1 / -1; grid-row: 2; padding: 13px 0 0; border-left: 0; border-top: 1px solid rgba(116,143,195,.25); }
+}
+@media (max-width: 640px) {
+    .start-project-page .sp-type-preview-image { height: 96px; }
+    .start-project-page .sp-style-preview { height: 100px; }
+    .start-project-page .sp-bonus-grid { grid-template-columns: 1fr; }
+    .start-project-page .sp-bonus-item { min-height: 0; }
+    .start-project-page .sp-codex-signoff { grid-template-columns: 1fr; gap: 13px; }
+    .start-project-page .sp-codex-status { text-align: left; }
+    .start-project-page .sp3d-camera-tools { left: 16px; right: 16px; bottom: 88px; max-width: none; justify-content: center; gap: 5px; }
+    .start-project-page .sp3d-camera-help { text-align: center; }
+    .start-project-page .sp3d-camera-tools button { min-width: 27px; padding-inline: 7px; font-size: 7px; }
+    .start-project-page .sp3d-camera-tools .sp3d-dive-button { padding-inline: 8px; }
+    .start-project-page .sp3d-neon-rail { left: 14px; right: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .start-project-page .sp3d-brand-m,
+    .start-project-page .sp3d-neon-rail i,
+    .start-project-page .sp-bonus-panel::after,
+    .start-project-page .sp-codex-signoff::before {
+        animation: none !important;
+    }
+}
+
+@media (max-width: 700px) {
+    .start-project-page .sp3d-title-block {
+        bottom: 218px;
+        max-width: 78%;
+    }
+    .start-project-page .sp3d-camera-tools {
+        left: 16px;
+        right: 16px;
+        bottom: 104px;
+        max-width: none;
+        justify-content: center;
+    }
+    .start-project-page .sp3d-status { display: none; }
+}
+@media (max-width: 480px) {
+    .start-project-page .sp3d-title-block { bottom: 228px; max-width: 88%; }
+    .start-project-page .sp3d-camera-tools { bottom: 108px; }
+    .start-project-page .sp3d-camera-help { font-size: 6px; letter-spacing: .1em; }
+}
+
+
+/* Global KNOWME wordmark accent: only the M is blue. */
+.topbar .logo .logo-m-accent {
+    color: #35a9ff;
+    text-shadow: 0 0 9px rgba(53,169,255,.72), 0 0 20px rgba(53,169,255,.34);
+}
+
+
+/* =========================================================
+   KNOWME START PROJECT — LEVEL 4 BRAND, RIPPLE & CONTROL POLISH
+   All styles are route-scoped to avoid changing other pages.
+========================================================= */
+.start-project-page .sp3d-brand-k {
+    color: #f04452 !important;
+    text-shadow: 0 0 9px rgba(240,68,82,.78), 0 0 20px rgba(240,68,82,.38);
+    animation: spBrandKGlow 3.8s ease-in-out infinite;
+}
+@keyframes spBrandKGlow {
+    0%, 100% { text-shadow: 0 0 7px rgba(240,68,82,.42), 0 0 15px rgba(240,68,82,.2); }
+    50% { text-shadow: 0 0 13px rgba(255,77,93,.95), 0 0 26px rgba(240,68,82,.55); }
+}
+
+/* Water-ripple sweep travels across the translated hero headline. */
+.start-project-page .sp3d-title-block h1 {
+    position: relative;
+    isolation: isolate;
+    animation: spHeroTextFloat 7.2s ease-in-out infinite;
+}
+.start-project-page .sp3d-title-block h1::after {
+    content: attr(data-ripple-text);
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: block;
+    color: rgba(109,190,255,.42);
+    -webkit-text-stroke: .35px rgba(160,220,255,.55);
+    text-shadow: 0 0 9px rgba(66,169,255,.42), 0 0 18px rgba(125,89,255,.25);
+    filter: blur(1.15px);
+    opacity: .82;
+    pointer-events: none;
+    clip-path: ellipse(18% 36% at -18% 52%);
+    animation: spHeroWaterRipple 7.4s cubic-bezier(.2,.62,.28,1) infinite;
+}
+@keyframes spHeroWaterRipple {
+    0%, 12% { clip-path: ellipse(12% 24% at -18% 52%); opacity: 0; transform: translateX(-5px) skewX(-2deg); }
+    22% { opacity: .8; }
+    54% { clip-path: ellipse(22% 52% at 54% 50%); opacity: .52; transform: translateX(4px) skewX(1.5deg); }
+    82%, 100% { clip-path: ellipse(16% 40% at 122% 48%); opacity: 0; transform: translateX(8px); }
+}
+@keyframes spHeroTextFloat {
+    0%, 100% { text-shadow: 0 12px 42px rgba(0,0,0,.55), 0 0 0 rgba(71,163,255,0); }
+    50% { text-shadow: 0 12px 42px rgba(0,0,0,.55), 0 0 18px rgba(71,163,255,.13); }
+}
+
+/* Zoom controls now use the same compact, rounded glass-button language as nav. */
+.start-project-page .sp3d-camera-tools {
+    gap: 7px;
+    padding: 9px 10px 10px;
+    border: 1px solid rgba(128,160,208,.28);
+    border-radius: 13px;
+    background: linear-gradient(135deg, rgba(7,13,25,.82), rgba(15,12,31,.72));
+    box-shadow: 0 12px 30px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.055);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+.start-project-page .sp3d-camera-tools button {
+    position: relative;
+    min-width: 35px;
+    min-height: 34px;
+    padding: 0 11px;
+    overflow: hidden;
+    border: 1px solid rgba(181,199,229,.25);
+    border-radius: 9px;
+    background: linear-gradient(145deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
+    color: rgba(239,246,255,.9);
+    font: 800 9px/1 Arial, Helvetica, sans-serif;
+    letter-spacing: .1em;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.055), 0 4px 13px rgba(0,0,0,.16);
+    transition: transform .24s ease, color .24s ease, border-color .24s ease, background .24s ease, box-shadow .24s ease;
+}
+.start-project-page .sp3d-camera-tools button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -125%;
+    width: 68%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.2), transparent);
+    transform: skewX(-20deg);
+    transition: left .55s ease;
+    pointer-events: none;
+}
+.start-project-page .sp3d-camera-tools button:hover::before { left: 150%; }
+.start-project-page .sp3d-camera-tools button:hover {
+    transform: translateY(-2px);
+    border-color: rgba(91,177,255,.72);
+    background: linear-gradient(135deg, rgba(28,66,111,.72), rgba(62,35,104,.64));
+    color: #fff;
+    box-shadow: 0 0 15px rgba(60,154,255,.18), 0 7px 17px rgba(0,0,0,.24);
+}
+.start-project-page .sp3d-camera-tools button:focus-visible {
+    outline: 2px solid #65caff;
+    outline-offset: 3px;
+}
+.start-project-page .sp3d-camera-tools .sp3d-zoom-button {
+    width: 35px;
+    min-width: 35px;
+    padding: 0;
+    border-radius: 9px;
+    font: 700 19px/1 Arial, Helvetica, sans-serif;
+    letter-spacing: 0;
+}
+.start-project-page .sp3d-camera-tools .sp3d-dive-button {
+    border-color: rgba(105,153,255,.56);
+    background: linear-gradient(105deg, rgba(114,43,157,.78), rgba(25,92,165,.78));
+    box-shadow: 0 0 15px rgba(83,119,255,.18), inset 0 0 13px rgba(164,115,255,.12);
+}
+.start-project-page .sp3d-camera-tools .sp3d-dive-button:hover {
+    border-color: rgba(134,213,255,.95);
+    background: linear-gradient(105deg, rgba(150,46,176,.9), rgba(20,125,195,.9));
+    box-shadow: 0 0 19px rgba(66,170,255,.28), 0 0 25px rgba(175,81,255,.18);
+}
+.start-project-page .sp3d-camera-tools #sp3dResetView {
+    border-color: rgba(185,199,220,.2);
+    color: rgba(210,225,245,.78);
+}
+
+/* KNOWME × CODEX + distinct K × C mark requested for the lower signature. */
+.start-project-page .sp-codex-brand-lockup {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+.start-project-page .sp-codex-primary-lockup {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    white-space: nowrap;
+}
+.start-project-page .sp-codex-knowme .sp-codex-k { color: #f04452; font-style: normal; text-shadow: 0 0 10px rgba(240,68,82,.65); }
+.start-project-page .sp-codex-knowme .sp-codex-m { color: #35a9ff; font-style: normal; text-shadow: 0 0 12px rgba(47,158,255,.78); }
+.start-project-page .sp-kc-lockup {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    padding: 7px 12px 8px;
+    border: 1px solid rgba(116,153,203,.24);
+    border-radius: 10px;
+    background: rgba(4,8,16,.62);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.045), 0 0 15px rgba(61,116,190,.08);
+    white-space: nowrap;
+}
+.start-project-page .sp-kc-k { color: #f04452; font: 950 24px/1 Arial,sans-serif; text-shadow: 0 0 11px rgba(240,68,82,.72); }
+.start-project-page .sp-kc-times { color: rgba(198,214,239,.78); font: 400 16px/1 Arial,sans-serif; }
+.start-project-page .sp-kc-c {
+    color: #080b12;
+    -webkit-text-stroke: 1px rgba(222,236,255,.9);
+    paint-order: stroke fill;
+    font: 950 24px/1 Arial,sans-serif;
+    text-shadow: 0 0 10px rgba(81,169,255,.45), 0 0 16px rgba(81,169,255,.25);
+}
+.start-project-page .sp-codex-copy { min-width: 0; }
+.start-project-page .sp-codex-copy strong { color: #d8c7ff; }
+.start-project-page .sp-codex-copy p { max-width: 560px; }
+.start-project-page .sp-codex-status { max-width: 230px; }
+.start-project-page .sp-codex-knowme .sp-codex-k,
+.start-project-page .sp-kc-k { display: inline-block; }
+.start-project-page .sp-footer-k { color: #f04452; text-shadow: 0 0 9px rgba(240,68,82,.72); }
+
+@media (max-width: 900px) {
+    .start-project-page .sp-codex-brand-lockup { gap: 12px; }
+    .start-project-page .sp-kc-lockup { padding: 6px 9px 7px; }
+}
+@media (max-width: 640px) {
+    .start-project-page .sp3d-camera-tools { gap: 5px; padding: 7px; }
+    .start-project-page .sp3d-camera-tools button { min-height: 31px; min-width: 30px; padding-inline: 8px; font-size: 8px; }
+    .start-project-page .sp3d-camera-tools .sp3d-zoom-button { width: 31px; min-width: 31px; font-size: 17px; }
+    .start-project-page .sp-codex-brand-lockup { align-items: flex-start; flex-direction: column; gap: 11px; }
+    .start-project-page .sp3d-title-block h1::after { animation-duration: 9s; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .start-project-page .sp3d-brand-k,
+    .start-project-page .sp3d-title-block h1,
+    .start-project-page .sp3d-title-block h1::after,
+    .start-project-page .sp3d-camera-tools button::before {
+        animation: none !important;
+    }
+}
+
+
+/* =========================================================
+   KNOWME START PROJECT — LEVEL 5 LIVE CANVAS & RESPONSIVE POLISH
+   Route-scoped: does not alter the rest of KNOWME Studio.
+========================================================= */
+
+/* The hero wordmark K inherits the same cap height as NOWME. */
+.start-project-page .sp3d-brand .sp3d-brand-k {
+    display: inline-block;
+    flex: 0 0 auto;
+    color: #f04452 !important;
+    font-size: inherit !important;
+    line-height: 1 !important;
+    letter-spacing: inherit !important;
+    vertical-align: baseline;
+    transform: none;
+}
+.start-project-page .sp3d-brand .sp3d-brand-k::first-letter { font-size: inherit; }
+
+/* Compact collaboration mark in the upper-right corner of the hero. */
+.start-project-page .sp3d-kc-corner {
+    position: absolute;
+    top: -2px;
+    right: 0;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 5px;
+    padding: 6px 10px 7px;
+    border: 1px solid rgba(132,158,204,.24);
+    border-radius: 9px;
+    background: rgba(4,8,17,.58);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 0 18px rgba(65,118,204,.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.start-project-page .sp3d-kc-k { color: #f04452; font: 950 16px/1 Arial,sans-serif; text-shadow: 0 0 10px rgba(240,68,82,.75); }
+.start-project-page .sp3d-kc-times { color: rgba(216,227,246,.76); font: 400 11px/1 Arial,sans-serif; }
+.start-project-page .sp3d-kc-c { color: #05070c; -webkit-text-stroke: .8px rgba(230,239,255,.9); paint-order: stroke fill; font: 950 16px/1 Arial,sans-serif; text-shadow: 0 0 8px rgba(134,165,214,.4); }
+.start-project-page .sp3d-top-meta { padding-right: 78px; }
+
+/* Water surface distortion across the actual translated headline text. */
+.start-project-page .sp3d-title-block h1 {
+    max-width: min(660px, 56vw);
+    overflow: visible;
+    text-wrap: pretty;
+    filter: url("#spWaterRippleFilter");
+}
+.start-project-page .sp3d-title-block h1::after {
+    content: attr(data-ripple-text);
+    color: rgba(115,203,255,.32);
+    -webkit-text-stroke: .45px rgba(168,225,255,.58);
+    filter: blur(.65px);
+    clip-path: ellipse(15% 34% at -15% 50%);
+    mix-blend-mode: screen;
+    animation: spHeroWaterRipple 6.8s cubic-bezier(.2,.62,.28,1) infinite;
+}
+@keyframes spHeroTextWaterSheen {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+.start-project-page .sp3d-title-block h1::before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    top: 5%;
+    bottom: 5%;
+    left: -24%;
+    width: 18%;
+    pointer-events: none;
+    opacity: 0;
+    transform: skewX(-18deg);
+    background: linear-gradient(90deg, transparent, rgba(132,213,255,.18), rgba(255,255,255,.28), rgba(112,183,255,.15), transparent);
+    filter: blur(7px);
+    animation: spWaterLightTravel 8.5s ease-in-out infinite;
+}
+@keyframes spWaterLightTravel {
+    0%, 15% { left: -24%; opacity: 0; }
+    30% { opacity: .72; }
+    72% { left: 112%; opacity: .55; }
+    88%, 100% { left: 112%; opacity: 0; }
+}
+
+/* Navigation-like tactile camera controls; larger tap targets on touch devices. */
+.start-project-page .sp3d-camera-tools {
+    gap: 8px;
+    padding: 10px 12px 11px;
+    border-color: rgba(110,162,232,.33);
+    border-radius: 14px;
+    background: linear-gradient(115deg, rgba(5,10,21,.78), rgba(15,17,37,.68));
+    box-shadow: 0 14px 38px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.06), 0 0 20px rgba(69,137,255,.08);
+}
+.start-project-page .sp3d-camera-tools button {
+    min-height: 38px;
+    min-width: 38px;
+    padding: 0 13px;
+    border: 1px solid rgba(127,165,223,.43);
+    border-radius: 9px;
+    background: linear-gradient(135deg, rgba(20,34,60,.92), rgba(19,15,43,.92));
+    color: #f0f5ff;
+    font-size: 9px;
+    letter-spacing: .08em;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 3px 10px rgba(0,0,0,.16);
+}
+.start-project-page .sp3d-camera-tools .sp3d-zoom-button {
+    width: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 10px;
+    color: #d7edff;
+    font-size: 22px;
+    font-weight: 700;
+}
+.start-project-page .sp3d-camera-tools .sp3d-dive-button {
+    border-color: rgba(79,166,255,.72);
+    background: linear-gradient(105deg, rgba(124,48,194,.96), rgba(20,112,195,.96));
+    box-shadow: 0 0 15px rgba(70,137,255,.24), 0 0 22px rgba(170,68,255,.12), inset 0 0 12px rgba(255,255,255,.1);
+}
+.start-project-page .sp3d-camera-tools button:hover,
+.start-project-page .sp3d-camera-tools button:focus-visible {
+    border-color: rgba(124,205,255,.95);
+    background: linear-gradient(110deg, rgba(105,43,174,.98), rgba(20,126,210,.98));
+    color: #fff;
+    box-shadow: 0 0 18px rgba(86,167,255,.26), 0 0 28px rgba(175,72,255,.15);
+    transform: translateY(-2px);
+}
+.start-project-page .sp-cinematic-hero.is-touch-orbiting { cursor: grabbing; }
+
+/* Live canvas uses the selected reference image, not a fixed generic wireframe. */
+.start-project-page .sp-preview-screen {
+    min-height: 0;
+    padding: 0;
+    border: 1px solid color-mix(in srgb, var(--sp-preview-secondary) 28%, transparent);
+    background: #07101e;
+    transition: border-color .28s ease, box-shadow .28s ease, background .28s ease;
+}
+.start-project-page .sp-preview-screen.is-updating {
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--sp-preview-secondary) 26%, transparent), 0 0 25px color-mix(in srgb, var(--sp-preview-primary) 16%, transparent);
+}
+.start-project-page .sp-preview-image-stage {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    min-height: 180px;
+    max-height: 420px;
+    overflow: hidden;
+    isolation: isolate;
+    background: linear-gradient(135deg, #0a1020, #1a2540);
+}
+.start-project-page .sp-preview-image-stage img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 180px;
+    object-fit: cover;
+    object-position: center top;
+    opacity: 1;
+    transform: scale(1.001);
+    filter: saturate(1.03) contrast(1.02);
+    transition: opacity .24s ease, transform .55s cubic-bezier(.2,.7,.2,1), filter .35s ease;
+}
+.start-project-page .sp-preview-image-stage img.is-changing { opacity: .18; transform: scale(1.035); }
+.start-project-page .sp-preview-image-shade {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(3,7,16,.16), transparent 34%, transparent 68%, rgba(3,7,16,.52));
+}
+.start-project-page .sp-preview-image-badges {
+    position: absolute;
+    z-index: 2;
+    left: 12px;
+    top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    max-width: calc(100% - 24px);
+}
+.start-project-page .sp-preview-image-badges span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 23px;
+    padding: 4px 8px;
+    border: 1px solid rgba(180,211,255,.32);
+    border-radius: 999px;
+    background: rgba(4,10,24,.72);
+    color: #f2f7ff;
+    font: 850 8px/1 Arial,Helvetica,sans-serif;
+    letter-spacing: .12em;
+    text-shadow: 0 1px 4px rgba(0,0,0,.5);
+    backdrop-filter: blur(10px);
+}
+.start-project-page .sp-preview-image-badges span:last-child { border-color: color-mix(in srgb, var(--sp-preview-primary) 65%, transparent); }
+.start-project-page .sp-preview-canvas-stamp {
+    position: absolute;
+    z-index: 2;
+    right: 11px;
+    bottom: 10px;
+    color: rgba(244,248,255,.74);
+    font: 850 7px/1 Arial,Helvetica,sans-serif;
+    letter-spacing: .16em;
+    text-shadow: 0 1px 7px #000;
+}
+.start-project-page .sp-preview-live-copy {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 15px 13px;
+    color: #edf4ff;
+    background: linear-gradient(115deg, rgba(13,24,43,.98), rgba(5,11,22,.98));
+}
+.start-project-page .sp-preview-live-copy > div { min-width: 0; }
+.start-project-page .sp-preview-live-overline { display: block; margin-bottom: 5px; color: var(--sp-preview-primary); font: 900 7px/1.3 Arial,Helvetica,sans-serif; letter-spacing: .16em; }
+.start-project-page .sp-preview-live-copy h2 { margin: 0 0 5px; color: #f5f8ff; font-size: clamp(13px,1.2vw,17px); line-height: 1.18; }
+.start-project-page .sp-preview-live-copy p { max-width: 460px; margin: 0; color: rgba(209,224,245,.7); font-size: 9px; line-height: 1.5; }
+.start-project-page .sp-preview-live-copy .sp-preview-cta { flex: 0 0 auto; padding: 8px 10px; background: linear-gradient(105deg, var(--sp-preview-primary), var(--sp-preview-secondary)); border-radius: 7px; box-shadow: 0 0 14px color-mix(in srgb, var(--sp-preview-primary) 22%, transparent); }
+.start-project-page .sp-preview-live-specs { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 15px 13px; background: #07101e; }
+.start-project-page .sp-preview-live-specs span { display: inline-flex; padding: 5px 7px; border: 1px solid rgba(132,169,222,.15); border-radius: 6px; color: rgba(185,209,240,.68); font: 800 6px/1 Arial,Helvetica,sans-serif; letter-spacing: .09em; }
+.start-project-page .sp-preview-screen[data-style="minimal"] .sp-preview-live-copy { background: linear-gradient(115deg,#f3f5f4,#e3e9ed); color: #172333; }
+.start-project-page .sp-preview-screen[data-style="minimal"] .sp-preview-live-copy h2 { color: #172333; }
+.start-project-page .sp-preview-screen[data-style="minimal"] .sp-preview-live-copy p { color: #516174; }
+.start-project-page .sp-preview-screen[data-style="corporate"] .sp-preview-live-copy { background: linear-gradient(115deg,#0e3152,#07182b); }
+.start-project-page .sp-preview-screen[data-style="luxury"] .sp-preview-live-copy { background: linear-gradient(115deg,#231a14,#0d0b0a); }
+.start-project-page .sp-preview-screen[data-style="creative"] .sp-preview-live-copy { background: linear-gradient(115deg,#361747,#110d22); }
+.start-project-page .sp-preview-screen[data-style="futuristic"] .sp-preview-live-copy { background: linear-gradient(115deg,#073044,#06121f); }
+.start-project-page .sp-preview-screen[data-style="minimal"] .sp-preview-image-stage img { filter: saturate(.66) brightness(1.08) contrast(.94); }
+.start-project-page .sp-preview-screen[data-style="corporate"] .sp-preview-image-stage img { filter: saturate(.82) hue-rotate(4deg) contrast(1.05); }
+.start-project-page .sp-preview-screen[data-style="luxury"] .sp-preview-image-stage img { filter: saturate(1.12) sepia(.16) contrast(1.07); }
+.start-project-page .sp-preview-screen[data-style="creative"] .sp-preview-image-stage img { filter: saturate(1.22) contrast(1.06); }
+.start-project-page .sp-preview-screen[data-style="futuristic"] .sp-preview-image-stage img { filter: saturate(1.25) hue-rotate(155deg) contrast(1.08); }
+.start-project-page .sp-preview-screen[data-motion="expressive"] .sp-preview-image-stage img { animation: spPreviewImageFloat 8s ease-in-out infinite; }
+@keyframes spPreviewImageFloat { 0%,100% { transform: scale(1.015) translateY(0); } 50% { transform: scale(1.055) translateY(-3px); } }
+.start-project-page .sp-live-preview.is-tablet { max-width: 560px; margin-inline: auto; }
+.start-project-page .sp-live-preview.is-tablet .sp-preview-image-stage { aspect-ratio: 4 / 3; max-height: 390px; }
+.start-project-page .sp-live-preview.is-tablet .sp-preview-live-copy { padding: 12px; }
+.start-project-page .sp-live-preview.is-mobile { max-width: 360px; margin-inline: auto; }
+.start-project-page .sp-live-preview.is-mobile .sp-preview-screen { width: min(100%, 286px); margin-inline: auto; overflow: hidden; border: 5px solid #283a55; border-radius: 24px; }
+.start-project-page .sp-live-preview.is-mobile .sp-preview-image-stage { aspect-ratio: 9 / 16; min-height: 330px; max-height: 490px; }
+.start-project-page .sp-live-preview.is-mobile .sp-preview-image-stage img { object-position: center top; }
+.start-project-page .sp-live-preview.is-mobile .sp-preview-live-copy { align-items: flex-start; flex-direction: column; }
+.start-project-page .sp-live-preview.is-mobile .sp-preview-live-specs { display: grid; grid-template-columns: 1fr 1fr; }
+.start-project-page .sp-live-preview.is-mobile .sp-preview-image-badges { left: 8px; top: 8px; }
+.start-project-page .sp-live-preview.is-mobile .sp-preview-image-badges span { font-size: 6px; }
+
+/* Tablet/mobile builder: larger tap targets and a readable single-column workspace. */
+@media (max-width: 1180px) {
+    .start-project-page .sp-config-layout { grid-template-columns: minmax(0,1fr) minmax(270px,.8fr); gap: 16px; }
+    .start-project-page .sp-live-preview { position: sticky; top: 100px; }
+}
+@media (max-width: 980px) {
+    .start-project-page .sp-config-layout { grid-template-columns: minmax(0,1fr); }
+    .start-project-page .sp-live-preview { position: relative; top: auto; order: -1; width: min(100%,720px); max-width: 720px; margin: 0 auto 14px; }
+    .start-project-page .sp-preview-image-stage { aspect-ratio: 16/9; }
+    .start-project-page .sp3d-kc-corner { top: 34px; right: 0; }
+    .start-project-page .sp3d-top-meta { padding-right: 82px; }
+}
+@media (max-width: 700px) {
+    .start-project-page .sp3d-kc-corner { top: -3px; right: 0; transform: scale(.9); transform-origin: top right; }
+    .start-project-page .sp3d-top-meta { display: none; }
+    .start-project-page .sp3d-brand { font-size: clamp(18px,5vw,22px); }
+    .start-project-page .sp3d-title-block h1 { max-width: 100%; font-size: clamp(34px,9.3vw,49px); }
+    .start-project-page .sp3d-camera-tools { left: 12px; right: 12px; bottom: 96px; max-width: none; justify-content: center; gap: 6px; padding: 8px; }
+    .start-project-page .sp3d-camera-tools button { min-height: 43px; min-width: 43px; padding-inline: 10px; font-size: 8px; }
+    .start-project-page .sp3d-camera-tools .sp3d-zoom-button { width: 43px; min-width: 43px; min-height: 43px; font-size: 23px; }
+    .start-project-page .sp3d-camera-tools .sp3d-dive-button { flex: 1 1 auto; }
+    .start-project-page .sp3d-camera-help { font-size: 7px; }
+    .start-project-page .sp-preview-device-switch { justify-content: center; }
+    .start-project-page .sp-preview-device-switch button { min-height: 38px; padding: 7px 10px; }
+    .start-project-page .sp-preview-image-stage { min-height: 155px; }
+    .start-project-page .sp-preview-live-copy { align-items: flex-start; flex-direction: column; }
+    .start-project-page .sp-preview-live-copy .sp-preview-cta { align-self: flex-start; }
+    .start-project-page .sp-choice-card, .start-project-page .sp-style-card { min-width: 0; }
+}
+@media (max-width: 480px) {
+    .start-project-page .sp3d-kc-corner { display: none; }
+    .start-project-page .sp3d-title-block h1 { font-size: clamp(31px,9vw,42px); }
+    .start-project-page .sp3d-camera-tools { left: 8px; right: 8px; bottom: 104px; gap: 4px; }
+    .start-project-page .sp3d-camera-tools button { min-height: 40px; min-width: 39px; padding-inline: 8px; font-size: 7px; }
+    .start-project-page .sp3d-camera-tools .sp3d-zoom-button { width: 40px; min-width: 40px; min-height: 40px; }
+    .start-project-page .sp3d-camera-help { flex-basis: 100%; }
+    .start-project-page .sp-preview-image-stage { min-height: 135px; }
+    .start-project-page .sp-preview-image-badges span { font-size: 6px; min-height: 20px; }
+    .start-project-page .sp-preview-live-specs { gap: 4px; }
+    .start-project-page .sp-preview-live-specs span { font-size: 5.5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .start-project-page .sp3d-title-block h1,
+    .start-project-page .sp3d-title-block h1::before,
+    .start-project-page .sp-preview-image-stage img,
+    .start-project-page .sp-preview-screen.is-updating,
+    .start-project-page .sp3d-kc-k { animation: none !important; transition: none !important; }
+}
+.start-project-page .sp-water-filter-defs { position: absolute; width: 0; height: 0; overflow: hidden; pointer-events: none; }
+
+
+/* =========================================================
+   KNOWME START PROJECT — LEVEL 6 DEVICE FIT + NAV K×C + ORBIT PLANETS
+   Final route-scoped overrides for the user-reviewed desktop/tablet/mobile views.
+========================================================= */
+
+/* Put the collaboration mark directly beside EN / RU / HY in the fixed site header. */
+.start-project-page .topbar .language-switcher .sp3d-kc-corner,
+.topbar .language-switcher .sp3d-kc-corner {
+    position: static !important;
+    inset: auto !important;
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    min-height: 28px;
+    margin: 0 0 0 7px;
+    padding: 3px 7px 4px;
+    border: 1px solid rgba(132,158,204,.28);
+    border-radius: 8px;
+    background: rgba(4,8,17,.72);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 0 12px rgba(65,118,204,.09);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+}
+.topbar .language-switcher .sp3d-kc-corner .sp3d-kc-k { color: #f04452; font: 900 12px/1 Arial,sans-serif; text-shadow: 0 0 8px rgba(240,68,82,.7); }
+.topbar .language-switcher .sp3d-kc-corner .sp3d-kc-times { color: rgba(220,231,246,.72); font: 400 9px/1 Arial,sans-serif; }
+.topbar .language-switcher .sp3d-kc-corner .sp3d-kc-c {
+    color: #05070c;
+    -webkit-text-stroke: .75px rgba(238,245,255,.94);
+    paint-order: stroke fill;
+    font: 900 12px/1 Arial,sans-serif;
+    text-shadow: 0 0 7px rgba(134,165,214,.25);
+}
+
+/* Reduce the oversized camera toolbar while keeping controls easy to tap. */
+.start-project-page .sp3d-camera-tools {
+    gap: 6px;
+    padding: 6px 8px 7px;
+    border-radius: 11px;
+    max-width: min(470px, 44vw);
+}
+.start-project-page .sp3d-camera-tools button {
+    min-width: 29px;
+    min-height: 28px;
+    padding: 0 8px;
+    border-radius: 7px;
+    font-size: 8px;
+    letter-spacing: .055em;
+}
+.start-project-page .sp3d-camera-tools .sp3d-zoom-button {
+    width: 27px;
+    min-width: 27px;
+    min-height: 27px;
+    padding: 0;
+    border-radius: 7px;
+    font-size: 15px;
+}
+.start-project-page .sp3d-camera-help {
+    margin-bottom: 0;
+    font-size: 7px;
+    letter-spacing: .11em;
+}
+
+/* True device-shaped frames. Landscape references are contained, never cropped. */
+.start-project-page .sp-live-preview.is-desktop { width: 100%; max-width: none; }
+.start-project-page .sp-live-preview.is-tablet { width: min(100%, 560px); max-width: 560px; margin-inline: auto; }
+.start-project-page .sp-live-preview.is-tablet .sp-preview-browser { width: 100%; }
+.start-project-page .sp-live-preview.is-tablet .sp-preview-screen { width: 100%; min-height: 0; }
+.start-project-page .sp-live-preview.is-tablet .sp-preview-image-stage {
+    aspect-ratio: 4 / 3;
+    min-height: 0;
+    max-height: 340px;
+    background: linear-gradient(135deg, #07111f, #101b2d);
+}
+.start-project-page .sp-live-preview.is-tablet .sp-preview-image-stage img {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    object-fit: contain;
+    object-position: center;
+    background: #080f1b;
+}
+.start-project-page .sp-live-preview.is-mobile { width: min(100%, 330px); max-width: 330px; margin-inline: auto; }
+.start-project-page .sp-live-preview.is-mobile .sp-preview-browser { width: 100%; padding: 7px; border-radius: 20px; }
+.start-project-page .sp-live-preview.is-mobile .sp-preview-browser-bar { height: 22px; padding-inline: 5px; }
+.start-project-page .sp-live-preview.is-mobile .sp-preview-screen {
+    display: flex;
+    flex-direction: column;
+    width: min(100%, 270px);
+    max-width: 100%;
+    min-height: 440px;
+    height: auto;
+    aspect-ratio: 9 / 17;
+    margin-inline: auto;
+    padding: 0;
+    overflow: hidden;
+    border: 5px solid #26364f;
+    border-radius: 25px;
+    background: #07101e;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.12), 0 12px 32px rgba(0,0,0,.28);
+}
+.start-project-page .sp-live-preview.is-mobile .sp-preview-image-stage {
+    flex: 0 0 auto;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    min-height: 0;
+    max-height: none;
+    background: #080f1b;
+}
+.start-project-page .sp-live-preview.is-mobile .sp-preview-image-stage img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    object-fit: contain;
+    object-position: center;
+    background: #080f1b;
+    transform: none !important;
+}
+.start-project-page .sp-live-preview.is-mobile .sp-preview-image-shade {
+    background: linear-gradient(180deg, rgba(3,7,16,.06), transparent 55%, rgba(3,7,16,.18));
+}
+.start-project-page .sp-live-preview.is-mobile .sp-preview-image-badges { left: 7px; top: 7px; gap: 4px; }
+.start-project-page .sp-live-preview.is-mobile .sp-preview-image-badges span { min-height: 18px; padding: 3px 5px; font-size: 5.5px; letter-spacing: .07em; }
+.start-project-page .sp-live-preview.is-mobile .sp-preview-canvas-stamp { right: 7px; bottom: 6px; font-size: 5px; }
+.start-project-page .sp-live-preview.is-mobile .sp-preview-live-copy {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+    padding: 13px 12px 10px;
+}
+.start-project-page .sp-live-preview.is-mobile .sp-preview-live-copy h2 { font-size: 20px; line-height: 1.08; }
+.start-project-page .sp-live-preview.is-mobile .sp-preview-live-copy p { font-size: 8px; line-height: 1.45; }
+.start-project-page .sp-live-preview.is-mobile .sp-preview-live-copy .sp-preview-cta { align-self: flex-start; padding: 7px 9px; font-size: 7px; }
+.start-project-page .sp-live-preview.is-mobile .sp-preview-live-specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    padding: 0 11px 10px;
+}
+.start-project-page .sp-live-preview.is-mobile .sp-preview-live-specs span { justify-content: center; min-height: 20px; padding: 4px 5px; font-size: 5px; text-align: center; }
+.start-project-page .sp-preview-responsive-sections { display: none; }
+.start-project-page .sp-live-preview.is-mobile .sp-preview-responsive-sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    padding: 0 11px 12px;
+    margin-top: auto;
+}
+.start-project-page .sp-live-preview.is-mobile .sp-preview-responsive-sections span {
+    min-height: 38px;
+    border: 1px solid color-mix(in srgb, var(--sp-preview-secondary) 34%, rgba(255,255,255,.1));
+    border-radius: 7px;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--sp-preview-primary) 20%, transparent), rgba(255,255,255,.025));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+}
+.start-project-page .sp-live-preview.is-mobile .sp-preview-responsive-sections .sp-preview-responsive-heading {
+    grid-column: 1 / -1;
+    min-height: 5px;
+    max-width: 42%;
+    border: 0;
+    border-radius: 99px;
+    background: var(--sp-preview-primary);
+    opacity: .8;
+    box-shadow: 0 0 10px color-mix(in srgb, var(--sp-preview-primary) 40%, transparent);
+}
+.start-project-page .sp-live-preview.is-tablet .sp-preview-responsive-sections { display: none; }
+
+/* More visible water-surface refraction directly through the translated hero letters. */
+.start-project-page .sp3d-title-block h1 {
+    filter: url("#spWaterRippleFilter");
+    text-shadow: 0 8px 30px rgba(0,0,0,.42), 0 0 12px rgba(104,193,255,.12);
+}
+.start-project-page .sp3d-title-block h1::after {
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    background-image: repeating-radial-gradient(ellipse at 50% 50%, rgba(185,231,255,.76) 0 1px, rgba(100,187,255,.28) 2px, transparent 4px 13px);
+    background-size: 42% 175%;
+    background-position: -48% 50%;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    opacity: .72;
+    filter: drop-shadow(0 0 5px rgba(100,190,255,.38));
+    clip-path: none;
+    mix-blend-mode: screen;
+    animation: spRealWaterRingsAcrossText 8.8s cubic-bezier(.18,.62,.3,1) infinite;
+}
+@keyframes spRealWaterRingsAcrossText {
+    0%, 10% { background-position: -48% 50%; opacity: 0; }
+    24% { opacity: .72; }
+    68% { background-position: 105% 50%; opacity: .62; }
+    86%, 100% { background-position: 148% 50%; opacity: 0; }
+}
+.start-project-page .sp3d-title-block h1::before {
+    background: radial-gradient(ellipse at center, rgba(170,226,255,.2), rgba(80,177,255,.1) 28%, transparent 70%);
+    width: 30%;
+    filter: blur(12px);
+    animation: spWaterLightTravel 9.2s ease-in-out infinite;
+}
+
+@media (max-width: 900px) {
+    .start-project-page .sp3d-camera-tools { max-width: min(420px, 56vw); padding: 6px 7px; }
+    .start-project-page .sp3d-camera-tools button { min-height: 30px; }
+    .start-project-page .sp3d-camera-tools .sp3d-zoom-button { width: 29px; min-width: 29px; min-height: 29px; }
+    .start-project-page .sp-live-preview.is-tablet { max-width: min(100%, 520px); }
+    .start-project-page .sp-live-preview.is-mobile { max-width: min(100%, 320px); }
+}
+@media (max-width: 640px) {
+    .topbar .language-switcher .sp3d-kc-corner { min-height: 25px; margin-left: 4px; padding: 2px 5px 3px; gap: 3px; }
+    .topbar .language-switcher .sp3d-kc-corner .sp3d-kc-k,
+    .topbar .language-switcher .sp3d-kc-corner .sp3d-kc-c { font-size: 10px; }
+    .topbar .language-switcher .sp3d-kc-corner .sp3d-kc-times { font-size: 8px; }
+    .start-project-page .sp3d-camera-tools { gap: 5px; padding: 5px 6px; }
+    .start-project-page .sp3d-camera-tools button { min-width: 28px; min-height: 30px; padding-inline: 7px; font-size: 7px; }
+    .start-project-page .sp3d-camera-tools .sp3d-zoom-button { width: 28px; min-width: 28px; min-height: 28px; font-size: 15px; }
+    .start-project-page .sp-live-preview.is-mobile .sp-preview-screen { width: min(100%, 258px); min-height: 420px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .start-project-page .sp3d-title-block h1::after,
+    .start-project-page .sp3d-title-block h1::before { animation: none !important; }
+}
+.start-project-page .sp3d-top-meta { padding-right: 0 !important; }
+
+
+/* =========================================================
+   KNOWME START PROJECT — LEVEL 7 FINAL CORRECTIONS
+   Header brand placement, compact camera controls, true-fit device previews.
+========================================================= */
+
+/* Header K × C: the module moves the existing mark beside EN / RU / HY. */
+header.topbar .language-switcher {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 5px;
+}
+header.topbar .language-switcher .sp3d-kc-corner,
+header.topbar .language-switcher .sp3d-kc-header-mark {
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 3px !important;
+    width: auto !important;
+    min-width: 37px !important;
+    min-height: 27px !important;
+    margin: 0 0 0 5px !important;
+    padding: 3px 6px !important;
+    border: 1px solid rgba(125, 157, 207, .32) !important;
+    border-radius: 8px !important;
+    background: linear-gradient(135deg, rgba(8, 15, 31, .96), rgba(17, 24, 43, .9)) !important;
+    box-shadow: 0 0 12px rgba(55, 138, 255, .12), inset 0 1px 0 rgba(255,255,255,.07) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 10010 !important;
+}
+header.topbar .language-switcher .sp3d-kc-k {
+    color: #ef3948 !important;
+    -webkit-text-fill-color: #ef3948 !important;
+    font: 900 12px/1 Arial, Helvetica, sans-serif !important;
+    text-shadow: 0 0 8px rgba(239,57,72,.7) !important;
+}
+header.topbar .language-switcher .sp3d-kc-times {
+    color: rgba(225,235,249,.76) !important;
+    font: 700 9px/1 Arial, Helvetica, sans-serif !important;
+}
+header.topbar .language-switcher .sp3d-kc-c {
+    color: #05070b !important;
+    -webkit-text-fill-color: #05070b !important;
+    -webkit-text-stroke: .8px rgba(232,241,255,.96) !important;
+    paint-order: stroke fill !important;
+    font: 900 12px/1 Arial, Helvetica, sans-serif !important;
+    text-shadow: 0 0 5px rgba(135,165,210,.35) !important;
+}
+
+/* Compact desktop camera toolbar. Zoom controls are deliberately smaller. */
+.start-project-page .sp3d-camera-tools {
+    gap: 5px !important;
+    padding: 5px 7px !important;
+    max-width: min(390px, 42vw) !important;
+    border-radius: 10px !important;
+}
+.start-project-page .sp3d-camera-tools .sp3d-camera-help {
+    max-width: 128px;
+    font-size: 6px !important;
+    line-height: 1.25 !important;
+    letter-spacing: .09em !important;
+}
+.start-project-page .sp3d-camera-tools button {
+    min-width: 25px !important;
+    min-height: 25px !important;
+    padding: 0 7px !important;
+    border-radius: 6px !important;
+    font-size: 6.5px !important;
+}
+.start-project-page .sp3d-camera-tools #sp3dZoomOut,
+.start-project-page .sp3d-camera-tools #sp3dZoomIn {
+    width: 23px !important;
+    height: 23px !important;
+    min-width: 23px !important;
+    min-height: 23px !important;
+    padding: 0 !important;
+    border-radius: 6px !important;
+    font-size: 14px !important;
+    line-height: 1 !important;
+}
+.start-project-page .sp3d-camera-tools #sp3dDiveIn,
+.start-project-page .sp3d-camera-tools #sp3dResetView {
+    min-height: 25px !important;
+    min-width: 0 !important;
+    padding: 0 7px !important;
+    font-size: 6px !important;
+    letter-spacing: .035em !important;
+}
+
+/* The six supplied references are 1200×680 landscape images. Always show the
+   complete image; device adaptation is provided by the surrounding live page UI. */
+.start-project-page .sp-preview-image-stage {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9 !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: hidden !important;
+}
+.start-project-page #spPreviewReference {
+    position: relative !important;
+    inset: auto !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: 16 / 9 !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    transform: none !important;
+    background: #080f1b !important;
+}
+.start-project-page #spPreviewReference.is-changing { transform: none !important; }
+
+/* Tablet: the preview column scales to a tablet-width canvas, without cropping. */
+.start-project-page .sp-live-preview.is-tablet {
+    width: min(100%, 590px) !important;
+    max-width: 590px !important;
+    margin-inline: auto !important;
+}
+.start-project-page .sp-live-preview.is-tablet .sp-preview-browser {
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+.start-project-page .sp-live-preview.is-tablet .sp-preview-screen {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    height: auto !important;
+    aspect-ratio: auto !important;
+    overflow: hidden !important;
+}
+.start-project-page .sp-live-preview.is-tablet .sp-preview-image-stage {
+    flex: 0 0 auto !important;
+    aspect-ratio: 16 / 9 !important;
+    min-height: 0 !important;
+    max-height: none !important;
+}
+.start-project-page .sp-live-preview.is-tablet .sp-preview-live-copy {
+    align-items: center !important;
+    gap: 12px !important;
+    padding: 14px 16px !important;
+}
+.start-project-page .sp-live-preview.is-tablet .sp-preview-responsive-sections {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    padding: 0 14px 14px !important;
+}
+
+/* Phone: portrait outer frame, complete landscape reference as a contained hero,
+   then stacked, phone-sized copy/specs/feature tiles. No zoom-cropping. */
+.start-project-page .sp-live-preview.is-mobile {
+    width: min(100%, 292px) !important;
+    max-width: 292px !important;
+    margin-inline: auto !important;
+}
+.start-project-page .sp-live-preview.is-mobile .sp-preview-browser {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 7px !important;
+    border-radius: 22px !important;
+}
+.start-project-page .sp-live-preview.is-mobile .sp-preview-browser-bar {
+    height: 20px !important;
+    padding-inline: 5px !important;
+}
+.start-project-page .sp-live-preview.is-mobile .sp-preview-screen {
+    display: flex !important;
+    flex-direction: column !important;
+    width: min(100%, 222px) !important;
+    max-width: 222px !important;
+    min-height: 0 !important;
+    height: auto !important;
+    aspect-ratio: 9 / 18.5 !important;
+    margin-inline: auto !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    border: 5px solid #26364f !important;
+    border-radius: 25px !important;
+    background: #07101e !important;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.12), 0 12px 32px rgba(0,0,0,.28) !important;
+}
+.start-project-page .sp-live-preview.is-mobile .sp-preview-image-stage {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9 !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    background: #080f1b !important;
+}
+.start-project-page .sp-live-preview.is-mobile #spPreviewReference {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    transform: none !important;
+    filter: none !important;
+}
+.start-project-page .sp-live-preview.is-mobile .sp-preview-image-shade {
+    background: linear-gradient(180deg, rgba(3,7,16,.02), transparent 60%, rgba(3,7,16,.12)) !important;
+}
+.start-project-page .sp-live-preview.is-mobile .sp-preview-image-badges {
+    left: 6px !important;
+    top: 6px !important;
+    gap: 3px !important;
+}
+.start-project-page .sp-live-preview.is-mobile .sp-preview-image-badges span {
+    min-height: 15px !important;
+    padding: 2px 4px !important;
+    font-size: 5px !important;
+}
+.start-project-page .sp-live-preview.is-mobile .sp-preview-canvas-stamp {
+    right: 5px !important;
+    bottom: 5px !important;
+    font-size: 4.5px !important;
+}
+.start-project-page .sp-live-preview.is-mobile .sp-preview-live-copy {
+    display: flex !important;
+    flex: 0 0 auto !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 6px !important;
+    padding: 10px 9px 8px !important;
+}
+.start-project-page .sp-live-preview.is-mobile .sp-preview-live-overline {
+    margin-bottom: 4px !important;
+    font-size: 5px !important;
+}
+.start-project-page .sp-live-preview.is-mobile .sp-preview-live-copy h2 {
+    margin-bottom: 4px !important;
+    font-size: 13px !important;
+    line-height: 1.12 !important;
+}
+.start-project-page .sp-live-preview.is-mobile .sp-preview-live-copy p {
+    font-size: 6.5px !important;
+    line-height: 1.4 !important;
+}
+.start-project-page .sp-live-preview.is-mobile .sp-preview-live-copy .sp-preview-cta {
+    align-self: flex-start !important;
+    padding: 5px 7px !important;
+    font-size: 5.5px !important;
+}
+.start-project-page .sp-live-preview.is-mobile .sp-preview-live-specs {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 4px !important;
+    padding: 0 8px 8px !important;
+}
+.start-project-page .sp-live-preview.is-mobile .sp-preview-live-specs span {
+    justify-content: center !important;
+    min-height: 17px !important;
+    padding: 3px 4px !important;
+    font-size: 4.5px !important;
+    text-align: center !important;
+}
+.start-project-page .sp-live-preview.is-mobile .sp-preview-responsive-sections {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 5px !important;
+    padding: 0 8px 9px !important;
+    margin-top: auto !important;
+}
+.start-project-page .sp-live-preview.is-mobile .sp-preview-responsive-sections span {
+    min-height: 25px !important;
+    border-radius: 5px !important;
+}
+
+/* Small phone/tablet widths: preserve usable controls without overflowing header. */
+@media (max-width: 700px) {
+    .start-project-page .sp3d-camera-tools {
+        max-width: calc(100vw - 24px) !important;
+        gap: 4px !important;
+        padding: 4px 5px !important;
+    }
+    .start-project-page .sp3d-camera-tools .sp3d-camera-help { display: none !important; }
+    .start-project-page .sp3d-camera-tools #sp3dZoomOut,
+    .start-project-page .sp3d-camera-tools #sp3dZoomIn {
+        width: 30px !important;
+        height: 30px !important;
+        min-width: 30px !important;
+        min-height: 30px !important;
+        font-size: 16px !important;
+    }
+    .start-project-page .sp3d-camera-tools #sp3dDiveIn,
+    .start-project-page .sp3d-camera-tools #sp3dResetView {
+        min-height: 30px !important;
+        padding-inline: 6px !important;
+        font-size: 6px !important;
+    }
+    header.topbar .language-switcher .sp3d-kc-corner {
+        min-width: 32px !important;
+        min-height: 24px !important;
+        margin-left: 3px !important;
+        padding: 2px 4px !important;
+    }
+    header.topbar .language-switcher .sp3d-kc-k,
+    header.topbar .language-switcher .sp3d-kc-c { font-size: 10px !important; }
+    header.topbar .language-switcher .sp3d-kc-times { font-size: 7px !important; }
+}
+@media (max-width: 420px) {
+    .start-project-page .sp-live-preview.is-mobile { width: min(100%, 270px) !important; max-width: 270px !important; }
+    .start-project-page .sp-live-preview.is-mobile .sp-preview-screen { width: min(100%, 210px) !important; max-width: 210px !important; }
+}
+
+
+/* =========================================================
+   KNOWME LEVEL 9 — SEPARATE K × C, GLOBAL CHAT, CAMERA CONTROLS
+========================================================= */
+
+/* Language buttons remain in their own capsule; K × C is a separate brand badge. */
+.topbar .header-utility {
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 11px;
+    min-width: 0;
+    position: relative;
+    z-index: 10002;
+}
+.topbar .language-switcher {
+    justify-self: auto;
+    gap: 5px;
+    padding: 5px;
+}
+.topbar .site-kc-mark {
+    position: relative;
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 54px;
+    min-width: 54px;
+    height: 36px;
+    margin: 0 0 0 1px;
+    padding: 0 9px;
+    border: 1px solid rgba(145, 174, 220, .30);
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(13, 22, 40, .96), rgba(7, 11, 22, .96));
+    box-shadow: 0 0 15px rgba(43, 105, 190, .13), inset 0 1px 0 rgba(255,255,255,.07);
+    white-space: nowrap;
+    line-height: 1;
+    transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+.topbar .site-kc-mark:hover {
+    transform: translateY(-1px);
+    border-color: rgba(87, 170, 255, .72);
+    box-shadow: 0 0 18px rgba(43, 129, 235, .24), 0 0 12px rgba(239, 57, 72, .12);
+}
+.topbar .site-kc-mark .site-kc-k {
+    color: #ef3948;
+    -webkit-text-fill-color: #ef3948;
+    font: 950 16px/1 Arial, Helvetica, sans-serif;
+    text-shadow: 0 0 8px rgba(239, 57, 72, .72), 0 0 15px rgba(239, 57, 72, .28);
+}
+.topbar .site-kc-mark .site-kc-times {
+    color: rgba(224, 235, 250, .82);
+    font: 800 10px/1 Arial, Helvetica, sans-serif;
+}
+.topbar .site-kc-mark .site-kc-c {
+    color: #05070b;
+    -webkit-text-fill-color: #05070b;
+    -webkit-text-stroke: .95px rgba(232, 241, 255, .98);
+    paint-order: stroke fill;
+    font: 950 16px/1 Arial, Helvetica, sans-serif;
+    text-shadow: 0 0 6px rgba(135, 165, 210, .42);
+}
+
+/* The global AI chat remains mounted in base.html on all non-home routes;
+   the homepage keeps its existing single instance. */
+.knowme-chat-dock {
+    position: fixed !important;
+    right: 28px !important;
+    bottom: 25px !important;
+    z-index: 99999 !important;
+    pointer-events: none;
+}
+.knowme-chat-dock > .knowme-chat-panel,
+.knowme-chat-dock > .knowme-chat-launcher {
+    pointer-events: auto;
+}
+
+/* Slightly larger, easier-to-hit camera controls with legible helper text. */
+.start-project-page .sp3d-camera-tools {
+    gap: 9px !important;
+    padding: 11px 13px !important;
+    max-width: min(680px, calc(100% - 36px));
+    border: 1px solid rgba(83, 157, 255, .30);
+    border-radius: 13px;
+    background: linear-gradient(135deg, rgba(5, 12, 25, .86), rgba(13, 9, 28, .83));
+    box-shadow: 0 10px 34px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+.start-project-page .sp3d-camera-tools .sp3d-camera-help {
+    font-size: 9.5px !important;
+    line-height: 1.45 !important;
+    letter-spacing: .12em !important;
+    margin-bottom: 4px !important;
+}
+.start-project-page .sp3d-camera-tools #sp3dZoomOut,
+.start-project-page .sp3d-camera-tools #sp3dZoomIn {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+    padding: 0 !important;
+    border-radius: 9px !important;
+    font-size: 22px !important;
+    font-weight: 900 !important;
+    line-height: 1 !important;
+}
+.start-project-page .sp3d-camera-tools #sp3dDiveIn,
+.start-project-page .sp3d-camera-tools #sp3dResetView {
+    min-height: 38px !important;
+    padding: 0 12px !important;
+    font-size: 9px !important;
+    letter-spacing: .09em !important;
+}
+.start-project-page .sp3d-camera-tools button:focus-visible {
+    outline: 2px solid rgba(99, 190, 255, .95);
+    outline-offset: 3px;
+}
+
+/* Projects: clear LIVE production deployment and KNOWME AI release card. */
+.projects-page .project-production {
+    border-color: rgba(58, 177, 132, .34);
+    background: linear-gradient(155deg, rgba(9, 28, 31, .90), rgba(6, 12, 22, .96));
+}
+.projects-page .project-ai-release {
+    border-color: rgba(136, 104, 255, .34);
+    background: linear-gradient(155deg, rgba(24, 16, 43, .92), rgba(6, 12, 22, .96));
+}
+.projects-page .release-status {
+    color: #c5a7ff;
+    border-color: rgba(167, 130, 255, .40);
+    background: rgba(112, 70, 190, .16);
+    box-shadow: 0 0 16px rgba(132, 91, 255, .12);
+}
+.projects-page .project-ai-url strong {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    font-size: clamp(10px, 1vw, 13px);
+}
+.projects-page .project-live-url strong {
+    overflow-wrap: anywhere;
+}
+.projects-page .project-ai-release .project-btn {
+    border-color: rgba(154, 119, 255, .56);
+    background: linear-gradient(110deg, rgba(100, 61, 174, .74), rgba(24, 91, 155, .78));
+}
+
+@media (max-width: 1100px) {
+    .topbar .header-utility { gap: 8px; }
+    .topbar .site-kc-mark { width: 50px; min-width: 50px; }
+}
+
+@media (max-width: 850px) {
+    .topbar .header-utility { grid-area: language; }
+    .topbar .language-switcher { grid-area: auto; }
+}
+
+@media (max-width: 640px) {
+    .topbar .header-utility { gap: 6px; }
+    .topbar .language-switcher { gap: 3px; padding: 4px; }
+    .topbar .language-switcher .lang-btn {
+        min-width: 34px;
+        height: 31px;
+        padding-inline: 6px;
+        font-size: 10px;
+    }
+    .topbar .site-kc-mark {
+        width: 43px;
+        min-width: 43px;
+        height: 33px;
+        padding-inline: 6px;
+        gap: 3px;
+        border-radius: 9px;
+    }
+    .topbar .site-kc-mark .site-kc-k,
+    .topbar .site-kc-mark .site-kc-c { font-size: 14px; }
+    .topbar .site-kc-mark .site-kc-times { font-size: 9px; }
+    .start-project-page .sp3d-camera-tools {
+        right: 12px !important;
+        left: 12px !important;
+        bottom: 68px !important;
+        width: auto !important;
+        max-width: none !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 7px !important;
+        padding: 9px 10px !important;
+    }
+    .start-project-page .sp3d-camera-tools .sp3d-camera-help {
+        flex: 1 0 100% !important;
+        text-align: center !important;
+        font-size: 8.5px !important;
+    }
+    .start-project-page .sp3d-camera-tools #sp3dZoomOut,
+    .start-project-page .sp3d-camera-tools #sp3dZoomIn {
+        width: 36px !important;
+        height: 36px !important;
+        min-width: 36px !important;
+        min-height: 36px !important;
+        font-size: 21px !important;
+    }
+    .start-project-page .sp3d-camera-tools #sp3dDiveIn,
+    .start-project-page .sp3d-camera-tools #sp3dResetView {
+        min-height: 36px !important;
+        padding-inline: 9px !important;
+        font-size: 8px !important;
+    }
+    .knowme-chat-dock {
+        right: 12px !important;
+        bottom: 12px !important;
+    }
+}
+
+@media (max-width: 420px) {
+    .topbar { padding-inline: 9px !important; }
+    .topbar .logo { font-size: 14px !important; letter-spacing: 1.1px !important; }
+    .topbar .header-utility { gap: 4px; }
+    .topbar .language-switcher .lang-btn { min-width: 30px; padding-inline: 4px; font-size: 9px; }
+    .topbar .site-kc-mark { width: 39px; min-width: 39px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .topbar .site-kc-mark,
+    .topbar .site-kc-mark * { transition: none !important; animation: none !important; }
+}
