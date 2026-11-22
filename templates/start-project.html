@@ -49,6 +49,16 @@
 
         <div class="sp3d-topline">
             <a class="sp3d-brand" href="{{ url_for('landing') }}" aria-label="KNOWME Studio home"><span class="sp3d-brand-k">K</span>NOW<span class="sp3d-brand-m">M</span>E<span class="sp3d-brand-studio">STUDIO</span></a>
+
+            <div class="sp3d-model-loader" id="sp3dModelLoader" role="status" aria-live="polite" aria-atomic="true">
+                <span class="sp3d-model-loader-spinner" aria-hidden="true"></span>
+                <span class="sp3d-model-loader-copy">
+                    <strong id="sp3dModelLoaderTitle">Loading 3D models...</strong>
+                    <small id="sp3dModelLoaderHint">Preparing the live 3D scene. This notice disappears when the models are ready.</small>
+                </span>
+                <button type="button" id="sp3dModelLoaderRetry" hidden>Retry</button>
+            </div>
+
             <div class="sp3d-top-meta"><span data-i18n="startProject.heroIndex">01 / DIGITAL EXPERIENCE</span><i></i><span data-i18n="startProject.heroKicker">PROJECT BUILDER</span></div>
         </div>
 
@@ -515,5 +525,5 @@
         <footer class="sp-footer sp-reveal"><span><span class="sp-footer-k">K</span>NOW<span class="sp-footer-m">M</span>E STUDIO</span><span data-i18n="startProject.footer">A thoughtful process. A secure result.</span><a href="{{ url_for('contact') }}" data-i18n="startProject.needHelp">Need help? Contact us</a></footer>
     </div>
 </section>
-<script type="module" src="{{ url_for('static', filename='js/start_project_3d.js') }}?v=7"></script>
+<script type="module" src="{{ url_for('static', filename='js/start_project_3d.js') }}?v=8"></script>
 {% endblock %}

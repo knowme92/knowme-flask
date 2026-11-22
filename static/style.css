@@ -11163,6 +11163,112 @@ body.why-intro-active .topbar {
     letter-spacing: 0.2em;
 }
 
+/* Temporary 3D asset loading notice — hidden only after both models render. */
+.start-project-page .sp3d-model-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    width: max-content;
+    max-width: min(390px, 42vw);
+    padding: 10px 14px;
+    border: 1px solid rgba(130, 174, 235, 0.3);
+    border-radius: 11px;
+    background: linear-gradient(135deg, rgba(5, 12, 25, 0.9), rgba(12, 18, 34, 0.76));
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.28), 0 0 22px rgba(54, 122, 210, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.055);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.38s ease, transform 0.38s ease, visibility 0s linear;
+    pointer-events: auto;
+}
+.start-project-page .sp3d-model-loader.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -58%);
+    pointer-events: none;
+    transition: opacity 0.38s ease, transform 0.38s ease, visibility 0s linear 0.38s;
+}
+.start-project-page .sp3d-model-loader[hidden],
+.start-project-page .sp3d-model-loader button[hidden] {
+    display: none !important;
+}
+.start-project-page .sp3d-model-loader-spinner {
+    position: relative;
+    display: block;
+    flex: 0 0 17px;
+    width: 17px;
+    height: 17px;
+    border: 2px solid rgba(132, 177, 239, 0.22);
+    border-top-color: #78b8ff;
+    border-right-color: rgba(255, 96, 116, 0.9);
+    border-radius: 50%;
+    animation: sp3dModelLoaderSpin 0.9s linear infinite;
+    filter: drop-shadow(0 0 6px rgba(86, 158, 255, 0.42));
+}
+.start-project-page .sp3d-model-loader-copy {
+    display: grid;
+    gap: 3px;
+    min-width: 0;
+}
+.start-project-page .sp3d-model-loader-copy strong {
+    color: rgba(246, 249, 255, 0.96);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.09em;
+    line-height: 1.35;
+}
+.start-project-page .sp3d-model-loader-copy small {
+    color: rgba(190, 208, 235, 0.7);
+    font-size: 8px;
+    font-weight: 650;
+    letter-spacing: 0.025em;
+    line-height: 1.45;
+}
+.start-project-page .sp3d-model-loader.is-error {
+    border-color: rgba(255, 105, 116, 0.44);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.3), 0 0 22px rgba(255, 78, 96, 0.1);
+}
+.start-project-page .sp3d-model-loader.is-error .sp3d-model-loader-spinner {
+    border-color: rgba(255, 105, 116, 0.75);
+    border-top-color: transparent;
+    border-right-color: transparent;
+    animation: none;
+    transform: rotate(45deg);
+}
+.start-project-page .sp3d-model-loader.is-error .sp3d-model-loader-spinner::after {
+    content: "!";
+    position: absolute;
+    inset: -1px 0 0;
+    display: grid;
+    place-items: center;
+    color: #ff858d;
+    font: 900 10px/1 Arial, Helvetica, sans-serif;
+    transform: rotate(-45deg);
+}
+.start-project-page .sp3d-model-loader button {
+    flex: 0 0 auto;
+    min-height: 27px;
+    padding: 0 9px;
+    border: 1px solid rgba(255, 108, 120, 0.48);
+    border-radius: 7px;
+    background: rgba(138, 35, 53, 0.26);
+    color: #fff;
+    font: 850 8px/1 Arial, Helvetica, sans-serif;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+}
+.start-project-page .sp3d-model-loader button:hover {
+    border-color: rgba(255, 126, 137, 0.9);
+    background: rgba(163, 40, 61, 0.44);
+}
+@keyframes sp3dModelLoaderSpin { to { transform: rotate(360deg); } }
+
 .sp3d-top-meta i,
 .sp3d-status i,
 .sp-preview-live-dot i {
@@ -11503,7 +11609,20 @@ body.why-intro-active .topbar {
     .sp3d-brand { font-size: 20px; }
     .sp3d-top-meta { gap: 6px; font-size: 7px; letter-spacing: 0.12em; }
     .sp3d-top-meta span:first-child { display: none; }
-    .sp3d-manifesto { top: 148px; right: 22px; width: 145px; }
+    .start-project-page .sp3d-model-loader {
+        top: calc(100% + 12px);
+        left: 0;
+        width: min(205px, 57vw);
+        max-width: 205px;
+        padding: 8px 9px;
+        gap: 8px;
+        transform: none;
+    }
+    .start-project-page .sp3d-model-loader.is-hidden { transform: translateY(-5px); }
+    .start-project-page .sp3d-model-loader-copy strong { font-size: 8px; }
+    .start-project-page .sp3d-model-loader-copy small { font-size: 7px; }
+    .start-project-page .sp3d-model-loader button { min-height: 24px; padding-inline: 7px; font-size: 7px; }
+    .sp3d-manifesto { top: 196px; right: 22px; width: 145px; }
     .sp3d-manifesto p { font-size: 9px; line-height: 1.5; }
     .sp3d-title-block { left: 22px; right: 22px; bottom: 118px; width: auto; }
     .sp3d-title-block h1 { max-width: 520px; font-size: clamp(38px, 10.5vw, 58px); }

@@ -79,6 +79,72 @@ import { GLTFLoader } from "./vendor/GLTFLoader.js";
             || fallback;
     }
 
+    const modelLoader = hero.querySelector("#sp3dModelLoader");
+    const modelLoaderTitle = hero.querySelector("#sp3dModelLoaderTitle");
+    const modelLoaderHint = hero.querySelector("#sp3dModelLoaderHint");
+    const modelLoaderRetry = hero.querySelector("#sp3dModelLoaderRetry");
+    const modelLoaderCopy = {
+        en: {
+            loading: "Loading 3D models...",
+            loadingHint: "Preparing the live 3D scene. This notice disappears when the models are ready.",
+            error: "The 3D models could not be loaded.",
+            errorHint: "Check your connection and try loading the scene again.",
+            retry: "RETRY"
+        },
+        hy: {
+            loading: "3D մոդելները բեռնվում են...",
+            loadingHint: "Պատրաստվում է կենդանի 3D տեսարանը։ Հաղորդագրությունը կանհետանա, երբ մոդելները պատրաստ լինեն։",
+            error: "Չհաջողվեց բեռնել 3D մոդելները։",
+            errorHint: "Ստուգեք ինտերնետ կապը և կրկին փորձեք բեռնել տեսարանը։",
+            retry: "ԿՐԿԻՆ ՓՈՐՁԵԼ"
+        },
+        ru: {
+            loading: "Загрузка 3D-моделей...",
+            loadingHint: "Подготавливается 3D-сцена. Сообщение исчезнет, когда модели будут готовы.",
+            error: "Не удалось загрузить 3D-модели.",
+            errorHint: "Проверьте подключение к интернету и повторите загрузку сцены.",
+            retry: "ПОВТОРИТЬ"
+        }
+    };
+
+    let modelLoaderState = "loading";
+
+    function getModelLoaderCopy() {
+        const pageLanguage = (document.documentElement.lang || navigator.language || "en").toLowerCase();
+        return modelLoaderCopy[pageLanguage.slice(0, 2)] || modelLoaderCopy.en;
+    }
+
+    function renderModelLoaderCopy() {
+        if (!modelLoader) return;
+        const copy = getModelLoaderCopy();
+        const isError = modelLoaderState === "error";
+        if (modelLoaderTitle) modelLoaderTitle.textContent = isError ? copy.error : copy.loading;
+        if (modelLoaderHint) modelLoaderHint.textContent = isError ? copy.errorHint : copy.loadingHint;
+        if (modelLoaderRetry) {
+            modelLoaderRetry.textContent = copy.retry;
+            modelLoaderRetry.hidden = !isError;
+        }
+    }
+
+    function setModelLoaderState(state) {
+        modelLoaderState = state;
+        if (!modelLoader) return;
+        renderModelLoaderCopy();
+        const isReady = state === "ready";
+        modelLoader.classList.toggle("is-error", state === "error");
+        modelLoader.classList.toggle("is-hidden", isReady);
+        modelLoader.setAttribute("aria-hidden", String(isReady));
+    }
+
+    renderModelLoaderCopy();
+    if ("MutationObserver" in window) {
+        new MutationObserver(renderModelLoaderCopy).observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ["lang"]
+        });
+    }
+    modelLoaderRetry?.addEventListener("click", () => window.location.reload());
+
     let currentStatus = null;
 
     function setStatus(key, fallback, failed = false) {
@@ -417,11 +483,14 @@ import { GLTFLoader } from "./vendor/GLTFLoader.js";
         }
 
         if (renderer && camera) renderer.render(scene, camera);
+        // Hide the notice only after both GLB assets have been added and the scene renders.
+        setModelLoaderState(loadedCount === 2 ? "ready" : "error");
     }
 
     function initScene() {
         if (!canvas || !window.WebGLRenderingContext) {
             setStatus("heroFallback", "3D PREVIEW NOT AVAILABLE · STATIC FALLBACK", true);
+            setModelLoaderState("error");
             hero.classList.add("sp3d-fallback");
             return;
         }
@@ -438,6 +507,7 @@ import { GLTFLoader } from "./vendor/GLTFLoader.js";
         } catch (error) {
             console.warn("[KNOWME Builder] WebGL renderer unavailable:", error?.name || "Error");
             setStatus("heroFallback", "3D PREVIEW NOT AVAILABLE · STATIC FALLBACK", true);
+            setModelLoaderState("error");
             hero.classList.add("sp3d-fallback");
             return;
         }
@@ -666,6 +736,7 @@ import { GLTFLoader } from "./vendor/GLTFLoader.js";
             if (!spaceRoot.children.length) buildFallbackCore();
             setStatus("heroFallback", "3D MODELS UNAVAILABLE · FALLBACK SCENE", true);
             if (renderer && camera) renderer.render(scene, camera);
+            setModelLoaderState("error");
         });
 
         if (!reducedMotion) animate();
@@ -716,6 +787,7 @@ import { GLTFLoader } from "./vendor/GLTFLoader.js";
     } catch (error) {
         console.error("[KNOWME Builder] 3D scene initialization failed:", error?.name || "Error");
         setStatus("heroFallback", "3D PREVIEW NOT AVAILABLE · STATIC FALLBACK", true);
+        setModelLoaderState("error");
         hero.classList.add("sp3d-fallback");
     }
 
