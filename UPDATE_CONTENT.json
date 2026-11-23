@@ -1,0 +1,16 @@
+{
+  "name": "KNOWME Homepage Cursor and Reader Fix",
+  "changes": [
+    "Compact global cursor mesh depression without a circular halo or ripple",
+    "Independent vertical reading scroll inside each Security Book right page",
+    "Wheel chaining to the main horizontal book scroll at inner reader edges",
+    "Clickable read-down/read-top control",
+    "Removed read cue arrow wobble and button hover transforms"
+  ],
+  "preserved": [
+    "KNOWME AI Chat markup and behavior",
+    "Existing hero and montage video references",
+    "11 Security topics and HY/EN/RU content",
+    "Shared base.html, script.js, robotic_eye.js and backend"
+  ]
+}

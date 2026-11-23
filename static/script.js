@@ -3368,3 +3368,4 @@ if (
     mark.classList.add("sp3d-kc-nav-mark");
     languageSwitcher.appendChild(mark);
 })();
+

@@ -1,687 +1,256 @@
 {% extends "base.html" %}
 
-{% block title %}
-KNOWME Studio | Home
+{% block title %}KNOWME Studio — Digital Experiences & Engineering{% endblock %}
+{% block meta_description %}KNOWME Studio designs and engineers modern websites and web applications, with focused attention to user experience, reliable architecture and practical security.{% endblock %}
+
+{% block page_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='homepage-motion.css', v='20261123-rwd2') }}">
 {% endblock %}
 
-
 {% block content %}
-
-
-<!-- ==================================================
-     HOME HERO
-=================================================== -->
-
-<section class="hero" id="home">
-
-    <video
-        class="hero-video"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="metadata"
-    >
-        <source
-            src="{{ url_for('static', filename='videos/hero-bg.mp4') }}"
-            type="video/mp4"
-        >
-    </video>
-
-
-    <div class="hero-overlay"></div>
-
-
-    <div class="hero-layout">
-
-        <div class="hero-content">
-
-
-        <span class="hero-label">
-            KNOWME STUDIO
-        </span>
-
-
-        <h1 data-i18n="home.title">
-            Modern Websites. Powerful Solutions.
-        </h1>
-
-
-        <p data-i18n="home.description">
-            Fast, secure and modern websites built
-            for businesses and professionals.
-        </p>
-
-
-        <div class="hero-buttons">
-
-            <a
-                href="{{ url_for('projects') }}"
-                class="hero-btn primary-btn"
-                data-i18n="home.projects"
-            >
-                View Projects
-            </a>
-
-
-            <a
-                href="{{ url_for('contact') }}"
-                class="hero-btn secondary-btn"
-                data-i18n="home.contact"
-            >
-                Contact Me
-            </a>
-
-        </div>
-
-        </div>
-
-    <!-- 3D ROBOTIC EYE -->
-    <div class="robotic-eye-stage" data-model-url="{{ url_for('static', filename='models/robotic_eye.glb') }}">
-        <div class="robotic-eye-glow"></div>
-
-        <canvas
-            id="roboticEyeCanvas"
-            aria-label="Interactive 3D robotic eye model"
-        ></canvas>
-
-        <div class="robotic-eye-label">
-            <span class="eye-status-dot"></span>
-            <span>KNOWME · VISUAL INTELLIGENCE</span>
-        </div>
-        <a
-            class="robotic-eye-credit"
-
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Robotic Eye 3D model by Oleksii Rozumnyi, licensed under Creative Commons Attribution 4.0"
-        >
-
-        </a>
+<div class="km-home" id="kmHome">
+    <div class="km-global-pointer-field" id="kmGlobalPointerField" aria-hidden="true">
+        <canvas id="kmGlobalPointerCanvas" class="km-global-pointer-canvas"></canvas>
     </div>
+    <!-- HERO: keep the existing background video and robotic-eye model. -->
+    <section class="hero km-hero" id="home" aria-labelledby="kmHeroTitle">
+        <video class="hero-video km-hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+            <source src="{{ url_for('static', filename='videos/hero-bg.mp4') }}" type="video/mp4">
+        </video>
+        <div class="km-hero-overlay" aria-hidden="true"></div>
+        <div class="km-hero-grid" aria-hidden="true"></div>
+        <div class="km-hero-orbit km-hero-orbit--one" aria-hidden="true"></div>
+        <div class="km-hero-orbit km-hero-orbit--two" aria-hidden="true"></div>
+        <div class="km-hero-layout">
+            <div class="km-hero-copy" data-reveal>
+                <span class="km-eyebrow"><i></i><span data-home-i18n="hero.eyebrow">INDEPENDENT DIGITAL STUDIO · ARMENIA</span></span>
+                <h1 id="kmHeroTitle"><span data-home-i18n="hero.line1">Digital experiences</span><br><span class="km-title-accent" data-home-i18n="hero.line2">engineered to perform.</span></h1>
+                <p class="km-hero-description" data-home-i18n="hero.description">We design and build thoughtful websites and web applications — from the first interface to the systems that make them work.</p>
+                <div class="hero-buttons km-hero-actions">
+                    <a href="{{ url_for('projects') }}" class="hero-btn primary-btn" data-home-i18n="hero.projects">Explore projects</a>
+                    <a href="{{ url_for('start_project') }}" class="hero-btn secondary-btn" data-home-i18n="hero.start">Start a project</a>
+                </div>
+                <div class="km-hero-proofline">
+                    <span class="km-live-dot"></span>
+                    <span data-home-i18n="hero.proof">DESIGN · ENGINEERING · SECURITY-MINDED BUILD</span>
+                </div>
+            </div>
 
+            <!-- The original 3D model stage, canvas ID and loader path are preserved. -->
+            <div class="robotic-eye-stage km-robotic-eye-stage" data-model-url="{{ url_for('static', filename='models/robotic_eye.glb') }}" data-reveal>
+                <div class="robotic-eye-glow"></div>
+                <div class="km-eye-orbit km-eye-orbit--outer" aria-hidden="true"></div>
+                <div class="km-eye-orbit km-eye-orbit--inner" aria-hidden="true"></div>
+                <canvas id="roboticEyeCanvas" aria-label="Interactive 3D KNOWME robotic eye model"></canvas>
+                <div class="robotic-eye-label">
+                    <span class="eye-status-dot"></span>
+                    <span>KNOWME · VISUAL INTELLIGENCE</span>
+                </div>
+                <div class="km-eye-coordinate" aria-hidden="true">K / 01<br>VISUAL SYSTEM</div>
+                <a class="robotic-eye-credit" target="_blank" rel="noopener noreferrer" aria-label="Robotic Eye 3D model by Oleksii Rozumnyi, licensed under Creative Commons Attribution 4.0"></a>
+            </div>
+        </div>
+        <div class="km-hero-footer">
+            <span data-home-i18n="hero.footerLeft">DIGITAL PRODUCTS · BUILT WITH INTENT</span>
+            <a href="#km-work"><span data-home-i18n="hero.scroll">SCROLL TO EXPLORE</span><i aria-hidden="true">↓</i></a>
+            <span>40°10′N · 44°31′E</span>
+        </div>
+    </section>
+
+    <!-- SECURITY BOOK: occupies the former Selected Work / project-card position. -->
+    <section class="km-section km-security-book-section" id="km-work" aria-labelledby="kmSecurityTitle">
+        <div class="km-security-scroll-space" id="kmSecurityScrollSpace">
+            <div class="km-security-sticky" id="kmSecuritySticky">
+                <canvas class="km-security-landscape" id="kmSecurityLandscape" aria-hidden="true"></canvas>
+                <div class="km-section-heading km-security-heading">
+                    <div>
+                        <span class="km-kicker" data-home-i18n="security.kicker">KNOWME / SECURITY LAB</span>
+                        <h2 id="kmSecurityTitle" data-home-i18n="security.title">Understand the threat.<br><em>Engineer the defence.</em></h2>
+                    </div>
+                    <p data-home-i18n="security.intro">A practical guide to common web and AI application threats. Scroll through the book to explore each topic, its risks, controls and verification methods.</p>
+                </div>
+
+                <div class="km-security-toolbar">
+                    <div class="km-security-reading-label">
+                        <span data-home-i18n="security.reading">READING THE SECURITY ARCHIVE</span>
+                        <strong id="kmSecurityCurrent">01 / 11</strong>
+                    </div>
+                    <div class="km-security-toolbar-actions">
+                        <span class="km-security-scroll-hint" data-home-i18n="security.scrollHint">SCROLL DOWN TO MOVE THROUGH THE BOOK</span>
+                        <button type="button" class="km-icon-button" id="kmSecurityPrev" aria-label="Previous security chapter" disabled>←</button>
+                        <button type="button" class="km-icon-button" id="kmSecurityNext" aria-label="Next security chapter">→</button>
+                    </div>
+                </div>
+
+                <div class="km-security-progress-track" aria-hidden="true">
+                    <span id="kmSecurityProgress"></span>
+                </div>
+
+                <div class="km-security-book-stage">
+                    <div class="km-security-book-viewport" id="kmSecurityViewport" tabindex="0" aria-label="KNOWME Security Book. Scroll the page down to move horizontally through eleven chapters. Scroll vertically inside the right-hand page to read the full chapter.">
+                        <div class="km-security-chapters" id="kmSecurityChapters" aria-live="off">
+                            <noscript>Enable JavaScript to read the eleven interactive security chapters.</noscript>
+                        </div>
+                    </div>
+                    <div class="km-security-book-glow km-security-book-glow--red" aria-hidden="true"></div>
+                    <div class="km-security-book-glow km-security-book-glow--blue" aria-hidden="true"></div>
+                </div>
+
+                <div class="km-security-book-footer">
+                    <span data-home-i18n="security.disclaimer">Educational overview only. These topics are not a claim that every control is deployed on every KNOWME project. Security must be designed, implemented and tested for each system.</span>
+                    <span class="km-security-footer-mark">KNOWME · SECURITY / 11</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAPABILITIES: one horizontal scroll journey, four connected service panels. -->
+    <section class="km-section km-services" id="km-services" aria-labelledby="kmServicesTitle">
+        <div class="km-services-scroll-space" id="kmServicesScrollSpace">
+            <div class="km-services-sticky" id="kmServicesSticky">
+                <div class="km-services-heading">
+                    <div>
+                        <span class="km-kicker" data-home-i18n="services.kicker">WHAT WE ENGINEER</span>
+                        <h2 id="kmServicesTitle" data-home-i18n="services.title">More than a page.<br><em>A working system.</em></h2>
+                    </div>
+                    <p data-home-i18n="services.description">From polished interfaces to the logic behind them, each part is designed to serve a real user need.</p>
+                </div>
+
+                <div class="km-services-toolbar">
+                    <div class="km-services-reading-label">
+                        <span data-home-i18n="services.reading">CONNECTED CAPABILITIES</span>
+                        <strong id="kmServicesCurrent">01 / 04</strong>
+                    </div>
+                    <div class="km-services-toolbar-actions">
+                        <span data-home-i18n="services.scrollHint">SCROLL DOWN TO MOVE RIGHT</span>
+                        <button type="button" class="km-icon-button" id="kmServicesPrev" aria-label="Previous capability" disabled>←</button>
+                        <button type="button" class="km-icon-button" id="kmServicesNext" aria-label="Next capability">→</button>
+                    </div>
+                </div>
+                <div class="km-services-progress" aria-hidden="true"><span id="kmServicesProgress"></span></div>
+
+                <div class="km-services-viewport" id="kmServicesViewport" tabindex="0" aria-label="Four KNOWME capabilities. Scroll the page down to move horizontally through the panels.">
+                    <div class="km-service-grid" id="kmServiceTrack">
+                        <article class="km-service-card km-service-card--wide" data-service-card>
+                            <svg class="km-service-wave-field km-service-wave-field--blue" viewBox="0 0 1100 520" preserveAspectRatio="none" aria-hidden="true">
+                                <path d="M-40 350 C100 180 190 470 350 310 S610 120 760 280 S960 430 1140 210"/>
+                                <path d="M-50 395 C120 235 215 500 390 350 S650 155 800 320 S1010 460 1150 260"/>
+                                <path d="M-30 295 C120 120 220 390 365 245 S615 70 770 225 S980 370 1140 155"/>
+                            </svg>
+                            <span class="km-service-index">01 / INTERFACE</span>
+                            <div class="km-service-visual km-service-visual--ui" aria-hidden="true"><i></i><i></i><i></i><b>UI / UX</b></div>
+                            <h3 data-home-i18n="services.uiTitle">Websites & digital experiences</h3>
+                            <p data-home-i18n="services.uiText">Responsive, accessible interfaces with clear information architecture, deliberate visual hierarchy and interaction that supports the task.</p>
+                            <span class="km-service-foot">HTML · CSS · JAVASCRIPT</span>
+                            <span class="km-service-card-corner" aria-hidden="true">↗</span>
+                        </article>
+
+                        <article class="km-service-card" data-service-card>
+                            <svg class="km-service-wave-field km-service-wave-field--red" viewBox="0 0 1100 520" preserveAspectRatio="none" aria-hidden="true">
+                                <path d="M-40 350 C100 180 190 470 350 310 S610 120 760 280 S960 430 1140 210"/>
+                                <path d="M-50 395 C120 235 215 500 390 350 S650 155 800 320 S1010 460 1150 260"/>
+                                <path d="M-30 295 C120 120 220 390 365 245 S615 70 770 225 S980 370 1140 155"/>
+                            </svg>
+                            <span class="km-service-index">02 / APPLICATION</span>
+                            <div class="km-service-visual km-service-visual--app" aria-hidden="true"><b>{ }</b><i></i></div>
+                            <h3 data-home-i18n="services.appTitle">Web applications</h3>
+                            <p data-home-i18n="services.appText">Interactive products with user flows, forms, accounts, dashboards and business logic.</p>
+                            <span class="km-service-foot">FLASK · PYTHON · API</span>
+                            <span class="km-service-card-corner" aria-hidden="true">↗</span>
+                        </article>
+
+                        <article class="km-service-card" data-service-card>
+                            <svg class="km-service-wave-field km-service-wave-field--blue" viewBox="0 0 1100 520" preserveAspectRatio="none" aria-hidden="true">
+                                <path d="M-40 350 C100 180 190 470 350 310 S610 120 760 280 S960 430 1140 210"/>
+                                <path d="M-50 395 C120 235 215 500 390 350 S650 155 800 320 S1010 460 1150 260"/>
+                                <path d="M-30 295 C120 120 220 390 365 245 S615 70 770 225 S980 370 1140 155"/>
+                            </svg>
+                            <span class="km-service-index">03 / DATA</span>
+                            <div class="km-service-visual km-service-visual--data" aria-hidden="true"><i></i><i></i><i></i></div>
+                            <h3 data-home-i18n="services.dataTitle">Backend & data systems</h3>
+                            <p data-home-i18n="services.dataText">Structured data, server-side workflows, integrations and maintainable application architecture.</p>
+                            <span class="km-service-foot">POSTGRESQL · SQL · ORM</span>
+                            <span class="km-service-card-corner" aria-hidden="true">↗</span>
+                        </article>
+
+                        <article class="km-service-card km-service-card--wide km-service-card--ai" data-service-card>
+                            <svg class="km-service-wave-field km-service-wave-field--violet" viewBox="0 0 1100 520" preserveAspectRatio="none" aria-hidden="true">
+                                <path d="M-40 350 C100 180 190 470 350 310 S610 120 760 280 S960 430 1140 210"/>
+                                <path d="M-50 395 C120 235 215 500 390 350 S650 155 800 320 S1010 460 1150 260"/>
+                                <path d="M-30 295 C120 120 220 390 365 245 S615 70 770 225 S980 370 1140 155"/>
+                            </svg>
+                            <span class="km-service-index">04 / INTELLIGENCE</span>
+                            <div class="km-service-visual km-service-visual--ai" aria-hidden="true"><div></div><div></div><div></div><b>AI</b></div>
+                            <h3 data-home-i18n="services.aiTitle">AI integrations & custom tools</h3>
+                            <p data-home-i18n="services.aiText">Practical AI features connected to real workflows, with controlled permissions, clear boundaries and attention to data handling.</p>
+                            <span class="km-service-foot">MODEL ROUTING · TOOLING · AUTOMATION</span>
+                            <span class="km-service-card-corner" aria-hidden="true">↗</span>
+                        </article>
+                    </div>
+                </div>
+                <div class="km-services-footer"><span data-home-i18n="services.footer">ONE SYSTEM · FOUR CONNECTED CAPABILITIES</span><span class="km-services-wave-mark" aria-hidden="true">〰</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="km-section km-process km-process-film" id="km-process" aria-label="KNOWME cinematic holographic book film">
+        <video
+            class="km-process-montage"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+            disablepictureinpicture
+            poster="{{ url_for('static', filename='videos/security-archive-poster.jpg') }}"
+            aria-hidden="true"
+        >
+            <source src="{{ url_for('static', filename='videos/security-archive-montage.mp4') }}" type="video/mp4">
+        </video>
+        <div class="km-process-film-overlay" aria-hidden="true"></div>
+        <div class="km-process-film-light km-process-film-light--red" aria-hidden="true"></div>
+        <div class="km-process-film-light km-process-film-light--blue" aria-hidden="true"></div>
+    </section>
+
+    <!-- TECHNOLOGY / ENGINEERING -->
+    <section class="km-section km-engineering" id="km-engineering" aria-labelledby="kmEngineeringTitle">
+        <div class="km-engineering-copy" data-reveal><span class="km-kicker" data-home-i18n="engineering.kicker">THE SYSTEM BEHIND THE INTERFACE</span><h2 id="kmEngineeringTitle" data-home-i18n="engineering.title">One experience.<br><em>Many connected layers.</em></h2><p data-home-i18n="engineering.description">A useful digital product needs more than a polished front end. Its interface, application logic, data layer, deployment and security controls have to work together.</p><a href="{{ url_for('projects') }}" class="km-text-link"><span data-home-i18n="engineering.link">Explore the work</span><i>↗</i></a></div>
+        <div class="km-architecture" data-reveal aria-label="Application architecture layers">
+            <div class="km-architecture-orbit km-architecture-orbit--one" aria-hidden="true"></div>
+            <div class="km-architecture-orbit km-architecture-orbit--two" aria-hidden="true"></div>
+            <svg class="km-architecture-motion-lines" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                <circle class="km-architecture-motion-track km-architecture-motion-track--blue" cx="300" cy="300" r="220"></circle>
+                <circle class="km-architecture-motion-track km-architecture-motion-track--red" cx="300" cy="300" r="174"></circle>
+                <circle class="km-architecture-motion-track km-architecture-motion-track--fine" cx="300" cy="300" r="196"></circle>
+                <circle class="km-architecture-motion-dot km-architecture-motion-dot--blue" r="4">
+                    <animateMotion dur="14s" repeatCount="indefinite" path="M 300,80 A 220,220 0 1 1 299.9,80 A 220,220 0 1 1 300,80"></animateMotion>
+                </circle>
+                <circle class="km-architecture-motion-dot km-architecture-motion-dot--red" r="3.5">
+                    <animateMotion dur="19s" repeatCount="indefinite" path="M 300,126 A 174,174 0 1 0 299.9,126 A 174,174 0 1 0 300,126"></animateMotion>
+                </circle>
+            </svg>
+            <div class="km-architecture-core"><span>KNOWME</span><b>ENGINEERING</b><small>CONNECTED SYSTEM</small></div>
+            <div class="km-architecture-node km-architecture-node--frontend"><i>01</i><b>FRONTEND</b><small>HTML · CSS · JS</small></div>
+            <div class="km-architecture-node km-architecture-node--backend"><i>02</i><b>BACKEND</b><small>PYTHON · FLASK · API</small></div>
+            <div class="km-architecture-node km-architecture-node--data"><i>03</i><b>DATA</b><small>POSTGRESQL · ORM</small></div>
+            <div class="km-architecture-node km-architecture-node--security"><i>04</i><b>SECURITY</b><small>VALIDATION · ACCESS</small></div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="km-final" id="km-start" aria-labelledby="kmFinalTitle">
+        <div class="km-final-glow km-final-glow--red"></div><div class="km-final-glow km-final-glow--blue"></div>
+        <div class="km-final-content" data-reveal><span class="km-kicker" data-home-i18n="final.kicker">HAVE A PROJECT IN MIND?</span><h2 id="kmFinalTitle" data-home-i18n="final.title">Let's make something<br><em>worth remembering.</em></h2><p data-home-i18n="final.description">Bring the idea. We will shape the experience, define the system and build a solution around the people who will use it.</p><div class="km-final-actions"><a href="{{ url_for('start_project') }}" class="km-final-button km-final-button--primary" data-home-i18n="final.start">Start a project <span>↗</span></a><a href="{{ url_for('contact') }}" class="km-final-button km-final-button--secondary" data-home-i18n="final.contact">Talk to KNOWME</a></div></div>
+        <div class="km-codex-signature" aria-label="KNOWME times CODEX">
+            <span class="km-codex-letter-k">K</span><span class="km-codex-word">NOWME</span>
+            <span class="km-codex-times">×</span>
+            <span class="km-codex-letter-c">C</span><span class="km-codex-word">ODEX</span>
+            <small>DESIGN · ENGINEERING · INTELLIGENCE</small>
+        </div>
+        <div class="km-final-bottom"><span>KNOWME STUDIO</span><span data-home-i18n="final.bottom">DESIGNED WITH INTENT · ENGINEERED WITH CARE</span><a href="#home" data-home-i18n="final.top">BACK TO TOP ↑</a></div>
+    </section>
 </div>
-
-
-    <a
-        href="#process"
-        class="hero-scroll-cue"
-    >
-        <span>
-            SCROLL TO DISCOVER
-        </span>
-
-        <span class="hero-scroll-line"></span>
-    </a>
-
-</section>
-
-
-
-<!-- ==================================================
-     HOW I BUILD SECTION
-     prices-bg.mp4 = only background video
-=================================================== -->
-
-<section
-    class="home-info-section home-process-section"
-    id="process"
->
-
-    <video
-        class="home-info-video"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="metadata"
-    >
-        <source
-            src="{{ url_for('static', filename='videos/prices-bg.mp4') }}"
-            type="video/mp4"
-        >
-    </video>
-
-
-    <div
-        class="home-info-overlay home-process-overlay"
-    ></div>
-
-    <div class="home-info-grid"></div>
-
-
-    <div class="home-info-content">
-
-
-        <!-- LEFT TEXT -->
-
-        <div class="home-info-copy">
-
-            <span
-                class="home-info-kicker"
-                data-i18n="homeProcess.badge"
-            >
-                HOW I BUILD
-            </span>
-
-
-            <h2 data-i18n="homeProcess.title">
-                From an idea to a real working product.
-            </h2>
-
-
-            <p data-i18n="homeProcess.description">
-                A strong website is not only a beautiful screen.
-                It is planning, clean interface design,
-                reliable code, careful testing and a launch
-                that is ready for real users.
-            </p>
-
-
-            <div class="home-mini-points">
-
-                <span data-i18n="homeProcess.strategy">
-                    Strategy
-                </span>
-
-                <span data-i18n="homeProcess.design">
-                    UI / UX
-                </span>
-
-                <span data-i18n="homeProcess.development">
-                    Development
-                </span>
-
-                <span data-i18n="homeProcess.testing">
-                    Testing
-                </span>
-
-            </div>
-
-
-            <a
-                href="{{ url_for('prices') }}"
-                class="home-info-btn"
-                data-i18n="homeProcess.button"
-            >
-                Explore Service Options
-            </a>
-
-        </div>
-
-
-
-        <!-- RIGHT CARDS -->
-
-        <div class="home-process-grid">
-
-
-            <!-- STEP 01 -->
-
-            <article class="home-process-card">
-
-                <span class="home-card-number">
-                    01
-                </span>
-
-                <h3 data-i18n="homeProcess.step1Title">
-                    Understand the Goal
-                </h3>
-
-                <p data-i18n="homeProcess.step1Text">
-                    I start with the business goal,
-                    audience and functionality the website
-                    actually needs.
-                </p>
-
-            </article>
-
-
-
-            <!-- STEP 02 -->
-
-            <article class="home-process-card">
-
-                <span class="home-card-number">
-                    02
-                </span>
-
-                <h3 data-i18n="homeProcess.step2Title">
-                    Design the Experience
-                </h3>
-
-                <p data-i18n="homeProcess.step2Text">
-                    The structure is built around clear
-                    navigation, responsive layouts and
-                    strong visual hierarchy.
-                </p>
-
-            </article>
-
-
-
-            <!-- STEP 03 -->
-
-            <article class="home-process-card">
-
-                <span class="home-card-number">
-                    03
-                </span>
-
-                <h3 data-i18n="homeProcess.step3Title">
-                    Build the System
-                </h3>
-
-                <p data-i18n="homeProcess.step3Text">
-                    Frontend and backend code are connected
-                    into one maintainable application
-                    instead of isolated pieces.
-                </p>
-
-            </article>
-
-
-
-            <!-- STEP 04 -->
-
-            <article class="home-process-card">
-
-                <span class="home-card-number">
-                    04
-                </span>
-
-                <h3 data-i18n="homeProcess.step4Title">
-                    Test & Launch
-                </h3>
-
-                <p data-i18n="homeProcess.step4Text">
-                    Mobile behavior, forms, routes and
-                    security basics are checked before
-                    the project goes live.
-                </p>
-
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ==================================================
-     PROGRAMMING / TECHNOLOGY SECTION
-     projects-bg.mp4 = only background video
-=================================================== -->
-
-<section
-    class="home-info-section home-tech-section"
-    id="technology"
->
-
-    <video
-        class="home-info-video"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="metadata"
-    >
-        <source
-            src="{{ url_for('static', filename='videos/projects-bg.mp4') }}"
-            type="video/mp4"
-        >
-    </video>
-
-
-    <div
-        class="home-info-overlay home-tech-overlay"
-    ></div>
-
-    <div
-        class="home-info-grid home-tech-grid"
-    ></div>
-
-
-    <div class="home-tech-content">
-
-
-        <!-- HEADING -->
-
-        <div class="home-tech-heading">
-
-            <span
-                class="home-info-kicker"
-                data-i18n="homeTech.badge"
-            >
-                MODERN WEB DEVELOPMENT
-            </span>
-
-
-            <h2 data-i18n="homeTech.title">
-                Frontend, backend and security
-                working together.
-            </h2>
-
-
-            <p data-i18n="homeTech.description">
-                A professional web project is a system.
-                The interface, server logic, data and
-                security should support each other
-                from the beginning.
-            </p>
-
-        </div>
-
-
-
-        <div class="home-tech-layout">
-
-
-            <!-- TECHNOLOGY CARDS -->
-
-            <div class="home-tech-cards">
-
-
-                <!-- FRONTEND -->
-
-                <article class="home-tech-card">
-
-                    <span class="home-tech-tag">
-                        FRONTEND
-                    </span>
-
-                    <h3 data-i18n="homeTech.frontendTitle">
-                        Fast & Responsive UI
-                    </h3>
-
-                    <p data-i18n="homeTech.frontendText">
-                        HTML, CSS and JavaScript create
-                        interfaces that adapt cleanly to
-                        desktop, tablet and mobile.
-                    </p>
-
-                    <div class="home-tech-pills">
-
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- BACKEND -->
-
-                <article class="home-tech-card">
-
-                    <span class="home-tech-tag">
-                        BACKEND
-                    </span>
-
-                    <h3 data-i18n="homeTech.backendTitle">
-                        Real Server Logic
-                    </h3>
-
-                    <p data-i18n="homeTech.backendText">
-                        Flask and Python can power forms,
-                        authentication, APIs, business logic
-                        and dynamic pages.
-                    </p>
-
-                    <div class="home-tech-pills">
-
-                        <span>Python</span>
-                        <span>Flask</span>
-                        <span>API</span>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- DATABASE -->
-
-                <article class="home-tech-card">
-
-                    <span class="home-tech-tag">
-                        DATA
-                    </span>
-
-                    <h3 data-i18n="homeTech.databaseTitle">
-                        Structured Data
-                    </h3>
-
-                    <p data-i18n="homeTech.databaseText">
-                        Databases keep application data
-                        organized, searchable and ready
-                        for future growth.
-                    </p>
-
-                    <div class="home-tech-pills">
-
-                        <span>SQL</span>
-                        <span>Database</span>
-                        <span>ORM</span>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- SECURITY -->
-
-                <article class="home-tech-card">
-
-                    <span class="home-tech-tag">
-                        SECURITY
-                    </span>
-
-                    <h3 data-i18n="homeTech.securityTitle">
-                        Security by Design
-                    </h3>
-
-                    <p data-i18n="homeTech.securityText">
-                        Validation, authentication patterns,
-                        security headers and access control
-                        are considered as part of the
-                        application architecture.
-                    </p>
-
-                    <div class="home-tech-pills">
-
-                        <span>Validation</span>
-                        <span>Auth</span>
-                        <span>Headers</span>
-
-                    </div>
-
-                </article>
-
-            </div>
-
-
-
-            <!-- ==================================================
-                 FLASK CODE PANEL
-            =================================================== -->
-
-            <aside class="home-code-panel">
-
-
-                <div class="home-code-topbar">
-
-                    <div class="home-code-dots">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-
-                    <span>
-                        app.py
-                    </span>
-
-                </div>
-
-
-
-                <pre><code><span class="code-keyword">from</span> flask <span class="code-keyword">import</span> Flask, render_template
-
-app = Flask(__name__)
-
-<span class="code-decorator">@app.route</span>(<span class="code-string">"/"</span>)
-<span class="code-keyword">def</span> <span class="code-function">home</span>():
-    <span class="code-keyword">return</span> render_template(
-        <span class="code-string">"home.html"</span>
-    )</code></pre>
-
-
-
-                <div class="home-code-status">
-
-                    <span data-i18n="homeTech.appStatus">
-                        ● Flask application
-                    </span>
-
-                    <strong>
-                        READY
-                    </strong>
-
-                </div>
-
-
-
-                <div class="home-code-features">
-
-                    <div>
-
-                        <span>
-                            01
-                        </span>
-
-                        <p data-i18n="homeTech.codeFeature1">
-                            Clean routes
-                        </p>
-
-                    </div>
-
-
-                    <div>
-
-                        <span>
-                            02
-                        </span>
-
-                        <p data-i18n="homeTech.codeFeature2">
-                            Reusable templates
-                        </p>
-
-                    </div>
-
-
-                    <div>
-
-                        <span>
-                            03
-                        </span>
-
-                        <p data-i18n="homeTech.codeFeature3">
-                            Secure backend
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-
-                <a
-                    href="{{ url_for('projects') }}"
-                    class="home-code-link"
-                    data-i18n="homeTech.projectsButton"
-                >
-                    See My Projects →
-                </a>
-
-            </aside>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ==================================================
-     FINAL CTA
-=================================================== -->
-
-<section class="home-final-cta">
-
-
-    <div
-        class="home-final-glow home-final-glow-red"
-    ></div>
-
-    <div
-        class="home-final-glow home-final-glow-blue"
-    ></div>
-
-
-    <div class="home-final-content">
-
-        <span
-            class="home-info-kicker"
-            data-i18n="homeFinal.badge"
-        >
-            HAVE AN IDEA?
-        </span>
-
-
-        <h2 data-i18n="homeFinal.title">
-            Let's build something that works
-            as good as it looks.
-        </h2>
-
-
-        <p data-i18n="homeFinal.description">
-            Tell me what you need and we can choose
-            the right structure, functionality and
-            development approach.
-        </p>
-
-
-        <div class="home-final-actions">
-
-            <a
-                href="{{ url_for('prices') }}"
-                class="home-final-btn home-final-btn-secondary"
-                data-i18n="homeFinal.prices"
-            >
-                View Prices
-            </a>
-
-
-            <a
-                href="{{ url_for('contact') }}"
-                class="home-final-btn home-final-btn-primary"
-                data-i18n="homeFinal.contact"
-            >
-                Start a Project
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-<!-- Three.js import map: required by GLTFLoader and RoomEnvironment modules. -->
 <!-- ==================================================
      KNOWME AI FLOATING CHAT
 ================================================== -->
@@ -868,10 +437,7 @@ app = Flask(__name__)
 
 </div>
 
-<script
-    type="module"
-    src="{{ url_for('static', filename='js/robotic_eye.js') }}"
-></script>
-
+<script type="module" src="{{ url_for('static', filename='js/robotic_eye.js') }}"></script>
+<script defer src="{{ url_for('static', filename='js/homepage_motion.js', v='20261123-rwd2') }}"></script>
 {% endblock %}
 

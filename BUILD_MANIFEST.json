@@ -1,0 +1,20 @@
+{
+  "project": "KNOWME Studio Homepage",
+  "update": "Reversible four-card scroll ribbon and animated circular Engineering orbit traces",
+  "modified": [
+    "templates/home.html",
+    "static/homepage-motion.css",
+    "static/js/homepage_motion.js"
+  ],
+  "included_unchanged_reference_files": [
+    "app.py",
+    "static/style.css",
+    "static/script.js"
+  ],
+  "behavior": {
+    "scroll_down": "cards move left-to-right through the four panels",
+    "scroll_up": "the same track reverses leftward using native document scroll",
+    "wheel_interception": false,
+    "engineering": "two circular rings remain circular; cyan/red dash segments and light points travel around them"
+  }
+}

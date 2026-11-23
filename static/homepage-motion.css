@@ -1,0 +1,3585 @@
+/*
+ * KNOWME Studio — Homepage Motion System
+ * Page-scoped styles. Does not alter the shared chat, navigation or other routes.
+ */
+.km-home {
+    --km-bg: #05070d;
+    --km-panel: rgba(11, 16, 28, .78);
+    --km-panel-strong: rgba(8, 12, 22, .94);
+    --km-line: rgba(174, 197, 230, .15);
+    --km-text: #f2f5fb;
+    --km-muted: #9aa8bd;
+    --km-red: #ff5364;
+    --km-blue: #5a9cff;
+    --km-violet: #a17bff;
+    position: relative;
+    isolation: isolate;
+    color: var(--km-text);
+    background: var(--km-bg);
+    font-family: inherit;
+    overflow-x: clip;
+}
+.km-home *, .km-home *::before, .km-home *::after { box-sizing: border-box; }
+.km-home a { color: inherit; }
+.km-home .km-kicker,
+.km-home .km-eyebrow,
+.km-home .km-project-type,
+.km-home .km-service-index,
+.km-home .km-service-foot,
+.km-home .km-ribbon-controls,
+.km-home .km-security-code,
+.km-home .km-security-class,
+.km-home .km-detail-label,
+.km-home .km-stack-strip,
+.km-home .km-final-bottom,
+.km-home .km-hero-footer,
+.km-home .km-art-topline,
+.km-home .km-art-caption {
+    font-family: "Courier New", monospace;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .16em;
+}
+.km-home .km-section {
+    position: relative;
+    padding: clamp(88px, 11vw, 158px) max(5vw, calc((100vw - 1440px) / 2));
+    background:
+        radial-gradient(ellipse at 10% 25%, rgba(153, 24, 56, .10), transparent 36%),
+        radial-gradient(ellipse at 92% 72%, rgba(26, 92, 180, .10), transparent 38%),
+        #05070d;
+}
+.km-home .km-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: .25;
+    background-image: linear-gradient(rgba(170, 195, 230, .045) 1px, transparent 1px), linear-gradient(90deg, rgba(170, 195, 230, .045) 1px, transparent 1px);
+    background-size: 58px 58px;
+    mask-image: linear-gradient(to bottom, transparent, #000 14%, #000 85%, transparent);
+}
+.km-home .km-section > * { position: relative; z-index: 1; }
+.km-home .km-kicker { color: var(--km-red); display: inline-flex; align-items: center; gap: 10px; }
+.km-home .km-kicker::before { content: ""; width: 24px; height: 1px; background: linear-gradient(90deg, var(--km-red), transparent); }
+.km-home .km-section-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(260px, .65fr);
+    align-items: end;
+    gap: clamp(24px, 6vw, 90px);
+    max-width: 1440px;
+    margin: 0 auto 58px;
+}
+.km-home .km-section-heading h2,
+.km-home .km-services-heading h2,
+.km-home .km-engineering h2,
+.km-home .km-final h2 {
+    margin: 20px 0 0;
+    max-width: 900px;
+    color: #f7f8fb;
+    font-size: clamp(43px, 6.3vw, 88px);
+    font-weight: 850;
+    line-height: .98;
+    letter-spacing: -.065em;
+    text-wrap: balance;
+}
+.km-home .km-section-heading h2 em,
+.km-home .km-services-heading h2 em,
+.km-home .km-engineering h2 em,
+.km-home .km-final h2 em {
+    color: transparent;
+    font-style: normal;
+    -webkit-text-stroke: 1px rgba(211, 224, 245, .62);
+    text-shadow: 0 0 32px rgba(76, 130, 235, .10);
+}
+.km-home .km-section-heading > p,
+.km-home .km-services-heading > p {
+    max-width: 430px;
+    margin: 0 0 7px;
+    color: var(--km-muted);
+    font-size: 15px;
+    line-height: 1.85;
+}
+.km-home [data-reveal] { opacity: 0; transform: translate3d(0, 34px, 0); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+.km-home [data-reveal].is-visible { opacity: 1; transform: translate3d(0,0,0); }
+
+/* HERO */
+.km-home .km-hero {
+    position: relative;
+    display: flex;
+    min-height: min(870px, calc(100svh - 80px));
+    height: max(720px, calc(100svh - 80px));
+    max-height: 980px;
+    align-items: center;
+    overflow: hidden;
+    isolation: isolate;
+    padding: 104px 0 76px;
+    background: #03050a;
+}
+.km-home .km-hero-video { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: brightness(.33) contrast(1.16) saturate(.88); }
+.km-home .km-hero-overlay { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(90deg, rgba(4,5,10,.94) 0%, rgba(4,7,14,.78) 43%, rgba(4,8,18,.40) 100%), linear-gradient(180deg, rgba(3,5,10,.18), rgba(3,5,10,.35) 70%, #05070d 100%); }
+.km-home .km-hero-overlay::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 18% 48%, rgba(188,23,53,.28), transparent 38%), radial-gradient(ellipse at 76% 48%, rgba(24,104,222,.24), transparent 39%); }
+.km-home .km-hero-grid { position: absolute; z-index: 1; inset: 0; opacity: .20; pointer-events: none; background-image: radial-gradient(rgba(190,210,241,.52) .7px, transparent .9px); background-size: 6px 6px; mask-image: linear-gradient(90deg, #000, transparent 75%); }
+.km-home .km-hero-orbit { position: absolute; z-index: 1; width: 52vw; height: 52vw; max-width: 740px; max-height: 740px; border: 1px solid rgba(99,153,241,.12); border-radius: 50%; pointer-events: none; }
+.km-home .km-hero-orbit--one { top: 4%; right: -14%; transform: rotate(-24deg) scaleY(.42); }
+.km-home .km-hero-orbit--two { top: 16%; right: -2%; transform: rotate(18deg) scaleY(.24); border-color: rgba(255,83,100,.16); }
+.km-home .km-hero-layout { position: relative; z-index: 2; width: min(1440px, 90%); margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(380px, .98fr); align-items: center; gap: clamp(18px, 3.2vw, 54px); }
+.km-home .km-hero-copy { width: 100%; max-width: 760px; margin: 0; padding: 0; color: #fff; }
+.km-home .km-eyebrow { display: inline-flex; align-items: center; gap: 11px; color: rgba(226,235,250,.75); }
+.km-home .km-eyebrow i, .km-home .km-live-dot { width: 7px; height: 7px; flex: 0 0 7px; border-radius: 50%; background: #6de0b5; box-shadow: 0 0 15px rgba(109,224,181,.8); }
+.km-home .km-hero-copy h1 { max-width: 760px; margin: 25px 0 23px; color: #f6f8fc; font-size: clamp(48px, 6.1vw, 91px); line-height: .93; font-weight: 900; letter-spacing: -.075em; text-wrap: balance; text-shadow: 0 14px 50px rgba(0,0,0,.5); }
+.km-home .km-title-accent { color: transparent; background: linear-gradient(100deg, #fff 0%, #b8c8e3 38%, #81aaff 68%, #ff7a88 100%); -webkit-background-clip: text; background-clip: text; }
+.km-home .km-hero-description { max-width: 590px; margin: 0; color: rgba(224,232,245,.76); font-size: clamp(15px, 1.2vw, 18px); line-height: 1.8; }
+.km-home .km-hero-actions { gap: 12px; margin-top: 34px; }
+.km-home .km-hero-actions .hero-btn { min-width: 168px; min-height: 48px; }
+.km-home .km-hero-proofline { display: flex; align-items: center; gap: 11px; margin-top: 40px; color: rgba(191,207,231,.58); font: 800 9px/1.5 "Courier New", monospace; letter-spacing: .17em; }
+.km-home .km-robotic-eye-stage { position: relative; z-index: 2; width: 100%; height: clamp(430px, 66vh, 670px); min-width: 0; display: flex; align-items: center; justify-content: center; isolation: isolate; }
+.km-home #roboticEyeCanvas { position: relative; z-index: 2; display: block; width: 100%; height: 100%; outline: 0; background: transparent; touch-action: pan-y; }
+.km-home .robotic-eye-glow { position: absolute; z-index: 0; left: 50%; top: 50%; width: 72%; aspect-ratio: 1; transform: translate(-50%,-50%); border-radius: 50%; background: radial-gradient(circle, rgba(45,115,255,.27), rgba(112,45,190,.13) 42%, transparent 72%); filter: blur(34px); pointer-events: none; }
+.km-home .km-eye-orbit { position: absolute; z-index: 1; left: 50%; top: 50%; width: 88%; aspect-ratio: 1; border: 1px solid rgba(119,165,241,.22); border-radius: 50%; transform: translate(-50%,-50%) rotate(-23deg) scaleY(.27); pointer-events: none; }
+.km-home .km-eye-orbit--inner { width: 73%; border-color: rgba(255,83,100,.24); transform: translate(-50%,-50%) rotate(38deg) scaleY(.38); }
+.km-home .robotic-eye-label { position: absolute; z-index: 3; left: 50%; bottom: 24px; display: inline-flex; align-items: center; gap: 9px; width: max-content; max-width: 90%; transform: translateX(-50%); color: rgba(215,228,247,.72); font: 800 9px/1.4 "Courier New", monospace; letter-spacing: .13em; text-align: center; }
+.km-home .robotic-eye-label .eye-status-dot { width: 6px; height: 6px; flex: 0 0 6px; border-radius: 50%; background: #67dcb2; box-shadow: 0 0 13px #67dcb2; }
+.km-home .robotic-eye-label.is-error .eye-status-dot { background: var(--km-red); box-shadow: 0 0 13px var(--km-red); }
+.km-home .km-eye-coordinate { position: absolute; z-index: 3; right: 1%; top: 18%; color: rgba(198,215,241,.45); font: 800 8px/1.8 "Courier New", monospace; letter-spacing: .18em; text-align: right; pointer-events: none; }
+.km-home .km-hero-footer { position: absolute; z-index: 3; left: 5%; right: 5%; bottom: 24px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 20px; color: rgba(197,210,231,.48); font-size: 8px; }
+.km-home .km-hero-footer > :last-child { text-align: right; }
+.km-home .km-hero-footer a { display: inline-flex; align-items: center; gap: 16px; color: rgba(225,234,249,.76); text-decoration: none; }
+.km-home .km-hero-footer a i { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid rgba(153,185,232,.4); border-radius: 50%; font-size: 16px; font-style: normal; transition: transform .25s ease, border-color .25s ease; }
+.km-home .km-hero-footer a:hover i { transform: translateY(4px); border-color: var(--km-red); }
+
+/* WORK RIBBON */
+.km-home .km-work { padding-bottom: clamp(100px, 12vw, 170px); background: radial-gradient(ellipse at 50% 55%, rgba(36,78,145,.12), transparent 52%), #05070d; }
+.km-home .km-ribbon-controls { max-width: 1440px; margin: -20px auto 20px; display: flex; justify-content: space-between; align-items: center; color: rgba(183,199,223,.5); font-size: 9px; }
+.km-home .km-ribbon-controls > div { display: flex; gap: 8px; }
+.km-home .km-icon-button, .km-home .km-security-pagination button { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid rgba(143,174,223,.3); border-radius: 50%; background: rgba(12,20,36,.76); color: #eaf1fc; font-size: 18px; cursor: pointer; transition: border-color .2s ease, background .2s ease, transform .2s ease; }
+.km-home .km-icon-button:hover, .km-home .km-security-pagination button:hover { border-color: var(--km-red); background: rgba(128,31,53,.25); transform: translateY(-2px); }
+.km-home .km-ribbon-viewport { position: relative; max-width: 1600px; margin: 0 auto; overflow-x: auto; overflow-y: hidden; padding: 38px max(5vw, calc((100vw - 1320px)/2)) 56px; perspective: 1500px; scrollbar-width: none; cursor: grab; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; }
+.km-home .km-ribbon-viewport::-webkit-scrollbar { display: none; }
+.km-home .km-ribbon-viewport.is-dragging { cursor: grabbing; }
+.km-home .km-ribbon-track { display: flex; align-items: stretch; gap: clamp(18px, 3vw, 42px); width: max-content; min-width: 100%; transform-style: preserve-3d; }
+.km-home .km-project-card { flex: 0 0 clamp(300px, 52vw, 700px); width: clamp(300px, 52vw, 700px); min-height: 530px; scroll-snap-align: center; transform-style: preserve-3d; transform-origin: center center; will-change: transform; transition: filter .3s ease; }
+.km-home .km-project-card-link { display: flex; flex-direction: column; height: 100%; min-height: 530px; padding: 15px; border: 1px solid rgba(144,171,216,.2); border-radius: 21px; background: linear-gradient(145deg, rgba(17,24,41,.88), rgba(7,10,19,.96)); box-shadow: 0 28px 90px rgba(0,0,0,.36), inset 0 1px rgba(255,255,255,.05); text-decoration: none; overflow: hidden; transition: border-color .3s ease, box-shadow .3s ease; }
+.km-home .km-project-card-link:hover { border-color: rgba(123,163,237,.62); box-shadow: 0 38px 100px rgba(0,0,0,.46), 0 0 35px rgba(67,119,225,.1); }
+.km-home .km-project-art { position: relative; min-height: 335px; overflow: hidden; border-radius: 13px; isolation: isolate; background: #080d18; }
+.km-home .km-project-art::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: .55; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 34px 34px; mask-image: radial-gradient(ellipse, #000, transparent 80%); }
+.km-home .km-art-topline { position: absolute; z-index: 5; top: 18px; left: 20px; right: 20px; display: flex; justify-content: space-between; color: rgba(220,231,248,.58); font-size: 8px; }
+.km-home .km-art-caption { position: absolute; z-index: 5; bottom: 18px; left: 20px; color: rgba(225,234,249,.55); font-size: 8px; }
+.km-home .km-project-art--studio { background: radial-gradient(circle at 72% 50%, rgba(64,121,233,.24), transparent 36%), radial-gradient(circle at 19% 20%, rgba(193,30,59,.28), transparent 34%), linear-gradient(130deg,#0e101d,#060911 70%); }
+.km-home .km-art-window { position: absolute; top: 50%; left: 50%; width: 72%; height: 67%; transform: translate(-50%,-48%) perspective(800px) rotateY(-12deg) rotateX(4deg); border: 1px solid rgba(175,197,234,.34); border-radius: 10px; background: rgba(5,10,20,.85); box-shadow: 0 22px 60px rgba(0,0,0,.5), 0 0 35px rgba(53,110,210,.13); overflow: hidden; }
+.km-home .km-art-window-top { height: 33px; display: flex; align-items: center; gap: 5px; padding: 0 12px; border-bottom: 1px solid rgba(255,255,255,.1); color: rgba(194,211,238,.6); font: 8px "Courier New",monospace; }
+.km-home .km-art-window-top i { width: 6px; height: 6px; border-radius: 50%; background: #ff6874; }.km-home .km-art-window-top i:nth-child(2){background:#e9bd56}.km-home .km-art-window-top i:nth-child(3){background:#62d2a2}.km-home .km-art-window-top span { margin-left: auto; }
+.km-home .km-art-window-body { position: relative; height: calc(100% - 33px); padding: 30px 25px; display: flex; flex-direction: column; justify-content: center; }
+.km-home .km-art-window-body b { position: relative; z-index: 2; font-size: clamp(25px,4vw,46px); line-height: .95; letter-spacing: -.06em; }
+.km-home .km-art-window-body small { position: absolute; bottom: 18px; left: 25px; color: #94a8c8; font: 8px "Courier New",monospace; letter-spacing: .15em; }
+.km-home .km-art-orb { position: absolute; width: 160px; height: 160px; right: 6%; top: 9%; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #b5d0ff, #426ec4 28%, #101e3d 58%, transparent 72%); filter: drop-shadow(0 0 32px rgba(78,133,241,.5)); opacity: .75; }
+.km-home .km-project-art--ai { background: radial-gradient(circle at 50% 52%, rgba(112,68,216,.33), transparent 42%), radial-gradient(circle at 13% 85%, rgba(30,108,214,.2), transparent 38%), #080915; }
+.km-home .km-ai-core { position: absolute; top: 50%; left: 50%; width: 220px; height: 220px; transform: translate(-50%,-50%); display: grid; place-items: center; border: 1px solid rgba(135,156,238,.4); border-radius: 50%; box-shadow: 0 0 65px rgba(105,73,215,.24), inset 0 0 40px rgba(71,108,214,.16); }
+.km-home .km-ai-core::before,.km-home .km-ai-core::after { content:"";position:absolute;inset:18px;border:1px dashed rgba(147,170,239,.42);border-radius:50%;animation:km-spin 22s linear infinite; }.km-home .km-ai-core::after{inset:38px;border-style:solid;border-color:rgba(255,95,120,.36);animation-direction:reverse;animation-duration:16s;}
+.km-home .km-ai-core b { font-size: 62px; font-weight: 900; text-shadow: 0 0 36px rgba(119,144,255,.75); }.km-home .km-ai-core span { position: absolute; bottom: -30px; color: rgba(204,218,244,.58); font: 8px "Courier New",monospace; letter-spacing: .19em; }
+.km-home .km-ai-data { position: absolute; color: rgba(179,196,231,.64); font: 8px "Courier New",monospace; letter-spacing: .14em; }.km-home .km-ai-data--one{top:36%;left:8%}.km-home .km-ai-data--two{right:7%;bottom:31%}
+.km-home .km-project-art--builder { background: radial-gradient(ellipse at 50% 55%,rgba(51,112,221,.25),transparent 40%),linear-gradient(145deg,#07101d,#0d0915); }
+.km-home .km-builder-planet { position:absolute;top:50%;left:50%;border-radius:50%;border:1px solid rgba(117,170,251,.45);transform:translate(-50%,-50%) rotate(-18deg) scaleY(.28);width:70%;height:70%;box-shadow:0 0 28px rgba(73,137,250,.12); }
+.km-home .km-builder-planet--two{width:55%;height:95%;transform:translate(-50%,-50%) rotate(45deg) scaleY(.27);border-color:rgba(255,91,117,.4)}
+.km-home .km-builder-planet--core{width:80px;height:80px;transform:translate(-50%,-50%);background:radial-gradient(circle at 35% 30%,#e2edff,#5686dc 26%,#172a54 68%,#070b16);box-shadow:0 0 70px rgba(61,125,242,.45)}
+.km-home .km-builder-lines { position:absolute;inset:16% 22%;border:1px solid rgba(194,209,238,.12);transform:rotate(32deg) skewY(-18deg); }
+.km-home .km-project-meta { display: flex; align-items: flex-start; justify-content: space-between; gap: 22px; padding: 23px 10px 10px; }
+.km-home .km-project-type { color: var(--km-red); font-size: 8px; }
+.km-home .km-project-meta h3 { margin: 9px 0 7px; color: #f1f4fa; font-size: clamp(24px,3vw,34px); letter-spacing: -.045em; }
+.km-home .km-project-meta p { max-width: 520px; margin: 0; color: #9daac0; font-size: 13px; line-height: 1.7; }
+.km-home .km-project-arrow { flex: 0 0 37px; display: grid; width: 37px; height: 37px; place-items: center; border: 1px solid rgba(159,186,229,.28); border-radius: 50%; color: #dfe8f7; font-size: 18px; transition: transform .2s ease, background .2s ease; }
+.km-home .km-project-card-link:hover .km-project-arrow { transform: translate(3px,-3px); background: rgba(95,140,225,.18); }
+.km-home .km-project-tags { display: flex; flex-wrap: wrap; gap: 7px; padding: 7px 10px 10px; margin-top: auto; }
+.km-home .km-project-tags span { padding: 6px 8px; border: 1px solid rgba(170,192,229,.17); border-radius: 5px; color: rgba(195,210,236,.68); font: 8px "Courier New",monospace; letter-spacing: .08em; }
+.km-home .km-ribbon-progress { width: min(1440px,90%); height: 2px; margin: 0 auto; background: rgba(157,181,222,.14); overflow: hidden; }.km-home .km-ribbon-progress span { display:block;width:0;height:100%;background:linear-gradient(90deg,var(--km-red),var(--km-blue));transition:width .15s linear; }
+
+/* SERVICES */
+.km-home .km-services { background: radial-gradient(ellipse at 85% 20%,rgba(29,78,158,.12),transparent 36%),#070910; }
+.km-home .km-services-heading { max-width: 1440px; margin: 0 auto 54px; display: grid; grid-template-columns: minmax(0,1.2fr) minmax(260px,.65fr); align-items: end; gap: 6vw; }
+.km-home .km-services-heading h2 { margin-top: 20px; }
+.km-home .km-service-grid { max-width: 1440px; margin: 0 auto; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; }
+.km-home .km-service-card { position: relative; min-height: 390px; padding: 24px 22px; overflow: hidden; border: 1px solid rgba(151,177,221,.16); border-radius: 15px; background: linear-gradient(145deg,rgba(14,20,35,.83),rgba(8,10,18,.92)); transition: transform .35s ease,border-color .35s ease,background .35s ease; }
+.km-home .km-service-card:hover { transform: translateY(-8px); border-color: rgba(112,157,237,.46); background: linear-gradient(145deg,rgba(21,29,49,.93),rgba(8,10,18,.97)); }
+.km-home .km-service-card--wide { grid-column: span 1; }
+.km-home .km-service-index { color: rgba(169,189,221,.52); font-size: 8px; }
+.km-home .km-service-card h3 { position: relative; z-index: 1; margin: 16px 0 10px; max-width: 340px; font-size: clamp(21px,2.1vw,29px); line-height: 1.08; letter-spacing: -.04em; }
+.km-home .km-service-card p { position: relative; z-index: 1; max-width: 410px; color: #9eacc2; font-size: 13px; line-height: 1.75; }
+.km-home .km-service-foot { position: absolute; left: 22px; bottom: 22px; color: rgba(174,197,230,.48); font-size: 8px; }
+.km-home .km-service-visual { position: absolute; right: 12px; top: 52px; width: 47%; height: 150px; opacity: .76; pointer-events: none; }
+.km-home .km-service-visual--ui { border: 1px solid rgba(113,157,242,.29); border-radius: 10px; transform: perspective(500px) rotateY(-18deg) rotateX(5deg); background: linear-gradient(135deg,rgba(79,120,218,.14),rgba(14,24,46,.18)); box-shadow: 12px 17px 35px rgba(0,0,0,.25); }
+.km-home .km-service-visual--ui i { display:block;height:9px;margin:15px 13px;border-radius:3px;background:rgba(171,195,241,.16) }.km-home .km-service-visual--ui i:nth-child(2){width:70%}.km-home .km-service-visual--ui i:nth-child(3){width:44%}.km-home .km-service-visual--ui b{position:absolute;right:14px;bottom:12px;color:rgba(117,164,248,.8);font:800 10px "Courier New",monospace;letter-spacing:.14em}
+.km-home .km-service-visual--app { display:grid;place-items:center;border:1px solid rgba(255,83,100,.24);border-radius:50%;width:140px;height:140px;right:25px;transform:rotate(-20deg);box-shadow:0 0 55px rgba(189,41,72,.12),inset 0 0 45px rgba(189,41,72,.09) }.km-home .km-service-visual--app b{font-size:42px;color:#ff7987;text-shadow:0 0 24px rgba(255,83,100,.7)}.km-home .km-service-visual--app i{position:absolute;inset:15px;border:1px dashed rgba(255,124,141,.4);border-radius:50%}
+.km-home .km-service-visual--data { width:150px;display:flex;align-items:center;justify-content:space-between;right:25px;top:60px }.km-home .km-service-visual--data i{width:34px;height:95px;border:1px solid rgba(93,151,249,.4);border-radius:6px;background:linear-gradient(180deg,rgba(106,160,255,.24),rgba(52,95,181,.03));transform:skewY(-18deg)}.km-home .km-service-visual--data i:nth-child(2){height:130px}.km-home .km-service-visual--ai{right:25px;top:45px;width:210px;height:160px}.km-home .km-service-visual--ai div{position:absolute;inset:12px 35px;border:1px solid rgba(130,121,255,.38);border-radius:50%;transform:rotate(55deg) scaleY(.42)}.km-home .km-service-visual--ai div:nth-child(2){transform:rotate(-55deg) scaleY(.42);border-color:rgba(255,89,117,.4)}.km-home .km-service-visual--ai div:nth-child(3){inset:32px 58px;border-color:rgba(113,159,251,.5)}.km-home .km-service-visual--ai b{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:36px;text-shadow:0 0 22px #826dff}
+
+/* PROCESS */
+.km-home .km-process { background: linear-gradient(180deg,#05070d,#070a12 55%,#05070d); }
+.km-home .km-process-line { max-width: 1440px; height: 1px; margin: 22px auto 0; background: linear-gradient(90deg,rgba(255,83,100,.75),rgba(93,151,249,.65),rgba(255,255,255,.08)); transform-origin: left; }
+.km-home .km-process-steps { max-width: 1440px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 16px; }
+.km-home .km-process-steps article { position: relative; min-height: 245px; padding: 29px 18px 22px 0; border-top: 1px solid rgba(159,184,226,.18); }
+.km-home .km-process-steps article > span { display: inline-grid; width: 38px; height: 38px; place-items: center; border: 1px solid rgba(113,159,239,.42); border-radius: 50%; color: #b4c9ed; font: 11px "Courier New",monospace; box-shadow: 0 0 22px rgba(67,117,220,.1); }
+.km-home .km-process-steps h3 { margin: 22px 0 9px; font-size: 24px; letter-spacing: -.04em; }
+.km-home .km-process-steps p { max-width: 280px; min-height: 74px; color: #9caac0; font-size: 13px; line-height: 1.75; }
+.km-home .km-process-steps small { color: rgba(173,195,229,.48); font: 8px "Courier New",monospace; letter-spacing: .12em; }
+
+/* SECURITY BOOK — pinned horizontal reading experience in the former project-ribbon position */
+.km-home .km-security-book-section {
+    --km-book-header-height: 72px;
+    position: relative;
+    isolation: isolate;
+    height: auto;
+    min-height: 0;
+    padding: 0 !important;
+    overflow: clip;
+    background:
+      radial-gradient(ellipse at 82% 28%, rgba(38,91,184,.16), transparent 42%),
+      radial-gradient(ellipse at 12% 35%, rgba(174,31,61,.14), transparent 36%),
+      linear-gradient(180deg,#05070d 0%,#070a13 52%,#05070d 100%);
+}
+.km-home .km-security-book-section::before {
+    content:""; position:absolute; inset:0; pointer-events:none; opacity:.25;
+    background-image:linear-gradient(rgba(150,180,230,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(150,180,230,.04) 1px,transparent 1px);
+    background-size:54px 54px; mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent);
+}
+.km-home .km-security-scroll-space {
+    position:relative;
+    height:calc((100svh - var(--km-book-header-height)) * 11);
+}
+.km-home .km-security-sticky {
+    position:sticky;
+    top:var(--km-book-header-height);
+    height:calc(100svh - var(--km-book-header-height));
+    min-height:650px;
+    display:flex;
+    flex-direction:column;
+    gap:clamp(9px,1.25vh,15px);
+    padding:clamp(13px,2vh,22px) 0 clamp(11px,1.7vh,18px);
+    overflow:hidden;
+}
+.km-home .km-security-heading {
+    width:min(1440px,92vw);
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:minmax(0,1.1fr) minmax(280px,.7fr);
+    align-items:end;
+    gap:clamp(22px,5vw,76px);
+    flex:0 0 auto;
+}
+.km-home .km-security-heading h2 {
+    margin:9px 0 0;
+    max-width:900px;
+    font-size:clamp(34px,4.2vw,61px);
+    line-height:.98;
+}
+.km-home .km-security-heading > p {
+    max-width:440px;
+    margin:0 0 3px;
+    color:#aab8ce;
+    font-size:clamp(11px,.95vw,14px);
+    line-height:1.65;
+}
+.km-home .km-security-toolbar {
+    width:min(1440px,92vw);
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    flex:0 0 auto;
+}
+.km-home .km-security-reading-label {
+    display:flex;
+    align-items:center;
+    gap:16px;
+    color:rgba(169,192,229,.56);
+    font:800 8px/1.4 "Courier New",monospace;
+    letter-spacing:.16em;
+}
+.km-home .km-security-reading-label strong { color:#e5edfc; font-size:10px; }
+.km-home .km-security-toolbar-actions { display:flex; align-items:center; gap:8px; }
+.km-home .km-security-scroll-hint { margin-right:8px; color:rgba(170,194,231,.48); font:800 8px "Courier New",monospace; letter-spacing:.14em; }
+.km-home .km-security-toolbar .km-icon-button { width:34px; height:34px; }
+.km-home .km-security-toolbar .km-icon-button:disabled { opacity:.3; cursor:not-allowed; transform:none; }
+.km-home .km-security-progress-track {
+    width:min(1440px,92vw);
+    height:2px;
+    margin:0 auto;
+    flex:0 0 auto;
+    overflow:hidden;
+    background:rgba(142,169,215,.14);
+}
+.km-home .km-security-progress-track span {
+    display:block; width:0; height:100%;
+    background:linear-gradient(90deg,var(--km-red),var(--km-blue));
+    box-shadow:0 0 14px rgba(91,151,255,.58);
+    will-change:width;
+}
+.km-home .km-security-book-stage {
+    position:relative;
+    width:100%;
+    flex:1 1 auto;
+    min-height:0;
+    display:flex;
+    align-items:stretch;
+    justify-content:center;
+    isolation:isolate;
+}
+.km-home .km-security-book-viewport {
+    position:relative;
+    z-index:2;
+    width:min(1440px,92vw);
+    height:100%;
+    margin:0 auto;
+    overflow:hidden;
+    perspective:2200px;
+    outline:none;
+}
+.km-home .km-security-chapters {
+    position:relative;
+    display:flex;
+    align-items:stretch;
+    width:max-content;
+    height:100%;
+    gap:0;
+    transform:translate3d(0,0,0);
+    transform-style:preserve-3d;
+    will-change:transform;
+}
+.km-home .km-security-chapter {
+    position:relative;
+    flex:0 0 min(92vw,1440px);
+    width:min(92vw,1440px);
+    height:100%;
+    min-height:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:clamp(2px,.55vh,7px) clamp(1px,.25vw,4px);
+    perspective:2200px;
+    transform-style:preserve-3d;
+    backface-visibility:hidden;
+    filter:brightness(.72) saturate(.86);
+    transition:filter .45s ease;
+}
+.km-home .km-security-chapter.is-active,
+.km-home .km-security-chapter.is-next { filter:brightness(1) saturate(1); }
+.km-home .km-security-chapter-meta {
+    width:100%;
+    margin:0 auto 9px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    color:rgba(175,197,231,.5);
+    font:800 8px "Courier New",monospace;
+    letter-spacing:.17em;
+}
+.km-home .km-security-chapter-tag { color:rgba(255,103,124,.82); text-align:right; }
+.km-home .km-book-spread {
+    position:relative;
+    isolation:isolate;
+    width:100%;
+    height:calc(100% - 22px);
+    min-height:0;
+    margin:0 auto;
+    padding:clamp(7px,.8vw,12px);
+    display:grid;
+    grid-template-columns:minmax(0,.91fr) minmax(0,1.09fr);
+    align-items:stretch;
+    gap:0;
+    border:1px solid rgba(132,165,222,.27);
+    border-radius:17px;
+    background:linear-gradient(140deg,rgba(20,31,53,.84),rgba(5,9,18,.98) 48%,rgba(13,20,37,.94));
+    box-shadow:0 30px 85px rgba(0,0,0,.4),0 0 75px rgba(41,91,176,.09),inset 0 1px rgba(225,237,255,.065);
+    transform-style:preserve-3d;
+}
+.km-home .km-book-spread::before {
+    content:""; position:absolute; inset:7px; z-index:-1; border-radius:12px; pointer-events:none;
+    background:linear-gradient(110deg,rgba(169,39,69,.11),transparent 42%,rgba(51,106,194,.14));
+}
+.km-home .km-book-page {
+    position:relative;
+    min-width:0;
+    min-height:0;
+    height:100%;
+    padding:clamp(17px,2.1vw,32px);
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    scrollbar-width:thin;
+    scrollbar-color:rgba(100,145,220,.4) transparent;
+    background:linear-gradient(155deg,rgba(15,23,40,.97),rgba(7,11,21,.97) 68%,rgba(9,15,28,.99));
+}
+.km-home .km-book-page::-webkit-scrollbar { width:4px; }
+.km-home .km-book-page::-webkit-scrollbar-thumb { background:rgba(100,145,220,.42); border-radius:8px; }
+.km-home .km-book-page--left {
+    display:flex; flex-direction:column; justify-content:space-between;
+    border:1px solid rgba(151,178,225,.14); border-right:0;
+    border-radius:11px 3px 3px 11px;
+    background:radial-gradient(ellipse at 14% 16%,rgba(174,40,69,.17),transparent 42%),linear-gradient(155deg,#111827,#080d18 76%);
+    transform-origin:right center;
+}
+.km-home .km-book-page--right {
+    border:1px solid rgba(151,178,225,.15); border-left:1px solid rgba(151,178,225,.08);
+    border-radius:3px 11px 11px 3px;
+    background:radial-gradient(ellipse at 88% 12%,rgba(46,98,186,.13),transparent 42%),linear-gradient(155deg,#0d1422,#080d18 72%);
+    transform-origin:left center;
+}
+.km-home .km-book-page-head {
+    position:relative; z-index:1; display:flex; justify-content:space-between; align-items:center; gap:10px;
+    padding-bottom:11px; border-bottom:1px solid rgba(156,183,229,.12);
+    color:rgba(174,196,229,.46); font:800 7px "Courier New",monospace; letter-spacing:.13em;
+}
+.km-home .km-book-folio { color:rgba(255,104,124,.76); white-space:nowrap; }
+.km-home .km-book-left-content { position:relative; z-index:1; max-width:560px; padding:clamp(20px,4vh,48px) 0; }
+.km-home .km-book-chapter-word { display:block; margin-bottom:clamp(9px,1.7vh,18px); color:rgba(174,198,237,.56); font:800 8px "Courier New",monospace; letter-spacing:.18em; }
+.km-home .km-security-acronym {
+    display:inline-flex; align-items:center; min-height:27px; margin-bottom:clamp(9px,1.6vh,16px); padding:5px 9px;
+    border:1px solid rgba(104,160,255,.38); border-radius:4px; color:#9bc0ff; background:rgba(48,94,168,.13);
+    font:800 10px "Courier New",monospace; letter-spacing:.18em;
+}
+.km-home .km-book-topic-title { max-width:590px; margin:0 0 clamp(11px,2vh,19px); color:#f3f6fc; font-size:clamp(27px,3.05vw,48px); line-height:1.02; letter-spacing:-.052em; text-wrap:balance; }
+.km-home .km-security-lead { max-width:560px; margin:0; color:#c3d0e4; font-size:clamp(11px,.95vw,14px); line-height:1.72; }
+.km-home .km-book-left-bottom { position:relative; z-index:1; display:flex; align-items:end; justify-content:space-between; gap:14px; padding-top:12px; border-top:1px solid rgba(156,183,229,.12); color:rgba(174,196,229,.44); font:7px "Courier New",monospace; letter-spacing:.12em; }
+.km-home .km-book-left-bottom strong { color:rgba(127,167,232,.3); font-size:clamp(30px,4.4vw,62px); line-height:.8; letter-spacing:-.06em; }
+.km-home .km-book-spine {
+    position:absolute; z-index:5; top:16px; bottom:16px; left:calc(45.5% - 1px); width:2px;
+    background:linear-gradient(180deg,transparent,rgba(255,91,116,.7) 18%,rgba(130,170,235,.7) 50%,rgba(255,91,116,.42) 82%,transparent);
+    box-shadow:0 0 16px rgba(91,146,235,.32); pointer-events:none;
+}
+.km-home .km-book-spine::before { content:""; position:absolute; inset:0 -8px; background:linear-gradient(90deg,transparent,rgba(5,8,15,.4),transparent); }
+.km-home .km-security-body { position:relative; z-index:1; margin:13px 0 0; color:#b5c2d7; font-size:clamp(9px,.76vw,11px); line-height:1.62; }
+.km-home .km-security-body p { margin:0 0 9px; }
+.km-home .km-security-columns { position:relative; z-index:1; display:grid; grid-template-columns:1fr 1fr; gap:15px; margin:13px 0 12px; padding:12px 0; border-top:1px solid rgba(154,180,222,.14); border-bottom:1px solid rgba(154,180,222,.14); }
+.km-home .km-detail-label { display:block; margin-bottom:7px; color:rgba(166,192,232,.67); font:800 7px "Courier New",monospace; letter-spacing:.13em; }
+.km-home .km-security-detail-block p { margin:0; color:#c1cde0; font-size:clamp(8px,.68vw,10px); line-height:1.58; }
+.km-home .km-defence-heading { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.km-home .km-defence-count { color:rgba(255,106,124,.8); font:8px "Courier New",monospace; letter-spacing:.11em; white-space:nowrap; }
+.km-home .km-book-controls { display:grid; grid-template-columns:1fr 1fr; gap:7px 15px; margin:9px 0 0; padding:0; list-style:none; }
+.km-home .km-book-controls li { position:relative; padding-left:14px; color:#c4d0e2; font-size:clamp(8px,.67vw,9.5px); line-height:1.52; }
+.km-home .km-book-controls li::before { content:""; position:absolute; left:0; top:.57em; width:5px; height:5px; border-radius:50%; background:var(--km-blue); box-shadow:0 0 9px rgba(90,156,255,.62); }
+.km-home .km-book-page-footer { position:relative; z-index:1; display:flex; justify-content:space-between; align-items:end; gap:12px; margin-top:13px; padding-top:10px; border-top:1px solid rgba(154,180,222,.12); }
+.km-home .km-security-reference > span { display:block; margin-bottom:5px; color:rgba(170,193,227,.5); font:7px "Courier New",monospace; letter-spacing:.13em; }
+.km-home .km-security-reference a { color:#91baff; font-size:9px; text-decoration:none; border-bottom:1px solid rgba(145,186,255,.32); padding-bottom:2px; }
+.km-home .km-security-reference a:hover { color:#fff; border-color:#fff; }
+.km-home .km-book-page-count { color:rgba(200,216,241,.54); font:8px "Courier New",monospace; letter-spacing:.14em; white-space:nowrap; }
+.km-home .km-book-page-turn {
+    position:absolute; z-index:8; top:8px; right:8px; bottom:8px; left:45.5%;
+    border:1px solid rgba(176,201,244,.27); border-left-color:rgba(233,241,255,.5);
+    border-radius:2px 10px 10px 2px; transform:rotateY(0deg); transform-origin:left center;
+    transform-style:preserve-3d; backface-visibility:hidden; pointer-events:none; opacity:0;
+    background:linear-gradient(100deg,rgba(214,229,255,.2),rgba(38,67,111,.58) 13%,rgba(10,17,31,.72) 76%,rgba(33,59,99,.62));
+    box-shadow:inset 8px 0 20px rgba(211,229,255,.12),16px 0 32px rgba(0,0,0,.26);
+    will-change:transform,opacity;
+}
+.km-home .km-book-page-turn::after { content:""; position:absolute; inset:0; opacity:.75; background:linear-gradient(90deg,rgba(235,243,255,.23),transparent 9%,transparent 86%,rgba(100,150,226,.18)); }
+.km-home .km-security-chapter.is-active .km-book-page--left { box-shadow:inset 0 0 50px rgba(173,51,79,.035); }
+.km-home .km-security-chapter.is-active .km-book-page--right { box-shadow:inset 0 0 55px rgba(68,113,196,.055); }
+.km-home .km-security-book-glow { position:absolute; z-index:1; top:50%; width:min(32vw,440px); aspect-ratio:1; border-radius:50%; filter:blur(80px); opacity:.13; pointer-events:none; }
+.km-home .km-security-book-glow--red { left:4%; background:rgba(224,45,76,.44); }
+.km-home .km-security-book-glow--blue { right:4%; background:rgba(53,115,230,.42); }
+.km-home .km-security-book-footer {
+    width:min(1440px,92vw); margin:0 auto; display:flex; align-items:center; justify-content:space-between;
+    gap:18px; flex:0 0 auto; color:rgba(159,177,206,.45); font-size:8px; line-height:1.45;
+}
+.km-home .km-security-book-footer > span:first-child { max-width:950px; }
+.km-home .km-security-footer-mark { white-space:nowrap; color:rgba(174,196,229,.42); font:800 7px "Courier New",monospace; letter-spacing:.14em; }
+
+/* ENGINEERING */
+.km-home .km-engineering { display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);align-items:center;gap:5vw;background:linear-gradient(130deg,#070910,#050811 55%,#080914) }
+.km-home .km-engineering-copy { position:relative;z-index:2 }
+.km-home .km-engineering h2 { margin:20px 0 22px;font-size:clamp(42px,5.4vw,74px) }
+.km-home .km-engineering-copy > p { max-width:500px;color:#9eacc2;font-size:14px;line-height:1.85 }
+.km-home .km-text-link { display:inline-flex;align-items:center;gap:14px;margin-top:22px;color:#f3f6fb;text-decoration:none;font-size:13px;font-weight:800 }
+.km-home .km-text-link i { display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(130,169,235,.34);border-radius:50%;font-size:17px;font-style:normal;transition:transform .2s ease }
+.km-home .km-text-link:hover i { transform:translate(3px,-3px) }
+.km-home .km-architecture { position:relative;min-height:490px;display:grid;place-items:center;isolation:isolate }
+.km-home .km-architecture-orbit { position:absolute;width:min(80%,520px);aspect-ratio:1;border:1px solid rgba(116,164,245,.2);border-radius:50%;transform:rotate(-22deg) scaleY(.42);box-shadow:0 0 55px rgba(54,113,220,.06) }
+.km-home .km-architecture-orbit--two { width:60%;transform:rotate(50deg) scaleY(.48);border-color:rgba(255,83,100,.2) }
+.km-home .km-architecture-core { position:relative;z-index:3;width:150px;height:150px;display:flex;flex-direction:column;justify-content:center;align-items:center;border:1px solid rgba(150,179,230,.38);border-radius:50%;background:radial-gradient(circle at 32% 25%,rgba(78,133,227,.23),rgba(6,11,22,.94) 70%);box-shadow:0 0 70px rgba(47,103,216,.16),inset 0 0 34px rgba(99,150,239,.12) }
+.km-home .km-architecture-core span { color:#f5f8ff;font-size:20px;font-weight:900;letter-spacing:.1em }.km-home .km-architecture-core b{margin-top:6px;color:#94b7f4;font:8px "Courier New",monospace;letter-spacing:.1em}.km-home .km-architecture-core small{margin-top:13px;color:rgba(180,199,230,.48);font:7px "Courier New",monospace;letter-spacing:.12em}
+.km-home .km-architecture-node { position:absolute;z-index:4;min-width:148px;padding:13px 15px;border:1px solid rgba(139,171,224,.27);border-radius:9px;background:rgba(7,13,25,.88);box-shadow:0 17px 45px rgba(0,0,0,.3);display:flex;flex-direction:column;gap:5px;backdrop-filter:blur(10px) }
+.km-home .km-architecture-node i { color:var(--km-red);font:9px "Courier New",monospace;font-style:normal }.km-home .km-architecture-node b{color:#e7eef9;font:800 10px "Courier New",monospace;letter-spacing:.12em}.km-home .km-architecture-node small{color:rgba(169,190,224,.52);font:7px "Courier New",monospace;letter-spacing:.08em}
+.km-home .km-architecture-node--frontend{left:4%;top:17%}.km-home .km-architecture-node--backend{right:2%;top:18%}.km-home .km-architecture-node--data{left:3%;bottom:14%}.km-home .km-architecture-node--security{right:1%;bottom:13%}
+.km-home .km-stack-strip { grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin-top:25px;padding:19px 0;border-top:1px solid rgba(154,180,222,.14);border-bottom:1px solid rgba(154,180,222,.14);color:rgba(185,202,231,.52);font-size:8px }
+.km-home .km-stack-strip b { color:rgba(222,232,248,.75);font-size:9px;letter-spacing:.12em }
+
+/* FINAL */
+.km-home .km-final { position:relative;min-height:610px;padding:clamp(92px,12vw,160px) 5% 25px;display:flex;flex-direction:column;justify-content:center;overflow:hidden;isolation:isolate;background:#05070d }
+.km-home .km-final::before { content:"";position:absolute;inset:0;z-index:-1;opacity:.18;background-image:linear-gradient(rgba(160,190,235,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(160,190,235,.04) 1px,transparent 1px);background-size:54px 54px }
+.km-home .km-final-glow { position:absolute;z-index:-1;width:540px;height:540px;border-radius:50%;filter:blur(90px);opacity:.2;pointer-events:none }
+.km-home .km-final-glow--red { left:-260px;top:8%;background:#c51c43 }.km-home .km-final-glow--blue{right:-230px;bottom:-15%;background:#175bcc}
+.km-home .km-final-content { width:min(1100px,90%);margin:0 auto;text-align:center }
+.km-home .km-final h2 { max-width:1000px;margin:22px auto;font-size:clamp(48px,7.6vw,104px) }
+.km-home .km-final-content > p { max-width:620px;margin:0 auto;color:#9eacc2;font-size:15px;line-height:1.8 }
+.km-home .km-final-actions { display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:33px }
+.km-home .km-final-button { min-width:190px;min-height:50px;display:inline-flex;align-items:center;justify-content:center;gap:16px;padding:0 22px;border:1px solid rgba(155,183,231,.3);border-radius:8px;text-decoration:none;font-size:12px;font-weight:800;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease }
+.km-home .km-final-button:hover { transform:translateY(-3px);border-color:rgba(255,105,124,.75);box-shadow:0 12px 35px rgba(0,0,0,.3) }
+.km-home .km-final-button--primary { border-color:rgba(255,99,119,.58);background:linear-gradient(120deg,#951b3c,#c72b4a 55%,#285fb7);box-shadow:0 8px 32px rgba(171,35,73,.18) }
+.km-home .km-final-bottom { width:min(1440px,90%);margin:100px auto 0;padding-top:18px;border-top:1px solid rgba(154,180,222,.14);display:flex;justify-content:space-between;gap:20px;color:rgba(174,194,225,.42);font-size:8px }
+.km-home .km-final-bottom a { color:rgba(211,224,244,.68);text-decoration:none }
+
+@keyframes km-spin { to { transform:rotate(360deg) } }
+
+/* RESPONSIVE */
+@media (max-width: 1050px) {
+    .km-home .km-hero-layout { grid-template-columns:minmax(0,1fr) minmax(310px,.85fr);width:92% }
+    .km-home .km-hero-copy h1 { font-size:clamp(44px,6vw,70px) }
+    .km-home .km-robotic-eye-stage { height:clamp(360px,54vh,530px) }
+    .km-home .km-service-grid { grid-template-columns:repeat(2,minmax(0,1fr)) }
+    .km-home .km-service-card { min-height:350px }
+    .km-home .km-engineering { grid-template-columns:1fr }
+    .km-home .km-engineering-copy { max-width:750px }
+    .km-home .km-architecture { width:min(850px,100%);margin:0 auto }
+}
+@media (max-width: 720px) {
+    .km-home .km-hero { min-height:900px;height:auto;max-height:none;padding:118px 0 90px;align-items:flex-start }
+    .km-home .km-hero-layout { grid-template-columns:1fr;width:90%;gap:0 }
+    .km-home .km-hero-copy h1 { max-width:620px;font-size:clamp(43px,10vw,68px) }
+    .km-home .km-hero-description { max-width:520px;font-size:14px }
+    .km-home .km-robotic-eye-stage { width:min(100%,540px);height:390px;margin:4px auto 0 }
+    .km-home .km-eye-coordinate { right:2%;top:8% }
+    .km-home .km-hero-footer { left:5%;right:5%;grid-template-columns:1fr auto;bottom:16px;font-size:7px }
+    .km-home .km-hero-footer > :last-child { display:none }
+    .km-home .km-section-heading,.km-home .km-services-heading { grid-template-columns:1fr;gap:19px;margin-bottom:36px }
+    .km-home .km-section-heading h2,.km-home .km-services-heading h2 { font-size:clamp(42px,10vw,66px) }
+    .km-home .km-ribbon-controls { margin-top:0 }
+    .km-home .km-ribbon-viewport { padding:20px 5% 36px }
+    .km-home .km-project-card,.km-home .km-project-card-link { flex-basis:min(84vw,520px);width:min(84vw,520px);min-height:490px }
+    .km-home .km-project-art { min-height:300px }
+    .km-home .km-service-grid { grid-template-columns:1fr 1fr;gap:10px }
+    .km-home .km-service-card,.km-home .km-service-card--wide { grid-column:span 1;min-height:360px;padding:18px 15px }
+    .km-home .km-service-card h3 { font-size:20px }
+    .km-home .km-service-card p { font-size:11px }
+    .km-home .km-service-foot { left:15px;bottom:16px;font-size:7px }
+    .km-home .km-service-visual { transform:scale(.78);transform-origin:top right;right:2px }
+    .km-home .km-process-steps { grid-template-columns:1fr 1fr;gap:8px 20px }
+    .km-home .km-process-steps article { min-height:230px }
+    .km-home .km-architecture { min-height:420px }
+    .km-home .km-architecture-node { min-width:122px;padding:10px }
+    .km-home .km-architecture-node small { font-size:6px }
+    .km-home .km-stack-strip { justify-content:flex-start }
+    .km-home .km-final-bottom { flex-wrap:wrap;margin-top:70px }
+}
+@media (max-width: 480px) {
+    .km-home .km-hero { min-height:850px }
+    .km-home .km-eyebrow { font-size:8px;letter-spacing:.1em }
+    .km-home .km-hero-copy h1 { font-size:clamp(39px,11vw,54px) }
+    .km-home .km-hero-actions { flex-direction:column;align-items:stretch;max-width:280px }
+    .km-home .km-hero-actions .hero-btn { width:100% }
+    .km-home .km-robotic-eye-stage { height:330px }
+    .km-home .robotic-eye-label { bottom:15px;font-size:7px }
+    .km-home .km-hero-footer { font-size:6px;letter-spacing:.08em }
+    .km-home .km-section { padding-left:5%;padding-right:5% }
+    .km-home .km-project-card,.km-home .km-project-card-link { min-height:465px }
+    .km-home .km-project-art { min-height:260px }
+    .km-home .km-service-grid { grid-template-columns:1fr }
+    .km-home .km-service-card,.km-home .km-service-card--wide { min-height:315px }
+    .km-home .km-service-card p { max-width:320px;font-size:12px }
+    .km-home .km-process-steps { grid-template-columns:1fr }
+    .km-home .km-process-steps article { min-height:185px }
+    .km-home .km-process-steps p { min-height:0 }
+    .km-home .km-architecture { min-height:360px }
+    .km-home .km-architecture-core { width:110px;height:110px }
+    .km-home .km-architecture-core span { font-size:15px }
+    .km-home .km-architecture-node { min-width:105px;max-width:120px }
+    .km-home .km-architecture-node b { font-size:8px }
+    .km-home .km-architecture-node small { font-size:5px }
+    .km-home .km-architecture-node--frontend { left:0;top:8% }
+    .km-home .km-architecture-node--backend { right:0;top:8% }
+    .km-home .km-architecture-node--data { left:0;bottom:7% }
+    .km-home .km-architecture-node--security { right:0;bottom:7% }
+    .km-home .km-final h2 { font-size:clamp(43px,12vw,62px) }
+}
+
+/* SECURITY BOOK RESPONSIVE BEHAVIOUR */
+@media (max-width: 1050px) {
+    .km-home .km-security-heading { width:92vw; grid-template-columns:minmax(0,1fr) minmax(220px,.7fr); }
+    .km-home .km-security-heading h2 { font-size:clamp(31px,4.5vw,48px); }
+    .km-home .km-security-book-viewport { width:94vw; }
+    .km-home .km-security-chapter { flex-basis:94vw; width:94vw; }
+    .km-home .km-book-page { padding:16px; }
+    .km-home .km-security-body { font-size:9px; }
+    .km-home .km-security-detail-block p { font-size:8px; }
+}
+@media (max-width: 720px) {
+    .km-home .km-security-scroll-space { height:auto; }
+    .km-home .km-security-sticky { position:relative; top:auto; height:auto; min-height:0; padding:82px 0 48px; gap:13px; overflow:visible; }
+    .km-home .km-security-heading { grid-template-columns:1fr; gap:12px; margin-bottom:4px; }
+    .km-home .km-security-heading h2 { font-size:clamp(36px,9vw,54px); }
+    .km-home .km-security-heading > p { max-width:580px; font-size:12px; }
+    .km-home .km-security-toolbar { flex-wrap:wrap; }
+    .km-home .km-security-scroll-hint { font-size:7px; }
+    .km-home .km-security-book-stage { display:block; flex:0 0 auto; }
+    .km-home .km-security-book-viewport { width:92vw; height:auto; overflow-x:auto; overflow-y:hidden; scroll-snap-type:x mandatory; scrollbar-width:none; overscroll-behavior-x:contain; }
+    .km-home .km-security-book-viewport::-webkit-scrollbar { display:none; }
+    .km-home .km-security-chapters { width:max-content; height:auto; transform:none !important; }
+    .km-home .km-security-chapter { flex:0 0 92vw; width:92vw; height:auto; min-height:0; padding:4px 2px 18px; scroll-snap-align:center; filter:none; }
+    .km-home .km-security-chapter-meta { margin-bottom:8px; }
+    .km-home .km-book-spread { width:100%; height:auto; min-height:0; grid-template-columns:1fr; padding:8px; }
+    .km-home .km-book-page { height:auto; min-height:0; max-height:none; padding:21px 18px; overflow:visible; }
+    .km-home .km-book-page--left { min-height:300px; border-right:1px solid rgba(151,178,225,.14); border-radius:9px 9px 3px 3px; }
+    .km-home .km-book-page--right { border-left:1px solid rgba(151,178,225,.15); border-radius:3px 3px 9px 9px; }
+    .km-home .km-book-spine { display:none; }
+    .km-home .km-book-page-turn { display:none; }
+    .km-home .km-book-left-content { padding:32px 0; }
+    .km-home .km-book-topic-title { font-size:clamp(30px,8vw,43px); }
+    .km-home .km-security-body { font-size:11px; }
+    .km-home .km-security-detail-block p { font-size:10px; }
+    .km-home .km-security-columns,.km-home .km-book-controls { grid-template-columns:1fr; }
+    .km-home .km-security-book-footer { align-items:flex-start; flex-direction:column; }
+    .km-home .km-security-book-glow { opacity:.08; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .km-home *, .km-home *::before, .km-home *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+    .km-home [data-reveal] { opacity:1;transform:none }
+    .km-home .km-project-card { transform:none !important }
+}
+
+/* ==========================================================
+   KNOWME SPATIAL SECURITY FIELD
+   Curved ribbon + cursor-shaped terrain, inspired by spatial
+   motion portfolios. Real HTML pages remain selectable.
+========================================================== */
+.km-home .km-security-book-section {
+    --km-book-header-height: 72px;
+    --km-ribbon-width: clamp(820px, 81vw, 1280px);
+    --km-ribbon-gap: clamp(36px, 7vw, 118px);
+    min-height: 0;
+    overflow: clip;
+    background:
+        radial-gradient(ellipse at 50% 74%, rgba(18, 47, 92, .16), transparent 48%),
+        radial-gradient(ellipse at 12% 48%, rgba(158, 24, 53, .12), transparent 38%),
+        #02040a;
+}
+.km-home .km-security-book-section::before {
+    opacity: .13;
+    background-size: 74px 74px;
+    mask-image: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent);
+}
+.km-home .km-security-scroll-space {
+    height: calc((100svh - var(--km-book-header-height)) * 11);
+}
+.km-home .km-security-sticky {
+    position: sticky;
+    isolation: isolate;
+    top: var(--km-book-header-height);
+    height: calc(100svh - var(--km-book-header-height));
+    min-height: 650px;
+    padding: clamp(12px, 1.8vh, 20px) 0 clamp(10px, 1.4vh, 15px);
+    gap: clamp(8px, 1.1vh, 13px);
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 50% 68%, rgba(13, 26, 48, .18), transparent 52%),
+        linear-gradient(180deg, rgba(3,5,10,.86), rgba(2,4,9,.96));
+}
+.km-home .km-security-landscape {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+    opacity: .94;
+}
+.km-home .km-security-sticky > :not(.km-security-landscape) {
+    position: relative;
+    z-index: 2;
+}
+.km-home .km-security-heading {
+    width: min(1440px, 92vw);
+    grid-template-columns: minmax(0, 1.12fr) minmax(260px, .64fr);
+    align-items: end;
+    gap: clamp(20px, 4vw, 68px);
+    margin-bottom: 0;
+}
+.km-home .km-security-heading h2 {
+    max-width: 900px;
+    margin-top: 7px;
+    font-size: clamp(32px, 3.75vw, 55px);
+    line-height: .98;
+    letter-spacing: -.065em;
+}
+.km-home .km-security-heading > p {
+    max-width: 420px;
+    color: rgba(190, 205, 229, .72);
+    font-size: clamp(10px, .82vw, 12px);
+    line-height: 1.7;
+}
+.km-home .km-security-toolbar {
+    width: min(1440px, 92vw);
+    min-height: 28px;
+    margin: 0 auto;
+}
+.km-home .km-security-reading-label {
+    gap: 12px;
+    font-size: 7px;
+    letter-spacing: .19em;
+}
+.km-home .km-security-toolbar .km-icon-button {
+    width: 30px;
+    height: 30px;
+    border-color: rgba(124, 159, 219, .22);
+    background: rgba(5, 10, 20, .44);
+}
+.km-home .km-security-scroll-hint {
+    color: rgba(180, 201, 235, .62);
+    letter-spacing: .16em;
+}
+.km-home .km-security-progress-track {
+    width: min(1440px, 92vw);
+    height: 1px;
+    background: rgba(133, 164, 218, .16);
+}
+.km-home .km-security-progress-track span {
+    background: linear-gradient(90deg, #d83b55, #739fff 58%, #b8cfff);
+    box-shadow: 0 0 18px rgba(83, 144, 255, .72);
+}
+.km-home .km-security-book-stage {
+    z-index: 2 !important;
+    width: 100vw;
+    max-width: none;
+    margin-left: calc(50% - 50vw);
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: visible;
+    perspective: 1800px;
+    transform-style: preserve-3d;
+}
+.km-home .km-security-book-viewport {
+    width: 100vw;
+    max-width: none;
+    height: 100%;
+    overflow: visible;
+    perspective: 1800px;
+    perspective-origin: 50% 48%;
+    transform-style: preserve-3d;
+}
+.km-home .km-security-chapters {
+    width: max-content;
+    height: 100%;
+    align-items: center;
+    gap: var(--km-ribbon-gap);
+    padding-inline: calc((100vw - var(--km-ribbon-width)) / 2);
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+.km-home .km-security-chapter {
+    flex: 0 0 var(--km-ribbon-width);
+    width: var(--km-ribbon-width);
+    height: 100%;
+    padding: 0;
+    justify-content: center;
+    transform-style: preserve-3d;
+    backface-visibility: visible;
+    filter: brightness(.56) saturate(.78);
+    will-change: transform, filter;
+}
+.km-home .km-security-chapter.is-active {
+    filter: brightness(1) saturate(1);
+}
+.km-home .km-security-chapter.is-next,
+.km-home .km-security-chapter.is-active + .km-security-chapter {
+    filter: brightness(.78) saturate(.9);
+}
+.km-home .km-security-chapter-meta {
+    margin-bottom: 8px;
+    color: rgba(167, 191, 229, .36);
+    font-size: 7px;
+    letter-spacing: .2em;
+    transform: translateZ(16px);
+}
+.km-home .km-book-spread {
+    width: 100%;
+    height: min(100%, 560px);
+    min-height: 0;
+    padding: 0;
+    gap: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    transform-style: preserve-3d;
+    filter: drop-shadow(0 38px 55px rgba(0,0,0,.48));
+}
+.km-home .km-book-spread::before {
+    inset: 12px 3px 4px;
+    z-index: -2;
+    border-radius: 45% 45% 18px 18px / 7% 7% 3% 3%;
+    background:
+        radial-gradient(ellipse at 50% 53%, rgba(38, 91, 165, .17), transparent 64%),
+        linear-gradient(90deg, rgba(182, 34, 65, .08), transparent 42%, rgba(55, 111, 213, .12));
+    filter: blur(17px);
+}
+.km-home .km-book-page {
+    padding: clamp(20px, 2.4vw, 38px) clamp(20px, 2.5vw, 42px);
+    border-color: rgba(144, 174, 224, .18);
+    background-color: #080d18;
+    box-shadow: inset 0 1px rgba(235,243,255,.07), 0 18px 44px rgba(0,0,0,.28);
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+.km-home .km-book-page--left {
+    border: 1px solid rgba(151, 178, 225, .18);
+    border-right: 0;
+    border-radius: 32px 5px 5px 22px;
+    background:
+        radial-gradient(ellipse at 7% 18%, rgba(183, 36, 67, .18), transparent 48%),
+        linear-gradient(110deg, #111a2b 0%, #090f1b 65%, #080d17 100%);
+    transform-origin: right center;
+    box-shadow: inset 10px 0 25px rgba(0,0,0,.2), inset -1px 0 rgba(255,255,255,.03), 0 20px 50px rgba(0,0,0,.24);
+}
+.km-home .km-book-page--right {
+    border: 1px solid rgba(151, 178, 225, .18);
+    border-left: 1px solid rgba(191, 211, 244, .12);
+    border-radius: 5px 32px 22px 5px;
+    background:
+        radial-gradient(ellipse at 96% 12%, rgba(47, 102, 202, .17), transparent 50%),
+        linear-gradient(250deg, #101a2c 0%, #090f1b 62%, #080d17 100%);
+    transform-origin: left center;
+    box-shadow: inset -10px 0 25px rgba(0,0,0,.18), inset 1px 0 rgba(255,255,255,.025), 0 20px 50px rgba(0,0,0,.24);
+}
+.km-home .km-book-page--left::before,
+.km-home .km-book-page--right::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 8px;
+    bottom: 8px;
+    width: 9px;
+    opacity: .52;
+    pointer-events: none;
+    background: repeating-linear-gradient(180deg, rgba(203,220,247,.18) 0 1px, rgba(8,14,25,.7) 1px 3px);
+}
+.km-home .km-book-page--left::before { left: -8px; transform: skewY(-1deg); }
+.km-home .km-book-page--right::before { right: -8px; transform: skewY(1deg); }
+.km-home .km-book-page-head {
+    padding-bottom: 13px;
+    border-color: rgba(160, 187, 230, .15);
+    font-size: 7px;
+    letter-spacing: .18em;
+}
+.km-home .km-book-topic-title {
+    font-size: clamp(29px, 3.2vw, 50px);
+    line-height: .99;
+}
+.km-home .km-security-lead {
+    font-size: clamp(11px, .9vw, 13px);
+    line-height: 1.74;
+}
+.km-home .km-security-body {
+    font-size: clamp(10px, .78vw, 12px);
+    line-height: 1.7;
+}
+.km-home .km-security-body p { margin-bottom: 11px; }
+.km-home .km-security-columns {
+    gap: 18px;
+    margin: 14px 0 13px;
+    padding: 13px 0;
+}
+.km-home .km-security-detail-block p {
+    font-size: clamp(9px, .68vw, 10.5px);
+    line-height: 1.62;
+}
+.km-home .km-book-controls { gap: 8px 16px; }
+.km-home .km-book-controls li {
+    font-size: clamp(9px, .68vw, 10.5px);
+    line-height: 1.55;
+}
+.km-home .km-book-spine {
+    left: 45.5%;
+    width: 12px;
+    top: 0;
+    bottom: 0;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, rgba(0,0,0,.38), rgba(190,207,236,.13) 42%, rgba(0,0,0,.62) 55%, rgba(0,0,0,.08));
+    box-shadow: 0 0 20px rgba(79, 139, 235, .2);
+}
+.km-home .km-book-spine::before {
+    inset: 0 -14px;
+    background: linear-gradient(90deg, transparent, rgba(5,8,15,.18), transparent);
+}
+.km-home .km-book-page-turn {
+    top: 2px;
+    right: 0;
+    bottom: 2px;
+    left: 45.5%;
+    border-radius: 0 28px 20px 0;
+    background: linear-gradient(100deg, rgba(225,238,255,.34), rgba(40,72,119,.76) 10%, rgba(9,17,31,.96) 72%, rgba(49,87,145,.7));
+    box-shadow: inset 8px 0 24px rgba(218,232,255,.18), 20px 0 42px rgba(0,0,0,.32);
+}
+.km-home .km-security-book-glow { z-index: 0; opacity: .2; filter: blur(105px); }
+.km-home .km-security-book-footer {
+    width: min(1440px, 92vw);
+    color: rgba(164, 185, 218, .52);
+    font-size: 7px;
+    letter-spacing: .03em;
+}
+.km-home .km-security-footer-mark { color: rgba(172, 197, 235, .56); }
+
+/* The book ribbon bends as it travels through the scene. */
+.km-home .km-security-chapter {
+    transform-style: preserve-3d;
+    transform-origin: 50% 52%;
+}
+.km-home .km-book-spread,
+.km-home .km-book-page {
+    transform-style: preserve-3d;
+}
+.km-home .km-security-book-section.is-landscape-fallback .km-security-landscape { display: none; }
+.km-home .km-security-book-section.is-landscape-fallback .km-security-sticky {
+    background-image:
+      radial-gradient(ellipse at var(--km-pointer-x,50%) var(--km-pointer-y,70%), rgba(76,133,225,.12), transparent 30%),
+      linear-gradient(180deg, #03050a, #050914);
+}
+
+@media (max-width: 1050px) {
+    .km-home .km-security-book-section { --km-ribbon-width: 86vw; --km-ribbon-gap: 5vw; }
+    .km-home .km-security-heading { grid-template-columns: minmax(0,1fr) minmax(220px,.72fr); }
+    .km-home .km-book-page { padding: 18px 20px; }
+    .km-home .km-security-body { font-size: 10px; }
+}
+@media (max-width: 720px) {
+    .km-home .km-security-scroll-space { height: auto; }
+    .km-home .km-security-sticky {
+        position: relative;
+        top: auto;
+        height: auto;
+        min-height: 0;
+        padding: 82px 0 48px;
+        gap: 13px;
+        overflow: visible;
+    }
+    .km-home .km-security-landscape { opacity: .34; height: 620px; bottom: auto; }
+    .km-home .km-security-heading { grid-template-columns: 1fr; gap: 12px; }
+    .km-home .km-security-book-stage { width: 100%; margin-left: 0; display: block; flex: 0 0 auto; }
+    .km-home .km-security-book-viewport { width: 92vw; height: auto; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; }
+    .km-home .km-security-book-viewport::-webkit-scrollbar { display: none; }
+    .km-home .km-security-chapters { width: max-content; height: auto; padding-inline: 4vw; gap: 4vw; transform: none !important; }
+    .km-home .km-security-chapter { flex: 0 0 92vw; width: 92vw; height: auto; min-height: 0; padding: 4px 2px 18px; scroll-snap-align: center; filter: none; transform: none !important; }
+    .km-home .km-book-spread { width: 100%; height: auto; min-height: 0; grid-template-columns: 1fr; padding: 0; filter: none; }
+    .km-home .km-book-page { height: auto; min-height: 0; max-height: none; padding: 21px 18px; overflow: visible; }
+    .km-home .km-book-page--left { min-height: 300px; border-right: 1px solid rgba(151,178,225,.14); border-radius: 22px 8px 4px 8px; }
+    .km-home .km-book-page--right { border-left: 1px solid rgba(151,178,225,.15); border-radius: 4px 8px 22px 8px; }
+    .km-home .km-book-spine { display: none; }
+    .km-home .km-book-page-turn { display: none; }
+    .km-home .km-book-left-content { padding: 32px 0; }
+    .km-home .km-book-topic-title { font-size: clamp(30px,8vw,43px); }
+    .km-home .km-security-body { font-size: 11px; }
+    .km-home .km-security-detail-block p { font-size: 10px; }
+    .km-home .km-security-columns, .km-home .km-book-controls { grid-template-columns: 1fr; }
+    .km-home .km-security-book-footer { align-items: flex-start; flex-direction: column; }
+}
+
+@media (min-width: 721px) {
+    .km-home .km-book-spread { filter: none; }
+    .km-home .km-book-page--left {
+        transform: perspective(1800px) rotateY(3deg);
+        transform-origin: right center;
+    }
+    .km-home .km-book-page--right {
+        transform: perspective(1800px) rotateY(-3deg);
+        transform-origin: left center;
+    }
+}
+
+
+/* ================================================================
+   KNOWME LUMINOUS CURVED LANDSCAPE — MOTION REFINEMENT
+   Brighter glass pages, a stronger spatial arc and fluid scrolling.
+   Scoped to the homepage; other routes and the AI chat are untouched.
+================================================================ */
+.km-home {
+    --km-bg: #08162b;
+    --km-panel: rgba(20, 39, 70, .84);
+    --km-panel-strong: rgba(12, 27, 51, .95);
+    --km-line: rgba(190, 218, 255, .24);
+    --km-text: #f7faff;
+    --km-muted: #bdcde7;
+    --km-red: #ff5c7c;
+    --km-blue: #72d4ff;
+    --km-violet: #b7a0ff;
+    background:
+        radial-gradient(ellipse at 14% 14%, rgba(55, 117, 215, .12), transparent 34%),
+        radial-gradient(ellipse at 86% 42%, rgba(124, 91, 225, .10), transparent 38%),
+        #08162b;
+}
+
+.km-home .km-section:not(.km-security-book-section) {
+    background-image:
+        radial-gradient(ellipse at 8% 18%, rgba(61, 135, 235, .14), transparent 38%),
+        radial-gradient(ellipse at 90% 72%, rgba(144, 91, 230, .11), transparent 40%),
+        linear-gradient(135deg, #0a1b34 0%, #0a1428 52%, #10162f 100%);
+}
+.km-home .km-section::before {
+    opacity: .38;
+    background-image:
+        linear-gradient(rgba(181, 213, 255, .075) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(181, 213, 255, .075) 1px, transparent 1px);
+}
+.km-home .km-hero { background: #07152a; }
+.km-home .km-hero-video {
+    filter: brightness(.47) contrast(1.08) saturate(1.18);
+}
+.km-home .km-hero-overlay {
+    background:
+        linear-gradient(90deg, rgba(5, 13, 28, .82), rgba(7, 15, 32, .48) 48%, rgba(7, 14, 30, .20)),
+        linear-gradient(180deg, rgba(4, 10, 22, .05), rgba(4, 10, 22, .23) 72%, #08162b 100%);
+}
+.km-home .km-hero-overlay::before {
+    background:
+        radial-gradient(ellipse at 18% 48%, rgba(255, 62, 110, .34), transparent 39%),
+        radial-gradient(ellipse at 78% 48%, rgba(40, 151, 255, .34), transparent 40%),
+        radial-gradient(ellipse at 54% 12%, rgba(161, 126, 255, .12), transparent 38%);
+}
+.km-home .km-title-accent {
+    background: linear-gradient(100deg, #fff 0%, #b8efff 34%, #a9b9ff 66%, #ff9ab2 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+.km-home .km-hero-proofline,
+.km-home .km-hero-footer { color: rgba(215, 231, 255, .72); }
+.km-home .km-hero-orbit { border-color: rgba(110, 190, 255, .24); }
+.km-home .km-hero-orbit--two { border-color: rgba(255, 102, 145, .27); }
+
+/* Lighter glass cards across services and the engineering sections. */
+.km-home .km-service-card {
+    border-color: rgba(175, 207, 255, .24);
+    background:
+        radial-gradient(ellipse at 88% 5%, rgba(111, 174, 255, .14), transparent 42%),
+        linear-gradient(145deg, rgba(26, 48, 82, .92), rgba(12, 26, 50, .96));
+    box-shadow: 0 24px 65px rgba(0, 0, 0, .22), inset 0 1px rgba(255,255,255,.12);
+    backdrop-filter: blur(18px);
+}
+.km-home .km-service-card:hover {
+    border-color: rgba(132, 207, 255, .72);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, .28), 0 0 40px rgba(85, 161, 255, .16), inset 0 1px rgba(255,255,255,.2);
+}
+.km-home .km-service-card p,
+.km-home .km-engineering-copy > p,
+.km-home .km-process-steps p { color: #c0d1ec; }
+.km-home .km-service-index,
+.km-home .km-service-foot { color: rgba(185, 216, 255, .78); }
+.km-home .km-process { background: linear-gradient(180deg, #0a1b34, #101b38 56%, #0a162c); }
+.km-home .km-process-steps article { border-color: rgba(168, 203, 255, .27); }
+.km-home .km-process-steps article > span {
+    color: #e6f5ff;
+    border-color: rgba(119, 195, 255, .62);
+    background: rgba(59, 123, 207, .17);
+    box-shadow: 0 0 28px rgba(71, 160, 255, .2);
+}
+.km-home .km-engineering {
+    background:
+        radial-gradient(ellipse at 76% 50%, rgba(74, 131, 232, .17), transparent 40%),
+        linear-gradient(130deg, #0b1b34, #081329 58%, #151631);
+}
+.km-home .km-architecture-orbit { border-color: rgba(116, 196, 255, .38); box-shadow: 0 0 65px rgba(54, 145, 240, .13); }
+.km-home .km-architecture-orbit--two { border-color: rgba(255, 108, 150, .36); }
+.km-home .km-architecture-core {
+    background: radial-gradient(circle at 32% 25%, rgba(109, 178, 255, .48), rgba(17, 35, 69, .96) 72%);
+    border-color: rgba(174, 215, 255, .66);
+    box-shadow: 0 0 82px rgba(53, 132, 255, .28), inset 0 0 40px rgba(132, 190, 255, .2);
+}
+.km-home .km-architecture-node {
+    border-color: rgba(173, 207, 255, .36);
+    background: rgba(14, 31, 58, .9);
+    box-shadow: 0 18px 48px rgba(0,0,0,.24), 0 0 24px rgba(66,135,220,.09);
+}
+.km-home .km-architecture-node small { color: rgba(191, 215, 249, .72); }
+.km-home .km-final {
+    background:
+        radial-gradient(ellipse at 16% 44%, rgba(255, 66, 112, .18), transparent 36%),
+        radial-gradient(ellipse at 86% 44%, rgba(60, 143, 255, .22), transparent 39%),
+        linear-gradient(135deg, #091a33, #0d1730 58%, #111831);
+}
+.km-home .km-final-content > p,
+.km-home .km-final-bottom { color: rgba(205, 220, 245, .72); }
+
+/* The Security Book becomes a luminous glass object in a blue-violet field. */
+.km-home .km-security-book-section {
+    background:
+        radial-gradient(ellipse at 50% 56%, rgba(62, 137, 255, .30), transparent 48%),
+        radial-gradient(ellipse at 12% 32%, rgba(255, 66, 126, .20), transparent 40%),
+        radial-gradient(ellipse at 90% 26%, rgba(150, 108, 255, .23), transparent 42%),
+        linear-gradient(180deg, #0a1d3b 0%, #0b1b38 52%, #0a1730 100%);
+}
+.km-home .km-security-book-section::before {
+    opacity: .48;
+    background-size: 58px 58px;
+    background-image:
+        linear-gradient(rgba(185, 218, 255, .09) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(185, 218, 255, .09) 1px, transparent 1px);
+}
+.km-home .km-security-sticky {
+    background:
+        radial-gradient(ellipse at 50% 65%, rgba(59, 137, 255, .15), transparent 50%),
+        radial-gradient(ellipse at 14% 22%, rgba(255, 80, 135, .10), transparent 38%),
+        linear-gradient(180deg, rgba(9, 23, 48, .52), rgba(8, 19, 40, .68));
+}
+.km-home .km-security-landscape {
+    opacity: 1;
+    filter: saturate(1.3) brightness(1.35);
+}
+.km-home .km-security-heading h2 { color: #fbfdff; text-shadow: 0 8px 42px rgba(43, 129, 255, .18); }
+.km-home .km-security-heading h2 em {
+    color: transparent;
+    -webkit-text-stroke: 0;
+    background: linear-gradient(100deg, #a9edff, #b5baff 52%, #ff9fbd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: 0 0 32px rgba(117, 167, 255, .18);
+}
+.km-home .km-security-heading > p { color: #d2e2fb; }
+.km-home .km-security-reading-label { color: rgba(205, 225, 255, .78); }
+.km-home .km-security-reading-label strong { color: #fff; text-shadow: 0 0 14px rgba(128, 197, 255, .55); }
+.km-home .km-security-scroll-hint { color: rgba(209, 229, 255, .82); }
+.km-home .km-security-toolbar .km-icon-button {
+    border-color: rgba(159, 208, 255, .46);
+    background: linear-gradient(145deg, rgba(65, 119, 195, .34), rgba(18, 39, 76, .72));
+    box-shadow: 0 0 24px rgba(72, 154, 255, .13), inset 0 1px rgba(255,255,255,.12);
+}
+.km-home .km-security-toolbar .km-icon-button:hover {
+    border-color: rgba(255, 130, 167, .82);
+    background: linear-gradient(145deg, rgba(113, 69, 153, .5), rgba(29, 66, 124, .8));
+}
+.km-home .km-security-progress-track { background: rgba(180, 211, 255, .25); }
+.km-home .km-security-progress-track span {
+    background: linear-gradient(90deg, #ff668b, #a58dff 46%, #70e1ff 100%);
+    box-shadow: 0 0 20px rgba(112, 205, 255, .78), 0 0 34px rgba(169, 130, 255, .38);
+}
+.km-home .km-security-book-stage::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 4% 4% 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at 50% 58%, rgba(112, 177, 255, .18), transparent 58%);
+    filter: blur(25px);
+    animation: kmBookAura 7s ease-in-out infinite alternate;
+}
+.km-home .km-security-book-viewport { perspective: 2300px; perspective-origin: 50% 46%; }
+.km-home .km-security-chapters { gap: clamp(42px, 7vw, 122px); }
+.km-home .km-security-chapter {
+    filter: brightness(.72) saturate(.92);
+    transition: filter .55s ease;
+}
+.km-home .km-security-chapter.is-active {
+    filter: brightness(1.12) saturate(1.1);
+}
+.km-home .km-security-chapter.is-next,
+.km-home .km-security-chapter.is-active + .km-security-chapter {
+    filter: brightness(.9) saturate(1.02);
+}
+.km-home .km-security-chapter-meta { color: rgba(206, 226, 255, .68); }
+.km-home .km-security-chapter-tag { color: #ff9ab6; text-shadow: 0 0 14px rgba(255, 93, 142, .3); }
+.km-home .km-book-spread {
+    filter: drop-shadow(0 36px 52px rgba(0, 0, 0, .34)) drop-shadow(0 0 25px rgba(85, 162, 255, .17));
+}
+.km-home .km-book-spread::before {
+    background:
+        radial-gradient(ellipse at 50% 52%, rgba(101, 178, 255, .28), transparent 62%),
+        linear-gradient(90deg, rgba(255, 103, 153, .15), transparent 42%, rgba(86, 179, 255, .22));
+    filter: blur(21px);
+}
+
+/* Frosted luminous paper: the contrast stays high for long technical copy. */
+.km-home .km-book-page {
+    color: #182a46;
+    border-color: rgba(244, 249, 255, .78);
+    background:
+        linear-gradient(145deg, rgba(251, 253, 255, .98), rgba(222, 238, 255, .96) 58%, rgba(239, 231, 255, .96));
+    box-shadow: inset 0 1px rgba(255,255,255,.94), inset 0 -22px 42px rgba(103, 147, 210, .08), 0 20px 45px rgba(0,0,0,.22);
+}
+.km-home .km-book-page--left {
+    border-color: rgba(255, 255, 255, .9);
+    background:
+        radial-gradient(ellipse at 12% 15%, rgba(255, 147, 179, .26), transparent 45%),
+        linear-gradient(120deg, #fffaff 0%, #e9f1ff 58%, #e0ebfc 100%);
+    box-shadow: inset 10px 0 25px rgba(104, 132, 186, .08), inset -1px 0 rgba(255,255,255,.8), 0 22px 50px rgba(0,0,0,.22);
+}
+.km-home .km-book-page--right {
+    border-color: rgba(255,255,255,.9);
+    background:
+        radial-gradient(ellipse at 92% 12%, rgba(113, 207, 255, .25), transparent 48%),
+        linear-gradient(245deg, #f8fdff 0%, #e5f2ff 58%, #e9eaff 100%);
+    box-shadow: inset -10px 0 25px rgba(85, 136, 204, .08), inset 1px 0 rgba(255,255,255,.84), 0 22px 50px rgba(0,0,0,.22);
+}
+.km-home .km-book-page-head {
+    color: rgba(41, 65, 101, .66);
+    border-bottom-color: rgba(66, 101, 153, .18);
+}
+.km-home .km-book-folio { color: #cf4268; }
+.km-home .km-book-chapter-word { color: #536f9b; }
+.km-home .km-security-acronym {
+    color: #22599d;
+    border-color: rgba(74, 142, 220, .42);
+    background: linear-gradient(110deg, rgba(111, 191, 255, .18), rgba(178, 153, 255, .16));
+    box-shadow: 0 4px 18px rgba(85, 142, 226, .10);
+}
+.km-home .km-book-topic-title { color: #122541; text-shadow: 0 1px rgba(255,255,255,.8); }
+.km-home .km-security-lead { color: #344e70; }
+.km-home .km-book-left-bottom {
+    color: rgba(57, 79, 112, .65);
+    border-top-color: rgba(72, 104, 155, .2);
+}
+.km-home .km-book-left-bottom strong { color: rgba(75, 125, 196, .44); }
+.km-home .km-security-body { color: #2b4161; }
+.km-home .km-security-columns { border-color: rgba(68, 105, 158, .20); }
+.km-home .km-detail-label { color: #526f9a; }
+.km-home .km-security-detail-block p { color: #304967; }
+.km-home .km-book-controls li { color: #2c4567; }
+.km-home .km-book-controls li::before { background: #438fe3; box-shadow: 0 0 11px rgba(67, 157, 239, .55); }
+.km-home .km-defence-count { color: #ce426b; }
+.km-home .km-book-page-footer { border-top-color: rgba(68, 105, 158, .2); }
+.km-home .km-security-reference > span { color: #647d9f; }
+.km-home .km-security-reference a { color: #245fa9; border-bottom-color: rgba(36, 95, 169, .4); }
+.km-home .km-security-reference a:hover { color: #b12f57; border-color: #b12f57; }
+.km-home .km-book-page-count { color: #587296; }
+.km-home .km-book-spine {
+    width: 3px;
+    background: linear-gradient(180deg, transparent, #ff86ac 14%, #7adfff 48%, #b49bff 72%, transparent);
+    box-shadow: 0 0 17px rgba(115, 207, 255, .6), 0 0 28px rgba(175, 137, 255, .25);
+}
+.km-home .km-book-spine::before { background: linear-gradient(90deg, transparent, rgba(42, 72, 117, .28), transparent); }
+.km-home .km-book-page-turn {
+    border-color: rgba(255,255,255,.88);
+    border-left-color: #fff;
+    background: linear-gradient(105deg, rgba(255,255,255,.93), rgba(199,225,255,.94) 16%, rgba(239,234,255,.96) 74%, rgba(153,211,255,.92));
+    box-shadow: inset 8px 0 24px rgba(255,255,255,.9), 20px 0 42px rgba(21,52,98,.22);
+}
+.km-home .km-book-page--left::before,
+.km-home .km-book-page--right::before {
+    opacity: .82;
+    background: repeating-linear-gradient(180deg, rgba(80, 111, 159, .2) 0 1px, rgba(229, 241, 255, .9) 1px 3px);
+}
+.km-home .km-security-book-glow { opacity: .34; filter: blur(90px); }
+.km-home .km-security-book-glow--red { background: #ff477b; }
+.km-home .km-security-book-glow--blue { background: #4abfff; }
+.km-home .km-security-book-footer { color: rgba(205, 222, 249, .68); }
+.km-home .km-security-footer-mark { color: rgba(224, 235, 255, .8); }
+
+/* Slow ambient movement around the book and other homepage sections. */
+@keyframes kmBookAura {
+    0% { transform: translate3d(-2%, 1%, 0) scale(.94); opacity: .64; }
+    100% { transform: translate3d(2%, -2%, 0) scale(1.08); opacity: 1; }
+}
+@keyframes kmPaperLightSweep {
+    0% { transform: translateX(-115%) skewX(-12deg); opacity: 0; }
+    18% { opacity: .22; }
+    58% { opacity: .12; }
+    100% { transform: translateX(115%) skewX(-12deg); opacity: 0; }
+}
+@keyframes kmCardFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+@keyframes kmGlowBreath {
+    0%, 100% { filter: blur(78px); opacity: .22; }
+    50% { filter: blur(98px); opacity: .4; }
+}
+.km-home .km-security-book-glow { animation: kmGlowBreath 8s ease-in-out infinite; }
+.km-home .km-security-book-glow--blue { animation-delay: -4s; }
+.km-home .km-book-page--left::after,
+.km-home .km-book-page--right::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background: linear-gradient(108deg, transparent 28%, rgba(255,255,255,.48) 49%, transparent 64%);
+    transform: translateX(-115%) skewX(-12deg);
+    animation: kmPaperLightSweep 8s ease-in-out infinite;
+}
+.km-home .km-book-page--right::after { animation-delay: -3.4s; }
+.km-home .km-service-card:nth-child(2n) { animation: kmCardFloat 8s ease-in-out infinite; }
+.km-home .km-service-card:nth-child(2n+1) { animation: kmCardFloat 9s ease-in-out -3s infinite; }
+.km-home .km-architecture-orbit { animation: kmSpin 28s linear infinite; }
+.km-home .km-architecture-orbit--two { animation-direction: reverse; animation-duration: 36s; }
+.km-home .km-security-chapter { transform-origin: 50% 52%; }
+.km-home .km-security-chapter.is-active .km-book-spread {
+    filter: drop-shadow(0 34px 56px rgba(0, 0, 0, .3)) drop-shadow(0 0 36px rgba(94, 186, 255, .22));
+}
+.km-home .km-security-progress-track span { transition: width .08s linear; }
+
+@media (max-width: 1050px) {
+    .km-home .km-book-page--left,
+    .km-home .km-book-page--right { transform: none; }
+}
+.km-home .km-service-card:hover {
+    animation: none;
+    transform: translateY(-8px);
+}
+@media (max-width: 720px) {
+    .km-home .km-book-page { color: #182a46; }
+    .km-home .km-security-book-stage::before { display: none; }
+    .km-home .km-service-card:nth-child(n) { animation: none; }
+    .km-home .km-architecture-orbit { animation-duration: 42s; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .km-home .km-security-book-glow,
+    .km-home .km-book-page--left::after,
+    .km-home .km-book-page--right::after,
+    .km-home .km-service-card,
+    .km-home .km-architecture-orbit { animation: none !important; }
+}
+
+
+/* ================================================================
+   KNOWME GLOBAL BOOK SCROLL + CALMER PAPER / HIGHER CONTRAST
+   One document-level vertical scroll moves the complete horizontal
+   Security Book ribbon. Individual pages never capture wheel input.
+================================================================ */
+.km-home .km-security-scroll-space {
+    /* One shared pinned scroll range for the entire eleven-chapter ribbon. */
+    height: calc((100svh - var(--km-book-header-height, 72px)) * 11) !important;
+}
+.km-home .km-security-sticky {
+    overscroll-behavior: auto;
+}
+.km-home .km-security-book-viewport {
+    overflow: hidden !important;
+    overscroll-behavior: auto !important;
+    scroll-snap-type: none !important;
+}
+.km-home .km-security-chapters {
+    scroll-snap-type: none !important;
+}
+.km-home .km-book-page {
+    /* A page is a reading surface, not a nested scroll container. */
+    overflow: hidden !important;
+    overscroll-behavior: auto !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none;
+    color: #111827 !important;
+    background: linear-gradient(145deg, #dce3ec 0%, #d0dbe8 58%, #d6dce9 100%) !important;
+}
+.km-home .km-book-page::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+.km-home .km-book-page > * {
+    position: relative;
+    z-index: 1;
+}
+.km-home .km-book-page--left {
+    border-color: rgba(59, 78, 105, .24) !important;
+    background:
+        radial-gradient(ellipse at 12% 15%, rgba(226, 169, 190, .16), transparent 45%),
+        linear-gradient(120deg, #e0e5ed 0%, #d4deeb 58%, #cbd7e5 100%) !important;
+    box-shadow: inset 10px 0 25px rgba(48, 66, 94, .055), inset -1px 0 rgba(255,255,255,.48), 0 22px 50px rgba(0,0,0,.22) !important;
+}
+.km-home .km-book-page--right {
+    border-color: rgba(59, 78, 105, .24) !important;
+    background:
+        radial-gradient(ellipse at 92% 12%, rgba(131, 191, 218, .16), transparent 48%),
+        linear-gradient(245deg, #dce4ed 0%, #cfdbe8 58%, #d4d9e8 100%) !important;
+    box-shadow: inset -10px 0 25px rgba(48, 76, 110, .06), inset 1px 0 rgba(255,255,255,.48), 0 22px 50px rgba(0,0,0,.22) !important;
+}
+.km-home .km-security-chapter {
+    filter: brightness(.88) saturate(.94) !important;
+    transition: filter .55s ease;
+}
+.km-home .km-security-chapter.is-active {
+    /* Do not brighten the whole page: it washes out the technical copy. */
+    filter: brightness(.98) saturate(1.02) !important;
+}
+.km-home .km-security-chapter.is-next,
+.km-home .km-security-chapter.is-active + .km-security-chapter {
+    filter: brightness(.86) saturate(.96) !important;
+}
+.km-home .km-book-page-head,
+.km-home .km-book-chapter-word,
+.km-home .km-book-page-count,
+.km-home .km-security-reference > span {
+    color: #37465c !important;
+}
+.km-home .km-book-topic-title {
+    color: #0b1423 !important;
+    text-shadow: none !important;
+}
+.km-home .km-security-lead {
+    color: #19283d !important;
+}
+.km-home .km-security-body,
+.km-home .km-security-body p,
+.km-home .km-security-detail-block p,
+.km-home .km-book-controls li {
+    color: #172337 !important;
+}
+.km-home .km-detail-label {
+    color: #344a68 !important;
+}
+.km-home .km-book-left-bottom {
+    color: #3c4d65 !important;
+}
+.km-home .km-book-left-bottom strong {
+    color: #315e98 !important;
+}
+.km-home .km-security-reference a {
+    color: #174d8b !important;
+    border-bottom-color: rgba(23, 77, 139, .48) !important;
+}
+.km-home .km-security-acronym {
+    color: #17477d !important;
+    background: rgba(96, 153, 214, .13) !important;
+}
+.km-home .km-security-columns,
+.km-home .km-book-page-footer {
+    border-color: rgba(40, 62, 92, .22) !important;
+}
+.km-home .km-book-page--left::after,
+.km-home .km-book-page--right::after {
+    background: linear-gradient(108deg, transparent 28%, rgba(255,255,255,.13) 49%, transparent 64%) !important;
+}
+.km-home .km-security-landscape {
+    opacity: .78 !important;
+    filter: saturate(1.08) brightness(1.06) !important;
+}
+.km-home .km-security-book-section {
+    background:
+        radial-gradient(ellipse at 50% 56%, rgba(62, 137, 255, .20), transparent 48%),
+        radial-gradient(ellipse at 12% 32%, rgba(255, 66, 126, .12), transparent 40%),
+        radial-gradient(ellipse at 90% 26%, rgba(150, 108, 255, .15), transparent 42%),
+        linear-gradient(180deg, #0a1a34 0%, #0b1932 52%, #09152b 100%) !important;
+}
+.km-home .km-security-sticky {
+    background:
+        radial-gradient(ellipse at 50% 65%, rgba(59, 137, 255, .11), transparent 50%),
+        radial-gradient(ellipse at 14% 22%, rgba(255, 80, 135, .07), transparent 38%),
+        linear-gradient(180deg, rgba(9, 23, 48, .62), rgba(8, 19, 40, .76)) !important;
+}
+.km-home .km-security-book-glow {
+    opacity: .22 !important;
+    filter: blur(100px) !important;
+}
+.km-home .km-book-spread::before {
+    background:
+        radial-gradient(ellipse at 50% 52%, rgba(101, 178, 255, .17), transparent 62%),
+        linear-gradient(90deg, rgba(255, 103, 153, .09), transparent 42%, rgba(86, 179, 255, .13)) !important;
+}
+.km-home .km-book-spine {
+    box-shadow: 0 0 12px rgba(115, 207, 255, .38), 0 0 20px rgba(175, 137, 255, .16) !important;
+}
+.km-home .km-book-page-turn {
+    background: linear-gradient(105deg, rgba(216,225,237,.96), rgba(191,208,228,.97) 16%, rgba(217,215,232,.97) 74%, rgba(177,207,230,.96)) !important;
+    box-shadow: inset 8px 0 24px rgba(255,255,255,.42), 20px 0 42px rgba(21,52,98,.2) !important;
+}
+
+@media (max-width: 720px) {
+    /* Mobile keeps its touch swipe; each page itself still does not scroll. */
+    .km-home .km-book-page {
+        overflow: visible !important;
+    }
+}
+
+
+/* ================================================================
+   KNOWME CINEMATIC MONTAGE SECTION
+   Replaces the former text-heavy process panel with a silent,
+   looping full-bleed montage created from the user's six book clips.
+================================================================ */
+.km-home .km-process.km-process-film {
+    position: relative !important;
+    isolation: isolate;
+    display: block;
+    width: 100%;
+    height: min(100svh, 920px);
+    min-height: 620px;
+    margin: 0;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #030812;
+    border-top: 1px solid rgba(129, 178, 240, .12);
+    border-bottom: 1px solid rgba(129, 178, 240, .12);
+}
+.km-home .km-process-film video.km-process-montage {
+    position: absolute !important;
+    z-index: 0 !important;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 48%;
+    opacity: .96;
+    filter: brightness(.78) contrast(1.10) saturate(.96);
+    background: #030812;
+    pointer-events: none;
+}
+.km-home .km-process-film-overlay {
+    position: absolute !important;
+    z-index: 1 !important;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg, rgba(3, 8, 19, .38) 0%, rgba(4, 10, 23, .04) 23%, rgba(4, 10, 23, .06) 70%, rgba(3, 8, 19, .52) 100%),
+        linear-gradient(90deg, rgba(4, 9, 20, .22), transparent 24%, transparent 76%, rgba(4, 9, 20, .22));
+}
+.km-home .km-process-film-light {
+    position: absolute !important;
+    z-index: 2 !important;
+    width: min(42vw, 560px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: .17;
+    pointer-events: none;
+    animation: kmMontageAura 12s ease-in-out infinite alternate;
+}
+.km-home .km-process-film-light--red {
+    left: -17%;
+    top: 16%;
+    background: #e33463;
+}
+.km-home .km-process-film-light--blue {
+    right: -18%;
+    bottom: 8%;
+    background: #347eff;
+    animation-delay: -5s;
+}
+@keyframes kmMontageAura {
+    from { transform: translate3d(-2%, 1%, 0) scale(.92); opacity: .12; }
+    to { transform: translate3d(3%, -2%, 0) scale(1.12); opacity: .22; }
+}
+
+/* Technical explanations: larger, darker, and no translucent page-turn
+   sheet obscures the reading surface when the book is at rest. */
+.km-home .km-book-page-head,
+.km-home .km-book-chapter-word,
+.km-home .km-book-page-count,
+.km-home .km-security-reference > span {
+    color: #263a55 !important;
+}
+.km-home .km-security-body,
+.km-home .km-security-body p {
+    color: #101d30 !important;
+    font-size: clamp(12px, .91vw, 14px) !important;
+    font-weight: 550;
+    line-height: 1.76 !important;
+}
+.km-home .km-security-body p { margin-bottom: 12px !important; }
+.km-home .km-security-detail-block p {
+    color: #142842 !important;
+    font-size: clamp(10.8px, .79vw, 12.2px) !important;
+    font-weight: 550;
+    line-height: 1.68 !important;
+}
+.km-home .km-detail-label {
+    color: #254361 !important;
+    font-size: 8px !important;
+    font-weight: 900 !important;
+}
+.km-home .km-book-controls li {
+    color: #10243b !important;
+    font-size: clamp(10.6px, .78vw, 12px) !important;
+    font-weight: 550;
+    line-height: 1.62 !important;
+}
+.km-home .km-security-reference a {
+    color: #124a89 !important;
+    font-size: 10.5px !important;
+    font-weight: 700;
+}
+.km-home .km-security-chapter.is-active { filter: none !important; }
+.km-home .km-security-chapter.is-next,
+.km-home .km-security-chapter.is-active + .km-security-chapter {
+    filter: brightness(.88) saturate(.94) !important;
+}
+.km-home .km-book-spread { height: min(100%, 610px) !important; }
+.km-home .km-book-page { padding-top: clamp(22px, 2.5vw, 38px); padding-bottom: clamp(22px, 2.5vw, 38px); }
+.km-home .km-book-page--right { background: linear-gradient(145deg, #e6edf5 0%, #dce6f0 58%, #e0e5f0 100%) !important; }
+.km-home .km-book-page--left { background: linear-gradient(135deg, #e8eaf2 0%, #dbe4ef 58%, #d5dfec 100%) !important; }
+
+@media (max-width: 720px) {
+    .km-home .km-process.km-process-film { height: 72svh; min-height: 500px; }
+    .km-home .km-process-film video.km-process-montage { object-position: center; }
+    .km-home .km-process-film-light { opacity: .11; }
+    .km-home .km-security-body, .km-home .km-security-body p { font-size: 12px !important; }
+    .km-home .km-security-detail-block p { font-size: 11px !important; }
+    .km-home .km-book-controls li { font-size: 11px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .km-home .km-process-film-light { animation: none !important; }
+}
+
+
+/* ==========================================================
+   SECURITY BOOK — DEEP READING / REAL-WORLD EXAMPLES / PENTEST
+   Primary document scroll continues to move chapters horizontally.
+   The right page has its own vertical reading viewport. At its edge,
+   native scroll chaining returns control to the primary chapter scroll.
+========================================================== */
+.km-home .km-book-page--left {
+    overflow: hidden;
+}
+.km-home .km-book-page--right {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 0;
+}
+.km-home .km-book-page--right > .km-book-page-head {
+    flex: 0 0 auto;
+    margin-bottom: 0;
+}
+.km-home .km-book-detail-scroll {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    padding: 0 12px 14px 0;
+    margin: 0 -4px 0 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: auto;
+    touch-action: pan-y;
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(104,151,225,.72) rgba(114,142,187,.10);
+    scroll-behavior: smooth;
+}
+.km-home .km-book-detail-scroll::-webkit-scrollbar { width: 7px; }
+.km-home .km-book-detail-scroll::-webkit-scrollbar-track { background: rgba(116,145,190,.10); border-radius: 10px; }
+.km-home .km-book-detail-scroll::-webkit-scrollbar-thumb { background: linear-gradient(180deg,rgba(91,153,255,.82),rgba(224,75,103,.76)); border: 1px solid rgba(220,233,255,.18); border-radius: 10px; }
+.km-home .km-book-detail-scroll:focus-visible { outline: 2px solid rgba(99,164,255,.7); outline-offset: -3px; border-radius: 7px; }
+.km-home .km-book-read-cue {
+    position: sticky;
+    z-index: 5;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 30px;
+    margin: 0 0 9px;
+    padding: 6px 2px 7px;
+    color: #7297c9;
+    background: linear-gradient(180deg,rgba(9,16,29,.98),rgba(9,16,29,.84));
+    border-bottom: 1px solid rgba(119,157,216,.15);
+    font: 800 8px/1.4 "Courier New",monospace;
+    letter-spacing: .13em;
+    backdrop-filter: blur(9px);
+}
+.km-home .km-book-read-cue i {
+    display: inline-grid;
+    flex: 0 0 18px;
+    width: 18px;
+    height: 18px;
+    place-items: center;
+    border: 1px solid rgba(96,151,231,.45);
+    border-radius: 50%;
+    color: #a9c9ff;
+    font: 12px/1 Arial,sans-serif;
+    animation: kmReadCue 1.9s ease-in-out infinite;
+}
+@keyframes kmReadCue {
+    0%,100% { transform: translateY(-2px); box-shadow: 0 0 0 rgba(86,151,244,0); }
+    50% { transform: translateY(3px); box-shadow: 0 0 15px rgba(86,151,244,.22); }
+}
+.km-home .km-book-page--right .km-book-page-footer {
+    flex: 0 0 auto;
+    margin-top: 8px;
+    padding-top: 9px;
+}
+
+/* The text is deliberately larger than the previous compact technical notes. */
+.km-home .km-security-body {
+    margin-top: 0;
+    color: #e0e9f8;
+    font-size: clamp(12px,.88vw,14px);
+    line-height: 1.82;
+    letter-spacing: .002em;
+}
+.km-home .km-security-body p {
+    margin: 0 0 14px;
+    color: #e0e9f8;
+}
+.km-home .km-security-detail-block p,
+.km-home .km-book-controls li {
+    color: #d2def0;
+    font-size: clamp(11px,.76vw,12.5px);
+    line-height: 1.76;
+}
+.km-home .km-detail-label { color: #84a9e4; font-size: 9px; letter-spacing: .15em; }
+.km-home .km-security-example {
+    position: relative;
+    margin: 13px 0 15px;
+    padding: 14px 16px 15px;
+    overflow: hidden;
+    border: 1px solid rgba(111,157,229,.24);
+    border-left: 3px solid #e15a75;
+    border-radius: 10px;
+    background: linear-gradient(105deg,rgba(31,57,91,.62),rgba(14,25,44,.76));
+    box-shadow: inset 0 1px rgba(255,255,255,.035),0 10px 28px rgba(0,0,0,.12);
+}
+.km-home .km-security-example::after {
+    content: "";
+    position: absolute;
+    right: -24px;
+    top: -40px;
+    width: 120px;
+    height: 120px;
+    border: 1px solid rgba(108,160,247,.17);
+    border-radius: 50%;
+    box-shadow: 0 0 0 14px rgba(108,160,247,.025),0 0 0 28px rgba(108,160,247,.02);
+    pointer-events: none;
+}
+.km-home .km-security-example > .km-detail-label { display:block; margin-bottom:7px; color:#ff8ca0; }
+.km-home .km-security-example p { position:relative; z-index:1; margin:0; color:#eef4ff; font-size:clamp(11.5px,.82vw,13px); line-height:1.78; }
+
+/* Original inline SVG diagrams — crisp at every resolution and no external image dependency. */
+.km-home .km-security-visual {
+    position: relative;
+    margin: 1px 0 14px;
+    padding: 9px 10px 8px;
+    overflow: hidden;
+    border: 1px solid rgba(115,157,223,.20);
+    border-radius: 12px;
+    background: radial-gradient(ellipse at 50% 0%,rgba(73,119,196,.16),transparent 58%),linear-gradient(145deg,rgba(15,29,50,.96),rgba(6,12,23,.98));
+}
+.km-home .km-security-visual-top { display:flex; justify-content:space-between; align-items:center; gap:8px; margin:0 1px 4px; color:#7696c5; font:800 7px "Courier New",monospace; letter-spacing:.16em; }
+.km-home .km-security-visual-top span:last-child { color:#f07d91; }
+.km-home .km-security-visual svg { display:block; width:100%; height:auto; max-height:142px; overflow:visible; }
+.km-home .km-security-visual-flow { stroke-dasharray:5 7; animation:kmFlowDash 1.75s linear infinite; }
+.km-home .km-security-visual-node { transform-box:fill-box; transform-origin:center; animation:kmFlowNode 4.2s ease-in-out infinite; }
+.km-home .km-security-visual-node--2 { animation-delay:.55s; }
+.km-home .km-security-visual-node--3 { animation-delay:1.1s; }
+.km-home .km-security-visual-signal { filter:drop-shadow(0 0 5px #fff); animation:kmFlowSignal 2.4s ease-in-out infinite; }
+@keyframes kmFlowDash { to { stroke-dashoffset:-24; } }
+@keyframes kmFlowNode { 0%,100% { opacity:.82; } 50% { opacity:1; } }
+@keyframes kmFlowSignal { 0% { opacity:0; transform:translateX(0); } 15% { opacity:1; } 85% { opacity:1; } 100% { opacity:0; transform:translateX(235px); } }
+
+/* Pentest tools: clear distinction between the Kali environment and tools. */
+.km-home .km-pentest-toolkit {
+    margin: 15px 0 16px;
+    padding: 15px;
+    border: 1px solid rgba(116,155,222,.25);
+    border-radius: 12px;
+    background: linear-gradient(145deg,rgba(17,32,54,.82),rgba(8,15,28,.94));
+}
+.km-home .km-pentest-toolkit-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:10px; }
+.km-home .km-pentest-toolkit-count { color:#7999c7; font:800 7px "Courier New",monospace; letter-spacing:.14em; }
+.km-home .km-pentest-tool-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+.km-home .km-pentest-tool-card {
+    min-width:0;
+    display:grid;
+    grid-template-columns:30px minmax(0,1fr) 13px;
+    align-items:start;
+    gap:9px;
+    padding:10px 9px;
+    color:#eaf2ff;
+    text-decoration:none;
+    border:1px solid rgba(135,166,218,.16);
+    border-radius:9px;
+    background:rgba(10,19,34,.7);
+    transition:transform .22s ease,border-color .22s ease,background .22s ease;
+}
+.km-home .km-pentest-tool-card:hover { transform:translateY(-2px); border-color:rgba(112,165,255,.52); background:rgba(26,47,77,.78); }
+.km-home .km-pentest-tool-mark { display:grid; place-items:center; width:30px; height:30px; border-radius:8px; color:#dbeaff; font:900 13px Georgia,serif; background:linear-gradient(145deg,rgba(69,119,198,.65),rgba(145,66,105,.42)); border:1px solid rgba(151,188,246,.3); box-shadow:0 0 18px rgba(74,126,207,.14); }
+.km-home .km-pentest-tool-info { min-width:0; display:flex; flex-direction:column; gap:4px; }
+.km-home .km-pentest-tool-info strong { color:#f4f7fd; font-size:12px; line-height:1.25; }
+.km-home .km-pentest-tool-info small { color:#8bb5ee; font:800 7px "Courier New",monospace; letter-spacing:.1em; }
+.km-home .km-pentest-tool-info > span { color:#c2d0e5; font-size:10.5px; line-height:1.55; }
+.km-home .km-pentest-tool-link { color:#8eb8fa; font-size:13px; }
+.km-home .km-pentest-authorized-note { margin:10px 0 12px; padding:9px 11px; color:#ffd7df; border-left:2px solid #d95c73; background:rgba(119,37,58,.16); font-size:10.5px; line-height:1.6; }
+.km-home .km-pentest-workflow { padding-top:10px; border-top:1px solid rgba(144,174,224,.13); }
+.km-home .km-pentest-workflow-steps { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:6px; margin:9px 0 0; padding:0; list-style:none; }
+.km-home .km-pentest-workflow-steps li { min-width:0; display:flex; flex-direction:column; gap:5px; padding:8px 7px; border:1px solid rgba(119,158,220,.14); border-radius:7px; background:rgba(6,13,25,.58); }
+.km-home .km-pentest-workflow-steps b { color:#f17e91; font:800 8px "Courier New",monospace; }
+.km-home .km-pentest-workflow-steps span { color:#c8d5e8; font-size:9px; line-height:1.45; }
+
+@media (max-width: 1050px) {
+    .km-home .km-security-body { font-size:12px; }
+    .km-home .km-security-detail-block p,.km-home .km-book-controls li { font-size:11px; }
+    .km-home .km-pentest-tool-info > span { font-size:10px; }
+}
+@media (max-width: 720px) {
+    .km-home .km-book-page--right { display:flex; flex-direction:column; height:auto; max-height:none; overflow:hidden; }
+    .km-home .km-book-detail-scroll { flex:0 1 auto; max-height:58svh; min-height:260px; padding-right:10px; margin-right:0; overflow-y:auto; overscroll-behavior-y:auto; }
+    .km-home .km-book-read-cue { font-size:7px; }
+    .km-home .km-security-body { font-size:12px; line-height:1.78; }
+    .km-home .km-security-detail-block p,.km-home .km-book-controls li { font-size:11.5px; }
+    .km-home .km-security-visual svg { max-height:120px; }
+    .km-home .km-pentest-tool-grid { grid-template-columns:1fr; }
+    .km-home .km-pentest-workflow-steps { grid-template-columns:1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .km-home .km-security-visual-flow,
+    .km-home .km-security-visual-node,
+    .km-home .km-security-visual-signal,
+    .km-home .km-book-read-cue i { animation:none !important; }
+}
+
+
+/* ================================================================
+   KNOWME CAPABILITIES — FOUR-PANEL HORIZONTAL SCROLL RIBBON
+   One ordinary vertical document scroll moves all four panels right.
+   Individual cards never capture wheel input on desktop.
+================================================================ */
+.km-home .km-services {
+    --km-services-top: var(--km-book-header-height, 72px);
+    padding: 0 !important;
+    overflow: clip;
+    background:
+        radial-gradient(ellipse at 18% 55%, rgba(69, 139, 255, .15), transparent 42%),
+        radial-gradient(ellipse at 88% 42%, rgba(183, 92, 255, .14), transparent 42%),
+        linear-gradient(135deg, #07152b, #0b1731 55%, #10152f) !important;
+}
+.km-home .km-services::before {
+    opacity: .2;
+    background-size: 66px 66px;
+    mask-image: linear-gradient(180deg, transparent, #000 12%, #000 90%, transparent);
+}
+.km-home .km-services-scroll-space {
+    position: relative;
+    height: calc(100svh - var(--km-services-top) + 240vw);
+}
+.km-home .km-services-sticky {
+    position: sticky;
+    top: var(--km-services-top);
+    height: calc(100svh - var(--km-services-top));
+    min-height: 650px;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(8px, 1.1vh, 14px);
+    padding: clamp(15px, 2vh, 24px) 0 clamp(12px, 1.5vh, 18px);
+    overflow: hidden;
+    isolation: isolate;
+    background:
+        radial-gradient(ellipse at 48% 75%, rgba(72, 133, 231, .13), transparent 54%),
+        linear-gradient(180deg, rgba(5, 13, 29, .45), rgba(6, 12, 27, .78));
+}
+.km-home .km-services-sticky::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    pointer-events: none;
+    opacity: .4;
+    background:
+        radial-gradient(ellipse at 6% 80%, rgba(255, 71, 125, .15), transparent 34%),
+        radial-gradient(ellipse at 94% 20%, rgba(81, 176, 255, .17), transparent 35%);
+    animation: kmServiceAmbient 14s ease-in-out infinite alternate;
+}
+.km-home .km-services-heading {
+    width: min(1440px, 92vw);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(260px, .65fr);
+    align-items: end;
+    gap: clamp(20px, 5vw, 74px);
+    flex: 0 0 auto;
+}
+.km-home .km-services-heading h2 {
+    max-width: 900px;
+    margin: 8px 0 0;
+    font-size: clamp(36px, 4.15vw, 62px);
+    line-height: .98;
+}
+.km-home .km-services-heading > p {
+    margin: 0 0 4px;
+    color: rgba(218, 231, 250, .83);
+    font-size: clamp(12px, .9vw, 14px);
+    line-height: 1.8;
+}
+.km-home .km-services-toolbar {
+    width: min(1440px, 92vw);
+    min-height: 28px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex: 0 0 auto;
+}
+.km-home .km-services-reading-label,
+.km-home .km-services-toolbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: rgba(199, 219, 249, .73);
+    font: 800 8px/1.4 "Courier New", monospace;
+    letter-spacing: .16em;
+}
+.km-home .km-services-reading-label strong { color: #fff; text-shadow: 0 0 15px rgba(108, 190, 255, .45); }
+.km-home .km-services-toolbar-actions > span { opacity: .8; }
+.km-home .km-services-toolbar .km-icon-button {
+    width: 30px;
+    height: 30px;
+    color: #eaf4ff;
+    border-color: rgba(146, 193, 255, .42);
+    background: linear-gradient(145deg, rgba(45, 93, 159, .38), rgba(13, 29, 57, .8));
+}
+.km-home .km-services-toolbar .km-icon-button:disabled { opacity: .35; cursor: default; }
+.km-home .km-services-progress {
+    width: min(1440px, 92vw);
+    height: 2px;
+    flex: 0 0 auto;
+    margin: 0 auto;
+    overflow: hidden;
+    background: rgba(163, 192, 237, .18);
+}
+.km-home .km-services-progress span {
+    display: block;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #ff6d9b, #9d9bff 50%, #61dcff);
+    box-shadow: 0 0 17px rgba(105, 202, 255, .8);
+}
+.km-home .km-services-viewport {
+    position: relative;
+    width: 100vw;
+    max-width: none;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: visible;
+    perspective: 1900px;
+    perspective-origin: 50% 48%;
+    transform-style: preserve-3d;
+    outline: 0;
+}
+.km-home .km-service-grid {
+    width: max-content;
+    max-width: none;
+    height: 100%;
+    margin: 0;
+    padding-inline: calc((100vw - var(--km-service-card-width, 78vw)) / 2);
+    display: flex;
+    align-items: center;
+    gap: var(--km-service-gap, 7vw);
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+.km-home .km-service-card,
+.km-home .km-service-card.km-service-card--wide {
+    --service-accent: #68c8ff;
+    position: relative;
+    isolation: isolate;
+    flex: 0 0 var(--km-service-card-width, 78vw);
+    width: var(--km-service-card-width, 78vw);
+    height: clamp(350px, 56vh, 555px);
+    min-height: 0;
+    padding: clamp(28px, 3.5vw, 54px);
+    grid-column: auto;
+    overflow: hidden;
+    border: 1px solid rgba(153, 196, 255, .38);
+    border-radius: 24px;
+    background:
+        radial-gradient(ellipse at 82% 18%, rgba(74, 153, 255, .20), transparent 42%),
+        linear-gradient(135deg, rgba(22, 40, 72, .94), rgba(8, 17, 35, .97) 62%, rgba(22, 18, 48, .96));
+    box-shadow: 0 28px 75px rgba(0,0,0,.35), inset 0 1px rgba(255,255,255,.10);
+    transform-style: preserve-3d;
+    backface-visibility: visible;
+    will-change: transform, filter;
+    transition: border-color .45s ease, box-shadow .45s ease, filter .45s ease;
+}
+.km-home .km-service-card:nth-child(2) { --service-accent: #ff7898; }
+.km-home .km-service-card:nth-child(3) { --service-accent: #74adff; }
+.km-home .km-service-card:nth-child(4) { --service-accent: #b39aff; }
+.km-home .km-service-card::before {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    inset: -20%;
+    pointer-events: none;
+    opacity: .78;
+    background:
+        radial-gradient(ellipse at 24% 42%, color-mix(in srgb, var(--service-accent) 28%, transparent), transparent 42%),
+        radial-gradient(ellipse at 78% 65%, rgba(255, 96, 143, .13), transparent 38%);
+    filter: blur(24px);
+    animation: kmServiceCardWater 10s ease-in-out infinite alternate;
+}
+.km-home .km-service-card::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 12px;
+    pointer-events: none;
+    border: 1px solid rgba(195, 220, 255, .09);
+    border-radius: 17px;
+    transform: translate3d(0, 0, 24px);
+}
+.km-home .km-service-card.is-active {
+    border-color: color-mix(in srgb, var(--service-accent) 72%, white 12%);
+    box-shadow: 0 35px 90px rgba(0,0,0,.38), 0 0 42px color-mix(in srgb, var(--service-accent) 18%, transparent), inset 0 1px rgba(255,255,255,.15);
+    filter: brightness(1.08) saturate(1.1);
+}
+.km-home .km-service-card.is-near { filter: brightness(.82) saturate(.92); }
+.km-home .km-service-card > .km-service-index,
+.km-home .km-service-card > h3,
+.km-home .km-service-card > p,
+.km-home .km-service-card > .km-service-foot,
+.km-home .km-service-card > .km-service-card-corner { transform: translateZ(22px); }
+.km-home .km-service-index { position: relative; z-index: 2; color: color-mix(in srgb, var(--service-accent) 74%, white 18%); font-size: 9px; }
+.km-home .km-service-card h3 {
+    position: relative;
+    z-index: 2;
+    max-width: min(52%, 620px);
+    margin: clamp(28px, 4vh, 48px) 0 16px;
+    color: #f4f8ff;
+    font-size: clamp(30px, 3.2vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -.045em;
+    text-wrap: balance;
+}
+.km-home .km-service-card p {
+    position: relative;
+    z-index: 2;
+    max-width: min(52%, 590px);
+    color: rgba(222, 234, 252, .91);
+    font-size: clamp(15px, 1.08vw, 17px);
+    line-height: 1.86;
+    font-weight: 500;
+}
+.km-home .km-service-foot {
+    left: clamp(28px, 3.5vw, 54px);
+    bottom: clamp(24px, 3vw, 42px);
+    color: rgba(188, 211, 245, .68);
+    font-size: 9px;
+}
+.km-home .km-service-card-corner {
+    position: absolute;
+    right: clamp(27px, 3.5vw, 48px);
+    bottom: clamp(24px, 3vw, 42px);
+    z-index: 3;
+    display: grid;
+    width: 48px;
+    height: 48px;
+    place-items: center;
+    border: 1px solid color-mix(in srgb, var(--service-accent) 52%, transparent);
+    border-radius: 50%;
+    color: #eaf5ff;
+    font-size: 20px;
+    box-shadow: 0 0 25px color-mix(in srgb, var(--service-accent) 18%, transparent);
+    transition: transform .35s ease, background .35s ease;
+}
+.km-home .km-service-card.is-active .km-service-card-corner { transform: translate(3px, -3px) rotate(45deg); background: color-mix(in srgb, var(--service-accent) 16%, transparent); }
+.km-home .km-service-wave-field {
+    position: absolute;
+    z-index: 0;
+    right: -2%;
+    top: 0;
+    width: 77%;
+    height: 100%;
+    overflow: visible;
+    opacity: .62;
+    pointer-events: none;
+    mask-image: linear-gradient(90deg, transparent, #000 24%, #000 82%, transparent);
+}
+.km-home .km-service-wave-field path {
+    fill: none;
+    stroke: var(--service-accent);
+    stroke-width: 1.15;
+    stroke-opacity: .42;
+    stroke-dasharray: 7 13;
+    filter: drop-shadow(0 0 5px color-mix(in srgb, var(--service-accent) 42%, transparent));
+    animation: kmServiceWaveFlow 16s linear infinite;
+}
+.km-home .km-service-wave-field path:nth-child(2) { stroke: #ff799b; stroke-opacity: .27; animation-duration: 21s; animation-direction: reverse; }
+.km-home .km-service-wave-field path:nth-child(3) { stroke: #9abfff; stroke-opacity: .22; animation-duration: 26s; }
+.km-home .km-service-visual { z-index: 1; right: 7%; top: 19%; width: 38%; height: 54%; opacity: .94; transform: translateZ(42px); }
+.km-home .km-service-visual--ui { width: 43%; height: 48%; border-color: rgba(132, 196, 255, .52); background: linear-gradient(135deg, rgba(69, 137, 224, .16), rgba(12, 27, 51, .18)); box-shadow: 22px 28px 55px rgba(0,0,0,.28), inset 0 0 38px rgba(104,180,255,.10); }
+.km-home .km-service-visual--ui i { height: 10px; margin: 19px 16px; background: linear-gradient(90deg, rgba(103,185,255,.34), rgba(165,138,255,.20)); animation: kmUiWave 5s ease-in-out infinite; }
+.km-home .km-service-visual--ui i:nth-child(2) { animation-delay: -.9s; }
+.km-home .km-service-visual--ui i:nth-child(3) { animation-delay: -1.8s; }
+.km-home .km-service-visual--app { width: clamp(160px, 17vw, 230px); height: auto; aspect-ratio: 1; right: 12%; top: 18%; border-color: rgba(255,132,166,.38); animation: kmAppRingFloat 9s ease-in-out infinite; }
+.km-home .km-service-visual--app::before,
+.km-home .km-service-visual--app::after { content:""; position:absolute; inset:-15%; border:1px solid rgba(255,125,159,.25); border-radius:50%; animation: kmAppRipple 5.5s ease-out infinite; }
+.km-home .km-service-visual--app::after { animation-delay:-2.7s; }
+.km-home .km-service-visual--data { width: min(36%, 250px); height: 53%; right: 9%; top: 18%; align-items:center; }
+.km-home .km-service-visual--data i { width: 22%; height: 58%; border-color: rgba(119,180,255,.52); animation: kmDataWave 3.8s ease-in-out infinite; transform-origin: center bottom; }
+.km-home .km-service-visual--data i:nth-child(2) { height: 86%; animation-delay: -.65s; }
+.km-home .km-service-visual--data i:nth-child(3) { height: 68%; animation-delay: -1.3s; }
+.km-home .km-service-visual--ai { right: 7%; top: 14%; width: 39%; height: 60%; }
+.km-home .km-service-visual--ai div { border-width: 1px; animation: kmAiOrbit 10s ease-in-out infinite; }
+.km-home .km-service-visual--ai div:nth-child(2) { animation-direction: reverse; animation-duration: 13s; }
+.km-home .km-service-visual--ai div:nth-child(3) { animation-duration: 8s; }
+.km-home .km-service-visual--ai b { color: #e4d9ff; text-shadow: 0 0 28px #8c72ff; }
+.km-home .km-services-footer {
+    width: min(1440px, 92vw);
+    min-height: 18px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 0 0 auto;
+    color: rgba(183, 209, 246, .5);
+    font: 800 7px "Courier New", monospace;
+    letter-spacing: .18em;
+}
+.km-home .km-services-wave-mark { color: #79d9ff; font-size: 26px; line-height: .5; animation: kmWaveMark 2.8s ease-in-out infinite; }
+
+/* CONNECTED ARCHITECTURE: orbit lines and links travel like layered water. */
+.km-home .km-architecture { perspective: 1200px; }
+.km-home .km-architecture-orbit {
+    border-radius: 48% 52% 46% 54% / 48% 42% 58% 52%;
+    animation: kmArchitectureWaterOne 12s ease-in-out infinite alternate;
+    box-shadow: 0 0 58px rgba(70, 155, 255, .13), inset 0 0 34px rgba(87, 166, 255, .045);
+}
+.km-home .km-architecture-orbit--two {
+    border-radius: 55% 45% 52% 48% / 42% 57% 43% 58%;
+    animation: kmArchitectureWaterTwo 15s ease-in-out infinite alternate;
+}
+.km-home .km-architecture-orbit::before,
+.km-home .km-architecture-orbit::after {
+    content: "";
+    position: absolute;
+    inset: -7%;
+    border: 1px solid rgba(115, 193, 255, .17);
+    border-radius: inherit;
+    transform: scale(.96);
+    animation: kmOrbitRipple 8s ease-out infinite;
+    pointer-events: none;
+}
+.km-home .km-architecture-orbit::after { inset: -15%; animation-delay: -4s; border-color: rgba(255, 120, 160, .13); }
+.km-home .km-architecture-wave-field {
+    position: absolute;
+    z-index: 2;
+    inset: 1% 0;
+    width: 100%;
+    height: 98%;
+    overflow: visible;
+    pointer-events: none;
+    opacity: .86;
+}
+.km-home .km-architecture-wave {
+    fill: none;
+    stroke-width: 1.5;
+    stroke-dasharray: 8 12;
+    stroke-dashoffset: 0;
+    filter: drop-shadow(0 0 5px rgba(101, 186, 255, .52));
+    animation: kmArchitectureFlow 16s linear infinite;
+}
+.km-home .km-architecture-wave--blue { stroke: url(#kmArchitectureWaveBlue); }
+.km-home .km-architecture-wave--red { stroke: url(#kmArchitectureWaveRed); animation-duration: 21s; animation-direction: reverse; }
+.km-home .km-architecture-wave--fine { stroke: rgba(132, 184, 255, .35); stroke-width: .9; animation-duration: 12s; }
+.km-home .km-architecture-flow-dot { fill: #a5e5ff; filter: drop-shadow(0 0 7px #63c8ff); }
+.km-home .km-architecture-flow-dot--red { fill: #ff91b1; filter: drop-shadow(0 0 7px #ff638d); }
+.km-home .km-architecture-core { animation: kmCoreFloat 7s ease-in-out infinite; }
+.km-home .km-architecture-node { animation: kmNodeFloat 7.5s ease-in-out infinite; }
+.km-home .km-architecture-node--backend { animation-delay: -1.2s; }
+.km-home .km-architecture-node--data { animation-delay: -2.4s; }
+.km-home .km-architecture-node--security { animation-delay: -3.6s; }
+
+/* KNOWME × CODEX brand signature replaces the old Building Blocks ticker. */
+.km-home .km-codex-signature {
+    width: min(1440px, 90%);
+    margin: clamp(56px, 7vw, 92px) auto 0;
+    padding: 24px 0 27px;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 2px;
+    border-top: 1px solid rgba(155, 185, 232, .18);
+    color: #f4f7ff;
+    font: 900 clamp(25px, 3.5vw, 42px)/1 Georgia, serif;
+    letter-spacing: .11em;
+    text-shadow: 0 0 24px rgba(106, 153, 255, .10);
+}
+.km-home .km-codex-word { color: #eef3ff; }
+.km-home .km-codex-letter-k { color: #ff526b; text-shadow: 0 0 22px rgba(255, 65, 98, .55); }
+.km-home .km-codex-letter-c { margin-left: 2px; color: #4cbcff; text-shadow: 0 0 23px rgba(63, 172, 255, .55); }
+.km-home .km-codex-times { margin: 0 .22em; color: #a8b8d8; font: 400 .82em Georgia, serif; }
+.km-home .km-codex-signature small {
+    margin-left: clamp(14px, 2.4vw, 34px);
+    color: rgba(173, 198, 237, .55);
+    font: 800 8px "Courier New", monospace;
+    letter-spacing: .19em;
+}
+.km-home .km-final-bottom { margin-top: 12px; }
+
+/* Global cursor depression: follows the pointer across every Homepage section. */
+.km-home .km-global-pointer-field {
+    position: fixed;
+    z-index: 80;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+    transition: opacity .28s ease;
+    mix-blend-mode: soft-light;
+}
+.km-home .km-global-pointer-field.is-active { opacity: .78; }
+.km-home .km-global-pointer-pit {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: clamp(190px, 22vw, 310px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+        radial-gradient(ellipse at 50% 45%, rgba(2, 8, 23, .48) 0%, rgba(4, 14, 34, .27) 21%, rgba(39, 98, 168, .10) 38%, rgba(97, 183, 255, .12) 44%, rgba(255, 88, 143, .10) 49%, transparent 70%);
+    box-shadow: inset 0 -18px 38px rgba(0,0,0,.20), 0 0 36px rgba(74, 167, 255, .08);
+    will-change: transform;
+}
+.km-home .km-global-pointer-pit::before,
+.km-home .km-global-pointer-pit::after {
+    content: "";
+    position: absolute;
+    inset: 22%;
+    border: 1px solid rgba(112, 197, 255, .22);
+    border-radius: 50%;
+    transform: scaleX(1.28) rotate(-14deg);
+    box-shadow: 0 0 18px rgba(93, 183, 255, .13);
+}
+.km-home .km-global-pointer-pit::after {
+    inset: 31%;
+    border-color: rgba(255, 110, 153, .18);
+    transform: scaleX(1.35) rotate(18deg);
+}
+.km-home .km-global-cursor-ripple {
+    position: fixed;
+    z-index: 0;
+    width: 24px;
+    height: 24px;
+    margin: -12px 0 0 -12px;
+    border: 1px solid rgba(115, 195, 255, .48);
+    border-radius: 50%;
+    box-shadow: 0 0 18px rgba(80, 174, 255, .24), inset 0 0 12px rgba(255, 104, 153, .12);
+    animation: kmCursorRippleOut 1.15s ease-out forwards;
+}
+
+@keyframes kmServiceAmbient { from { transform: translate3d(-1.5%, 1%, 0) scale(.96); opacity:.5; } to { transform: translate3d(1.5%, -1%, 0) scale(1.04); opacity:1; } }
+@keyframes kmServiceCardWater { from { transform: translate3d(-3%, 2%, 0) rotate(-3deg) scale(.94); } to { transform: translate3d(4%, -3%, 0) rotate(4deg) scale(1.08); } }
+@keyframes kmServiceWaveFlow { to { stroke-dashoffset: -160; } }
+@keyframes kmUiWave { 0%,100% { transform: translateX(0) scaleX(1); opacity:.56; } 50% { transform: translateX(14px) scaleX(.91); opacity:1; } }
+@keyframes kmAppRipple { 0% { transform: scale(.86); opacity:0; } 24% { opacity:.68; } 100% { transform: scale(1.35); opacity:0; } }
+@keyframes kmAppRingFloat { 0%,100% { rotate:-4deg; translate:0 0; } 50% { rotate:4deg; translate:0 -10px; } }
+@keyframes kmDataWave { 0%,100% { transform: translateY(7px) skewY(-18deg) scaleY(.88); } 50% { transform: translateY(-9px) skewY(-12deg) scaleY(1.06); } }
+@keyframes kmAiOrbit { 0%,100% { rotate:-8deg; scale:1; } 50% { rotate:8deg; scale:1.055; } }
+@keyframes kmWaveMark { 0%,100% { transform:scaleX(.9) skewY(0); opacity:.62; } 50% { transform:scaleX(1.15) skewY(-7deg); opacity:1; } }
+@keyframes kmArchitectureWaterOne {
+    0% { transform:rotate(-22deg) scaleY(.42) scaleX(1); border-radius:48% 52% 46% 54% / 48% 42% 58% 52%; }
+    50% { transform:rotate(-17deg) scaleY(.45) scaleX(1.025); border-radius:53% 47% 52% 48% / 44% 55% 45% 56%; }
+    100% { transform:rotate(-26deg) scaleY(.39) scaleX(.98); border-radius:45% 55% 42% 58% / 55% 46% 54% 45%; }
+}
+@keyframes kmArchitectureWaterTwo {
+    0% { transform:rotate(50deg) scaleY(.48) scaleX(1); border-radius:55% 45% 52% 48% / 42% 57% 43% 58%; }
+    50% { transform:rotate(44deg) scaleY(.43) scaleX(1.06); border-radius:48% 52% 56% 44% / 51% 44% 56% 49%; }
+    100% { transform:rotate(56deg) scaleY(.51) scaleX(.96); border-radius:57% 43% 45% 55% / 44% 55% 45% 56%; }
+}
+@keyframes kmOrbitRipple { 0% { transform:scale(.93); opacity:.42; } 70%,100% { transform:scale(1.12); opacity:0; } }
+@keyframes kmArchitectureFlow { to { stroke-dashoffset:-220; } }
+@keyframes kmCoreFloat { 0%,100% { transform:translate3d(0,0,0); } 50% { transform:translate3d(0,-8px,8px); } }
+@keyframes kmNodeFloat { 0%,100% { translate:0 0; } 50% { translate:0 -7px; } }
+@keyframes kmCursorRippleOut { 0% { transform:scale(.35); opacity:.72; } 100% { transform:scale(5.2); opacity:0; } }
+
+@media (max-width: 1050px) {
+    .km-home .km-service-card h3 { max-width:60%; }
+    .km-home .km-service-card p { max-width:58%; }
+}
+@media (max-width: 720px) {
+    .km-home .km-services-scroll-space { height:auto !important; }
+    .km-home .km-services-sticky { position:relative; top:auto; height:auto; min-height:0; padding:84px 0 46px; overflow:visible; }
+    .km-home .km-services-heading { grid-template-columns:1fr; gap:13px; }
+    .km-home .km-services-heading h2 { font-size:clamp(38px, 9vw, 58px); }
+    .km-home .km-services-toolbar { flex-wrap:wrap; }
+    .km-home .km-services-toolbar-actions > span { display:none; }
+    .km-home .km-services-viewport { width:100%; height:auto; flex:0 0 auto; overflow-x:auto; overflow-y:hidden; scroll-snap-type:x mandatory; scrollbar-width:none; overscroll-behavior-x:contain; }
+    .km-home .km-services-viewport::-webkit-scrollbar { display:none; }
+    .km-home .km-service-grid { width:max-content; height:auto; padding:12px 5vw 22px; gap:5vw; transform:none !important; }
+    .km-home .km-service-card,
+    .km-home .km-service-card.km-service-card--wide { flex:0 0 88vw; width:88vw; height:auto; min-height:430px; padding:25px 22px; scroll-snap-align:center; transform:none !important; }
+    .km-home .km-service-card h3 { max-width:75%; margin-top:32px; font-size:clamp(25px, 6vw, 34px); }
+    .km-home .km-service-card p { max-width:78%; font-size:13px; }
+    .km-home .km-service-visual { opacity:.55; right:0; transform:scale(.72); transform-origin:top right; }
+    .km-home .km-services-footer { padding:0 5vw; }
+    .km-home .km-architecture-wave-field { opacity:.56; }
+    .km-home .km-codex-signature { flex-wrap:wrap; row-gap:10px; font-size:28px; }
+    .km-home .km-codex-signature small { flex-basis:100%; margin:8px 0 0; text-align:center; }
+    .km-home .km-global-pointer-field { display:none; }
+}
+@media (max-width: 480px) {
+    .km-home .km-service-card,
+    .km-home .km-service-card.km-service-card--wide { min-height:460px; }
+    .km-home .km-service-card h3 { max-width:100%; }
+    .km-home .km-service-card p { max-width:100%; }
+    .km-home .km-service-visual { opacity:.28; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .km-home .km-service-wave-field path,
+    .km-home .km-service-card::before,
+    .km-home .km-architecture-orbit,
+    .km-home .km-architecture-orbit::before,
+    .km-home .km-architecture-orbit::after,
+    .km-home .km-architecture-wave,
+    .km-home .km-architecture-core,
+    .km-home .km-architecture-node,
+    .km-home .km-service-visual--ui i,
+    .km-home .km-service-visual--data i,
+    .km-home .km-service-visual--ai div,
+    .km-home .km-service-visual--app,
+    .km-home .km-service-visual--app::before,
+    .km-home .km-service-visual--app::after {
+        animation: none !important;
+    }
+    .km-home .km-global-pointer-field { display:none !important; }
+}
+
+
+/* ==========================================================
+   GLOBAL POINTER DEPRESSION — one local sink, no ripples.
+   The same surface interaction follows the cursor through all
+   Homepage sections and relaxes back to its original shape.
+========================================================== */
+.km-home .km-global-pointer-field {
+    position: fixed !important;
+    z-index: 70 !important;
+    inset: 0 !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity .22s ease !important;
+    mix-blend-mode: soft-light !important;
+    will-change: opacity;
+}
+.km-home .km-global-pointer-field.is-active { opacity: .92 !important; }
+.km-home .km-global-pointer-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    pointer-events: none;
+}
+.km-home .km-global-pointer-field.is-fallback::after {
+    content: "";
+    position: absolute;
+    left: var(--km-cursor-x, 50vw);
+    top: var(--km-cursor-y, 50vh);
+    width: clamp(220px, 26vw, 390px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(calc(.88 + var(--km-cursor-strength, 0) * .12));
+    opacity: var(--km-cursor-strength, 0);
+    background: radial-gradient(ellipse at 50% 44%, rgba(1,7,19,.52), rgba(7,18,38,.28) 34%, rgba(74,133,199,.08) 58%, transparent 73%);
+    box-shadow: inset 0 22px 42px rgba(0,0,0,.22), inset 0 -10px 24px rgba(87,154,220,.08);
+    transition: opacity .18s linear;
+}
+.km-home .km-global-pointer-pit,
+.km-home .km-global-cursor-ripple { display: none !important; }
+
+/* The cursor interaction is a local depression only. Keep decorative
+   engineering lines still; do not rotate them or run water/ripple loops. */
+.km-home .km-service-wave-field path,
+.km-home .km-service-visual--ui i,
+.km-home .km-service-visual--app,
+.km-home .km-service-visual--app::before,
+.km-home .km-service-visual--app::after,
+.km-home .km-service-visual--data i,
+.km-home .km-service-visual--ai div,
+.km-home .km-services-wave-mark,
+.km-home .km-architecture-orbit,
+.km-home .km-architecture-orbit::before,
+.km-home .km-architecture-orbit::after,
+.km-home .km-architecture-wave,
+.km-home .km-architecture-core,
+.km-home .km-architecture-node {
+    animation: none !important;
+}
+.km-home .km-service-wave-field path { stroke-dasharray: none; stroke-opacity: .20; }
+.km-home .km-architecture-wave { stroke-dasharray: none; opacity: .26; }
+.km-home .km-architecture-orbit { transform: none !important; border-radius: 50% !important; }
+.km-home .km-architecture-orbit::before,
+.km-home .km-architecture-orbit::after { animation: none !important; opacity: 0 !important; }
+.km-home .km-security-landscape { display: none !important; }
+.km-home .km-security-book-section.is-landscape-fallback .km-security-sticky {
+    background-image:
+      radial-gradient(ellipse at 50% 58%, rgba(54,112,190,.08), transparent 54%),
+      linear-gradient(180deg, #07162c, #071329) !important;
+}
+
+@media (max-width: 720px), (prefers-reduced-motion: reduce) {
+    .km-home .km-global-pointer-field { display: none !important; }
+}
+
+
+/* ==========================================================
+   KNOWME FINAL INTERACTION REFINEMENTS
+   - Services ribbon: wheel-down forward, left-button drag-right rewind.
+   - Engineering: restore the clean circular orbit composition.
+   - KNOWME x CODEX: smaller signature with animated neon guide lines.
+   - Cursor: a local, concave mesh deformation without a blue halo.
+========================================================== */
+.km-home .km-services-viewport {
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: pan-y;
+}
+.km-home .km-services-viewport.is-dragging {
+    cursor: grabbing;
+}
+.km-home .km-services-viewport.is-dragging * {
+    user-select: none !important;
+    -webkit-user-select: none !important;
+}
+.km-home .km-services-viewport.is-dragging .km-service-card {
+    transition-duration: .08s;
+}
+
+/* Keep the original circular architecture rings; remove the later wave layer. */
+.km-home .km-architecture-wave-field { display: none !important; }
+.km-home .km-architecture-orbit {
+    border-radius: 50% !important;
+    transform: none !important;
+}
+
+/* Compact brand lockup with animated red/cyan neon traces. */
+.km-home .km-codex-signature {
+    position: relative;
+    isolation: isolate;
+    width: min(1320px, 88%);
+    margin: clamp(44px, 5.5vw, 72px) auto 0;
+    padding: 25px 0 27px;
+    gap: 1px;
+    border-top: 0;
+    font-size: clamp(19px, 2.45vw, 31px) !important;
+    letter-spacing: .105em;
+    text-shadow: 0 0 18px rgba(106, 153, 255, .12);
+}
+.km-home .km-codex-signature::before,
+.km-home .km-codex-signature::after {
+    content: "";
+    position: absolute;
+    left: 2%;
+    right: 2%;
+    height: 1px;
+    pointer-events: none;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(255, 77, 111, .12) 8%,
+      rgba(255, 77, 111, .88) 23%,
+      rgba(115, 205, 255, .92) 51%,
+      rgba(156, 126, 255, .82) 77%,
+      transparent 100%);
+    background-size: 220% 100%;
+    box-shadow: 0 0 7px rgba(90, 195, 255, .34), 0 0 15px rgba(255, 70, 120, .16);
+    animation: kmCodexNeonSweep 7.5s linear infinite;
+}
+.km-home .km-codex-signature::before { top: 0; }
+.km-home .km-codex-signature::after {
+    bottom: 0;
+    opacity: .64;
+    transform: scaleX(.84);
+    animation-duration: 9.5s;
+    animation-direction: reverse;
+}
+.km-home .km-codex-signature small {
+    font-size: 7px;
+    letter-spacing: .16em;
+    color: rgba(189, 211, 246, .68);
+}
+@keyframes kmCodexNeonSweep {
+    0% { background-position: 100% 0; filter: brightness(.78); }
+    50% { background-position: 0 0; filter: brightness(1.25); }
+    100% { background-position: -100% 0; filter: brightness(.82); }
+}
+
+/* The cursor field is a deformed mesh shadow, not an animated blue ring. */
+.km-home .km-global-pointer-field {
+    z-index: 80 !important;
+    mix-blend-mode: soft-light !important;
+    opacity: 0 !important;
+    transition: opacity .16s linear !important;
+}
+.km-home .km-global-pointer-field.is-active { opacity: .88 !important; }
+.km-home .km-global-pointer-field.is-fallback::after {
+    width: clamp(250px, 31vw, 430px);
+    border-radius: 48% 52% 44% 56% / 53% 43% 57% 47%;
+    transform: translate(-50%, -50%) scale(calc(.94 + var(--km-cursor-strength, 0) * .06));
+    background:
+      radial-gradient(ellipse at 47% 43%, rgba(1, 6, 18, .52) 0%, rgba(3, 12, 29, .30) 24%, rgba(8, 26, 52, .10) 47%, transparent 72%);
+    box-shadow: inset 0 24px 42px rgba(0,0,0,.26), inset 0 -9px 22px rgba(70,124,190,.04);
+    filter: none;
+}
+.km-home .km-global-pointer-pit,
+.km-home .km-global-pointer-pit::before,
+.km-home .km-global-pointer-pit::after,
+.km-home .km-global-cursor-ripple { display: none !important; }
+
+@media (max-width: 720px) {
+    .km-home .km-codex-signature {
+        width: 90%;
+        font-size: clamp(19px, 5.7vw, 27px) !important;
+        padding: 22px 0 24px;
+    }
+    .km-home .km-codex-signature small { font-size: 7px; }
+    .km-home .km-services-viewport { cursor: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .km-home .km-codex-signature::before,
+    .km-home .km-codex-signature::after { animation: none !important; }
+}
+
+
+/* ==========================================================
+   FINAL READING + CURSOR + HOVER FIXES
+   - Inner reader scrolls vertically; at its edges wheel chains to the book.
+   - The read cue arrow is a stable, clickable control (no wobble).
+   - The global cursor uses a compact mesh depression, never a halo.
+========================================================== */
+.km-home .km-book-page--right {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+}
+.km-home .km-book-page--right > .km-book-page-head,
+.km-home .km-book-page--right > .km-book-page-footer {
+    flex: 0 0 auto !important;
+}
+.km-home .km-book-detail-scroll {
+    flex: 1 1 0% !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    overscroll-behavior-y: auto !important;
+    touch-action: pan-y !important;
+    scrollbar-width: thin !important;
+    -ms-overflow-style: auto !important;
+}
+.km-home .km-book-detail-scroll::-webkit-scrollbar { display: block !important; width: 7px !important; }
+.km-home .km-book-read-cue { min-height: 34px; }
+.km-home .km-book-read-more {
+    display: inline-grid;
+    flex: 0 0 22px;
+    width: 22px;
+    height: 22px;
+    place-items: center;
+    padding: 0;
+    border: 1px solid rgba(74, 133, 211, .58);
+    border-radius: 50%;
+    color: #174a83;
+    background: linear-gradient(145deg, rgba(220, 238, 255, .92), rgba(180, 207, 240, .82));
+    box-shadow: 0 2px 9px rgba(39, 91, 157, .13);
+    font: 700 13px/1 Arial, sans-serif;
+    cursor: pointer;
+    transition: background-color .18s ease, border-color .18s ease, color .18s ease;
+    animation: none !important;
+    transform: none !important;
+}
+.km-home .km-book-read-more:hover,
+.km-home .km-book-read-more:focus-visible {
+    border-color: #397bc0;
+    color: #0c315d;
+    background: #e8f4ff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(73, 143, 220, .13);
+    transform: none !important;
+    animation: none !important;
+}
+.km-home .km-book-read-more:disabled { opacity: .34; cursor: default; }
+.km-home .km-book-read-cue i { animation: none !important; transform: none !important; }
+
+/* Remove the large cursor halo/fallback. The WebGL mesh now draws only a small
+   warped grid patch and soft concave shading under the pointer. */
+.km-home .km-global-pointer-field.is-fallback::after { display: none !important; content: none !important; }
+.km-home .km-global-pointer-pit,
+.km-home .km-global-pointer-pit::before,
+.km-home .km-global-pointer-pit::after,
+.km-home .km-global-cursor-ripple { display: none !important; }
+.km-home .km-global-pointer-field {
+    mix-blend-mode: soft-light !important;
+    opacity: 0 !important;
+    transition: opacity .14s linear !important;
+}
+.km-home .km-global-pointer-field.is-active { opacity: .58 !important; }
+.km-home .km-global-pointer-canvas { display: block; width: 100%; height: 100%; }
+
+/* Buttons stay steady on hover; feedback is colour/border only, never shaking. */
+.km-home button:hover,
+.km-home button:focus-visible,
+.km-home .hero-btn:hover,
+.km-home .km-final-button:hover,
+.km-home .km-icon-button:hover,
+.km-home .km-text-link:hover,
+.km-home .km-project-card-link:hover,
+.km-home .km-security-reference a:hover {
+    transform: none !important;
+    translate: none !important;
+    rotate: none !important;
+    animation: none !important;
+}
+@media (max-width: 720px) {
+    .km-home .km-book-detail-scroll { height: auto !important; max-height: 58svh !important; min-height: 260px !important; flex: 0 1 auto !important; }
+}
+
+
+/* ================================================================
+   REVERSIBLE SERVICES RIBBON + ENGINEERING ORBIT MOTION
+   Native vertical scroll drives the track in both directions.
+   Orbit circles stay perfectly circular; only neon traces travel around them.
+================================================================ */
+.km-home .km-services {
+    overflow: visible !important;
+}
+.km-home .km-services-scroll-space {
+    height: auto;
+    min-height: calc(100svh - var(--km-services-top, 72px) + 1px);
+}
+.km-home .km-services-sticky {
+    position: sticky;
+    top: var(--km-services-top, 72px);
+    min-height: min(650px, calc(100svh - var(--km-services-top, 72px)));
+}
+.km-home .km-services-viewport {
+    overflow: visible;
+    overscroll-behavior-y: auto;
+    touch-action: pan-y;
+}
+.km-home .km-service-grid {
+    will-change: transform;
+    backface-visibility: hidden;
+}
+.km-home .km-service-card {
+    transform-style: preserve-3d;
+    backface-visibility: visible;
+}
+.km-home .km-architecture {
+    position: relative;
+    isolation: isolate;
+}
+.km-home .km-architecture-motion-lines {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+}
+.km-home .km-architecture-motion-track {
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-dasharray: 62 1320;
+    stroke-dashoffset: 0;
+    opacity: .9;
+    filter: drop-shadow(0 0 5px currentColor);
+}
+.km-home .km-architecture-motion-track--blue {
+    stroke: #6fcaff;
+    color: #6fcaff;
+    animation: kmOrbitTraceForward 11s linear infinite;
+}
+.km-home .km-architecture-motion-track--red {
+    stroke: #ff718f;
+    color: #ff718f;
+    stroke-dasharray: 48 1045;
+    animation: kmOrbitTraceReverse 14s linear infinite;
+}
+.km-home .km-architecture-motion-track--fine {
+    stroke: rgba(150, 188, 255, .58);
+    stroke-width: 1;
+    stroke-dasharray: 3 18;
+    opacity: .48;
+    animation: kmOrbitTraceForward 22s linear infinite;
+}
+.km-home .km-architecture-motion-dot {
+    fill: #a6eaff;
+    filter: drop-shadow(0 0 7px #62caff) drop-shadow(0 0 15px rgba(92, 187, 255, .72));
+}
+.km-home .km-architecture-motion-dot--red {
+    fill: #ff94b0;
+    filter: drop-shadow(0 0 7px #ff6d98) drop-shadow(0 0 15px rgba(255, 94, 143, .65));
+}
+.km-home .km-architecture-core,
+.km-home .km-architecture-node {
+    z-index: 4;
+}
+@keyframes kmOrbitTraceForward {
+    from { stroke-dashoffset: 0; }
+    to { stroke-dashoffset: -1382; }
+}
+@keyframes kmOrbitTraceReverse {
+    from { stroke-dashoffset: 0; }
+    to { stroke-dashoffset: 1093; }
+}
+@media (max-width: 720px) {
+    .km-home .km-services { overflow: visible !important; }
+    .km-home .km-services-scroll-space { height: auto !important; min-height: 0; }
+    .km-home .km-services-sticky { position: relative; top: auto; min-height: 0; }
+    .km-home .km-services-viewport { overflow-x: auto; overflow-y: hidden; }
+    .km-home .km-service-grid { transform: none !important; }
+    .km-home .km-service-card { transform: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .km-home .km-architecture-motion-track,
+    .km-home .km-architecture-motion-dot {
+        animation: none !important;
+    }
+    .km-home .km-architecture-motion-dot { visibility: hidden; }
+}
+
+
+/* ==========================================================
+   RESTORE THE TWO SECURITY BOOK SCROLL CONTROLS
+   1) Native document scroll drives the 11-chapter horizontal book.
+   2) A visible vertical reader scrolls the active right-hand page only.
+   At the reader's top/bottom edge, native wheel chaining returns to
+   the document so the chapter journey can continue in either direction.
+========================================================== */
+.km-home .km-security-scroll-hint {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 8px;
+    color: rgba(198, 218, 248, .88) !important;
+}
+.km-home .km-security-scroll-hint::after {
+    content: "↓";
+    display: inline-grid;
+    width: 18px;
+    height: 18px;
+    place-items: center;
+    border: 1px solid rgba(106, 164, 244, .62);
+    border-radius: 50%;
+    color: #c6ddff;
+    font: 700 12px/1 Arial, sans-serif;
+}
+
+/* Outer paper stays fixed; only the inner reading region scrolls. */
+.km-home .km-book-page--right {
+    display: flex !important;
+    flex-direction: column !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    height: 100% !important;
+    overflow: hidden !important;
+}
+.km-home .km-book-page--right > .km-book-page-head,
+.km-home .km-book-page--right > .km-book-page-footer {
+    flex: 0 0 auto !important;
+}
+.km-home .km-book-detail-scroll {
+    display: block !important;
+    position: relative;
+    flex: 1 1 0% !important;
+    width: 100%;
+    height: 0 !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 -2px 0 0;
+    padding: 0 12px 16px 0;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    overscroll-behavior-y: auto !important;
+    touch-action: pan-y !important;
+    scrollbar-gutter: stable;
+    scrollbar-width: auto !important;
+    scrollbar-color: #5d91d4 rgba(73, 103, 145, .18) !important;
+    -ms-overflow-style: auto !important;
+    scroll-behavior: smooth;
+    cursor: auto;
+}
+.km-home .km-book-detail-scroll::-webkit-scrollbar {
+    display: block !important;
+    width: 9px !important;
+    height: auto !important;
+}
+.km-home .km-book-detail-scroll::-webkit-scrollbar-track {
+    background: rgba(81, 111, 151, .20) !important;
+    border: 1px solid rgba(73, 105, 148, .16);
+    border-radius: 10px;
+}
+.km-home .km-book-detail-scroll::-webkit-scrollbar-thumb {
+    min-height: 34px;
+    background: linear-gradient(180deg, #5c9be8 0%, #3974bd 58%, #d26782 100%) !important;
+    border: 2px solid rgba(218, 229, 242, .88);
+    border-radius: 10px;
+}
+.km-home .km-book-detail-scroll::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #367fd4 0%, #235c9e 58%, #b94c6a 100%) !important;
+}
+.km-home .km-book-detail-scroll:focus-visible {
+    outline: 2px solid rgba(72, 137, 218, .68);
+    outline-offset: -3px;
+    border-radius: 7px;
+}
+.km-home .km-book-read-cue {
+    position: sticky;
+    z-index: 5;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 34px;
+    margin: 0 0 12px;
+    padding: 5px 2px 7px;
+    color: #486789;
+    background: linear-gradient(180deg, rgba(224, 233, 244, .98), rgba(224, 233, 244, .90));
+    border-bottom: 1px solid rgba(70, 107, 151, .22);
+    font: 800 8px/1.4 "Courier New", monospace;
+    letter-spacing: .11em;
+}
+.km-home .km-book-read-more {
+    display: inline-grid;
+    flex: 0 0 24px;
+    width: 24px;
+    height: 24px;
+    place-items: center;
+    padding: 0;
+    border: 1px solid rgba(69, 125, 194, .58);
+    border-radius: 50%;
+    color: #174a83;
+    background: linear-gradient(145deg, #f4f8fd, #c7d9ee);
+    box-shadow: 0 2px 8px rgba(39, 91, 157, .13);
+    font: 700 14px/1 Arial, sans-serif;
+    cursor: pointer;
+}
+.km-home .km-book-read-more:hover,
+.km-home .km-book-read-more:focus-visible {
+    border-color: #397bc0;
+    color: #0c315d;
+    background: #eef6ff;
+    outline: 2px solid rgba(73, 143, 220, .22);
+    outline-offset: 2px;
+}
+.km-home .km-book-read-more:disabled {
+    opacity: .38;
+    cursor: default;
+}
+
+@media (max-width: 720px) {
+    .km-home .km-book-page--right {
+        height: auto !important;
+        max-height: none !important;
+    }
+    .km-home .km-book-detail-scroll {
+        flex: 0 1 auto !important;
+        height: auto !important;
+        max-height: 58svh !important;
+        min-height: 260px !important;
+        padding-right: 10px;
+    }
+}
+
+
+/* ================================================================
+   KNOWME FINAL VISUAL REFINEMENT — READABLE BOOK / STEADY CARDS / ORBITS
+   1) Remove the translucent page-turn sheet and page light sweep. These
+      overlays reduced the apparent contrast of the technical copy.
+   2) Keep service panels steady on hover. Their scroll-driven 3D placement
+      remains controlled by the existing JavaScript, but no CSS float or
+      hover transform competes with that transform.
+   3) Restore high-energy circular orbit animation using rotating neon arcs,
+      brighter SVG traces and restrained glow pulses. The orbit geometry
+      itself remains perfectly circular and does not wobble or deform.
+================================================================ */
+
+/* The page-turn sheet was an opaque/translucent overlay, not a readable
+   physical page flip. Remove it and the moving paper sheen completely. */
+.km-home .km-book-page-turn,
+.km-home .km-book-page-turn::after {
+    display: none !important;
+    content: none !important;
+    animation: none !important;
+    opacity: 0 !important;
+}
+.km-home .km-book-page--left::after,
+.km-home .km-book-page--right::after {
+    display: none !important;
+    content: none !important;
+    animation: none !important;
+    opacity: 0 !important;
+    background: none !important;
+}
+
+/* Stable service cards: keep the inline scroll transform from JS, but remove
+   the CSS float keyframes and hover transform that used to fight it. */
+.km-home .km-service-card,
+.km-home .km-service-card:nth-child(2n),
+.km-home .km-service-card:nth-child(2n + 1) {
+    animation: none !important;
+    will-change: transform;
+    transition: border-color .28s ease, box-shadow .28s ease, background .28s ease !important;
+}
+.km-home .km-service-card:hover {
+    animation: none !important;
+    border-color: rgba(143, 211, 255, .78) !important;
+    box-shadow: 0 28px 72px rgba(0, 0, 0, .26),
+                0 0 32px color-mix(in srgb, var(--service-accent, #68c8ff) 18%, transparent),
+                inset 0 1px rgba(255, 255, 255, .18) !important;
+    filter: none !important;
+}
+.km-home .km-service-card.is-active,
+.km-home .km-service-card.is-near {
+    filter: none !important;
+}
+.km-home .km-service-card::before {
+    animation: none !important;
+    transform: none !important;
+    opacity: .62;
+}
+.km-home .km-service-card-corner,
+.km-home .km-service-card.is-active .km-service-card-corner {
+    transition: color .25s ease, border-color .25s ease, background .25s ease !important;
+}
+
+/* More visible but still elegant motion inside the card artwork. Only the SVG
+   strokes travel; the card itself never floats, scales or flickers. */
+@media (prefers-reduced-motion: no-preference) {
+    .km-home .km-service-wave-field path {
+        stroke-dasharray: 9 15 !important;
+        stroke-opacity: .48 !important;
+        filter: drop-shadow(0 0 5px color-mix(in srgb, var(--service-accent, #68c8ff) 48%, transparent));
+        animation: kmServiceWaveFlow 18s linear infinite !important;
+    }
+    .km-home .km-service-wave-field path:nth-child(2) {
+        animation-duration: 23s !important;
+        animation-direction: reverse !important;
+        stroke-opacity: .34 !important;
+    }
+    .km-home .km-service-wave-field path:nth-child(3) {
+        animation-duration: 29s !important;
+        stroke-opacity: .28 !important;
+    }
+}
+
+/* Engineering: maintain the two original perfect circles. Animated conic
+   traces rotate inside/outside the rings; the ring outlines never change shape. */
+.km-home .km-engineering .km-architecture-orbit {
+    border-radius: 50% !important;
+    transform: none !important;
+    border-width: 1.5px !important;
+    border-color: rgba(118, 198, 255, .60) !important;
+    box-shadow: 0 0 24px rgba(74, 170, 255, .16),
+                0 0 62px rgba(74, 170, 255, .11),
+                inset 0 0 24px rgba(74, 170, 255, .05) !important;
+}
+.km-home .km-engineering .km-architecture-orbit--two {
+    border-color: rgba(255, 119, 160, .58) !important;
+    box-shadow: 0 0 24px rgba(255, 94, 145, .14),
+                0 0 56px rgba(255, 94, 145, .09),
+                inset 0 0 24px rgba(255, 94, 145, .045) !important;
+}
+.km-home .km-engineering .km-architecture-orbit::before,
+.km-home .km-engineering .km-architecture-orbit::after {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    border: 0 !important;
+    border-radius: 50% !important;
+    pointer-events: none !important;
+    opacity: .98 !important;
+    transform: none;
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3.2px), #000 calc(100% - 2.2px));
+    mask: radial-gradient(farthest-side, transparent calc(100% - 3.2px), #000 calc(100% - 2.2px));
+    filter: drop-shadow(0 0 5px rgba(105, 211, 255, .7));
+}
+.km-home .km-engineering .km-architecture-orbit::before {
+    inset: -2.2% !important;
+    background: conic-gradient(from 0deg,
+        transparent 0deg 218deg,
+        rgba(93, 188, 255, .10) 230deg,
+        rgba(117, 222, 255, .98) 253deg,
+        rgba(184, 162, 255, .72) 268deg,
+        transparent 287deg 360deg);
+}
+.km-home .km-engineering .km-architecture-orbit::after {
+    inset: 3.2% !important;
+    background: conic-gradient(from 0deg,
+        transparent 0deg 42deg,
+        rgba(255, 103, 151, .10) 52deg,
+        rgba(255, 127, 177, .98) 72deg,
+        rgba(255, 179, 205, .58) 87deg,
+        transparent 106deg 360deg);
+    filter: drop-shadow(0 0 5px rgba(255, 105, 160, .66));
+}
+.km-home .km-engineering .km-architecture-orbit--two::before {
+    background: conic-gradient(from 0deg,
+        transparent 0deg 270deg,
+        rgba(255, 102, 151, .12) 280deg,
+        rgba(255, 127, 177, .98) 301deg,
+        rgba(199, 165, 255, .72) 317deg,
+        transparent 334deg 360deg);
+    filter: drop-shadow(0 0 6px rgba(255, 104, 160, .72));
+}
+.km-home .km-engineering .km-architecture-orbit--two::after {
+    background: conic-gradient(from 0deg,
+        transparent 0deg 104deg,
+        rgba(89, 184, 255, .10) 114deg,
+        rgba(106, 220, 255, .98) 137deg,
+        rgba(153, 171, 255, .72) 151deg,
+        transparent 168deg 360deg);
+    filter: drop-shadow(0 0 5px rgba(94, 193, 255, .68));
+}
+
+/* Stronger travelling traces and bright moving nodes around KNOWME core. */
+.km-home .km-engineering .km-architecture-motion-lines {
+    opacity: 1 !important;
+    overflow: visible;
+}
+.km-home .km-engineering .km-architecture-motion-track {
+    stroke-width: 3.1 !important;
+    stroke-linecap: round !important;
+    opacity: 1 !important;
+    filter: drop-shadow(0 0 5px currentColor) drop-shadow(0 0 12px currentColor) !important;
+}
+.km-home .km-engineering .km-architecture-motion-track--blue {
+    stroke: #8be4ff !important;
+    stroke-dasharray: 178 1204 !important;
+}
+.km-home .km-engineering .km-architecture-motion-track--red {
+    stroke: #ff8bb0 !important;
+    stroke-dasharray: 148 946 !important;
+}
+.km-home .km-engineering .km-architecture-motion-track--fine {
+    stroke: rgba(179, 206, 255, .78) !important;
+    stroke-width: 1.35 !important;
+    stroke-dasharray: 4 15 !important;
+    opacity: .75 !important;
+}
+.km-home .km-engineering .km-architecture-motion-dot {
+    fill: #c3f4ff !important;
+    stroke: rgba(255, 255, 255, .85);
+    stroke-width: 1.2;
+    filter: drop-shadow(0 0 7px #65d7ff) drop-shadow(0 0 17px rgba(92, 187, 255, .9)) !important;
+}
+.km-home .km-engineering .km-architecture-motion-dot--red {
+    fill: #ffabc3 !important;
+    filter: drop-shadow(0 0 7px #ff739f) drop-shadow(0 0 17px rgba(255, 94, 143, .86)) !important;
+}
+.km-home .km-engineering .km-architecture-core {
+    border-color: rgba(190, 230, 255, .88) !important;
+    box-shadow: 0 0 34px rgba(76, 164, 255, .42),
+                0 0 82px rgba(76, 164, 255, .30),
+                inset 0 0 42px rgba(135, 197, 255, .27) !important;
+}
+.km-home .km-engineering .km-architecture-node {
+    border-color: rgba(177, 215, 255, .52) !important;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, .2),
+                0 0 22px rgba(77, 159, 255, .16),
+                inset 0 1px rgba(255, 255, 255, .08) !important;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .km-home .km-engineering .km-architecture-orbit {
+        animation: kmEngineeringOrbitGlow 5.8s ease-in-out infinite alternate !important;
+    }
+    .km-home .km-engineering .km-architecture-orbit--two {
+        animation-delay: -2.9s !important;
+    }
+    .km-home .km-engineering .km-architecture-orbit::before {
+        animation: kmEngineeringArcForward 9.5s linear infinite !important;
+    }
+    .km-home .km-engineering .km-architecture-orbit::after {
+        animation: kmEngineeringArcReverse 13s linear infinite !important;
+    }
+    .km-home .km-engineering .km-architecture-orbit--two::before {
+        animation-duration: 12.5s !important;
+        animation-direction: reverse !important;
+    }
+    .km-home .km-engineering .km-architecture-orbit--two::after {
+        animation-duration: 16s !important;
+        animation-direction: reverse !important;
+    }
+    .km-home .km-engineering .km-architecture-motion-track--blue {
+        animation: kmOrbitTraceForward 8.5s linear infinite !important;
+    }
+    .km-home .km-engineering .km-architecture-motion-track--red {
+        animation: kmOrbitTraceReverse 10.5s linear infinite !important;
+    }
+    .km-home .km-engineering .km-architecture-motion-track--fine {
+        animation: kmOrbitTraceForward 17s linear infinite !important;
+    }
+    .km-home .km-engineering .km-architecture-core {
+        animation: kmEngineeringCoreGlow 5.4s ease-in-out infinite !important;
+    }
+    .km-home .km-engineering .km-architecture-node {
+        animation: kmEngineeringNodeGlow 6.2s ease-in-out infinite !important;
+    }
+    .km-home .km-engineering .km-architecture-node--backend { animation-delay: -1.5s !important; }
+    .km-home .km-engineering .km-architecture-node--data { animation-delay: -3s !important; }
+    .km-home .km-engineering .km-architecture-node--security { animation-delay: -4.5s !important; }
+}
+
+@keyframes kmEngineeringArcForward {
+    from { rotate: 0deg; }
+    to { rotate: 360deg; }
+}
+@keyframes kmEngineeringArcReverse {
+    from { rotate: 360deg; }
+    to { rotate: 0deg; }
+}
+@keyframes kmEngineeringOrbitGlow {
+    from { box-shadow: 0 0 22px rgba(74, 170, 255, .14), 0 0 52px rgba(74, 170, 255, .08), inset 0 0 20px rgba(74, 170, 255, .035); }
+    to { box-shadow: 0 0 34px rgba(74, 190, 255, .28), 0 0 82px rgba(74, 170, 255, .18), inset 0 0 30px rgba(74, 170, 255, .075); }
+}
+@keyframes kmEngineeringCoreGlow {
+    0%, 100% { box-shadow: 0 0 34px rgba(76, 164, 255, .35), 0 0 72px rgba(76, 164, 255, .24), inset 0 0 36px rgba(135, 197, 255, .20); filter: brightness(1); }
+    50% { box-shadow: 0 0 46px rgba(76, 184, 255, .58), 0 0 98px rgba(76, 164, 255, .38), inset 0 0 48px rgba(155, 212, 255, .32); filter: brightness(1.12); }
+}
+@keyframes kmEngineeringNodeGlow {
+    0%, 100% { box-shadow: 0 12px 36px rgba(0,0,0,.2), 0 0 18px rgba(77,159,255,.12), inset 0 1px rgba(255,255,255,.07); }
+    50% { box-shadow: 0 12px 36px rgba(0,0,0,.2), 0 0 30px rgba(90,177,255,.28), inset 0 1px rgba(255,255,255,.13); }
+}
+
+@media (max-width: 720px) {
+    .km-home .km-service-card { animation: none !important; }
+    .km-home .km-engineering .km-architecture-motion-lines { opacity: .82 !important; }
+}
+
+
+/* =====================================================================
+   KNOWME HOMEPAGE — READABILITY + TABLET / MOBILE RESPONSIVE PASS
+   Keep the dark visual identity. Paper is cool slate, not pure white;
+   technical copy uses strong navy contrast. Touch layouts use swipeable
+   chapters/cards instead of long pinned scroll ranges.
+===================================================================== */
+
+/* Strong, consistent contrast on the Security Book. */
+.km-home .km-security-chapter.is-active,
+.km-home .km-security-chapter.is-active .km-book-spread,
+.km-home .km-security-chapter.is-active .km-book-page--left,
+.km-home .km-security-chapter.is-active .km-book-page--right {
+    opacity: 1 !important;
+    filter: none !important;
+}
+.km-home .km-book-page--left {
+    background:
+        radial-gradient(ellipse at 12% 14%, rgba(255, 124, 160, .15), transparent 44%),
+        linear-gradient(125deg, #d8e1ed 0%, #cbd8e7 58%, #d0dbea 100%) !important;
+}
+.km-home .km-book-page--right {
+    background:
+        radial-gradient(ellipse at 92% 12%, rgba(98, 177, 238, .13), transparent 48%),
+        linear-gradient(245deg, #dce5ef 0%, #cedbe9 58%, #d4ddec 100%) !important;
+}
+.km-home .km-book-page-head,
+.km-home .km-book-chapter-word,
+.km-home .km-book-page-count,
+.km-home .km-security-reference > span {
+    color: #263c59 !important;
+    opacity: 1 !important;
+}
+.km-home .km-book-folio { color: #a72e52 !important; }
+.km-home .km-book-topic-title {
+    color: #101e33 !important;
+    opacity: 1 !important;
+    text-shadow: none !important;
+}
+.km-home .km-security-lead {
+    color: #243b59 !important;
+    font-weight: 600 !important;
+    opacity: 1 !important;
+}
+.km-home .km-security-body,
+.km-home .km-security-body p {
+    color: #132943 !important;
+    opacity: 1 !important;
+    font-size: clamp(13px, .94vw, 15px) !important;
+    font-weight: 600 !important;
+    line-height: 1.78 !important;
+    text-shadow: none !important;
+}
+.km-home .km-security-detail-block p,
+.km-home .km-book-controls li {
+    color: #1b3553 !important;
+    opacity: 1 !important;
+    font-size: clamp(12px, .82vw, 13.5px) !important;
+    font-weight: 600 !important;
+    line-height: 1.68 !important;
+}
+.km-home .km-detail-label {
+    color: #284d73 !important;
+    opacity: 1 !important;
+    font-size: 9px !important;
+    font-weight: 900 !important;
+    letter-spacing: .13em !important;
+}
+.km-home .km-security-reference a {
+    color: #174f91 !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    text-decoration-thickness: 1px;
+}
+.km-home .km-book-left-bottom,
+.km-home .km-book-left-bottom strong { color: #2e4e73 !important; opacity: 1 !important; }
+.km-home .km-book-page--left::after,
+.km-home .km-book-page--right::after { display: none !important; content: none !important; }
+.km-home .km-book-page > *,
+.km-home .km-book-detail-scroll,
+.km-home .km-security-body,
+.km-home .km-security-columns,
+.km-home .km-defence-block { opacity: 1 !important; filter: none !important; }
+.km-home .km-book-detail-scroll {
+    scrollbar-color: rgba(50, 105, 170, .86) rgba(70, 100, 140, .16) !important;
+}
+.km-home .km-book-detail-scroll::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #4b8bd0, #b54b70) !important;
+}
+.km-home .km-security-example p { color: #f0f5fc !important; }
+.km-home .km-security-example > .km-detail-label { color: #ff9bad !important; }
+.km-home .km-security-visual-top { color: #c3d8f4 !important; }
+.km-home .km-security-visual-top span:last-child { color: #ff9bad !important; }
+
+/* Tablet and touch layout: keep the site in normal vertical document flow,
+   while the Book and Services remain horizontally swipeable. */
+@media (max-width: 900px) {
+    body:has(#kmHome) .topbar {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-rows: auto auto;
+        align-items: center;
+        gap: 8px 10px;
+        width: 100%;
+        height: auto;
+        min-height: 108px;
+        padding: 9px 4vw 8px;
+    }
+    body:has(#kmHome) .logo {
+        grid-column: 1;
+        grid-row: 1;
+        font-size: clamp(16px, 2.5vw, 20px);
+        letter-spacing: .16em;
+        transform: none !important;
+    }
+    body:has(#kmHome) .header-utility {
+        grid-column: 2;
+        grid-row: 1;
+        display: flex;
+        justify-self: end;
+        align-items: center;
+        gap: 6px;
+        min-width: 0;
+    }
+    body:has(#kmHome) .language-switcher { gap: 3px; padding: 3px; }
+    body:has(#kmHome) .lang-btn { min-width: 32px; height: 29px; padding: 0 6px; font-size: 10px; }
+    body:has(#kmHome) .site-kc-mark { transform: scale(.88); transform-origin: right center; }
+    body:has(#kmHome) .main-nav {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        justify-self: stretch;
+        width: 100%;
+        gap: 5px;
+        overflow: visible;
+    }
+    body:has(#kmHome) .main-nav .nav-btn {
+        min-width: 0;
+        min-height: 32px;
+        width: 100%;
+        padding: 6px 4px;
+        font-size: clamp(9px, 1.25vw, 11px);
+        line-height: 1.2;
+        white-space: normal;
+        text-align: center;
+        transform: none !important;
+    }
+    body:has(#kmHome) .nav-btn::before { display: none; }
+
+    .km-home { width: 100%; max-width: 100%; overflow-x: clip; }
+    .km-home .km-hero {
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        align-items: flex-start;
+        padding: 140px 0 28px;
+    }
+    .km-home .km-hero-layout {
+        width: min(92%, 760px);
+        grid-template-columns: minmax(0, 1fr);
+        gap: 8px;
+        margin: 0 auto;
+    }
+    .km-home .km-hero-copy { max-width: 100%; }
+    .km-home .km-hero-copy h1 {
+        max-width: 100%;
+        font-size: clamp(42px, 7vw, 66px);
+        line-height: 1.02;
+        letter-spacing: -.055em;
+        overflow-wrap: anywhere;
+    }
+    .km-home .km-hero-description { max-width: 680px; font-size: 15px; line-height: 1.7; }
+    .km-home .km-robotic-eye-stage {
+        width: min(100%, 620px);
+        height: clamp(300px, 45vw, 460px);
+        margin: 0 auto;
+    }
+    .km-home .km-hero-footer {
+        position: relative;
+        inset: auto;
+        width: 92%;
+        margin: 10px auto 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 10px 18px;
+        font-size: 8px;
+    }
+
+    .km-home .km-section { padding: 76px 4vw; }
+    .km-home .km-security-book-section,
+    .km-home .km-services { overflow: visible !important; }
+    .km-home .km-security-scroll-space { height: auto !important; min-height: 0 !important; }
+    .km-home .km-security-sticky {
+        position: relative !important;
+        top: auto !important;
+        height: auto !important;
+        min-height: 0 !important;
+        padding: 25px 0 38px !important;
+        gap: 14px !important;
+        overflow: visible !important;
+    }
+    .km-home .km-security-heading {
+        width: 92vw;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 3px;
+    }
+    .km-home .km-security-heading h2 { font-size: clamp(34px, 5.4vw, 52px); line-height: 1.02; }
+    .km-home .km-security-heading > p { max-width: 700px; font-size: 13px; line-height: 1.7; }
+    .km-home .km-security-toolbar { width: 92vw; flex-wrap: wrap; gap: 9px; }
+    .km-home .km-security-reading-label { font-size: 9px; }
+    .km-home .km-security-scroll-hint { font-size: 8px; }
+    .km-home .km-security-progress-track { width: 92vw; }
+    .km-home .km-security-book-stage {
+        display: block;
+        width: 100%;
+        margin: 0;
+        flex: 0 0 auto;
+        min-height: 0;
+        overflow: visible;
+        perspective: none;
+    }
+    .km-home .km-security-book-viewport {
+        width: 94vw;
+        height: auto;
+        margin: 0 auto;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: 3vw;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(106, 163, 232, .72) rgba(85, 116, 162, .12);
+        overscroll-behavior-x: contain;
+        touch-action: pan-x pan-y;
+        -webkit-overflow-scrolling: touch;
+    }
+    .km-home .km-security-book-viewport::-webkit-scrollbar { height: 5px; }
+    .km-home .km-security-chapters {
+        width: max-content;
+        height: auto;
+        gap: 3vw;
+        padding: 4px 3vw 18px;
+        transform: none !important;
+    }
+    .km-home .km-security-chapter {
+        flex: 0 0 90vw;
+        width: 90vw;
+        height: auto;
+        min-height: 0;
+        padding: 4px 0 8px;
+        filter: none !important;
+        transform: none !important;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+    }
+    .km-home .km-security-chapter-meta { margin-bottom: 8px; color: rgba(206, 226, 255, .82); }
+    .km-home .km-book-spread {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        width: 100%;
+        height: min(72svh, 660px);
+        min-height: 560px;
+        padding: 0;
+        gap: 0;
+        filter: none;
+    }
+    .km-home .km-book-page { min-width: 0; padding: 17px 15px; }
+    .km-home .km-book-page--left { border-radius: 18px 4px 4px 15px; border-right: 0; }
+    .km-home .km-book-page--right { display: flex; flex-direction: column; height: 100%; min-height: 0; overflow: hidden; border-radius: 4px 18px 15px 4px; }
+    .km-home .km-book-spine { display: block; width: 3px; left: 50%; }
+    .km-home .km-book-topic-title { font-size: clamp(25px, 3.3vw, 34px); line-height: 1.02; }
+    .km-home .km-security-lead { font-size: 12.5px; line-height: 1.65; }
+    .km-home .km-book-page-head { font-size: 7px; letter-spacing: .11em; }
+    .km-home .km-book-detail-scroll {
+        flex: 1 1 0%;
+        height: 0;
+        min-height: 0;
+        max-height: none;
+        padding: 0 8px 12px 0;
+        margin: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+        overscroll-behavior-y: auto;
+        touch-action: pan-y;
+        scrollbar-width: thin;
+    }
+    .km-home .km-security-body,
+    .km-home .km-security-body p { font-size: 12.7px !important; line-height: 1.68 !important; }
+    .km-home .km-security-columns { grid-template-columns: 1fr; gap: 11px; margin: 11px 0; padding: 10px 0; }
+    .km-home .km-security-detail-block p,
+    .km-home .km-book-controls li { font-size: 11.7px !important; line-height: 1.55 !important; }
+    .km-home .km-book-controls { grid-template-columns: 1fr; gap: 7px; }
+    .km-home .km-security-example { padding: 11px 12px; }
+    .km-home .km-security-visual svg { max-height: 128px; }
+    .km-home .km-security-book-footer { width: 92vw; flex-wrap: wrap; gap: 8px; font-size: 8px; }
+
+    .km-home .km-services-scroll-space { height: auto !important; min-height: 0 !important; }
+    .km-home .km-services-sticky {
+        position: relative !important;
+        top: auto !important;
+        height: auto !important;
+        min-height: 0 !important;
+        padding: 54px 0 36px;
+        overflow: visible !important;
+    }
+    .km-home .km-services-heading { width: 92vw; grid-template-columns: 1fr; gap: 10px; margin: 0 auto 20px; }
+    .km-home .km-services-heading h2 { font-size: clamp(35px, 6vw, 56px); }
+    .km-home .km-services-heading > p { max-width: 700px; font-size: 13px; }
+    .km-home .km-services-toolbar { width: 92vw; flex-wrap: wrap; gap: 8px; margin: 0 auto 9px; }
+    .km-home .km-services-toolbar-actions > span { display: inline; font-size: 8px; }
+    .km-home .km-services-viewport {
+        width: 100%;
+        height: auto;
+        flex: 0 0 auto;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: 4vw;
+        overscroll-behavior-x: contain;
+        touch-action: pan-x pan-y;
+        -webkit-overflow-scrolling: touch;
+    }
+    .km-home .km-service-grid {
+        display: flex;
+        width: max-content;
+        max-width: none;
+        height: auto;
+        gap: 3vw;
+        padding: 12px 4vw 23px;
+        transform: none !important;
+    }
+    .km-home .km-service-card,
+    .km-home .km-service-card.km-service-card--wide {
+        flex: 0 0 78vw;
+        width: 78vw;
+        min-height: 440px;
+        height: auto;
+        padding: 24px 21px;
+        transform: none !important;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+    }
+    .km-home .km-service-card h3 { max-width: 72%; font-size: clamp(25px, 3.2vw, 34px); }
+    .km-home .km-service-card p { max-width: 75%; font-size: 13px; line-height: 1.65; }
+    .km-home .km-service-visual { opacity: .72; transform: scale(.82); transform-origin: top right; }
+    .km-home .km-services-footer { padding: 0 4vw; }
+
+    .km-home .km-process.km-process-film { height: 66svh; min-height: 380px; max-height: 700px; }
+    .km-home .km-process-film video.km-process-montage { object-fit: cover; object-position: center; }
+    .km-home .km-engineering { grid-template-columns: 1fr; gap: 32px; }
+    .km-home .km-engineering-copy { width: 100%; max-width: 760px; }
+    .km-home .km-architecture { width: min(100%, 780px); min-height: 430px; margin: 0 auto; }
+    .km-home .km-final { padding: 76px 5vw 34px; }
+    .km-home .km-final-content { width: min(100%, 760px); }
+    .km-home .km-final h2 { font-size: clamp(39px, 7.5vw, 72px); }
+    .km-home .km-final-content > p { font-size: 14px; }
+    .km-home .km-final-bottom { width: 100%; margin-top: 54px; flex-wrap: wrap; font-size: 8px; }
+    .km-home .km-codex-signature { width: 90%; max-width: 650px; margin: 46px auto 0; font-size: clamp(27px, 5vw, 42px); }
+    .km-home .km-global-pointer-field { display: none !important; }
+}
+
+/* Smaller phones: one legible page at a time, with the explanation below it. */
+@media (max-width: 720px) {
+    body:has(#kmHome) .topbar { min-height: 112px; padding: 8px 3vw 7px; gap: 7px 6px; }
+    body:has(#kmHome) .logo { font-size: 16px; letter-spacing: .12em; }
+    body:has(#kmHome) .main-nav { gap: 4px; }
+    body:has(#kmHome) .main-nav .nav-btn { min-height: 31px; padding: 5px 3px; font-size: 9px; border-radius: 7px; }
+    body:has(#kmHome) .lang-btn { min-width: 29px; height: 27px; font-size: 9px; }
+    body:has(#kmHome) .site-kc-mark { transform: scale(.78); }
+
+    .km-home .km-hero { padding: 132px 0 22px; }
+    .km-home .km-hero-layout { width: 91%; gap: 0; }
+    .km-home .km-eyebrow { font-size: 8px; letter-spacing: .1em; }
+    .km-home .km-hero-copy h1 { font-size: clamp(34px, 9.3vw, 48px); line-height: 1.04; margin: 18px 0; }
+    .km-home .km-hero-description { font-size: 13px; line-height: 1.65; }
+    .km-home .km-hero-actions { display: grid; grid-template-columns: 1fr; width: min(100%, 330px); margin-top: 20px; gap: 9px; }
+    .km-home .km-hero-actions .hero-btn { width: 100%; min-height: 44px; }
+    .km-home .km-robotic-eye-stage { height: clamp(250px, 74vw, 330px); width: 100%; margin-top: 4px; }
+    .km-home .robotic-eye-label { bottom: 8px; font-size: 7px; }
+    .km-home .km-eye-coordinate { display: none; }
+    .km-home .km-hero-footer { width: 91%; margin-top: 7px; font-size: 7px; }
+    .km-home .km-hero-footer > :last-child { display: none; }
+
+    .km-home .km-section { padding: 62px 4vw; }
+    .km-home .km-security-heading h2 { font-size: clamp(31px, 8.1vw, 43px); }
+    .km-home .km-security-heading > p { font-size: 12px; }
+    .km-home .km-security-toolbar-actions { flex-wrap: wrap; gap: 6px; }
+    .km-home .km-security-toolbar-actions .km-icon-button { width: 28px; height: 28px; }
+    .km-home .km-security-book-viewport { width: 94vw; }
+    .km-home .km-security-chapters { gap: 3vw; padding-inline: 3vw; }
+    .km-home .km-security-chapter { flex-basis: 88vw; width: 88vw; }
+    .km-home .km-book-spread { grid-template-columns: minmax(0, 1fr); height: auto; min-height: 0; padding: 0; }
+    .km-home .km-book-page { padding: 19px 17px; }
+    .km-home .km-book-page--left { min-height: 285px; border-right: 1px solid rgba(54, 82, 119, .18); border-radius: 15px 15px 4px 4px; }
+    .km-home .km-book-left-content { padding: 24px 0; }
+    .km-home .km-book-topic-title { font-size: clamp(27px, 7.2vw, 36px); }
+    .km-home .km-security-lead { font-size: 13px; }
+    .km-home .km-book-spine { display: none; }
+    .km-home .km-book-page--right {
+        height: min(70svh, 610px);
+        min-height: 470px;
+        border-left: 1px solid rgba(54, 82, 119, .18);
+        border-radius: 4px 4px 15px 15px;
+    }
+    .km-home .km-book-detail-scroll { min-height: 0; height: 0; flex: 1 1 0%; max-height: none; padding-right: 9px; }
+    .km-home .km-security-body,
+    .km-home .km-security-body p { font-size: 13.2px !important; line-height: 1.7 !important; }
+    .km-home .km-security-columns { grid-template-columns: 1fr; gap: 12px; }
+    .km-home .km-security-detail-block p,
+    .km-home .km-book-controls li { font-size: 12px !important; line-height: 1.62 !important; }
+    .km-home .km-book-controls { grid-template-columns: 1fr; }
+    .km-home .km-security-visual svg { max-height: 118px; }
+    .km-home .km-security-book-footer { font-size: 7px; }
+    .km-home .km-book-read-cue { font-size: 7px; letter-spacing: .08em; }
+
+    .km-home .km-services-heading h2 { font-size: clamp(33px, 8.5vw, 48px); }
+    .km-home .km-services-heading > p { font-size: 12px; }
+    .km-home .km-services-toolbar-actions > span { display: none; }
+    .km-home .km-service-grid { gap: 4vw; padding: 10px 4vw 20px; }
+    .km-home .km-service-card,
+    .km-home .km-service-card.km-service-card--wide { flex-basis: 88vw; width: 88vw; min-height: 390px; padding: 22px 18px; }
+    .km-home .km-service-card h3 { max-width: 100%; font-size: clamp(24px, 6.7vw, 31px); margin-top: 26px; }
+    .km-home .km-service-card p { max-width: 100%; font-size: 13px; line-height: 1.65; }
+    .km-home .km-service-visual { opacity: .34; right: 0; transform: scale(.66); }
+    .km-home .km-service-foot { font-size: 7px; }
+
+    .km-home .km-process.km-process-film { height: 54svh; min-height: 300px; max-height: 480px; }
+    .km-home .km-process-film video.km-process-montage { object-position: 50% 50%; }
+    .km-home .km-engineering { gap: 20px; }
+    .km-home .km-engineering h2 { font-size: clamp(34px, 9vw, 48px); }
+    .km-home .km-engineering-copy > p { font-size: 13px; line-height: 1.7; }
+    .km-home .km-architecture { min-height: 345px; max-width: 100%; overflow: hidden; }
+    .km-home .km-architecture-core { width: 100px; height: 100px; }
+    .km-home .km-architecture-node { min-width: 98px; max-width: 116px; padding: 8px; }
+    .km-home .km-architecture-node b { font-size: 8px; }
+    .km-home .km-architecture-node small { font-size: 6px; letter-spacing: .08em; }
+    .km-home .km-final { padding: 64px 5vw 28px; }
+    .km-home .km-final h2 { font-size: clamp(36px, 10vw, 54px); }
+    .km-home .km-final-content > p { font-size: 13px; }
+    .km-home .km-final-actions { display: grid; grid-template-columns: 1fr; width: min(100%, 320px); margin: 24px auto 0; }
+    .km-home .km-final-button { min-width: 0; width: 100%; min-height: 46px; }
+    .km-home .km-codex-signature { width: 100%; gap: 2px; font-size: clamp(21px, 6.2vw, 31px); }
+    .km-home .km-codex-signature small { flex-basis: 100%; font-size: 7px; }
+    .km-home .km-final-bottom { margin-top: 38px; gap: 9px 16px; font-size: 7px; }
+
+    /* Keep the floating AI launcher inside the mobile safe area. */
+    body:has(#kmHome) .knowme-chat-dock { right: 10px; bottom: max(10px, env(safe-area-inset-bottom)); }
+    body:has(#kmHome) .knowme-chat-launcher { min-height: 48px; padding: 7px 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .km-home .km-security-chapter,
+    .km-home .km-service-card,
+    .km-home .km-architecture-motion-track,
+    .km-home .km-architecture-motion-dot { scroll-behavior: auto !important; }
+}
