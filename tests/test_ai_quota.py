@@ -32,6 +32,7 @@ os.environ.pop("TURNSTILE_SECRET_KEY", None)
 
 from sqlalchemy import create_engine, event, select
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.pool import StaticPool
 
 import app as application
 from ai_quota import (
@@ -47,7 +48,13 @@ from ai_quota import (
     seconds_until_utc_reset,
 )
 from database import Base, engine as app_engine
-from models import AIQuotaBucket, AIQuotaEvent, AIUsageRequest
+from models import (
+    AIQuotaBucket,
+    AIQuotaEvent,
+    AIUsageRequest,
+    ContactMessage,
+    ProjectRequest,
+)
 from system_prompt import KNOWME_SYSTEM_PROMPT
 
 
@@ -627,6 +634,185 @@ class AIQuotaTests(unittest.TestCase):
         self.assertEqual(usage.prompt_tokens, 41)
         self.assertEqual(usage.completion_tokens, 9)
         self.assertEqual(usage.actual_total_tokens, 50)
+
+
+class ApplicationSecurityRegressionTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls._original_testing = application.app.config["TESTING"]
+        cls._original_wtf_csrf_enabled = application.app.config["WTF_CSRF_ENABLED"]
+        application.app.config.update(TESTING=True, WTF_CSRF_ENABLED=True)
+
+    @classmethod
+    def tearDownClass(cls):
+        application.app.config.update(
+            TESTING=cls._original_testing,
+            WTF_CSRF_ENABLED=cls._original_wtf_csrf_enabled,
+        )
+
+    def setUp(self):
+        self.engine = create_engine(
+            "sqlite://",
+            connect_args={"check_same_thread": False},
+            poolclass=StaticPool,
+        )
+        Base.metadata.create_all(self.engine)
+        self.session_factory = sessionmaker(bind=self.engine, expire_on_commit=False)
+        self.session_patcher = patch.object(application, "SessionLocal", self.session_factory)
+        self.session_patcher.start()
+        self.addCleanup(self.engine.dispose)
+        self.addCleanup(self.session_patcher.stop)
+        self.client = application.app.test_client()
+        page = self.client.get("/contact")
+        self.assertEqual(page.status_code, 200)
+        match = re.search(r'<meta name="csrf-token" content="([^"]+)"', page.get_data(as_text=True))
+        self.assertIsNotNone(match)
+        self.csrf_token = match.group(1)
+
+    def _row_count(self, model):
+        with self.session_factory() as db:
+            return len(db.scalars(select(model)).all())
+
+    def test_production_debug_is_blocked_and_server_options_are_safe(self):
+        production_app = application.ProductionSafeFlask(
+            "production-security-test",
+            is_production=True,
+        )
+        self.assertFalse(production_app.debug)
+        with self.assertRaisesRegex(RuntimeError, "disabled in production"):
+            production_app.debug = True
+        with self.assertRaisesRegex(RuntimeError, "cannot be used in production"):
+            application._guard_production_flask_cli(True, "true")
+        application._guard_production_flask_cli(False, "true")
+
+        self.assertEqual(
+            application._development_server_options(True),
+            {"debug": False, "use_debugger": False, "use_reloader": False},
+        )
+
+    def test_development_debug_remains_available(self):
+        development_app = application.ProductionSafeFlask(
+            "development-security-test",
+            is_production=False,
+        )
+        development_app.debug = True
+        self.assertTrue(development_app.debug)
+        self.assertEqual(
+            application._development_server_options(False),
+            {"debug": True, "use_debugger": True, "use_reloader": True},
+        )
+
+    def test_production_and_development_cookie_settings(self):
+        production = application._session_cookie_settings(True, "false")
+        self.assertTrue(production["SESSION_COOKIE_SECURE"])
+        self.assertTrue(production["SESSION_COOKIE_HTTPONLY"])
+        self.assertEqual(production["SESSION_COOKIE_SAMESITE"], "Lax")
+
+        development = application._session_cookie_settings(False, "false")
+        self.assertFalse(development["SESSION_COOKIE_SECURE"])
+        self.assertTrue(development["SESSION_COOKIE_HTTPONLY"])
+        self.assertEqual(development["SESSION_COOKIE_SAMESITE"], "Lax")
+
+        development_opt_in = application._session_cookie_settings(False, "true")
+        self.assertTrue(development_opt_in["SESSION_COOKIE_SECURE"])
+
+    def test_production_login_cookie_is_secure_and_admin_session_works(self):
+        previous_cookie_settings = {
+            key: application.app.config[key]
+            for key in (
+                "SESSION_COOKIE_SECURE",
+                "SESSION_COOKIE_HTTPONLY",
+                "SESSION_COOKIE_SAMESITE",
+            )
+        }
+        application.app.config.update(
+            application._session_cookie_settings(True, "false")
+        )
+        try:
+            login_page = self.client.get("/admin/login")
+            match = re.search(
+                r'<meta name="csrf-token" content="([^"]+)"',
+                login_page.get_data(as_text=True),
+            )
+            self.assertIsNotNone(match)
+            with patch.object(application, "check_password_hash", return_value=True):
+                response = self.client.post(
+                    "/admin/login",
+                    data={
+                        "csrf_token": match.group(1),
+                        "username": application.ADMIN_USERNAME,
+                        "password": "synthetic-test-password",
+                    },
+                )
+
+            self.assertEqual(response.status_code, 302)
+            cookies = response.headers.getlist("Set-Cookie")
+            session_cookie = next(
+                cookie for cookie in cookies
+                if cookie.startswith(application.app.config["SESSION_COOKIE_NAME"] + "=")
+            )
+            self.assertIn("Secure", session_cookie)
+            self.assertIn("HttpOnly", session_cookie)
+            self.assertIn("SameSite=Lax", session_cookie)
+            self.assertEqual(self.client.get("/admin").status_code, 200)
+        finally:
+            application.app.config.update(previous_cookie_settings)
+
+    def test_normal_contact_form_still_saves_with_global_body_limit(self):
+        response = self.client.post(
+            "/contact",
+            data={
+                "csrf_token": self.csrf_token,
+                "name": "Synthetic Contact",
+                "email": "contact@example.test",
+                "message": "A normal-sized contact message for regression testing.",
+            },
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(self._row_count(ContactMessage), 1)
+
+    def test_normal_start_project_form_still_saves_with_global_body_limit(self):
+        response = self.client.post(
+            "/start-project",
+            data={
+                "csrf_token": self.csrf_token,
+                "full_name": "Synthetic Project",
+                "email": "project@example.test",
+                "website_type": "business",
+                "website_goal": "leads",
+                "design_style": "modern",
+                "pages_scope": "one",
+                "required_pages": ["home"],
+                "budget": "discuss",
+                "deadline": "flexible",
+                "description": "A normal-sized project description for regression testing.",
+                "consent": "yes",
+            },
+        )
+        self.assertEqual(response.status_code, 303)
+        self.assertEqual(self._row_count(ProjectRequest), 1)
+
+    def test_oversized_contact_and_project_forms_return_static_413(self):
+        oversized_value = "x" * (application.MAX_REQUEST_BODY_BYTES + 1024)
+        with patch.object(application.app.logger, "exception") as logged_exception:
+            for path in ("/contact", "/start-project"):
+                with self.subTest(path=path):
+                    response = self.client.post(
+                        path,
+                        data={
+                            "csrf_token": self.csrf_token,
+                            "unused": oversized_value,
+                        },
+                        content_type="application/x-www-form-urlencoded",
+                    )
+                    self.assertEqual(response.status_code, 413)
+                    self.assertEqual(response.get_data(as_text=True), "Request body too large.")
+                    self.assertNotIn("x" * 100, response.get_data(as_text=True))
+
+            logged_exception.assert_not_called()
+
+        self.assertEqual(self._row_count(ContactMessage), 0)
+        self.assertEqual(self._row_count(ProjectRequest), 0)
 
 
 class PromptAndContextTests(unittest.TestCase):

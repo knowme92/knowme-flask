@@ -76,20 +76,80 @@ OPENROUTER_MODEL = os.getenv(
     "openrouter/free"
 )
 
+# Form fields are individually small; 1 MiB leaves ample encoding overhead while
+# bounding the body Flask must parse for public forms.
+MAX_REQUEST_BODY_BYTES = 1_048_576
 
-# =========================================================
-# APP
-# =========================================================
-
-app = Flask(__name__)
-
-
-app.secret_key = os.getenv("SECRET_KEY")
 
 IS_PRODUCTION = (
     os.getenv("RENDER", "").strip().lower() == "true"
     or os.getenv("APP_ENV", "").strip().lower() == "production"
 )
+
+
+def _guard_production_flask_cli(is_production, flask_run_from_cli):
+    if is_production and str(flask_run_from_cli or "").strip().lower() == "true":
+        raise RuntimeError(
+            "The Flask development CLI cannot be used in production; use a production WSGI server"
+        )
+
+
+_guard_production_flask_cli(
+    IS_PRODUCTION,
+    os.getenv("FLASK_RUN_FROM_CLI"),
+)
+
+
+class ProductionSafeFlask(Flask):
+    """Prevent Flask CLI or direct callers from enabling debug in production."""
+
+    def __init__(self, import_name, *, is_production=False, **kwargs):
+        self._is_production = is_production
+        super().__init__(import_name, **kwargs)
+
+    @property
+    def debug(self):
+        return Flask.debug.fget(self)
+
+    @debug.setter
+    def debug(self, enabled):
+        if self._is_production and enabled:
+            raise RuntimeError("Flask debug mode is disabled in production")
+        Flask.debug.fset(self, bool(enabled))
+
+
+def _session_cookie_settings(is_production, configured_secure_value):
+    secure = is_production or str(configured_secure_value or "false").strip().lower() in {
+        "1", "true", "yes", "on",
+    }
+    return {
+        "SESSION_COOKIE_SECURE": secure,
+        "SESSION_COOKIE_HTTPONLY": True,
+        "SESSION_COOKIE_SAMESITE": "Lax",
+    }
+
+
+def _development_server_options(is_production):
+    development = not is_production
+    return {
+        "debug": development,
+        "use_debugger": development,
+        "use_reloader": development,
+    }
+
+
+# =========================================================
+# APP
+# =========================================================
+
+app = ProductionSafeFlask(__name__, is_production=IS_PRODUCTION)
+app.config.update(
+    DEBUG=False,
+    MAX_CONTENT_LENGTH=MAX_REQUEST_BODY_BYTES,
+)
+
+
+app.secret_key = os.getenv("SECRET_KEY")
 
 RATE_LIMIT_STORAGE_URI = os.getenv("RATELIMIT_STORAGE_URI", "").strip()
 if IS_PRODUCTION and not RATE_LIMIT_STORAGE_URI:
@@ -281,14 +341,11 @@ def inject_turnstile_context():
 # SESSION SECURITY
 # =========================================================
 
-app.config["SESSION_COOKIE_HTTPONLY"] = True
-
-app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
-
-# LOCAL DEVELOPMENT
-app.config["SESSION_COOKIE_SECURE"] = (
-    os.getenv("SESSION_COOKIE_SECURE", "false").strip().lower()
-    in {"1", "true", "yes", "on"}
+app.config.update(
+    _session_cookie_settings(
+        IS_PRODUCTION,
+        os.getenv("SESSION_COOKIE_SECURE", "false"),
+    )
 )
 
 app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(
@@ -1189,6 +1246,23 @@ def rate_limit_exceeded(error):
         }), 429
 
     return message, 429
+
+
+@app.errorhandler(RequestEntityTooLarge)
+def request_entity_too_large(_error):
+    """Return a static response without logging or echoing submitted content."""
+    if request.path == "/api/chat":
+        return jsonify({
+            "error": "AI request is too large.",
+            "error_code": "AI_REQUEST_TOO_LARGE",
+        }), 413
+    return Response(
+        "Request body too large.",
+        status=413,
+        mimetype="text/plain",
+    )
+
+
 # =========================================================
 # SECURITY HEADERS
 # =========================================================
@@ -1663,6 +1737,6 @@ def why_knowme():
 if __name__ == "__main__":
 
     app.run(
-        debug=True
+        **_development_server_options(IS_PRODUCTION)
     )
 
